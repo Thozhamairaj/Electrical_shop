@@ -1,0 +1,280 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: 'Manrope', sans-serif;
+}
+
+.top-strip {
+  text-align: center;
+  background: #0f172a;
+  color: #fff;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.header-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f172a;
+  text-decoration: none;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.logo-mark {
+  color: #ff5722;
+}
+
+.logo-mark.alt {
+  color: #0f172a;
+}
+
+/* Search Bar */
+.search-stack {
+  flex: 1;
+  max-width: 700px;
+  display: flex;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.search-stack:focus-within {
+  border-color: #ff5722;
+  box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.1);
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  color: #334155;
+  outline: none;
+}
+
+.category-select {
+  background: #f1f5f9;
+  border: none;
+  border-left: 1px solid #e2e8f0;
+  padding: 0 1rem;
+  font-size: 0.9rem;
+  color: #475569;
+  cursor: pointer;
+  outline: none;
+  max-width: 150px;
+}
+
+.search-btn {
+  background: #dc2626;
+  border: none;
+  color: white;
+  padding: 0 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.search-btn:hover {
+  background: #b91c1c;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.user-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.login-link {
+  font-size: 0.75rem;
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.account-link {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* User menu (top-right) */
+.user-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+/* Clerk UserButton avatar sizing */
+.clerk-avatar-box {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+}
+
+.user-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.user-name {
+  font-size: 0.75rem;
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.signout-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0f172a;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.signout-btn:hover {
+  color: #ef4444;
+}
+
+/* Simple welcome bar under search row */
+.welcome-bar {
+  text-align: center;
+  padding: 0.4rem 2rem;
+  font-size: 0.88rem;
+  color: #475569;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.welcome-bar strong,
+.welcome-name {
+  color: #ff5722;
+  font-weight: 700;
+}
+
+.cart-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #0f172a;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.cart-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cart-pill {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ef4444;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  height: 18px;
+  width: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.cart-text {
+  font-size: 1rem;
+}
+
+/* Nav Rail */
+.nav-rail {
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.nav {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.75rem 2rem;
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+}
+
+.nav-item {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-item:hover {
+  color: #dc2626;
+}
+
+.nav-divider {
+  color: #cbd5e1;
+  font-size: 0.85rem;
+  padding: 0 0.25rem;
+  user-select: none;
+  pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  .header-main {
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .search-stack {
+    order: 3;
+    min-width: 100%;
+  }
+
+  .nav {
+    padding: 0.75rem 1rem;
+    gap: 1.5rem;
+  }
+}
