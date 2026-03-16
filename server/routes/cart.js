@@ -1,5 +1,6 @@
 const express = require('express');
-const Cart = require('../models/Cart');
+const CartItem = require('../models/CartItem');
+const { sequelize } = require('../index');
 
 const router = express.Router();
 
@@ -7,8 +8,10 @@ const router = express.Router();
 // Returns the user's cart items (empty array if none found)
 router.get('/:userId', async (req, res) => {
     try {
-        const cart = await Cart.findOne({ userId: req.params.userId });
-        res.json({ items: cart ? cart.items : [] });
+        const items = await CartItem.findAll({ 
+            where: { userId: req.params.userId }
+        });
+        res.json({ items });
     } catch (err) {
         console.error('GET cart error:', err);
         res.status(500).json({ error: 'Failed to fetch cart' });
@@ -18,19 +21,44 @@ router.get('/:userId', async (req, res) => {
 // ── PUT /api/cart/:userId ──────────────────────────────────────────
 // Upserts (replaces) the full cart for this user
 router.put('/:userId', async (req, res) => {
+    const transaction = await sequelize.transaction();
     try {
-        const { items } = req.body;
+        const { items, userEmail, userName } = req.body;
         if (!Array.isArray(items)) {
             return res.status(400).json({ error: 'items must be an array' });
         }
 
-        const cart = await Cart.findOneAndUpdate(
-            { userId: req.params.userId },
-            { $set: { items } },
-            { new: true, upsert: true, runValidators: true }
-        );
-        res.json({ items: cart.items });
+        const userId = req.params.userId;
+
+        // Delete existing items for this user
+        await CartItem.destroy({
+            where: { userId },
+            transaction
+        });
+
+        // Bulk create new items with userId
+        const cartItems = items.map(item => {
+            const { pk, createdAt, updatedAt, id, ...itemData } = item;
+            return {
+                ...itemData,
+                productId: itemData.productId || id,  // frontend sends id, model needs productId
+                userId,
+                userEmail: userEmail || null,
+                userName: userName || null,
+            };
+        });
+
+        await CartItem.bulkCreate(cartItems, { transaction });
+
+        await transaction.commit();
+
+        const updatedItems = await CartItem.findAll({
+            where: { userId }
+        });
+
+        res.json({ items: updatedItems });
     } catch (err) {
+        await transaction.rollback();
         console.error('PUT cart error:', err);
         res.status(500).json({ error: 'Failed to save cart' });
     }
@@ -40,11 +68,7 @@ router.put('/:userId', async (req, res) => {
 // Clears all items in the user's cart
 router.delete('/:userId', async (req, res) => {
     try {
-        await Cart.findOneAndUpdate(
-            { userId: req.params.userId },
-            { $set: { items: [] } },
-            { upsert: true }
-        );
+        await CartItem.destroy({ where: { userId: req.params.userId } });
         res.json({ message: 'Cart cleared' });
     } catch (err) {
         console.error('DELETE cart error:', err);

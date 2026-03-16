@@ -1,18 +1,24 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useAuth } from '@clerk/clerk-react';
+import { useAuth, useUser } from '@clerk/clerk-react';
 import { useCart } from '../context/CartContext';
 import { products } from '../data/products';
+import { generateWhatsAppUrl, formatProductOrderMessage, formatProductEnquiryMessage } from '../utils/whatsapp';
+import { userService } from '../services/userService';
+import PhoneNumberModal from '../components/PhoneNumberModal';
+
 import './ProductPage.css';
 
 export default function ProductPage() {
   const { id } = useParams();
   const { isSignedIn } = useAuth();
+  const { user } = useUser();
   const { addToCart } = useCart();
   const navigate = useNavigate();
   const product = products.find(p => p.id === parseInt(id));
   const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
+  const [isPhoneModalOpen, setIsPhoneModalOpen] = useState(false);
 
   if (!product) {
     return (
@@ -36,6 +42,49 @@ export default function ProductPage() {
     setTimeout(() => setAddedToCart(false), 2000);
   };
 
+  const handleWhatsAppOrder = async () => {
+    if (!isSignedIn) {
+      alert('Please login to place an order.');
+      navigate('/auth');
+      return;
+    }
+
+    try {
+      const dbUser = await userService.getUserProfile(user.id);
+      if (dbUser && dbUser.phoneNumber) {
+        completeWhatsAppOrder(dbUser.phoneNumber);
+      } else {
+        setIsPhoneModalOpen(true);
+      }
+    } catch (error) {
+      console.error('Error checking user profile:', error);
+      setIsPhoneModalOpen(true);
+    }
+  };
+
+  const completeWhatsAppOrder = (phone) => {
+    const message = formatProductOrderMessage(product, quantity, phone);
+    const url = generateWhatsAppUrl(message);
+    window.open(url, '_blank');
+  };
+
+  const handlePhoneConfirm = async (phone) => {
+    try {
+      await userService.updateUserProfile(user.id, { phoneNumber: phone });
+      setIsPhoneModalOpen(false);
+      completeWhatsAppOrder(phone);
+    } catch (error) {
+      console.error('Error saving phone number:', error);
+      completeWhatsAppOrder(phone); // Still proceed with order even if save fails
+    }
+  };
+
+  const handleWhatsAppEnquiry = () => {
+    const message = formatProductEnquiryMessage(product);
+    const url = generateWhatsAppUrl(message);
+    window.open(url, '_blank');
+  };
+
   const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
   const relatedProducts = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
 
@@ -48,7 +97,7 @@ export default function ProductPage() {
       <div className="product-detail">
         <div className="product-images">
           <div className="main-image">
-            <img src={product.image} alt={product.name} />
+            <img src={encodeURI(product.image)} alt={product.name} />
             {discount > 0 && <div className="discount-badge">{discount}% OFF</div>}
           </div>
         </div>
@@ -79,16 +128,18 @@ export default function ProductPage() {
 
           <p className="description">{product.description}</p>
 
-          <div className="specifications">
-            <h3>Specifications</h3>
-            <ul>
-              {Object.entries(product.specs).map(([key, value]) => (
-                <li key={key}>
-                  <strong>{key.replace(/([A-Z])/g, ' $1').trim()}:</strong> {value}
-                </li>
-              ))}
-            </ul>
-          </div>
+          {product.specs && (
+            <div className="specifications">
+              <h3>Specifications</h3>
+              <ul>
+                {Object.entries(product.specs).map(([key, value]) => (
+                  <li key={key}>
+                    <strong>{key.replace(/([A-Z])/g, ' $1').trim()}:</strong> {value}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           <div className="purchase-section">
             <div className="quantity-selector">
@@ -106,6 +157,18 @@ export default function ProductPage() {
               disabled={!product.inStock}
             >
               {addedToCart ? '✓ Added to Cart' : 'Add to Cart'}
+            </button>
+
+            <button
+              className="whatsapp-order-btn"
+              onClick={handleWhatsAppOrder}
+              disabled={!product.inStock}
+            >
+              <span className="whatsapp-icon">💬</span> Order on WhatsApp
+            </button>
+
+            <button className="whatsapp-enquiry-btn" onClick={handleWhatsAppEnquiry}>
+              Enquire on WhatsApp
             </button>
 
             <button className="wishlist-btn">♡ Add to Wishlist</button>
@@ -134,7 +197,7 @@ export default function ProductPage() {
           <div className="related-grid">
             {relatedProducts.map(related => (
               <div key={related.id} className="related-card">
-                <img src={related.image} alt={related.name} />
+                <img src={encodeURI(related.image)} alt={related.name} />
                 <h4>{related.name}</h4>
                 <p className="price">${related.price.toFixed(2)}</p>
                 <a href={`/product/${related.id}`} className="view-link">View Details →</a>
@@ -143,6 +206,12 @@ export default function ProductPage() {
           </div>
         </section>
       )}
+
+      <PhoneNumberModal
+        isOpen={isPhoneModalOpen}
+        onClose={() => setIsPhoneModalOpen(false)}
+        onConfirm={handlePhoneConfirm}
+      />
     </div>
   );
 }

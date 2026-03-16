@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, useRef } from 'react';
-import { useAuth } from '@clerk/clerk-react';
+import { useAuth, useUser } from '@clerk/clerk-react';
 
 const CartContext = createContext(null);
 
@@ -15,15 +15,15 @@ async function fetchCartFromDB(userId) {
     }
 }
 
-async function saveCartToDB(userId, items) {
+async function saveCartToDB(userId, items, userEmail, userName) {
     try {
         await fetch(`/api/cart/${userId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ items }),
+            body: JSON.stringify({ items, userEmail, userName }),
         });
     } catch (err) {
-        console.warn('Cart sync to MongoDB failed:', err);
+        console.warn('Cart sync to DB failed:', err);
     }
 }
 
@@ -38,6 +38,7 @@ async function clearCartInDB(userId) {
 // ── Provider ───────────────────────────────────────────────────────
 export function CartProvider({ children }) {
     const { userId } = useAuth();
+    const { user } = useUser();
     const guestKey = 'cart_guest';
 
     const [cartItems, setCartItems] = useState([]);
@@ -83,7 +84,9 @@ export function CartProvider({ children }) {
             // rapid quantity changes
             clearTimeout(syncTimeoutRef.current);
             syncTimeoutRef.current = setTimeout(() => {
-                saveCartToDB(userId, cartItems);
+                const userEmail = user?.primaryEmailAddress?.emailAddress || null;
+                const userName = user?.fullName || user?.firstName || null;
+                saveCartToDB(userId, cartItems, userEmail, userName);
             }, 300);
         } else {
             // Guest → localStorage

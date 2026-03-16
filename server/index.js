@@ -1,9 +1,7 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
-
-const cartRoutes = require('./routes/cart');
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const app = express();
 
@@ -14,27 +12,62 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// ── Routes ────────────────────────────────────────────────────────
-app.use('/api/cart', cartRoutes);
-
 app.get('/api/health', (_, res) => res.json({ status: 'ok' }));
 
-// ── MongoDB Connection ─────────────────────────────────────────────
+const { Sequelize } = require('sequelize');
 const PORT = process.env.PORT || 5000;
-const MONGODB_URI = process.env.MONGODB_URI;
 
-if (!MONGODB_URI) {
-    console.error('❌  MONGODB_URI is not set in server/.env');
-    process.exit(1);
+const sequelize = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD,
+    {
+        host: process.env.DB_HOST,
+        port: process.env.DB_PORT,
+        dialect: 'mysql',
+        logging: false,
+    }
+);
+
+// Export sequelize for use in models
+module.exports = { sequelize };
+
+// Import models (order matters — independent models first)
+require('./models/User');
+require('./models/Product');
+require('./models/CartItem');
+require('./models/Admin');
+require('./models/Order');
+
+// Register routes
+const cartRoutes = require('./routes/cart');
+const userRoutes = require('./routes/users');
+const productRoutes = require('./routes/products');
+const adminRoutes = require('./routes/admin');
+const adminProductRoutes = require('./routes/adminProducts');
+const orderRoutes = require('./routes/orders');
+
+app.use('/api/cart', cartRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/admin-products', adminProductRoutes);
+app.use('/api/orders', orderRoutes);
+
+async function startServer() {
+    try {
+        await sequelize.authenticate();
+        console.log('✅  Connected to MySQL');
+
+        // Sync models
+        await sequelize.sync({ alter: true });
+        console.log('✅  Database models synced');
+
+        app.listen(PORT, () => console.log(`🚀  Server running on http://localhost:${PORT}`));
+    } catch (err) {
+        console.error('❌  Unable to connect to MySQL:', err.message);
+        process.exit(1);
+    }
 }
 
-mongoose
-    .connect(MONGODB_URI)
-    .then(() => {
-        console.log('✅  Connected to MongoDB');
-        app.listen(PORT, () => console.log(`🚀  Server running on http://localhost:${PORT}`));
-    })
-    .catch((err) => {
-        console.error('❌  MongoDB connection error:', err.message);
-        process.exit(1);
-    });
+startServer();

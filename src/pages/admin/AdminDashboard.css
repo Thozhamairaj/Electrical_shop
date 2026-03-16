@@ -1,0 +1,225 @@
+/* ── Admin Dashboard ─────────────────────────────────────────────── */
+.ad-page { display: flex; flex-direction: column; gap: 28px; }
+
+.ad-page-title h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.ad-page-title p { font-size: 14px; color: #6b7280; }
+
+/* Stat cards */
+.ad-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.ad-stat-card {
+    background: rgba(26,29,46,0.8);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.ad-stat-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255,255,255,0.1);
+}
+
+.ad-stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ad-stat-label {
+    font-size: 12px;
+    color: #6b7280;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.ad-stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+}
+
+/* Bottom grid */
+.ad-bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.ad-panel {
+    background: rgba(26,29,46,0.8);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.ad-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.ad-panel-header h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.ad-panel-link {
+    font-size: 12px;
+    color: #f59e0b;
+    text-decoration: none;
+}
+
+.ad-panel-link:hover { color: #fbbf24; }
+
+.ad-empty {
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+    padding: 20px 0;
+}
+
+.ad-empty-green { color: #10b981; }
+
+/* Orders list */
+.ad-orders-list { display: flex; flex-direction: column; gap: 10px; }
+
+.ad-order-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+}
+
+.ad-order-id {
+    font-size: 13px;
+    font-weight: 600;
+    color: #a1a9b8;
+    margin-right: 10px;
+}
+
+.ad-order-user { font-size: 13px; color: #e2e8f0; }
+
+.ad-order-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ad-order-amount {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.ad-status-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 20px;
+    border: 1px solid;
+    text-transform: capitalize;
+}
+
+/* Stock list */
+.ad-stock-list { display: flex; flex-direction: column; gap: 8px; }
+
+.ad-stock-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+}
+
+.ad-stock-name {
+    font-size: 13px;
+    color: #d1d5db;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.ad-stock-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.ad-stock-badge.out {
+    color: #ef4444;
+    background: rgba(239,68,68,0.15);
+    border: 1px solid rgba(239,68,68,0.3);
+}
+
+.ad-stock-badge.low {
+    color: #f59e0b;
+    background: rgba(245,158,11,0.15);
+    border: 1px solid rgba(245,158,11,0.3);
+}
+
+/* Skeletons */
+.ad-skeleton-wrap {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 28px;
+}
+
+.ad-stat-skeleton {
+    height: 88px;
+    border-radius: 14px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+    background-size: 200%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+.ad-error {
+    color: #f87171;
+    text-align: center;
+    padding: 40px;
+    font-size: 15px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .ad-stats-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 640px) {
+    .ad-stats-grid { grid-template-columns: 1fr; }
+    .ad-bottom-grid { grid-template-columns: 1fr; }
+}

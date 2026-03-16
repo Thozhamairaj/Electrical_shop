@@ -50,7 +50,10 @@ function UserMenu() {
       />
       <div className="user-dropdown">
         <span className="user-name">{firstName}</span>
-        <button className="signout-btn" onClick={handleSignOut}>Sign out</button>
+        <div className="user-dropdown-links">
+          <Link to="/profile" className="profile-link">My Profile</Link>
+          <button className="signout-btn" onClick={handleSignOut}>Sign out</button>
+        </div>
       </div>
     </div>
   );

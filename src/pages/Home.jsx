@@ -1,24 +1,43 @@
+import { useState, useEffect } from 'react';
 import HeroCarousel from '../components/HeroCarousel';
 import ProductCard from '../components/ProductCard';
-import { products, categories } from '../data/products';
+import { categories } from '../data/products';
 import { Link } from 'react-router-dom';
+
 import './Home.css';
 
-// One featured product per category (first match)
-const categorySpotlight = categories
-  .filter(c => c.id !== 'all')
-  .map(cat => ({
-    ...cat,
-    product: products.find(p => p.category === cat.id),
-  }))
-  .filter(c => c.product);
-
-// 8 top-rated products for the featured strip
-const featuredProducts = [...products]
-  .sort((a, b) => b.rating - a.rating)
-  .slice(0, 8);
-
 export default function Home() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/products');
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  // One featured product per category (first match)
+  const categorySpotlight = categories
+    .filter(c => c.id !== 'all')
+    .map(cat => ({
+      ...cat,
+      product: products.find(p => p.category === cat.id),
+    }))
+    .filter(c => c.product);
+
+  // 8 top-rated products for the featured strip
+  const featuredProducts = [...products]
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, 8);
   return (
     <div className="home">
 
@@ -32,24 +51,28 @@ export default function Home() {
           <Link to="/products" className="view-all">View all →</Link>
         </div>
         <div className="category-grid">
-          {categorySpotlight.map(({ id, name, icon, product }) => (
-            <Link
-              key={id}
-              to={`/products?category=${id}`}
-              className="category-card"
-            >
-              <div className="category-card-img">
-                <img src={product.image} alt={name} />
-              </div>
-              <div className="category-card-body">
-                <span className="category-icon">{icon}</span>
-                <h3>{name}</h3>
-                <span className="category-count">
-                  {products.filter(p => p.category === id).length} products
-                </span>
-              </div>
-            </Link>
-          ))}
+          {loading ? (
+            <div className="loading">Loading categories...</div>
+          ) : (
+            categorySpotlight.map(({ id, name, icon, product }) => (
+              <Link
+                key={id}
+                to={`/products?category=${id}`}
+                className="category-card"
+              >
+                <div className="category-card-img">
+                  <img src={encodeURI(product.image)} alt={name} />
+                </div>
+                <div className="category-card-body">
+                  <span className="category-icon">{icon}</span>
+                  <h3>{name}</h3>
+                  <span className="category-count">
+                    {products.filter(p => p.category === id).length} products
+                  </span>
+                </div>
+              </Link>
+            ))
+          )}
         </div>
       </section>
 
@@ -60,9 +83,13 @@ export default function Home() {
           <Link to="/products" className="view-all">View all →</Link>
         </div>
         <div className="products-grid">
-          {featuredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          {loading ? (
+            <div className="loading">Loading products...</div>
+          ) : (
+            featuredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))
+          )}
         </div>
       </section>
 

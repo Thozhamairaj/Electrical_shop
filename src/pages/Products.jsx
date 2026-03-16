@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
-import { products, categories } from '../data/products';
+import { categories } from '../data/products';
 import './Products.css';
 
 export default function Products() {
@@ -9,22 +9,33 @@ export default function Products() {
   const [selectedCategory, setSelectedCategory] = useState(() => searchParams.get('category') || 'all');
   const [sortBy, setSortBy] = useState('featured');
   const [searchTerm, setSearchTerm] = useState(() => searchParams.get('search') || '');
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(`http://localhost:5000/api/products?category=${selectedCategory}&search=${searchTerm}`);
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, [selectedCategory, searchTerm]);
 
   // Sync filters when URL params change (e.g. header search or nav click)
   useEffect(() => {
-    const cat = searchParams.get('category') || 'all';
-    const search = searchParams.get('search') || '';
-    setSelectedCategory(cat);
-    setSearchTerm(search);
+    setSelectedCategory(searchParams.get('category') || 'all');
+    setSearchTerm(searchParams.get('search') || '');
   }, [searchParams]);
 
-  const filtered = products.filter(product => {
-    const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
-    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
-
-  const sorted = [...filtered].sort((a, b) => {
+  const sorted = [...products].sort((a, b) => {
     switch (sortBy) {
       case 'price-low':
         return a.price - b.price;
@@ -102,7 +113,9 @@ export default function Products() {
             </div>
           </div>
 
-          {sorted.length > 0 ? (
+          {loading ? (
+            <div className="loading">Loading products...</div>
+          ) : sorted.length > 0 ? (
             <div className="products-grid">
               {sorted.map(product => (
                 <ProductCard key={product.id} product={product} />

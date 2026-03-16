@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@clerk/clerk-react';
 import { useCart } from '../context/CartContext';
+
 import './ProductCard.css';
 
 export default function ProductCard({ product }) {
@@ -25,7 +26,7 @@ export default function ProductCard({ product }) {
   return (
     <Link to={`/product/${product.id}`} className="product-card">
       <div className="product-image">
-        <img src={product.image} alt={product.name} />
+        <img src={encodeURI(product.image)} alt={product.name} />
         {product.originalPrice > product.price && (
           <div className="discount-badge">
             {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF

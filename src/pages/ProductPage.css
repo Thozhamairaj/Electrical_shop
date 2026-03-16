@@ -54,7 +54,7 @@
 .main-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .discount-badge {
@@ -405,4 +405,54 @@
   .related-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
+}
+
+.whatsapp-order-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #25D366;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.whatsapp-order-btn:hover:not(:disabled) {
+  background-color: #128C7E;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-order-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.whatsapp-enquiry-btn {
+  background: transparent;
+  color: #128C7E;
+  border: 2px solid #25D366;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.whatsapp-enquiry-btn:hover {
+  background-color: rgba(37, 211, 102, 0.1);
+  border-color: #128C7E;
+}
+
+.whatsapp-icon {
+  font-size: 1.2rem;
 }
