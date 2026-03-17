@@ -1,5 +1,5 @@
 const express = require('express');
-const Product = require('../models/Product');
+const Products = require('../models/Product');
 const router = express.Router();
 
 // MySQL returns DECIMAL as strings — convert to numbers
@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
             where.category = category;
         }
 
-        const products = await Product.findAll({ where });
+        const products = await Products.findAll({ where });
         
         // Filter by search term if provided (could also use Sequelize Op.like)
         let filteredProducts = products;
@@ -43,7 +43,7 @@ router.get('/', async (req, res) => {
 // Get single product
 router.get('/:id', async (req, res) => {
     try {
-        const product = await Product.findByPk(req.params.id);
+        const product = await Products.findByPk(req.params.id);
         if (!product) {
             return res.status(404).json({ error: 'Product not found' });
         }

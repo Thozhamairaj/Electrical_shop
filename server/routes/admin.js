@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const Admin = require('../models/Admin');
+const Admins = require('../models/Admin');
 const { adminAuth } = require('../middleware/adminAuth');
 
 const router = express.Router();
@@ -15,7 +15,7 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ error: 'username and password are required' });
         }
 
-        const admin = await Admin.findOne({ where: { username, isActive: true } });
+        const admin = await Admins.findOne({ where: { username, isActive: true } });
         if (!admin) {
             return res.status(401).json({ error: 'Invalid credentials' });
         }
@@ -53,7 +53,7 @@ router.post('/login', async (req, res) => {
 // Verify token and return admin info
 router.get('/me', adminAuth, async (req, res) => {
     try {
-        const admin = await Admin.findByPk(req.admin.id, {
+        const admin = await Admins.findByPk(req.admin.id, {
             attributes: ['id', 'username', 'name', 'email', 'lastLogin'],
         });
         if (!admin) return res.status(404).json({ error: 'Admin not found' });
@@ -67,22 +67,22 @@ router.get('/me', adminAuth, async (req, res) => {
 // Dashboard stats: product count, order count, etc.
 router.get('/stats', adminAuth, async (req, res) => {
     try {
-        const Product = require('../models/Product');
-        const Order = require('../models/Order');
-        const User = require('../models/User');
+        const Products = require('../models/Product');
+        const Orders = require('../models/Order');
+        const Users = require('../models/User');
 
         const [productCount, orderCount, customerCount] = await Promise.all([
-            Product.count(),
-            Order.count(),
-            User.count(),
+            Products.count(),
+            Orders.count(),
+            Users.count(),
         ]);
 
-        const recentOrders = await Order.findAll({
+        const recentOrders = await Orders.findAll({
             order: [['createdAt', 'DESC']],
             limit: 5,
         });
 
-        const lowStockProducts = await Product.findAll({
+        const lowStockProducts = await Products.findAll({
             where: { stock: { [require('sequelize').Op.lte]: 5 } },
             attributes: ['id', 'name', 'stock', 'category'],
         });

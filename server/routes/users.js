@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User');
+const Users = require('../models/User');
 
 // Sync user data after login/signup
 router.post('/sync', async (req, res) => {
@@ -11,7 +11,7 @@ router.post('/sync', async (req, res) => {
             return res.status(400).json({ message: 'clerkId is required' });
         }
 
-        let user = await User.findByPk(clerkId);
+        let user = await Users.findByPk(clerkId);
 
         if (user) {
             // Update existing user
@@ -24,7 +24,7 @@ router.post('/sync', async (req, res) => {
             return res.status(200).json({ message: 'User updated', user });
         } else {
             // Create new user
-            user = await User.create({
+            user = await Users.create({
                 clerkId,
                 email,
                 name,
@@ -41,7 +41,7 @@ router.post('/sync', async (req, res) => {
 // Get user profile
 router.get('/profile/:clerkId', async (req, res) => {
     try {
-        const user = await User.findByPk(req.params.clerkId);
+        const user = await Users.findByPk(req.params.clerkId);
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
@@ -55,7 +55,7 @@ router.get('/profile/:clerkId', async (req, res) => {
 router.put('/profile/:clerkId', async (req, res) => {
     try {
         const { phoneNumber, address, name } = req.body;
-        const [updatedRowsCount, [updatedUser]] = await User.update(
+        const [updatedRowsCount, [updatedUser]] = await Users.update(
             { 
                 phoneNumber, 
                 address, 
@@ -70,14 +70,14 @@ router.put('/profile/:clerkId', async (req, res) => {
         if (updatedRowsCount === 0) {
             // Sequelize update for MySQL doesn't return the updated record like Postgres
             // So we need to fetch it if we want to return it
-            const user = await User.findByPk(req.params.clerkId);
+            const user = await Users.findByPk(req.params.clerkId);
             if (!user) {
                 return res.status(404).json({ message: 'User not found' });
             }
             return res.json({ message: 'Profile updated', user });
         }
 
-        const user = await User.findByPk(req.params.clerkId);
+        const user = await Users.findByPk(req.params.clerkId);
         res.json({ message: 'Profile updated', user });
     } catch (error) {
         res.status(500).json({ message: 'Internal server error', error: error.message });

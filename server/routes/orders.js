@@ -1,8 +1,8 @@
 const express = require('express');
 const crypto = require('crypto');
 const Razorpay = require('razorpay');
-const Order = require('../models/Order');
-const Product = require('../models/Product');
+const Orders = require('../models/Order');
+const Products = require('../models/Product');
 const { adminAuth } = require('../middleware/adminAuth');
 
 const router = express.Router();
@@ -10,7 +10,7 @@ const router = express.Router();
 // Helper to reduce stock
 async function reduceStock(items) {
     for (const item of items) {
-        const product = await Product.findByPk(item.id);
+        const product = await Products.findByPk(item.id);
         if (product) {
             const newStock = Math.max(0, product.stock - (item.quantity || 1));
             await product.update({ stock: newStock });
@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
             return res.status(400).json({ error: 'userId, items, and totalAmount are required' });
         }
 
-        const order = await Order.create({
+        const order = await Orders.create({
             userId, userEmail, userName, userPhone,
             items,
             totalAmount,
@@ -58,7 +58,7 @@ router.post('/', async (req, res) => {
 // Publicly fetch order summary (for payment link)
 router.get('/public/:id', async (req, res) => {
     try {
-        const order = await Order.findByPk(req.params.id);
+        const order = await Orders.findByPk(req.params.id);
         if (!order) return res.status(404).json({ error: 'Order not found' });
         
         // Return only necessary non-sensitive info
@@ -81,7 +81,7 @@ router.get('/public/:id', async (req, res) => {
 router.post('/initiate-link-payment', async (req, res) => {
     try {
         const { orderId } = req.body;
-        const order = await Order.findByPk(orderId);
+        const order = await Orders.findByPk(orderId);
         
         if (!order) return res.status(404).json({ error: 'Order not found' });
         if (order.paymentStatus === 'paid') return res.status(400).json({ error: 'Order already paid' });
@@ -129,7 +129,7 @@ router.post('/create-razorpay-order', async (req, res) => {
         const razorpayOrder = await razorpayInstance.orders.create(options);
 
         // Save order in our database as 'pending'
-        const order = await Order.create({
+        const order = await Orders.create({
             userId, userEmail, userName, userPhone,
             items,
             totalAmount,
@@ -174,7 +174,7 @@ router.post('/verify-payment', async (req, res) => {
 
         if (isAuthentic) {
             // Find the order
-            const order = await Order.findOne({ where: { razorpayOrderId: razorpay_order_id } });
+            const order = await Orders.findOne({ where: { razorpayOrderId: razorpay_order_id } });
             
             if (!order) {
                 return res.status(404).json({ error: 'Order not found for this payment' });
@@ -195,7 +195,7 @@ router.post('/verify-payment', async (req, res) => {
             return res.json({ message: 'Payment verified successfully', order });
         } else {
             // Can optionally update the order status to failed here
-            const order = await Order.findOne({ where: { razorpayOrderId: razorpay_order_id } });
+            const order = await Orders.findOne({ where: { razorpayOrderId: razorpay_order_id } });
             if (order) {
                 await order.update({ paymentStatus: 'failed' });
             }
@@ -211,7 +211,7 @@ router.post('/verify-payment', async (req, res) => {
 // Customer views their own orders
 router.get('/my/:userId', async (req, res) => {
     try {
-        const orders = await Order.findAll({
+        const orders = await Orders.findAll({
             where: { userId: req.params.userId },
             order: [['createdAt', 'DESC']],
         });
@@ -226,7 +226,7 @@ router.get('/my/:userId', async (req, res) => {
 // GET /api/orders — Admin: view all orders
 router.get('/', adminAuth, async (req, res) => {
     try {
-        const orders = await Order.findAll({
+        const orders = await Orders.findAll({
             order: [['createdAt', 'DESC']],
         });
         res.json(orders);
@@ -238,7 +238,7 @@ router.get('/', adminAuth, async (req, res) => {
 // GET /api/orders/:id — Admin: view single order
 router.get('/:id', adminAuth, async (req, res) => {
     try {
-        const order = await Order.findByPk(req.params.id);
+        const order = await Orders.findByPk(req.params.id);
         if (!order) return res.status(404).json({ error: 'Order not found' });
         res.json(order);
     } catch (err) {
@@ -255,7 +255,7 @@ router.put('/:id/status', adminAuth, async (req, res) => {
             return res.status(400).json({ error: 'Invalid status' });
         }
 
-        const order = await Order.findByPk(req.params.id);
+        const order = await Orders.findByPk(req.params.id);
         if (!order) return res.status(404).json({ error: 'Order not found' });
 
         await order.update({ status });

@@ -1,5 +1,5 @@
 const express = require('express');
-const CartItem = require('../models/CartItem');
+const CartItems = require('../models/CartItem');
 const { sequelize } = require('../index');
 
 const router = express.Router();
@@ -8,7 +8,7 @@ const router = express.Router();
 // Returns the user's cart items (empty array if none found)
 router.get('/:userId', async (req, res) => {
     try {
-        const items = await CartItem.findAll({ 
+        const items = await CartItems.findAll({ 
             where: { userId: req.params.userId }
         });
         res.json({ items });
@@ -31,7 +31,7 @@ router.put('/:userId', async (req, res) => {
         const userId = req.params.userId;
 
         // Delete existing items for this user
-        await CartItem.destroy({
+        await CartItems.destroy({
             where: { userId },
             transaction
         });
@@ -48,11 +48,11 @@ router.put('/:userId', async (req, res) => {
             };
         });
 
-        await CartItem.bulkCreate(cartItems, { transaction });
+        await CartItems.bulkCreate(cartItems, { transaction });
 
         await transaction.commit();
 
-        const updatedItems = await CartItem.findAll({
+        const updatedItems = await CartItems.findAll({
             where: { userId }
         });
 
@@ -68,7 +68,7 @@ router.put('/:userId', async (req, res) => {
 // Clears all items in the user's cart
 router.delete('/:userId', async (req, res) => {
     try {
-        await CartItem.destroy({ where: { userId: req.params.userId } });
+        await CartItems.destroy({ where: { userId: req.params.userId } });
         res.json({ message: 'Cart cleared' });
     } catch (err) {
         console.error('DELETE cart error:', err);

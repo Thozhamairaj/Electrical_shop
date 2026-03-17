@@ -1,5 +1,5 @@
 const express = require('express');
-const Product = require('../models/Product');
+const Products = require('../models/Product');
 const { adminAuth } = require('../middleware/adminAuth');
 
 const router = express.Router();
@@ -17,7 +17,7 @@ function toNum(p) {
 // ── GET /api/admin-products — Admin: all products (full data) ───────
 router.get('/', adminAuth, async (req, res) => {
     try {
-        const products = await Product.findAll({ order: [['id', 'ASC']] });
+        const products = await Products.findAll({ order: [['id', 'ASC']] });
         res.json(products.map(toNum));
     } catch (err) {
         res.status(500).json({ error: 'Failed to fetch products' });
@@ -32,7 +32,7 @@ router.post('/', adminAuth, async (req, res) => {
             return res.status(400).json({ error: 'name and price are required' });
         }
 
-        const product = await Product.create({
+        const product = await Products.create({
             name, price, originalPrice, description, image, category,
             rating: rating || null,
             reviews: reviews || 0,
@@ -49,7 +49,7 @@ router.post('/', adminAuth, async (req, res) => {
 // ── PUT /api/admin-products/:id — Admin: update product ─────────────
 router.put('/:id', adminAuth, async (req, res) => {
     try {
-        const product = await Product.findByPk(req.params.id);
+        const product = await Products.findByPk(req.params.id);
         if (!product) return res.status(404).json({ error: 'Product not found' });
 
         const { name, price, originalPrice, description, image, category, rating, reviews, stock } = req.body;
@@ -64,7 +64,7 @@ router.put('/:id', adminAuth, async (req, res) => {
 // ── DELETE /api/admin-products/:id — Admin: delete product ──────────
 router.delete('/:id', adminAuth, async (req, res) => {
     try {
-        const product = await Product.findByPk(req.params.id);
+        const product = await Products.findByPk(req.params.id);
         if (!product) return res.status(404).json({ error: 'Product not found' });
 
         await product.destroy();
