@@ -7,32 +7,26 @@ require('dotenv').config({ path: path.join(__dirname, '.env') });
 const app = express();
 
 // ── Middleware ────────────────────────────────────────────────────
-// Clean the FRONTEND_URL to remove any trailing slashes
 const frontendUrl = process.env.FRONTEND_URL ? process.env.FRONTEND_URL.replace(/\/$/, '') : null;
-
 const allowedOrigins = [
     'http://localhost:5173',
     'http://localhost:5174',
     'http://localhost:3000',
+    'https://electrical-shop-three.vercel.app',
     'https://roll-down-vite-git-main-sachin-projects-1677271f.vercel.app',
     frontendUrl
 ].filter(Boolean);
 
 app.use(cors({
     origin: function (origin, callback) {
-        // allow requests with no origin (like mobile apps or curl requests)
-        if (!origin) return callback(null, true);
-
-        // Clean incoming origin for comparison
-        const cleanOrigin = origin.replace(/\/$/, '');
-
-        if (allowedOrigins.includes(cleanOrigin)) {
+        if (!origin || allowedOrigins.includes(origin.replace(/\/$/, ''))) {
             callback(null, true);
         } else {
-            console.warn(`CORS blocked for origin: ${origin}`);
             callback(new Error('Not allowed by CORS'));
         }
     },
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
 }));
 app.use(express.json());
