@@ -32,3 +32,4 @@ Electrical_shop/
 
 # Server dependencies
 server/node_modules/
+node_modules

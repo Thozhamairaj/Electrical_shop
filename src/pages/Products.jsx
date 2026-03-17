@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import { categories } from '../data/products';
@@ -11,14 +11,25 @@ export default function Products() {
   const [searchTerm, setSearchTerm] = useState(() => searchParams.get('search') || '');
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [priceInitialized, setPriceInitialized] = useState(false);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(10000);
 
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:5000/api/products?category=${selectedCategory}&search=${searchTerm}`);
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const response = await fetch(`${apiUrl}/api/products?category=${selectedCategory}&search=${searchTerm}`);
         const data = await response.json();
         setProducts(data);
+        // Auto-set price bounds from actual data (only first time)
+        if (!priceInitialized && data.length > 0) {
+          const prices = data.map(p => p.price);
+          setMinPrice(0);
+          setMaxPrice(Math.ceil(Math.max(...prices) / 500) * 500);
+          setPriceInitialized(true);
+        }
       } catch (error) {
         console.error('Error fetching products:', error);
       } finally {
@@ -29,24 +40,34 @@ export default function Products() {
     fetchProducts();
   }, [selectedCategory, searchTerm]);
 
-  // Sync filters when URL params change (e.g. header search or nav click)
+  // Sync filters when URL params change
   useEffect(() => {
     setSelectedCategory(searchParams.get('category') || 'all');
     setSearchTerm(searchParams.get('search') || '');
   }, [searchParams]);
 
-  const sorted = [...products].sort((a, b) => {
-    switch (sortBy) {
-      case 'price-low':
-        return a.price - b.price;
-      case 'price-high':
-        return b.price - a.price;
-      case 'rating':
-        return b.rating - a.rating;
-      default:
-        return 0;
-    }
-  });
+  // Compute bounds for sliders
+  const absoluteMax = useMemo(() => {
+    if (!products.length) return 10000;
+    return Math.ceil(Math.max(...products.map(p => p.price)) / 500) * 500;
+  }, [products]);
+
+  const absoluteMin = useMemo(() => {
+    if (!products.length) return 0;
+    return Math.floor(Math.min(...products.map(p => p.price)) / 100) * 100;
+  }, [products]);
+
+  // Filter and Sort
+  const filteredAndSorted = products
+    .filter(p => p.price >= minPrice && p.price <= maxPrice)
+    .sort((a, b) => {
+      switch (sortBy) {
+        case 'price-low':  return a.price - b.price;
+        case 'price-high': return b.price - a.price;
+        case 'rating':     return b.rating - a.rating;
+        default:           return 0;
+      }
+    });
 
   return (
     <div className="products-page">
@@ -56,74 +77,72 @@ export default function Products() {
       </div>
 
       <div className="products-container">
-        {/* Sidebar */}
-        <aside className="sidebar">
-          <div className="filter-section">
-            <h3>Search</h3>
-            <input
-              type="text"
-              placeholder="Search products..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="search-input"
-            />
-          </div>
-
-          <div className="filter-section">
-            <h3>Categories</h3>
-            <div className="category-filters">
-              {categories.map(category => (
-                <label key={category.id} className="category-label">
-                  <input
-                    type="radio"
-                    name="category"
-                    value={category.id}
-                    checked={selectedCategory === category.id}
-                    onChange={(e) => setSelectedCategory(e.target.value)}
-                  />
-                  <span>{category.name}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-
-          <div className="filter-section">
-            <h3>Price Range</h3>
-            <div className="price-range">
-              <input type="range" min="0" max="2000" step="100" className="slider" />
-              <p>$0 - $2000</p>
-            </div>
-          </div>
-        </aside>
-
-        {/* Main Content */}
         <main className="products-main">
           <div className="toolbar">
             <div className="results-count">
-              Showing {sorted.length} products
+              Showing {filteredAndSorted.length} products
             </div>
-            <div className="sort-container">
-              <label>Sort by:</label>
-              <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                <option value="featured">Featured</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="rating">Highest Rating</option>
-              </select>
+
+            <div className="toolbar-actions">
+              {/* Dual price range */}
+              <div className="price-filter-toolbar">
+                <span className="price-filter-label">Price Range</span>
+                <div className="price-range-display">
+                  <span>₹{minPrice.toLocaleString()}</span>
+                  <span className="price-range-sep">–</span>
+                  <span>₹{maxPrice.toLocaleString()}</span>
+                </div>
+                <div className="dual-slider-wrap">
+                  <input
+                    type="range"
+                    className="toolbar-slider slider-min"
+                    min={absoluteMin}
+                    max={absoluteMax}
+                    step={100}
+                    value={minPrice}
+                    onChange={e => {
+                      const val = Number(e.target.value);
+                      if (val < maxPrice) setMinPrice(val);
+                    }}
+                  />
+                  <input
+                    type="range"
+                    className="toolbar-slider slider-max"
+                    min={absoluteMin}
+                    max={absoluteMax}
+                    step={100}
+                    value={maxPrice}
+                    onChange={e => {
+                      const val = Number(e.target.value);
+                      if (val > minPrice) setMaxPrice(val);
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div className="sort-container">
+                <label>Sort by:</label>
+                <select value={sortBy} onChange={e => setSortBy(e.target.value)}>
+                  <option value="featured">Featured</option>
+                  <option value="price-low">Price: Low to High</option>
+                  <option value="price-high">Price: High to Low</option>
+                  <option value="rating">Highest Rating</option>
+                </select>
+              </div>
             </div>
           </div>
 
           {loading ? (
             <div className="loading">Loading products...</div>
-          ) : sorted.length > 0 ? (
+          ) : filteredAndSorted.length > 0 ? (
             <div className="products-grid">
-              {sorted.map(product => (
+              {filteredAndSorted.map(product => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
           ) : (
             <div className="no-products">
-              <p>No products found matching your criteria.</p>
+              <p>No products found in the ₹{minPrice.toLocaleString()} – ₹{maxPrice.toLocaleString()} range.</p>
             </div>
           )}
         </main>

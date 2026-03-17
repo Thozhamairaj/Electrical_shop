@@ -6,7 +6,8 @@ const CartContext = createContext(null);
 // ── API helpers ────────────────────────────────────────────────────
 async function fetchCartFromDB(userId) {
     try {
-        const res = await fetch(`/api/cart/${userId}`);
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const res = await fetch(`${apiUrl}/api/cart/${userId}`);
         if (!res.ok) throw new Error('fetch failed');
         const data = await res.json();
         return data.items ?? [];
@@ -17,7 +18,8 @@ async function fetchCartFromDB(userId) {
 
 async function saveCartToDB(userId, items, userEmail, userName) {
     try {
-        await fetch(`/api/cart/${userId}`, {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        await fetch(`${apiUrl}/api/cart/${userId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ items, userEmail, userName }),
@@ -29,7 +31,8 @@ async function saveCartToDB(userId, items, userEmail, userName) {
 
 async function clearCartInDB(userId) {
     try {
-        await fetch(`/api/cart/${userId}`, { method: 'DELETE' });
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        await fetch(`${apiUrl}/api/cart/${userId}`, { method: 'DELETE' });
     } catch (err) {
         console.warn('Cart clear in MongoDB failed:', err);
     }

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-// 1. Read exactly 66 products generated dynamically from the DB script
+// 1. Read products from the server products.json
 const serverProductsPath = path.join(__dirname, 'server/products.json');
 const frontendProductsPath = path.join(__dirname, 'src/data/products.js');
 
@@ -19,13 +19,11 @@ const categoriesExport = `export const categories = [
   { id: 'safety', name: 'Safety & Protection', icon: '⚡' },
   { id: 'outdoor', name: 'Outdoor Lighting', icon: '🏡' },
   { id: 'wiring', name: 'Wiring & Cables', icon: '🔌' },
-  { id: 'tools', name: 'Electrical Tools', icon: '🔧' },
   // Plumbing
   { id: 'pipes', name: 'Pipes & Fittings', icon: '🔩' },
   { id: 'tanks', name: 'Water Tanks', icon: '🛢️' },
   { id: 'pumps', name: 'Pumps & Motors', icon: '💧' },
   { id: 'bathroom', name: 'Bathroom Fittings', icon: '🚿' },
-  { id: 'plumbing-tools', name: 'Plumbing Tools', icon: '🪛' },
 ];`;
 
 // 3. Format the frontend export structure
@@ -33,4 +31,4 @@ const fileString = `export const products = ${JSON.stringify(parsedProducts, nul
 
 // 4. Overwrite the file synchronously 
 fs.writeFileSync(frontendProductsPath, fileString);
-console.log('Successfully synced 66-item database structure exactly into frontend export.');
+console.log(`Successfully synced ${parsedProducts.length}-item database structure exactly into frontend export.`);

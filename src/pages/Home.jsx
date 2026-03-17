@@ -13,7 +13,8 @@ export default function Home() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/products');
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const response = await fetch(`${apiUrl}/api/products`);
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -30,9 +31,10 @@ export default function Home() {
     .filter(c => c.id !== 'all')
     .map(cat => ({
       ...cat,
-      product: products.find(p => p.category === cat.id),
+      // Prioritize explicit thumbnail, fallback to first product image
+      displayImage: cat.thumbnail || products.find(p => p.category === cat.id)?.image,
     }))
-    .filter(c => c.product);
+    .filter(c => c.displayImage);
 
   // 8 top-rated products for the featured strip
   const featuredProducts = [...products]
@@ -54,14 +56,14 @@ export default function Home() {
           {loading ? (
             <div className="loading">Loading categories...</div>
           ) : (
-            categorySpotlight.map(({ id, name, icon, product }) => (
+            categorySpotlight.map(({ id, name, icon, displayImage }) => (
               <Link
                 key={id}
                 to={`/products?category=${id}`}
                 className="category-card"
               >
                 <div className="category-card-img">
-                  <img src={encodeURI(product.image)} alt={name} />
+                  <img src={encodeURI(displayImage)} alt={name} />
                 </div>
                 <div className="category-card-body">
                   <span className="category-icon">{icon}</span>

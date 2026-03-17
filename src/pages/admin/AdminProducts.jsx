@@ -28,7 +28,7 @@ export default function AdminProducts() {
 
     const loadProducts = useCallback(() => {
         setLoading(true);
-        authFetch('/api/admin-products')
+        authFetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/admin-products`)
             .then(r => r.ok ? r.json() : Promise.reject('Failed'))
             .then(setProducts)
             .catch(() => setError('Failed to load products.'))
@@ -73,8 +73,8 @@ export default function AdminProducts() {
             };
 
             const url = editingProduct
-                ? `/api/admin-products/${editingProduct.id}`
-                : '/api/admin-products';
+                ? `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/admin-products/${editingProduct.id}`
+                : `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/admin-products`;
             const method = editingProduct ? 'PUT' : 'POST';
 
             const res = await authFetch(url, { method, body: JSON.stringify(payload) });
@@ -92,7 +92,7 @@ export default function AdminProducts() {
 
     const handleDelete = async (id) => {
         try {
-            const res = await authFetch(`/api/admin-products/${id}`, { method: 'DELETE' });
+            const res = await authFetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/admin-products/${id}`, { method: 'DELETE' });
             if (!res.ok) throw new Error('Delete failed');
             setDeleteConfirm(null);
             loadProducts();

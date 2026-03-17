@@ -18,6 +18,8 @@ import AdminLogin from './pages/admin/AdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminProducts from './pages/admin/AdminProducts';
 import AdminOrders from './pages/admin/AdminOrders';
+import Chatbot from './components/Chatbot';
+import CheckoutLink from './pages/CheckoutLink';
 import './App.css';
 
 function CustomerLayout({ children }) {
@@ -27,6 +29,7 @@ function CustomerLayout({ children }) {
       <main className="main-content">
         {children}
       </main>
+      <Chatbot />
       <Footer />
     </div>
   );
@@ -137,6 +140,9 @@ function App() {
                 </CustomerLayout>
               }
             />
+
+            {/* Public Payment Link */}
+            <Route path="/payment-link/:orderId" element={<CheckoutLink />} />
 
             {/* Auth page */}
             <Route

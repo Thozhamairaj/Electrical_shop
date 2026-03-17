@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect, useCallback } from 'rea
 
 const AdminContext = createContext(null);
 
-const API = '/api/admin';
+const API = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/admin`;
 
 export function AdminProvider({ children }) {
     const [admin, setAdmin] = useState(null);

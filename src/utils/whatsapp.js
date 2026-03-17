@@ -24,6 +24,7 @@ export const formatProductOrderMessage = (product, quantity, userPhone = '') => 
 *Price:* ₹${product.price.toFixed(2)}
 *Total:* ₹${(product.price * quantity).toFixed(2)}
 ${userPhone ? `*Customer Phone:* ${userPhone}` : ''}
+${orderId ? `*Payment Link:* ${window.location.origin}/payment-link/${orderId}` : ''}
 
 Please let me know about availability and payment options.`;
 };
@@ -45,9 +46,11 @@ I'd like to know more about this product.`;
  * Formats a message for a cart order.
  * @param {array} cartItems - The items in the cart.
  * @param {number} total - The total amount.
+ * @param {string} userPhone - User phone.
+ * @param {string} orderId - Newly created order ID.
  * @returns {string} The formatted message.
  */
-export const formatCartOrderMessage = (cartItems, total, userPhone = '') => {
+export const formatCartOrderMessage = (cartItems, total, userPhone = '', orderId = '') => {
     let itemList = "";
     cartItems.forEach((item, index) => {
         itemList += `${index + 1}. *${item.name}* (Qty: ${item.quantity}) - ₹${(item.price * item.quantity).toFixed(2)}\n`;
@@ -60,6 +63,7 @@ ${itemList}
 *Shipping:* ${total >= 500 ? 'FREE' : '₹50.00'}
 *Grand Total:* ₹${(total >= 500 ? total : total + 50).toFixed(2)}
 ${userPhone ? `\n*Customer Phone:* ${userPhone}` : ''}
+${orderId ? `\n*Payment Link:* ${window.location.origin}/payment-link/${orderId}` : ''}
 
 Please confirm my order.`;
 };

@@ -268,8 +268,25 @@
   transition: color 0.2s;
 }
 
-.nav-item:hover {
+.nav-item:hover,
+.nav-item.active {
   color: #dc2626;
+  font-weight: 700;
+}
+
+.nav-item.active {
+  position: relative;
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #dc2626;
+  border-radius: 2px;
 }
 
 .nav-divider {

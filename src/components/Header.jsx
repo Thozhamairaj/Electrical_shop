@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { SignedIn, SignedOut, UserButton, useUser, useClerk } from '@clerk/clerk-react';
 import { useCart } from '../context/CartContext';
 import { categories } from '../data/products';
@@ -15,14 +15,12 @@ const categoryLinks = [
   { label: 'Safety & Protection', category: 'safety' },
   { label: 'Outdoor Lighting', category: 'outdoor' },
   { label: 'Wiring & Cables', category: 'wiring' },
-  { label: 'Electrical Tools', category: 'tools' },
   // Plumbing
   { label: '|', category: null },
   { label: 'Pipes & Fittings', category: 'pipes' },
   { label: 'Water Tanks', category: 'tanks' },
   { label: 'Pumps & Motors', category: 'pumps' },
   { label: 'Bathroom Fittings', category: 'bathroom' },
-  { label: 'Plumbing Tools', category: 'plumbing-tools' },
 ];
 
 function UserMenu() {
@@ -62,8 +60,15 @@ function UserMenu() {
 export default function Header() {
   const { cartCount } = useCart();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCat, setSelectedCat] = useState('all');
+
+  // Sync selectedCat with URL search params
+  useEffect(() => {
+    const cat = searchParams.get('category') || 'all';
+    setSelectedCat(cat);
+  }, [searchParams]);
 
   const handleSearch = () => {
     const params = new URLSearchParams();
@@ -82,8 +87,8 @@ export default function Header() {
 
       <div className="header-main">
         <Link to="/" className="logo">
-          <span className="logo-mark">EH</span>
-          <span className="logo-mark alt">Bazar</span>
+          <span className="logo-mark">Sri Vinayaga</span>
+          <span className="logo-mark alt" style={{marginLeft: '0.4rem'}}>Hardwares</span>
         </Link>
 
         <div className="search-stack">
@@ -145,7 +150,7 @@ export default function Header() {
               <Link
                 key={label}
                 to={`/products?category=${category}`}
-                className="nav-item"
+                className={`nav-item ${selectedCat === category ? 'active' : ''}`}
               >
                 {label}
               </Link>

@@ -4,7 +4,7 @@ export default function About() {
   return (
     <div className="about-page">
       <div className="about-hero">
-        <h1>About ElectroHub</h1>
+        <h1>About Sri Vinayaga Hardwares</h1>
         <p>Your trusted partner for electricals since 2020</p>
       </div>
 
@@ -13,7 +13,7 @@ export default function About() {
           <div className="about-content">
             <h2>Our Story</h2>
             <p>
-              ElectroHub was founded in 2020 with a simple mission: to make quality electrical fittings accessible to everyone.
+              Sri Vinayaga Hardwares was founded in 2020 with a simple mission: to make quality electrical fittings accessible to everyone.
               What started as a small online store has grown into a trusted destination for homeowners, electricians, and
               contractors looking for reliable lighting, fans, wiring devices, and power backup solutions.
             </p>
@@ -54,7 +54,7 @@ export default function About() {
         </section>
 
         <section className="values-section">
-          <h2>Why Choose ElectroHub?</h2>
+          <h2>Why Choose Sri Vinayaga Hardwares?</h2>
           <div className="values-list">
             <div className="value-item">
               <h4>✓ Authentic Products</h4>
@@ -88,24 +88,19 @@ export default function About() {
           <p className="section-intro">We are a passionate crew of electrical specialists focused on safe installs and a smooth shopping experience.</p>
           <div className="team-grid">
             <div className="team-member">
-              <div className="member-avatar">👨‍💼</div>
-              <h4>John Smith</h4>
-              <p>Founder & CEO</p>
-            </div>
-            <div className="team-member">
-              <div className="member-avatar">👩‍💼</div>
-              <h4>Sarah Johnson</h4>
-              <p>Product Manager</p>
-            </div>
-            <div className="team-member">
               <div className="member-avatar">👨‍💻</div>
-              <h4>Mike Chen</h4>
-              <p>Head of Operations</p>
+              <h4>Thozhamairaj</h4>
+              <p>Backend Developer</p>
+            </div>
+            <div className="team-member">
+              <div className="member-avatar">🧑‍💻</div>
+              <h4>Premkumar</h4>
+              <p>Frontend Developer</p>
             </div>
             <div className="team-member">
               <div className="member-avatar">👩‍💻</div>
-              <h4>Emily Brown</h4>
-              <p>Customer Service Lead</p>
+              <h4>Subbulakshmi</h4>
+              <p>Database Administrator</p>
             </div>
           </div>
         </section>

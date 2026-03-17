@@ -49,10 +49,35 @@ export default function Cart() {
     }
   };
 
-  const completeWhatsAppOrder = (phone) => {
-    const message = formatCartOrderMessage(cartItems, cartTotal, phone);
-    const url = generateWhatsAppUrl(message);
-    window.open(url, '_blank');
+  const completeWhatsAppOrder = async (phone) => {
+    try {
+      // 1. Create a "WhatsApp" order in the database for tracking & payment link
+      const { data } = await axios.post('http://localhost:5000/api/orders', {
+        userId: user.id,
+        userEmail: user.primaryEmailAddress?.emailAddress,
+        userName: user.fullName || user.username || 'Customer',
+        userPhone: phone,
+        items: cartItems,
+        totalAmount: cartTotal,
+        isWhatsApp: true
+      });
+
+      const orderId = data.order?.id;
+
+      // 2. Format message with orderId for payment link
+      const message = formatCartOrderMessage(cartItems, cartTotal, phone, orderId);
+      const url = generateWhatsAppUrl(message);
+      window.open(url, '_blank');
+      
+      // 3. Clear cart as order is "placed" (pending payment)
+      clearCart();
+    } catch (err) {
+      console.error('Error creating WhatsApp order record:', err);
+      // Fallback: order without link if API fails
+      const message = formatCartOrderMessage(cartItems, cartTotal, phone);
+      const url = generateWhatsAppUrl(message);
+      window.open(url, '_blank');
+    }
   };
 
   const handlePhoneConfirm = async (phone) => {
@@ -102,7 +127,7 @@ export default function Cart() {
         key: orderData.keyId,
         amount: orderData.amount,
         currency: orderData.currency,
-        name: 'Electrical Shop',
+        name: 'Sri Vinayaga Hardwares',
         description: 'Test Transaction',
         order_id: orderData.razorpayOrderId,
         handler: async function (response) {
@@ -166,7 +191,7 @@ export default function Cart() {
 
         <section className="why-shop">
           <div className="why-shop-container">
-            <h2>Why shop with ElectroHub?</h2>
+            <h2>Why shop with Sri Vinayaga Hardwares?</h2>
             <div className="benefits-grid">
               <div className="benefit-card">
                 <span className="benefit-icon">🚚</span>
@@ -209,7 +234,7 @@ export default function Cart() {
               <img src={encodeURI(item.image)} alt={item.name} className="cart-item-image" />
               <div className="cart-item-details">
                 <h3 className="cart-item-name">{item.name}</h3>
-                <p className="cart-item-price">₹{item.price.toFixed(2)}</p>
+                <p className="cart-item-price">₹{Number(item.price).toFixed(2)}</p>
               </div>
               <div className="cart-item-controls">
                 <button
@@ -222,7 +247,7 @@ export default function Cart() {
                   onClick={() => updateQuantity(item.id, item.quantity + 1)}
                 >+</button>
               </div>
-              <p className="cart-item-subtotal">₹{(item.price * item.quantity).toFixed(2)}</p>
+              <p className="cart-item-subtotal">₹{(Number(item.price) * item.quantity).toFixed(2)}</p>
               <button
                 className="remove-btn"
                 onClick={() => removeFromCart(item.id)}

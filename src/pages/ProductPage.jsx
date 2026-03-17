@@ -6,6 +6,7 @@ import { products } from '../data/products';
 import { generateWhatsAppUrl, formatProductOrderMessage, formatProductEnquiryMessage } from '../utils/whatsapp';
 import { userService } from '../services/userService';
 import PhoneNumberModal from '../components/PhoneNumberModal';
+import axios from 'axios';
 
 import './ProductPage.css';
 
@@ -62,10 +63,31 @@ export default function ProductPage() {
     }
   };
 
-  const completeWhatsAppOrder = (phone) => {
-    const message = formatProductOrderMessage(product, quantity, phone);
-    const url = generateWhatsAppUrl(message);
-    window.open(url, '_blank');
+  const completeWhatsAppOrder = async (phone) => {
+    try {
+      // 1. Create order record
+      const { data } = await axios.post('http://localhost:5000/api/orders', {
+        userId: user.id,
+        userEmail: user.primaryEmailAddress?.emailAddress,
+        userName: user.fullName || user.username || 'Customer',
+        userPhone: phone,
+        items: [{ ...product, quantity }],
+        totalAmount: product.price * quantity,
+        isWhatsApp: true
+      });
+
+      const orderId = data.order?.id;
+
+      // 2. Open WhatsApp
+      const message = formatProductOrderMessage(product, quantity, phone, orderId);
+      const url = generateWhatsAppUrl(message);
+      window.open(url, '_blank');
+    } catch (err) {
+      console.error('Error creating product WhatsApp order:', err);
+      const message = formatProductOrderMessage(product, quantity, phone);
+      const url = generateWhatsAppUrl(message);
+      window.open(url, '_blank');
+    }
   };
 
   const handlePhoneConfirm = async (phone) => {
@@ -121,8 +143,8 @@ export default function ProductPage() {
           </div>
 
           <div className="availability">
-            <span className={product.inStock ? 'in-stock' : 'out-of-stock'}>
-              {product.inStock ? '✓ In Stock' : '✗ Out of Stock'}
+            <span className={product.stock > 0 ? 'in-stock' : 'out-of-stock'}>
+              {product.stock > 0 ? '✓ In Stock' : '✗ Out of Stock'}
             </span>
           </div>
 
@@ -154,7 +176,7 @@ export default function ProductPage() {
             <button
               className={`add-to-cart-btn ${addedToCart ? 'added' : ''}`}
               onClick={handleAddToCart}
-              disabled={!product.inStock}
+              disabled={product.stock <= 0}
             >
               {addedToCart ? '✓ Added to Cart' : 'Add to Cart'}
             </button>
@@ -162,7 +184,7 @@ export default function ProductPage() {
             <button
               className="whatsapp-order-btn"
               onClick={handleWhatsAppOrder}
-              disabled={!product.inStock}
+              disabled={product.stock <= 0}
             >
               <span className="whatsapp-icon">💬</span> Order on WhatsApp
             </button>

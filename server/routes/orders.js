@@ -2,9 +2,21 @@ const express = require('express');
 const crypto = require('crypto');
 const Razorpay = require('razorpay');
 const Order = require('../models/Order');
+const Product = require('../models/Product');
 const { adminAuth } = require('../middleware/adminAuth');
 
 const router = express.Router();
+
+// Helper to reduce stock
+async function reduceStock(items) {
+    for (const item of items) {
+        const product = await Product.findByPk(item.id);
+        if (product) {
+            const newStock = Math.max(0, product.stock - (item.quantity || 1));
+            await product.update({ stock: newStock });
+        }
+    }
+}
 
 const razorpayInstance = new Razorpay({
     key_id: process.env.RAZORPAY_KEY_ID,
@@ -15,7 +27,7 @@ const razorpayInstance = new Razorpay({
 // Customer places an order (authenticated via Clerk userId)
 router.post('/', async (req, res) => {
     try {
-        const { userId, userEmail, userName, userPhone, items, totalAmount, shippingAddress, notes } = req.body;
+        const { userId, userEmail, userName, userPhone, items, totalAmount, shippingAddress, notes, isWhatsApp } = req.body;
         if (!userId || !items || !totalAmount) {
             return res.status(400).json({ error: 'userId, items, and totalAmount are required' });
         }
@@ -24,15 +36,75 @@ router.post('/', async (req, res) => {
             userId, userEmail, userName, userPhone,
             items,
             totalAmount,
-            shippingAddress,
-            notes,
+            shippingAddress: shippingAddress || 'To be collected',
+            notes: notes || (isWhatsApp ? 'WhatsApp Order' : ''),
             status: 'pending',
+            paymentStatus: 'pending'
         });
 
-        res.status(201).json({ message: 'Order placed successfully', order });
+        // Only reduce stock for direct web orders (not WhatsApp/pending payments)
+        if (!isWhatsApp) {
+            await reduceStock(items);
+        }
+
+        res.status(201).json({ message: 'Order created', order });
     } catch (err) {
         console.error('Create order error:', err);
         res.status(500).json({ error: 'Failed to place order' });
+    }
+});
+
+// ── GET /api/orders/public/:id ──────────────────────────────────────
+// Publicly fetch order summary (for payment link)
+router.get('/public/:id', async (req, res) => {
+    try {
+        const order = await Order.findByPk(req.params.id);
+        if (!order) return res.status(404).json({ error: 'Order not found' });
+        
+        // Return only necessary non-sensitive info
+        res.json({
+            id: order.id,
+            totalAmount: order.totalAmount,
+            items: order.items,
+            userName: order.userName,
+            userEmail: order.userEmail,
+            paymentStatus: order.paymentStatus,
+            status: order.status
+        });
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to fetch order' });
+    }
+});
+
+// ── POST /api/orders/initiate-link-payment ──────────────────────────
+// Initiate Razorpay payment for an existing order (from link)
+router.post('/initiate-link-payment', async (req, res) => {
+    try {
+        const { orderId } = req.body;
+        const order = await Order.findByPk(orderId);
+        
+        if (!order) return res.status(404).json({ error: 'Order not found' });
+        if (order.paymentStatus === 'paid') return res.status(400).json({ error: 'Order already paid' });
+
+        const amountInPaise = Math.round(Number(order.totalAmount) * 100);
+        const options = {
+            amount: amountInPaise,
+            currency: 'INR',
+            receipt: `receipt_link_${order.id}`
+        };
+
+        const razorpayOrder = await razorpayInstance.orders.create(options);
+        await order.update({ razorpayOrderId: razorpayOrder.id });
+
+        res.json({
+            razorpayOrderId: razorpayOrder.id,
+            amount: amountInPaise,
+            currency: 'INR',
+            keyId: process.env.RAZORPAY_KEY_ID
+        });
+    } catch (err) {
+        console.error('Initiate link payment error:', err);
+        res.status(500).json({ error: 'Failed to initiate payment' });
     }
 });
 
@@ -114,6 +186,11 @@ router.post('/verify-payment', async (req, res) => {
                 razorpayPaymentId: razorpay_payment_id,
                 razorpaySignature: razorpay_signature
             });
+
+            // Reduce stock only when payment is verified
+            if (order.items) {
+                await reduceStock(order.items);
+            }
 
             return res.json({ message: 'Payment verified successfully', order });
         } else {
