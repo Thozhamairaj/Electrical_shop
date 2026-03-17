@@ -119,6 +119,52 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/admin-products', adminProductRoutes);
 app.use('/api/orders', orderRoutes);
 
+// ── Debug / Seed Route ───────────────────────────────────────────
+app.get('/api/debug/seed', async (req, res) => {
+    try {
+        const countBefore = await Products.count();
+        const productsJsonPath = path.join(__dirname, 'products.json');
+        
+        let fileStatus = "unknown";
+        let seedResult = "skipped";
+        let error = null;
+
+        if (fs.existsSync(productsJsonPath)) {
+            fileStatus = "found";
+            const rawData = fs.readFileSync(productsJsonPath, 'utf8');
+            const products = JSON.parse(rawData);
+            
+            if (countBefore === 0 || req.query.force === 'true') {
+                await Products.bulkCreate(products, { ignoreDuplicates: true });
+                seedResult = `seeded ${products.length} products`;
+            } else {
+                seedResult = "skipped (products already exist)";
+            }
+        } else {
+            fileStatus = "not found";
+        }
+
+        const countAfter = await Products.count();
+
+        res.json({
+            success: true,
+            database: "connected",
+            fileStatus,
+            seedResult,
+            countBefore,
+            countAfter,
+            path: productsJsonPath
+        });
+    } catch (err) {
+        console.error('Debug seed error:', err);
+        res.status(500).json({
+            success: false,
+            error: err.message,
+            stack: err.stack
+        });
+    }
+});
+
 async function startServer() {
     try {
         await sequelize.authenticate();
