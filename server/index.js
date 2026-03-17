@@ -14,6 +14,7 @@ const allowedOrigins = [
     'http://localhost:5173',
     'http://localhost:5174',
     'http://localhost:3000',
+    'https://roll-down-vite-git-main-sachin-projects-1677271f.vercel.app',
     frontendUrl
 ].filter(Boolean);
 
@@ -79,17 +80,17 @@ async function autoSeed() {
         console.log('🔍 Checking product count...');
         const count = await Products.count();
         console.log(`📊 Current product count: ${count}`);
-        
+
         if (count === 0) {
             console.log('🌱 No products found in database. Starting auto-seed...');
             const productsJsonPath = path.join(__dirname, 'products.json');
-            
+
             if (fs.existsSync(productsJsonPath)) {
                 console.log('📖 Reading products.json...');
                 const rawData = fs.readFileSync(productsJsonPath, 'utf8');
                 const products = JSON.parse(rawData);
                 console.log(`📦 Found ${products.length} products to seed.`);
-                
+
                 await Products.bulkCreate(products);
                 console.log(`✅ Successfully seeded ${products.length} products.`);
             } else {
