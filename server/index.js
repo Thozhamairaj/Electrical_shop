@@ -1,6 +1,7 @@
-const express = require('express');
 const cors = require('cors');
+const express = require('express');
 const path = require('path');
+const fs = require('fs');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const app = express();
@@ -20,10 +21,10 @@ app.use(cors({
     origin: function (origin, callback) {
         // allow requests with no origin (like mobile apps or curl requests)
         if (!origin) return callback(null, true);
-        
+
         // Clean incoming origin for comparison
         const cleanOrigin = origin.replace(/\/$/, '');
-        
+
         if (allowedOrigins.includes(cleanOrigin)) {
             callback(null, true);
         } else {
@@ -68,10 +69,30 @@ module.exports = { sequelize };
 
 // Import models (order matters — independent models first)
 require('./models/User');
-require('./models/Product');
+const Product = require('./models/Product');
 require('./models/CartItem');
 require('./models/Admin');
 require('./models/Order');
+
+async function autoSeed() {
+    try {
+        const count = await Product.count();
+        if (count === 0) {
+            console.log('🌱 No products found in database. Starting auto-seed...');
+            const productsJsonPath = path.join(__dirname, 'products.json');
+            if (fs.existsSync(productsJsonPath)) {
+                const rawData = fs.readFileSync(productsJsonPath, 'utf8');
+                const products = JSON.parse(rawData);
+                await Product.bulkCreate(products);
+                console.log(`✅ Auto-seeded ${products.length} products from products.json`);
+            } else {
+                console.warn('⚠️ products.json not found, skipping auto-seed.');
+            }
+        }
+    } catch (err) {
+        console.error('❌ Auto-seed failed:', err.message);
+    }
+}
 
 // Register routes
 const cartRoutes = require('./routes/cart');
@@ -96,6 +117,9 @@ async function startServer() {
         // Sync models
         await sequelize.sync({ alter: true });
         console.log('✅  Database models synced');
+
+        // Auto-seed if empty
+        await autoSeed();
 
         app.listen(PORT, () => console.log(`🚀  Server running on http://localhost:${PORT}`));
     } catch (err) {
