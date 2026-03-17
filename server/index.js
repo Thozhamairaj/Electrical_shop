@@ -68,29 +68,38 @@ const sequelize = process.env.DATABASE_URL
 module.exports = { sequelize };
 
 // Import models (order matters — independent models first)
-require('./models/User');
-const Product = require('./models/Product');
-require('./models/CartItem');
-require('./models/Admin');
-require('./models/Order');
+const Users = require('./models/User');
+const Products = require('./models/Product');
+const CartItems = require('./models/CartItem');
+const Admins = require('./models/Admin');
+const Orders = require('./models/Order');
 
 async function autoSeed() {
     try {
-        const count = await Product.count();
+        console.log('🔍 Checking product count...');
+        const count = await Products.count();
+        console.log(`📊 Current product count: ${count}`);
+        
         if (count === 0) {
             console.log('🌱 No products found in database. Starting auto-seed...');
             const productsJsonPath = path.join(__dirname, 'products.json');
+            
             if (fs.existsSync(productsJsonPath)) {
+                console.log('📖 Reading products.json...');
                 const rawData = fs.readFileSync(productsJsonPath, 'utf8');
                 const products = JSON.parse(rawData);
-                await Product.bulkCreate(products);
-                console.log(`✅ Auto-seeded ${products.length} products from products.json`);
+                console.log(`📦 Found ${products.length} products to seed.`);
+                
+                await Products.bulkCreate(products);
+                console.log(`✅ Successfully seeded ${products.length} products.`);
             } else {
-                console.warn('⚠️ products.json not found, skipping auto-seed.');
+                console.error(`❌ products.json NOT FOUND at: ${productsJsonPath}`);
             }
+        } else {
+            console.log('✅ Products already exist, skipping seed.');
         }
     } catch (err) {
-        console.error('❌ Auto-seed failed:', err.message);
+        console.error('❌ Auto-seed CRITICAL ERROR:', err);
     }
 }
 
