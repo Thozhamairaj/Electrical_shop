@@ -6,18 +6,28 @@ require('dotenv').config({ path: path.join(__dirname, '.env') });
 const app = express();
 
 // ── Middleware ────────────────────────────────────────────────────
+// Clean the FRONTEND_URL to remove any trailing slashes
+const frontendUrl = process.env.FRONTEND_URL ? process.env.FRONTEND_URL.replace(/\/$/, '') : null;
+
 const allowedOrigins = [
     'http://localhost:5173',
     'http://localhost:5174',
     'http://localhost:3000',
-    process.env.FRONTEND_URL
+    frontendUrl
 ].filter(Boolean);
 
 app.use(cors({
     origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
+        // allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        
+        // Clean incoming origin for comparison
+        const cleanOrigin = origin.replace(/\/$/, '');
+        
+        if (allowedOrigins.includes(cleanOrigin)) {
             callback(null, true);
         } else {
+            console.warn(`CORS blocked for origin: ${origin}`);
             callback(new Error('Not allowed by CORS'));
         }
     },
