@@ -6,35 +6,53 @@ const CartContext = createContext(null);
 // ── API helpers ────────────────────────────────────────────────────
 async function fetchCartFromDB(userId) {
     try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 2000); // 2 second timeout
+        
         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-        const res = await fetch(`${apiUrl}/api/cart/${userId}`);
+        const res = await fetch(`${apiUrl}/api/cart/${userId}`, { signal: controller.signal });
+        clearTimeout(timeoutId);
         if (!res.ok) throw new Error('fetch failed');
         const data = await res.json();
         return data.items ?? [];
-    } catch {
-        return null; // signal failure → fall back to localStorage
+    } catch (error) {
+        // Silently fail and fallback to localStorage - don't log errors
+        return null;
     }
 }
 
 async function saveCartToDB(userId, items, userEmail, userName) {
     try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 2000);
+        
         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
         await fetch(`${apiUrl}/api/cart/${userId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ items, userEmail, userName }),
+            signal: controller.signal
         });
-    } catch (err) {
-        console.warn('Cart sync to DB failed:', err);
+        clearTimeout(timeoutId);
+    } catch (error) {
+        // Silently fail - fallback to localStorage
     }
 }
 
 async function clearCartInDB(userId) {
     try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 2000);
+        
         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-        await fetch(`${apiUrl}/api/cart/${userId}`, { method: 'DELETE' });
-    } catch (err) {
-        console.warn('Cart clear in MongoDB failed:', err);
+        await fetch(`${apiUrl}/api/cart/${userId}`, { 
+            method: 'DELETE',
+            signal: controller.signal 
+        });
+        clearTimeout(timeoutId);
+    } catch (error) {
+        // Silently fail
+        console.warn('Cart clear in MongoDB failed:', error);
     }
 }
 

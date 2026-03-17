@@ -30,29 +30,40 @@ export default function Cart() {
   const [isPhoneModalOpen, setIsPhoneModalOpen] = useState(false);
 
   const handleWhatsAppOrder = async () => {
-    if (!isSignedIn) {
-      alert('Please login to place an order.');
-      navigate('/auth');
-      return;
-    }
-
     try {
-      const dbUser = await userService.getUserProfile(user.id);
-      if (dbUser && dbUser.phoneNumber) {
-        completeWhatsAppOrder(dbUser.phoneNumber);
-      } else {
+      if (!isSignedIn) {
+        alert('Please login to place an order.');
+        navigate('/auth');
+        return;
+      }
+
+      if (cartItems.length === 0) {
+        alert('Your cart is empty. Please add items before ordering.');
+        return;
+      }
+
+      try {
+        const dbUser = await userService.getUserProfile(user.id);
+        if (dbUser && dbUser.phoneNumber) {
+          completeWhatsAppOrder(dbUser.phoneNumber);
+        } else {
+          setIsPhoneModalOpen(true);
+        }
+      } catch (error) {
+        console.error('Error checking user profile:', error);
         setIsPhoneModalOpen(true);
       }
     } catch (error) {
-      console.error('Error checking user profile:', error);
-      setIsPhoneModalOpen(true);
+      console.error('WhatsApp order error:', error);
+      alert('An error occurred while processing your order. Please try again.');
     }
   };
 
   const completeWhatsAppOrder = async (phone) => {
     try {
       // 1. Create a "WhatsApp" order in the database for tracking & payment link
-      const { data } = await axios.post('http://localhost:5000/api/orders', {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const { data } = await axios.post(`${apiUrl}/api/orders`, {
         userId: user.id,
         userEmail: user.primaryEmailAddress?.emailAddress,
         userName: user.fullName || user.username || 'Customer',
@@ -67,8 +78,12 @@ export default function Cart() {
       // 2. Format message with orderId for payment link
       const message = formatCartOrderMessage(cartItems, cartTotal, phone, orderId);
       const url = generateWhatsAppUrl(message);
+      if (!url) {
+        alert('Unable to open WhatsApp. Please try again.');
+        return;
+      }
       window.open(url, '_blank');
-      
+
       // 3. Clear cart as order is "placed" (pending payment)
       clearCart();
     } catch (err) {
@@ -76,99 +91,119 @@ export default function Cart() {
       // Fallback: order without link if API fails
       const message = formatCartOrderMessage(cartItems, cartTotal, phone);
       const url = generateWhatsAppUrl(message);
+      if (!url) {
+        alert('Unable to open WhatsApp. Please try again.');
+        return;
+      }
       window.open(url, '_blank');
     }
   };
 
   const handlePhoneConfirm = async (phone) => {
     try {
-      await userService.updateUserProfile(user.id, { phoneNumber: phone });
+      if (!phone || phone.length < 10) {
+        alert('Please enter a valid phone number.');
+        return;
+      }
+
+      try {
+        await userService.updateUserProfile(user.id, { phoneNumber: phone });
+      } catch (error) {
+        console.error('Error saving phone number:', error);
+      }
+
       setIsPhoneModalOpen(false);
       completeWhatsAppOrder(phone);
     } catch (error) {
-      console.error('Error saving phone number:', error);
-      completeWhatsAppOrder(phone);
+      console.error('Error processing phone confirmation:', error);
+      alert('An error occurred. Please try again.');
     }
   };
 
   const handleRazorpayCheckout = async () => {
-    if (!isSignedIn) {
-      alert('Please login to place an order.');
-      navigate('/auth');
-      return;
-    }
-
-    const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
-    if (!res) {
-      alert('Razorpay SDK failed to load. Are you online?');
-      return;
-    }
-
     try {
-      // 1. Create order on our server
-      const { data: orderData } = await axios.post('http://localhost:5000/api/orders/create-razorpay-order', {
-        userId: user.id,
-        userEmail: user.primaryEmailAddress?.emailAddress,
-        userName: user.fullName || user.username || 'Customer',
-        userPhone: '', // get from profile if needed, or prompt
-        items: cartItems,
-        totalAmount: cartTotal,
-        shippingAddress: 'To be collected', // Hardcoded for now
-        notes: 'Razorpay payment',
-      });
-
-      if (!orderData) {
-        alert('Server error. Please try again.');
+      if (!isSignedIn) {
+        alert('Please login to proceed with checkout.');
+        navigate('/auth');
         return;
       }
 
-      // 2. Initialize Razorpay popup
-      const options = {
-        key: orderData.keyId,
-        amount: orderData.amount,
-        currency: orderData.currency,
-        name: 'Sri Vinayaga Hardwares',
-        description: 'Test Transaction',
-        order_id: orderData.razorpayOrderId,
-        handler: async function (response) {
-          try {
-            // 3. Verify payment on our server
-            const { data: verifyData } = await axios.post('http://localhost:5000/api/orders/verify-payment', {
-              razorpay_order_id: response.razorpay_order_id,
-              razorpay_payment_id: response.razorpay_payment_id,
-              razorpay_signature: response.razorpay_signature,
-            });
+      if (!cartItems || cartItems.length === 0) {
+        alert('Your cart is empty. Please add items before checkout.');
+        return;
+      }
 
-            alert(verifyData.message);
-            clearCart();
-            // Optionally redirect to an orders page
-          } catch (err) {
-            console.error('Payment verification failed', err);
-            alert('Payment verification failed.');
-          }
-        },
-        prefill: {
-          name: user.fullName || user.username || '',
-          email: user.primaryEmailAddress?.emailAddress || '',
-          contact: ''
-        },
-        theme: {
-          color: '#3399cc',
-        },
-      };
+      const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
+      if (!res) {
+        alert('Payment gateway is unavailable. Please try again or use WhatsApp to order.');
+        return;
+      }
 
-      const paymentObject = new window.Razorpay(options);
+      try {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const { data: orderData } = await axios.post(`${apiUrl}/api/orders/create-razorpay-order`, {
+          userId: user.id,
+          userEmail: user.primaryEmailAddress?.emailAddress || 'noemail@example.com',
+          userName: user.fullName || user.username || 'Customer',
+          userPhone: '',
+          items: cartItems,
+          totalAmount: cartTotal,
+          shippingAddress: 'To be collected',
+          notes: 'Razorpay payment',
+        });
 
-      paymentObject.on('payment.failed', function (response) {
-        console.error('Payment failed', response.error);
-        alert(`Payment Failed: ${response.error.description}`);
-      });
+        if (!orderData || !orderData.razorpayOrderId) {
+          throw new Error('Invalid order response from server');
+        }
 
-      paymentObject.open();
+        const options = {
+          key: orderData.keyId || 'rzp_live_key',
+          amount: orderData.amount,
+          currency: orderData.currency || 'INR',
+          name: 'Electrical Shop',
+          description: 'Order Payment',
+          order_id: orderData.razorpayOrderId,
+          handler: async function (response) {
+            try {
+              const { data: verifyData } = await axios.post('http://localhost:5000/api/orders/verify-payment', {
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+              });
 
+              alert(verifyData.message || 'Payment successful!');
+              clearCart();
+              navigate('/orders');
+            } catch (err) {
+              console.error('Payment verification failed', err);
+              alert('Payment completed but verification failed. Please contact support.');
+            }
+          },
+          prefill: {
+            name: user.fullName || user.username || '',
+            email: user.primaryEmailAddress?.emailAddress || '',
+            contact: ''
+          },
+          theme: {
+            color: '#3399cc',
+          },
+        };
+
+        const paymentObject = new window.Razorpay(options);
+
+        paymentObject.on('payment.failed', function (response) {
+          console.error('Payment failed', response.error);
+          alert(`Payment Failed: ${response.error?.description || 'Unknown error'}`);
+        });
+
+        paymentObject.open();
+      } catch (error) {
+        console.error('Checkout error:', error);
+        alert(`Checkout error: ${error.message || 'Unable to process payment. Please try again.'}`);
+      }
     } catch (error) {
-      console.error('Checkout error:', error);
-      alert('Error initiating checkout.');
+      console.error('Razorpay checkout error:', error);
+      alert('An unexpected error occurred. Please try again.');
     }
   };
 
@@ -271,18 +306,29 @@ export default function Cart() {
             <span>Total</span>
             <span>₹{(cartTotal >= 500 ? cartTotal : cartTotal + 50).toFixed(2)}</span>
           </div>
-          <button className="checkout-btn" onClick={handleRazorpayCheckout}>
+          <button
+            type="button"
+            className="checkout-btn"
+            onClick={handleRazorpayCheckout}
+          >
             Proceed to Checkout
           </button>
 
           <button
+            type="button"
             className="whatsapp-cart-btn"
             onClick={handleWhatsAppOrder}
           >
             <span className="whatsapp-icon">💬</span> Order on WhatsApp
           </button>
 
-          <button className="clear-cart-btn" onClick={clearCart}>Clear Cart</button>
+          <button
+            type="button"
+            className="clear-cart-btn"
+            onClick={clearCart}
+          >
+            Clear Cart
+          </button>
           <Link to="/products" className="continue-shopping-btn secondary">
             ← Continue Shopping
           </Link>
