@@ -69,11 +69,26 @@ export default function Products() {
       }
     });
 
+  const headerTitle = useMemo(() => {
+    if (searchTerm) return `Search Results for "${searchTerm}"`;
+    if (selectedCategory && selectedCategory !== 'all') {
+      const cat = categories.find(c => c.id === selectedCategory);
+      return cat ? cat.name : selectedCategory;
+    }
+    return 'All Products';
+  }, [selectedCategory, searchTerm]);
+
+  const headerDesc = useMemo(() => {
+    if (searchTerm) return `Showing results matching your search in ${selectedCategory === 'all' ? 'all categories' : selectedCategory}`;
+    if (selectedCategory && selectedCategory !== 'all') return `Explore our selection of ${headerTitle.toLowerCase()} essentials`;
+    return 'Browse our complete collection of lighting, fans, switches, and electrical essentials';
+  }, [selectedCategory, searchTerm, headerTitle]);
+
   return (
     <div className="products-page">
       <div className="products-header">
-        <h1>All Products</h1>
-        <p>Browse our complete collection of lighting, fans, switches, and electrical essentials</p>
+        <h1>{headerTitle}</h1>
+        <p>{headerDesc}</p>
       </div>
 
       <div className="products-container">

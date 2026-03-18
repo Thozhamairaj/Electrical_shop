@@ -5,7 +5,7 @@ const router = express.Router();
 // Returns the user's cart items
 router.get('/:userId', async (req, res) => {
     try {
-        const result = await db.query('SELECT * FROM "CartItems" WHERE "userId" = $1', [req.params.userId]);
+        const result = await db.query('SELECT *, "productId" as id FROM "CartItems" WHERE "userId" = $1', [req.params.userId]);
         res.json({ items: result.rows });
     } catch (err) {
         console.error('GET cart error:', err);
@@ -24,15 +24,20 @@ router.put('/:userId', async (req, res) => {
 
         if (items && items.length > 0) {
             for (const item of items) {
+                const pid = item.id || item.productId;
+                if (!pid) {
+                    console.warn('Skipping cart item without ID:', item.name);
+                    continue;
+                }
                 await db.query(
                     `INSERT INTO "CartItems" ("userId", "productId", name, price, quantity, image, "createdAt", "updatedAt") 
                      VALUES ($1, $2, $3, $4, $5, $6, NOW(), NOW())`,
-                    [userId, item.id, item.name, item.price, item.quantity, item.image]
+                    [userId, pid, item.name, item.price, item.quantity, item.image]
                 );
             }
         }
 
-        const result = await db.query('SELECT * FROM "CartItems" WHERE "userId" = $1', [userId]);
+        const result = await db.query('SELECT *, "productId" as id FROM "CartItems" WHERE "userId" = $1', [userId]);
         res.json({ items: result.rows });
     } catch (err) {
         console.error('PUT cart error:', err);
