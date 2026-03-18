@@ -34,6 +34,7 @@ export default function DummyRazorpay() {
   }, [step, navigate]);
 
   const handlePay = async () => {
+    if (step === 'processing' || step === 'success') return;
     setStep('processing');
     setProcessingSubtext('Communicating with Bank...');
     const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';

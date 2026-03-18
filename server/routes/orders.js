@@ -25,7 +25,7 @@ const razorpayInstance = new Razorpay({
 // Create Order (Direct or WhatsApp)
 router.post('/', async (req, res) => {
     try {
-        const { userId, userEmail, userName, userPhone, items, totalAmount, shippingAddress, notes, isWhatsApp } = req.body;
+        const { userId, userEmail, userName, userPhone, items, totalAmount, shippingAddress, notes, isWhatsApp, status, paymentStatus } = req.body;
         if (!userId || !items || !totalAmount) {
             return res.status(400).json({ error: 'userId, items, and totalAmount are required' });
         }
@@ -34,7 +34,18 @@ router.post('/', async (req, res) => {
             `INSERT INTO "Orders" ("userId", "userEmail", "userName", "userPhone", items, "totalAmount", "shippingAddress", notes, status, "paymentStatus", "createdAt", "updatedAt") 
              VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, NOW(), NOW())
              RETURNING *`,
-            [userId, userEmail, userName, userPhone, JSON.stringify(items), totalAmount, shippingAddress || 'To be collected', notes || (isWhatsApp ? 'WhatsApp Order' : ''), 'pending', 'pending']
+            [
+                userId, 
+                userEmail, 
+                userName, 
+                userPhone, 
+                JSON.stringify(items), 
+                totalAmount, 
+                shippingAddress || 'To be collected', 
+                notes || (isWhatsApp ? 'WhatsApp Order' : ''), 
+                status || 'pending', 
+                paymentStatus || 'pending'
+            ]
         );
 
         const order = result.rows[0];
