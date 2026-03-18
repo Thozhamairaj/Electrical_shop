@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useUser } from '@clerk/clerk-react';
@@ -23,14 +24,15 @@ export default function DummyRazorpay() {
 
   const handlePay = async () => {
     setStep('processing');
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
     
     try {
       if (isExistingOrder && orderId) {
         // Update existing order (e.g. from WhatsApp)
-        await axios.post(`http://localhost:5000/api/orders/${orderId}/pay`);
+        await axios.post(`${apiUrl}/api/orders/${orderId}/pay`);
       } else if (isCartCheckout && items) {
         // Create new paid order from Cart
-        await axios.post('http://localhost:5000/api/orders', {
+        await axios.post(`${apiUrl}/api/orders`, {
           userId: user.id,
           userEmail: user.primaryEmailAddress?.emailAddress,
           userName: user.fullName || user.username || 'Customer',
@@ -42,7 +44,7 @@ export default function DummyRazorpay() {
         clearCart();
       } else if (product) {
         // Create new paid order from "Buy Now"
-        await axios.post('http://localhost:5000/api/orders', {
+        await axios.post(`${apiUrl}/api/orders`, {
           userId: user.id,
           userEmail: user.primaryEmailAddress?.emailAddress,
           userName: user.fullName || user.username || 'Customer',

@@ -107,7 +107,9 @@ export function CartProvider({ children }) {
             syncTimeoutRef.current = setTimeout(() => {
                 const userEmail = user?.primaryEmailAddress?.emailAddress || null;
                 const userName = user?.fullName || user?.firstName || null;
-                saveCartToDB(userId, cartItems, userEmail, userName);
+                // Filter out invalid items (extra safety)
+                const validItems = cartItems.filter(item => item.id);
+                saveCartToDB(userId, validItems, userEmail, userName);
             }, 300);
         } else {
             // Guest → localStorage
