@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import confetti from 'canvas-confetti';
 import { useUser } from '@clerk/clerk-react';
 import { useCart } from '../context/CartContext';
 import './DummyRazorpay.css';
@@ -26,9 +27,49 @@ export default function DummyRazorpay() {
 
   useEffect(() => {
     if (step === 'success') {
+      // Immediate blast
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#339af0', '#2b3144', '#ffbf00', '#40c057']
+      });
+
+      // Side bursts
+      const duration = 3 * 1000;
+      const end = Date.now() + duration;
+
+      const frame = () => {
+        confetti({
+          particleCount: 3,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+          colors: ['#339af0', '#40c057']
+        });
+        confetti({
+          particleCount: 3,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+          colors: ['#ffbf00', '#2b3144']
+        });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      };
+      
+      const timeout = setTimeout(frame, 500);
+      return () => clearTimeout(timeout);
+    }
+  }, [step]);
+
+  useEffect(() => {
+    if (step === 'success') {
       const timer = setTimeout(() => {
         navigate('/orders');
-      }, 5000);
+      }, 7000); // Increased to 7s to let user enjoy the confetti
       return () => clearTimeout(timer);
     }
   }, [step, navigate]);
