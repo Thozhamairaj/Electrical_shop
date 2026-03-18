@@ -43,6 +43,21 @@ export default function ProductPage() {
     setTimeout(() => setAddedToCart(false), 2000);
   };
 
+  const handleBuyNow = () => {
+    if (!isSignedIn) {
+      alert('Please login to proceed with purchase.');
+      navigate('/auth');
+      return;
+    }
+    navigate('/payment', { 
+      state: { 
+        product, 
+        quantity, 
+        totalAmount: product.price * quantity 
+      } 
+    });
+  };
+
   const handleWhatsAppOrder = async () => {
     if (!isSignedIn) {
       alert('Please login to place an order.');
@@ -172,6 +187,14 @@ export default function ProductPage() {
                 <button onClick={() => setQuantity(quantity + 1)}>+</button>
               </div>
             </div>
+
+            <button
+              className="buy-now-btn"
+              onClick={handleBuyNow}
+              disabled={product.stock <= 0}
+            >
+              Buy Now
+            </button>
 
             <button
               className={`add-to-cart-btn ${addedToCart ? 'added' : ''}`}
