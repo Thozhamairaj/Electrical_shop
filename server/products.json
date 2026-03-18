@@ -2,3241 +2,2521 @@
   {
     "id": 1,
     "name": "1 Way Switch",
-    "price": 120.41,
-    "originalPrice": 144.49,
+    "price": "120.41",
+    "originalPrice": "144.49",
     "description": "High-quality 1 Way Switch for your electrical and plumbing needs.",
     "image": "/Images_SVH/1 Way Switch.jpg",
     "category": "switches",
-    "rating": 4.5,
+    "rating": "4.50",
     "reviews": 84,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 2,
     "name": "16A Curtain Switch",
-    "price": 160.69,
-    "originalPrice": 192.83,
+    "price": "160.69",
+    "originalPrice": "192.83",
     "description": "High-quality 16A Curtain Switch for your electrical and plumbing needs.",
     "image": "/Images_SVH/16A Curtain Switch.jpg",
     "category": "switches",
-    "rating": 3.5,
+    "rating": "3.50",
     "reviews": 429,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 3,
     "name": "16A Switch",
-    "price": 145.23,
-    "originalPrice": 174.28,
+    "price": "145.23",
+    "originalPrice": "174.28",
     "description": "High-quality 16A Switch for your electrical and plumbing needs.",
     "image": "/Images_SVH/16A Switch.jpg",
     "category": "switches",
-    "rating": 4,
+    "rating": "4.00",
     "reviews": 400,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 4,
     "name": "16A Switch1",
-    "price": 160.96,
-    "originalPrice": 193.15,
+    "price": "160.96",
+    "originalPrice": "193.15",
     "description": "High-quality 16A Switch1 for your electrical and plumbing needs.",
     "image": "/Images_SVH/16A Switch1.jpg",
     "category": "switches",
-    "rating": 4.3,
+    "rating": "4.30",
     "reviews": 259,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 5,
     "name": "2 Step Fan Regulator",
-    "price": 1718.61,
-    "originalPrice": 2062.33,
+    "price": "1718.61",
+    "originalPrice": "2062.33",
     "description": "Keep cool with our energy-efficient 2 Step Fan Regulator.",
     "image": "/Images_SVH/2 Step Fan Regulator.jpg",
     "category": "fans",
-    "rating": 4.9,
+    "rating": "4.90",
     "reviews": 487,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 6,
     "name": "2 Way Switch",
-    "price": 153.22,
-    "originalPrice": 183.86,
+    "price": "153.22",
+    "originalPrice": "183.86",
     "description": "High-quality 2 Way Switch for your electrical and plumbing needs.",
     "image": "/Images_SVH/2 Way Switch.jpg",
     "category": "switches",
-    "rating": 4.5,
+    "rating": "4.50",
     "reviews": 261,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 7,
     "name": "Aqua Gold UPVC Pipes",
-    "price": 92.92,
-    "originalPrice": 111.5,
+    "price": "92.92",
+    "originalPrice": "111.50",
     "description": "Durable and reliable Aqua Gold UPVC Pipes for plumbing projects.",
     "image": "/Images_SVH/Aqua Gold UPVC Pipes.png",
     "category": "pipes",
-    "rating": 4.1,
+    "rating": "4.10",
     "reviews": 227,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 8,
     "name": "Aquatic Series - Taps",
-    "price": 471.93,
-    "originalPrice": 566.32,
+    "price": "471.93",
+    "originalPrice": "566.32",
     "description": "Premium Aquatic Series - Taps for a modern bathroom experience.",
     "image": "/Images_SVH/Aquatic Series - Taps.png",
     "category": "bathroom",
-    "rating": 3.9,
+    "rating": "3.90",
     "reviews": 190,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 9,
     "name": "Arteor-product",
-    "price": 92.78,
-    "originalPrice": 111.34,
+    "price": "92.78",
+    "originalPrice": "111.34",
     "description": "High-quality Arteor-product for your electrical and plumbing needs.",
     "image": "/Images_SVH/Arteor-product.jpg",
     "category": "electrical",
-    "rating": 5,
+    "rating": "5.00",
     "reviews": 37,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 10,
     "name": "BallVolve",
-    "price": 82.63,
-    "originalPrice": 99.16,
+    "price": "82.63",
+    "originalPrice": "99.16",
     "description": "High-quality BallVolve for your electrical and plumbing needs.",
     "image": "/Images_SVH/BallVolve.png",
     "category": "electrical",
-    "rating": 3.6,
+    "rating": "3.60",
     "reviews": 199,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 11,
     "name": "Blank Switch Plate",
-    "price": 144.66,
-    "originalPrice": 173.59,
+    "price": "144.66",
+    "originalPrice": "173.59",
     "description": "High-quality Blank Switch Plate for your electrical and plumbing needs.",
     "image": "/Images_SVH/Blank Switch Plate.jpg",
     "category": "switches",
-    "rating": 4.8,
+    "rating": "4.80",
     "reviews": 293,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 12,
     "name": "BlindFlange",
-    "price": 86.1,
-    "originalPrice": 103.32,
+    "price": "86.10",
+    "originalPrice": "103.32",
     "description": "Durable and reliable BlindFlange for plumbing projects.",
     "image": "/Images_SVH/BlindFlange.png",
     "category": "pipes",
-    "rating": 4.3,
+    "rating": "4.30",
     "reviews": 186,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 13,
     "name": "Borewell Submersible Pump",
-    "price": 3466.87,
-    "originalPrice": 4160.24,
+    "price": "3466.87",
+    "originalPrice": "4160.24",
     "description": "High-quality Borewell Submersible Pump for your electrical and plumbing needs.",
     "image": "/Images_SVH/Borewell Submersible Pump.png",
     "category": "pumps",
-    "rating": 3.7,
+    "rating": "3.70",
     "reviews": 246,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 14,
     "name": "BrassElbow",
-    "price": 80.55,
-    "originalPrice": 96.66,
+    "price": "80.55",
+    "originalPrice": "96.66",
     "description": "Durable and reliable BrassElbow for plumbing projects.",
     "image": "/Images_SVH/BrassElbow.png",
     "category": "pipes",
-    "rating": 3.7,
+    "rating": "3.70",
     "reviews": 450,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 15,
     "name": "BrassFTA",
-    "price": 104.32,
-    "originalPrice": 125.18,
+    "price": "104.32",
+    "originalPrice": "125.18",
     "description": "High-quality BrassFTA for your electrical and plumbing needs.",
     "image": "/Images_SVH/BrassFTA.png",
     "category": "electrical",
-    "rating": 5,
+    "rating": "5.00",
     "reviews": 495,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 16,
     "name": "BrassMTA",
-    "price": 94.52,
-    "originalPrice": 113.42,
+    "price": "94.52",
+    "originalPrice": "113.42",
     "description": "High-quality BrassMTA for your electrical and plumbing needs.",
     "image": "/Images_SVH/BrassMTA.png",
     "category": "electrical",
-    "rating": 3.8,
+    "rating": "3.80",
     "reviews": 166,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 17,
     "name": "BrassTee",
-    "price": 93.14,
-    "originalPrice": 111.77,
+    "price": "93.14",
+    "originalPrice": "111.77",
     "description": "Durable and reliable BrassTee for plumbing projects.",
     "image": "/Images_SVH/BrassTee.png",
     "category": "pipes",
-    "rating": 3.8,
+    "rating": "3.80",
     "reviews": 150,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 18,
     "name": "Bypass Bend",
-    "price": 91.64,
-    "originalPrice": 109.97,
+    "price": "91.64",
+    "originalPrice": "109.97",
     "description": "Durable and reliable Bypass Bend for plumbing projects.",
     "image": "/Images_SVH/Bypass Bend.png",
     "category": "pipes",
-    "rating": 4.2,
+    "rating": "4.20",
     "reviews": 176,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 19,
     "name": "CLASSIC SERIES (AQUAKRAFT)",
-    "price": 89.94,
-    "originalPrice": 107.93,
+    "price": "89.94",
+    "originalPrice": "107.93",
     "description": "High-quality CLASSIC SERIES (AQUAKRAFT) for your electrical and plumbing needs.",
     "image": "/Images_SVH/CLASSIC SERIES (AQUAKRAFT).png",
     "category": "electrical",
-    "rating": 3.8,
+    "rating": "3.80",
     "reviews": 37,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 20,
     "name": "Ceiling Fan with Light",
-    "price": 200.75,
-    "originalPrice": 240.9,
+    "price": "200.75",
+    "originalPrice": "240.90",
     "description": "Brighten your space with high-quality Ceiling Fan with Light.",
     "image": "/Images_SVH/Ceiling Fan with Light.webp",
     "category": "lighting",
-    "rating": 4.7,
+    "rating": "4.70",
     "reviews": 406,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 21,
     "name": "Ceiling Fan",
-    "price": 1238.09,
-    "originalPrice": 1485.71,
+    "price": "1238.09",
+    "originalPrice": "1485.71",
     "description": "Keep cool with our energy-efficient Ceiling Fan.",
     "image": "/Images_SVH/Ceiling Fan.webp",
     "category": "fans",
-    "rating": 4.7,
+    "rating": "4.70",
     "reviews": 421,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 22,
     "name": "Centrifugal Water Pump",
-    "price": 3859.58,
-    "originalPrice": 4631.5,
+    "price": "3859.58",
+    "originalPrice": "4631.50",
     "description": "High-quality Centrifugal Water Pump for your electrical and plumbing needs.",
     "image": "/Images_SVH/Centrifugal Water Pump.png",
     "category": "pumps",
-    "rating": 4.8,
+    "rating": "4.80",
     "reviews": 489,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 23,
     "name": "Circuit Test Plug (New)",
-    "price": 89.76,
-    "originalPrice": 107.71,
+    "price": "89.76",
+    "originalPrice": "107.71",
     "description": "High-quality Circuit Test Plug (New) for your electrical and plumbing needs.",
     "image": "/Images_SVH/Circuit Test Plug (New).png",
     "category": "electrical",
-    "rating": 4.1,
+    "rating": "4.10",
     "reviews": 17,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 24,
     "name": "Coupler",
-    "price": 85.67,
-    "originalPrice": 102.8,
+    "price": "85.67",
+    "originalPrice": "102.80",
     "description": "Durable and reliable Coupler for plumbing projects.",
     "image": "/Images_SVH/Coupler.png",
     "category": "pipes",
-    "rating": 3.6,
+    "rating": "3.60",
     "reviews": 215,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 25,
     "name": "Cross Tee",
-    "price": 113.25,
-    "originalPrice": 135.9,
+    "price": "113.25",
+    "originalPrice": "135.90",
     "description": "Durable and reliable Cross Tee for plumbing projects.",
     "image": "/Images_SVH/Cross Tee.png",
     "category": "pipes",
-    "rating": 3.7,
+    "rating": "3.70",
     "reviews": 227,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 26,
     "name": "Curtain Switch",
-    "price": 121.46,
-    "originalPrice": 145.75,
+    "price": "121.46",
+    "originalPrice": "145.75",
     "description": "High-quality Curtain Switch for your electrical and plumbing needs.",
     "image": "/Images_SVH/Curtain Switch.jpg",
     "category": "switches",
-    "rating": 3.9,
+    "rating": "3.90",
     "reviews": 178,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 27,
     "name": "Diverters & Flush Valves",
-    "price": 528.24,
-    "originalPrice": 633.89,
+    "price": "528.24",
+    "originalPrice": "633.89",
     "description": "Premium Diverters & Flush Valves for a modern bathroom experience.",
     "image": "/Images_SVH/Diverters & Flush Valves.png",
     "category": "bathroom",
-    "rating": 3.7,
+    "rating": "3.70",
     "reviews": 378,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 28,
     "name": "Domestic Water Pump",
-    "price": 4556.6,
-    "originalPrice": 5467.92,
+    "price": "4556.60",
+    "originalPrice": "5467.92",
     "description": "High-quality Domestic Water Pump for your electrical and plumbing needs.",
     "image": "/Images_SVH/Domestic Water Pump.png",
     "category": "pumps",
-    "rating": 4.8,
+    "rating": "4.80",
     "reviews": 409,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 29,
     "name": "Doorbell Switch",
-    "price": 122.34,
-    "originalPrice": 146.81,
+    "price": "122.34",
+    "originalPrice": "146.81",
     "description": "High-quality Doorbell Switch for your electrical and plumbing needs.",
     "image": "/Images_SVH/Doorbell Switch.jpg",
     "category": "switches",
-    "rating": 4.1,
+    "rating": "4.10",
     "reviews": 173,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 30,
     "name": "Doorbell Switch1",
-    "price": 132.54,
-    "originalPrice": 159.05,
+    "price": "132.54",
+    "originalPrice": "159.05",
     "description": "High-quality Doorbell Switch1 for your electrical and plumbing needs.",
     "image": "/Images_SVH/Doorbell Switch1.jpg",
     "category": "switches",
-    "rating": 3.8,
+    "rating": "3.80",
     "reviews": 435,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 31,
     "name": "Double Switch Plate",
-    "price": 165.5,
-    "originalPrice": 198.6,
+    "price": "165.50",
+    "originalPrice": "198.60",
     "description": "High-quality Double Switch Plate for your electrical and plumbing needs.",
     "image": "/Images_SVH/Double Switch Plate.jpg",
     "category": "switches",
-    "rating": 4.1,
+    "rating": "4.10",
     "reviews": 126,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 32,
     "name": "Elbow 45°",
-    "price": 92.22,
-    "originalPrice": 110.66,
+    "price": "92.22",
+    "originalPrice": "110.66",
     "description": "Durable and reliable Elbow 45° for plumbing projects.",
     "image": "/Images_SVH/Elbow 45°.png",
     "category": "pipes",
-    "rating": 3.5,
+    "rating": "3.50",
     "reviews": 170,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 33,
     "name": "Elbow 90°",
-    "price": 106.65,
-    "originalPrice": 127.98,
+    "price": "106.65",
+    "originalPrice": "127.98",
     "description": "Durable and reliable Elbow 90° for plumbing projects.",
     "image": "/Images_SVH/Elbow 90°.png",
     "category": "pipes",
-    "rating": 4.6,
+    "rating": "4.60",
     "reviews": 356,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 34,
     "name": "Electrical Safety Gloves",
-    "price": 241.73,
-    "originalPrice": 290.08,
+    "price": "241.73",
+    "originalPrice": "290.08",
     "description": "Stay protected on the job with our Electrical Safety Gloves.",
     "image": "/Images_SVH/Electrical Safety Gloves.jpg",
     "category": "safety",
-    "rating": 4.4,
+    "rating": "4.40",
     "reviews": 298,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 35,
     "name": "EndCap",
-    "price": 114.3,
-    "originalPrice": 137.16,
+    "price": "114.30",
+    "originalPrice": "137.16",
     "description": "High-quality EndCap for your electrical and plumbing needs.",
     "image": "/Images_SVH/EndCap.png",
     "category": "electrical",
-    "rating": 3.6,
+    "rating": "3.60",
     "reviews": 204,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 36,
     "name": "Equal Tee",
-    "price": 99.94,
-    "originalPrice": 119.93,
+    "price": "99.94",
+    "originalPrice": "119.93",
     "description": "Durable and reliable Equal Tee for plumbing projects.",
     "image": "/Images_SVH/Equal Tee.png",
     "category": "pipes",
-    "rating": 3.7,
+    "rating": "3.70",
     "reviews": 204,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 37,
     "name": "Fan Regulator (70W)",
-    "price": 1282.72,
-    "originalPrice": 1539.26,
+    "price": "1282.72",
+    "originalPrice": "1539.26",
     "description": "Keep cool with our energy-efficient Fan Regulator (70W).",
     "image": "/Images_SVH/Fan Regulator (70W).jpg",
     "category": "fans",
-    "rating": 3.9,
+    "rating": "3.90",
     "reviews": 113,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 38,
     "name": "Fan Speed Dimmer",
-    "price": 1421.94,
-    "originalPrice": 1706.33,
+    "price": "1421.94",
+    "originalPrice": "1706.33",
     "description": "Keep cool with our energy-efficient Fan Speed Dimmer.",
     "image": "/Images_SVH/Fan Speed Dimmer.jpg",
     "category": "fans",
-    "rating": 4.4,
+    "rating": "4.40",
     "reviews": 130,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 39,
     "name": "Fan Speed Regulator",
-    "price": 1600.92,
-    "originalPrice": 1921.1,
+    "price": "1600.92",
+    "originalPrice": "1921.10",
     "description": "Keep cool with our energy-efficient Fan Speed Regulator.",
     "image": "/Images_SVH/Fan Speed Regulator.jpg",
     "category": "fans",
-    "rating": 4,
+    "rating": "4.00",
     "reviews": 70,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 40,
     "name": "Faucet - Aquakraft - Health Faucets",
-    "price": 457.01,
-    "originalPrice": 548.41,
+    "price": "457.01",
+    "originalPrice": "548.41",
     "description": "Premium Faucet - Aquakraft - Health Faucets for a modern bathroom experience.",
     "image": "/Images_SVH/Faucet - Aquakraft - Health Faucets.png",
     "category": "bathroom",
-    "rating": 4.8,
+    "rating": "4.80",
     "reviews": 369,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 41,
     "name": "Faucet - Aquatic",
-    "price": 541.92,
-    "originalPrice": 650.3,
+    "price": "541.92",
+    "originalPrice": "650.30",
     "description": "Premium Faucet - Aquatic for a modern bathroom experience.",
     "image": "/Images_SVH/Faucet - Aquatic.png",
     "category": "bathroom",
-    "rating": 3.5,
+    "rating": "3.50",
     "reviews": 75,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 42,
     "name": "Female Threaded Elbow (Plastic)",
-    "price": 110.3,
-    "originalPrice": 132.36,
+    "price": "110.30",
+    "originalPrice": "132.36",
     "description": "Durable and reliable Female Threaded Elbow (Plastic) for plumbing projects.",
     "image": "/Images_SVH/Female Threaded Elbow (Plastic).png",
     "category": "pipes",
-    "rating": 4.5,
+    "rating": "4.50",
     "reviews": 61,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 43,
     "name": "Flame Retardant (FR) Grade (90Mtr) Silver",
-    "price": 99.61,
-    "originalPrice": 119.53,
+    "price": "99.61",
+    "originalPrice": "119.53",
     "description": "High-quality Flame Retardant (FR) Grade (90Mtr) Silver for your electrical and plumbing needs.",
     "image": "/Images_SVH/Flame Retardant (FR) Grade (90Mtr) Silver.png",
     "category": "electrical",
-    "rating": 4.7,
+    "rating": "4.70",
     "reviews": 100,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 44,
     "name": "FlangeAdapter",
-    "price": 113.37,
-    "originalPrice": 136.04,
+    "price": "113.37",
+    "originalPrice": "136.04",
     "description": "Durable and reliable FlangeAdapter for plumbing projects.",
     "image": "/Images_SVH/FlangeAdapter.png",
     "category": "pipes",
-    "rating": 4.3,
+    "rating": "4.30",
     "reviews": 162,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 45,
     "name": "Flush Tank",
-    "price": 484.96,
-    "originalPrice": 581.95,
+    "price": "484.96",
+    "originalPrice": "581.95",
     "description": "Premium Flush Tank for a modern bathroom experience.",
     "image": "/Images_SVH/Flush Tank.png",
     "category": "bathroom",
-    "rating": 4.2,
+    "rating": "4.20",
     "reviews": 146,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 46,
     "name": "Hand Shower",
-    "price": 518.24,
-    "originalPrice": 621.89,
+    "price": "518.24",
+    "originalPrice": "621.89",
     "description": "Premium Hand Shower for a modern bathroom experience.",
     "image": "/Images_SVH/Hand Shower.png",
     "category": "bathroom",
-    "rating": 3.8,
+    "rating": "3.80",
     "reviews": 185,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 47,
     "name": "IMAGNO 410",
-    "price": 107.62,
-    "originalPrice": 129.14,
+    "price": "107.62",
+    "originalPrice": "129.14",
     "description": "High-quality IMAGNO 410 for your electrical and plumbing needs.",
     "image": "/Images_SVH/IMAGNO_410.webp",
     "category": "electrical",
-    "rating": 4.3,
+    "rating": "4.30",
     "reviews": 303,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 48,
     "name": "Indicator Switch",
-    "price": 166.87,
-    "originalPrice": 200.24,
+    "price": "166.87",
+    "originalPrice": "200.24",
     "description": "High-quality Indicator Switch for your electrical and plumbing needs.",
     "image": "/Images_SVH/Indicator Switch.jpg",
     "category": "switches",
-    "rating": 4.5,
+    "rating": "4.50",
     "reviews": 454,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 49,
     "name": "Industrial Water Pump",
-    "price": 3992.4,
-    "originalPrice": 4790.88,
+    "price": "3992.40",
+    "originalPrice": "4790.88",
     "description": "High-quality Industrial Water Pump for your electrical and plumbing needs.",
     "image": "/Images_SVH/Industrial Water Pump.png",
     "category": "pumps",
-    "rating": 4.1,
+    "rating": "4.10",
     "reviews": 238,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 50,
     "name": "Instant Water Heater",
-    "price": 82.81,
-    "originalPrice": 99.37,
+    "price": "82.81",
+    "originalPrice": "99.37",
     "description": "High-quality Instant Water Heater for your electrical and plumbing needs.",
     "image": "/Images_SVH/Instant Water Heater.webp",
     "category": "electrical",
-    "rating": 4,
+    "rating": "4.00",
     "reviews": 51,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 51,
     "name": "Inverter Battery with UPS",
-    "price": 5928.73,
-    "originalPrice": 7114.48,
+    "price": "5928.73",
+    "originalPrice": "7114.48",
     "description": "High-quality Inverter Battery with UPS for your electrical and plumbing needs.",
     "image": "/Images_SVH/Inverter Battery with UPS.png",
     "category": "power",
-    "rating": 3.6,
+    "rating": "3.60",
     "reviews": 187,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 52,
     "name": "LED Strip Light",
-    "price": 186.76,
-    "originalPrice": 224.11,
+    "price": "186.76",
+    "originalPrice": "224.11",
     "description": "Brighten your space with high-quality LED Strip Light.",
     "image": "/Images_SVH/LED Strip Light.webp",
     "category": "lighting",
-    "rating": 4.1,
+    "rating": "4.10",
     "reviews": 129,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 53,
     "name": "LightPineWood Ceiling Fan",
-    "price": 193.77,
-    "originalPrice": 232.52,
+    "price": "193.77",
+    "originalPrice": "232.52",
     "description": "Brighten your space with high-quality LightPineWood Ceiling Fan.",
     "image": "/Images_SVH/LightPineWood_Ceiling Fan.webp",
     "category": "lighting",
-    "rating": 4.5,
+    "rating": "4.50",
     "reviews": 153,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 54,
     "name": "Luminous Inverter Battery",
-    "price": 5631.87,
-    "originalPrice": 6758.24,
+    "price": "5631.87",
+    "originalPrice": "6758.24",
     "description": "High-quality Luminous Inverter Battery for your electrical and plumbing needs.",
     "image": "/Images_SVH/Luminous Inverter Battery.png",
     "category": "power",
-    "rating": 4.2,
+    "rating": "4.20",
     "reviews": 118,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 55,
     "name": "MARVEL SERIES-Milk White QT",
-    "price": 114.58,
-    "originalPrice": 137.5,
+    "price": "114.58",
+    "originalPrice": "137.50",
     "description": "High-quality MARVEL SERIES-Milk White QT for your electrical and plumbing needs.",
     "image": "/Images_SVH/MARVEL SERIES-Milk White QT.png",
     "category": "electrical",
-    "rating": 4.4,
+    "rating": "4.40",
     "reviews": 373,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 56,
     "name": "MURPHY SERIES QT",
-    "price": 96.57,
-    "originalPrice": 115.88,
+    "price": "96.57",
+    "originalPrice": "115.88",
     "description": "High-quality MURPHY SERIES QT for your electrical and plumbing needs.",
     "image": "/Images_SVH/MURPHY SERIES QT.png",
     "category": "electrical",
-    "rating": 4.6,
+    "rating": "4.60",
     "reviews": 481,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 57,
     "name": "Male Threaded Adapter M.T.A. (Plastic)",
-    "price": 95.89,
-    "originalPrice": 115.07,
+    "price": "95.89",
+    "originalPrice": "115.07",
     "description": "Durable and reliable Male Threaded Adapter M.T.A. (Plastic) for plumbing projects.",
     "image": "/Images_SVH/Male Threaded Adapter M.T.A. (Plastic).png",
     "category": "pipes",
-    "rating": 4,
+    "rating": "4.00",
     "reviews": 236,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 58,
     "name": "Medium Bodied (uPVC) Tube",
-    "price": 93.88,
-    "originalPrice": 112.66,
+    "price": "93.88",
+    "originalPrice": "112.66",
     "description": "Durable and reliable Medium Bodied (uPVC) Tube for plumbing projects.",
     "image": "/Images_SVH/Medium Bodied (uPVC) Tube.png",
     "category": "pipes",
-    "rating": 4,
+    "rating": "4.00",
     "reviews": 220,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 59,
     "name": "Microtek Battery",
-    "price": 4171.25,
-    "originalPrice": 5005.5,
+    "price": "4171.25",
+    "originalPrice": "5005.50",
     "description": "High-quality Microtek Battery for your electrical and plumbing needs.",
     "image": "/Images_SVH/Microtek Battery.webp",
     "category": "power",
-    "rating": 3.7,
+    "rating": "3.70",
     "reviews": 130,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 60,
     "name": "Microtek Inverter",
-    "price": 5939.66,
-    "originalPrice": 7127.59,
+    "price": "5939.66",
+    "originalPrice": "7127.59",
     "description": "High-quality Microtek Inverter for your electrical and plumbing needs.",
     "image": "/Images_SVH/Microtek Inverter.webp",
     "category": "power",
-    "rating": 4.7,
+    "rating": "4.70",
     "reviews": 358,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 61,
     "name": "OTHER TAPS",
-    "price": 416.88,
-    "originalPrice": 500.26,
+    "price": "416.88",
+    "originalPrice": "500.26",
     "description": "Premium OTHER TAPS for a modern bathroom experience.",
     "image": "/Images_SVH/OTHER TAPS.png",
     "category": "bathroom",
-    "rating": 4.5,
+    "rating": "4.50",
     "reviews": 459,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 62,
     "name": "Outdoor Spot Lights",
-    "price": 982.97,
-    "originalPrice": 1179.56,
+    "price": "982.97",
+    "originalPrice": "1179.56",
     "description": "Durable and weather-resistant Outdoor Spot Lights for outdoor use.",
     "image": "/Images_SVH/Outdoor Spot Lights.webp",
     "category": "outdoor",
-    "rating": 4.6,
+    "rating": "4.60",
     "reviews": 315,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 63,
     "name": "PVC Ball Valve",
-    "price": 80.46,
-    "originalPrice": 96.55,
+    "price": "80.46",
+    "originalPrice": "96.55",
     "description": "Durable and reliable PVC Ball Valve for plumbing projects.",
     "image": "/Images_SVH/PVC Ball Valve.jpg",
     "category": "pipes",
-    "rating": 4.3,
+    "rating": "4.30",
     "reviews": 479,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 64,
     "name": "PVC Pipe End Cap",
-    "price": 94.32,
-    "originalPrice": 113.18,
+    "price": "94.32",
+    "originalPrice": "113.18",
     "description": "Durable and reliable PVC Pipe End Cap for plumbing projects.",
     "image": "/Images_SVH/PVC Pipe End Cap.jpg",
     "category": "pipes",
-    "rating": 3.6,
+    "rating": "3.60",
     "reviews": 235,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 65,
     "name": "PVC Reducer Pipe Fitting",
-    "price": 87.08,
-    "originalPrice": 104.5,
+    "price": "87.08",
+    "originalPrice": "104.50",
     "description": "Durable and reliable PVC Reducer Pipe Fitting for plumbing projects.",
     "image": "/Images_SVH/PVC Reducer Pipe Fitting.jpg",
     "category": "pipes",
-    "rating": 4.3,
+    "rating": "4.30",
     "reviews": 260,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 66,
     "name": "PVC T Joint",
-    "price": 89.47,
-    "originalPrice": 107.36,
+    "price": "89.47",
+    "originalPrice": "107.36",
     "description": "Durable and reliable PVC T Joint for plumbing projects.",
     "image": "/Images_SVH/PVC T Joint.jpg",
     "category": "pipes",
-    "rating": 4,
+    "rating": "4.00",
     "reviews": 434,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 67,
     "name": "PVC T Pipe Connector",
-    "price": 116.57,
-    "originalPrice": 139.88,
+    "price": "116.57",
+    "originalPrice": "139.88",
     "description": "Durable and reliable PVC T Pipe Connector for plumbing projects.",
     "image": "/Images_SVH/PVC T Pipe Connector.jpg",
     "category": "pipes",
-    "rating": 4.9,
+    "rating": "4.90",
     "reviews": 367,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 68,
     "name": "PVC Union Pipe Fitting",
-    "price": 107.82,
-    "originalPrice": 129.38,
+    "price": "107.82",
+    "originalPrice": "129.38",
     "description": "Durable and reliable PVC Union Pipe Fitting for plumbing projects.",
     "image": "/Images_SVH/PVC Union Pipe Fitting.jpg",
     "category": "pipes",
-    "rating": 4.9,
+    "rating": "4.90",
     "reviews": 307,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 69,
     "name": "PVC Y Joint",
-    "price": 101.39,
-    "originalPrice": 121.67,
+    "price": "101.39",
+    "originalPrice": "121.67",
     "description": "Durable and reliable PVC Y Joint for plumbing projects.",
     "image": "/Images_SVH/PVC Y Joint.jpg",
     "category": "pipes",
-    "rating": 3.9,
+    "rating": "3.90",
     "reviews": 308,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 70,
     "name": "Philips LED Downlight",
-    "price": 175.43,
-    "originalPrice": 210.52,
+    "price": "175.43",
+    "originalPrice": "210.52",
     "description": "Brighten your space with high-quality Philips LED Downlight.",
     "image": "/Images_SVH/Philips LED Downlight.webp",
     "category": "lighting",
-    "rating": 3.5,
+    "rating": "3.50",
     "reviews": 310,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 71,
     "name": "Philips LED Panel Light",
-    "price": 201.27,
-    "originalPrice": 241.52,
+    "price": "201.27",
+    "originalPrice": "241.52",
     "description": "Brighten your space with high-quality Philips LED Panel Light.",
     "image": "/Images_SVH/Philips LED Panel Light.webp",
     "category": "lighting",
-    "rating": 3.8,
+    "rating": "3.80",
     "reviews": 70,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 72,
     "name": "Philips LED Surface Light",
-    "price": 193.36,
-    "originalPrice": 232.03,
+    "price": "193.36",
+    "originalPrice": "232.03",
     "description": "Brighten your space with high-quality Philips LED Surface Light.",
     "image": "/Images_SVH/Philips LED Surface Light.webp",
     "category": "lighting",
-    "rating": 4.4,
+    "rating": "4.40",
     "reviews": 110,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 73,
     "name": "Philips LED T-Bulb Light",
-    "price": 224.82,
-    "originalPrice": 269.78,
+    "price": "224.82",
+    "originalPrice": "269.78",
     "description": "Brighten your space with high-quality Philips LED T-Bulb Light.",
     "image": "/Images_SVH/Philips LED T-Bulb Light.webp",
     "category": "lighting",
-    "rating": 3.5,
+    "rating": "3.50",
     "reviews": 38,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 74,
     "name": "Philips LED Tube Light Box",
-    "price": 182.07,
-    "originalPrice": 218.48,
+    "price": "182.07",
+    "originalPrice": "218.48",
     "description": "Brighten your space with high-quality Philips LED Tube Light Box.",
     "image": "/Images_SVH/Philips LED Tube Light Box.webp",
     "category": "lighting",
-    "rating": 4.9,
+    "rating": "4.90",
     "reviews": 143,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 75,
     "name": "Philips LED Tube Light",
-    "price": 228.03,
-    "originalPrice": 273.64,
+    "price": "228.03",
+    "originalPrice": "273.64",
     "description": "Brighten your space with high-quality Philips LED Tube Light.",
     "image": "/Images_SVH/Philips LED Tube Light.webp",
     "category": "lighting",
-    "rating": 4.7,
+    "rating": "4.70",
     "reviews": 290,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 76,
     "name": "Philips Round LED Ceiling Light",
-    "price": 186.7,
-    "originalPrice": 224.04,
+    "price": "186.70",
+    "originalPrice": "224.04",
     "description": "Brighten your space with high-quality Philips Round LED Ceiling Light.",
     "image": "/Images_SVH/Philips Round LED Ceiling Light.webp",
     "category": "lighting",
-    "rating": 4.9,
+    "rating": "4.90",
     "reviews": 483,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 77,
     "name": "Philips Smart LED Bulb",
-    "price": 195.67,
-    "originalPrice": 234.8,
+    "price": "195.67",
+    "originalPrice": "234.80",
     "description": "Brighten your space with high-quality Philips Smart LED Bulb.",
     "image": "/Images_SVH/Philips Smart LED Bulb.webp",
     "category": "lighting",
-    "rating": 3.9,
+    "rating": "3.90",
     "reviews": 68,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 78,
     "name": "PhilipsAceSaverLEDBulb3",
-    "price": 187.67,
-    "originalPrice": 225.2,
+    "price": "187.67",
+    "originalPrice": "225.20",
     "description": "Brighten your space with high-quality PhilipsAceSaverLEDBulb3.",
     "image": "/Images_SVH/PhilipsAceSaverLEDBulb3.webp",
     "category": "lighting",
-    "rating": 4.7,
+    "rating": "4.70",
     "reviews": 238,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 79,
     "name": "PhilipsAstraSpot Generation2 integrated",
-    "price": 211.55,
-    "originalPrice": 253.86,
+    "price": "211.55",
+    "originalPrice": "253.86",
     "description": "Brighten your space with high-quality PhilipsAstraSpot Generation2 integrated.",
     "image": "/Images_SVH/PhilipsAstraSpot_Generation2_integrated.webp",
     "category": "lighting",
-    "rating": 3.9,
+    "rating": "3.90",
     "reviews": 253,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 80,
     "name": "PhilipsAuraStyledgeLEDDownlight",
-    "price": 231.85,
-    "originalPrice": 278.22,
+    "price": "231.85",
+    "originalPrice": "278.22",
     "description": "Brighten your space with high-quality PhilipsAuraStyledgeLEDDownlight.",
     "image": "/Images_SVH/PhilipsAuraStyledgeLEDDownlight.webp",
     "category": "lighting",
-    "rating": 5,
+    "rating": "5.00",
     "reviews": 456,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 81,
     "name": "PhilipsFilamentLEDBulb E27base A60bulb",
-    "price": 237.11,
-    "originalPrice": 284.53,
+    "price": "237.11",
+    "originalPrice": "284.53",
     "description": "Brighten your space with high-quality PhilipsFilamentLEDBulb E27base A60bulb.",
     "image": "/Images_SVH/PhilipsFilamentLEDBulb_E27base_A60bulb.webp",
     "category": "lighting",
-    "rating": 3.7,
+    "rating": "3.70",
     "reviews": 80,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 82,
     "name": "PhilipsFilamentLEDCandle E27base",
-    "price": 193.87,
-    "originalPrice": 232.64,
+    "price": "193.87",
+    "originalPrice": "232.64",
     "description": "Brighten your space with high-quality PhilipsFilamentLEDCandle E27base.",
     "image": "/Images_SVH/PhilipsFilamentLEDCandle_E27base.webp",
     "category": "lighting",
-    "rating": 4.4,
+    "rating": "4.40",
     "reviews": 81,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 83,
     "name": "PhilipsFullGlowLEDMetalSurfacelight",
-    "price": 220.17,
-    "originalPrice": 264.2,
+    "price": "220.17",
+    "originalPrice": "264.20",
     "description": "Brighten your space with high-quality PhilipsFullGlowLEDMetalSurfacelight.",
     "image": "/Images_SVH/PhilipsFullGlowLEDMetalSurfacelight.webp",
     "category": "lighting",
-    "rating": 4.6,
+    "rating": "4.60",
     "reviews": 300,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 84,
     "name": "PhilipsFullGlowLEDSurfacelight6W",
-    "price": 216.18,
-    "originalPrice": 259.42,
+    "price": "216.18",
+    "originalPrice": "259.42",
     "description": "Brighten your space with high-quality PhilipsFullGlowLEDSurfacelight6W.",
     "image": "/Images_SVH/PhilipsFullGlowLEDSurfacelight6W.webp",
     "category": "lighting",
-    "rating": 5,
+    "rating": "5.00",
     "reviews": 52,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 85,
     "name": "PhilipsFullGlowStrikerLEDSurfacelight",
-    "price": 206.03,
-    "originalPrice": 247.24,
+    "price": "206.03",
+    "originalPrice": "247.24",
     "description": "Brighten your space with high-quality PhilipsFullGlowStrikerLEDSurfacelight.",
     "image": "/Images_SVH/PhilipsFullGlowStrikerLEDSurfacelight.webp",
     "category": "lighting",
-    "rating": 4.9,
+    "rating": "4.90",
     "reviews": 491,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 86,
     "name": "PhilipsG9bulb-5W",
-    "price": 165.25,
-    "originalPrice": 198.3,
+    "price": "165.25",
+    "originalPrice": "198.30",
     "description": "Brighten your space with high-quality PhilipsG9bulb-5W.",
     "image": "/Images_SVH/PhilipsG9bulb-5W.webp",
     "category": "lighting",
-    "rating": 4.5,
+    "rating": "4.50",
     "reviews": 46,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 87,
     "name": "PhilipsMotionSensingBulb",
-    "price": 218.46,
-    "originalPrice": 262.15,
+    "price": "218.46",
+    "originalPrice": "262.15",
     "description": "Brighten your space with high-quality PhilipsMotionSensingBulb.",
     "image": "/Images_SVH/PhilipsMotionSensingBulb.webp",
     "category": "lighting",
-    "rating": 4.2,
+    "rating": "4.20",
     "reviews": 349,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 88,
     "name": "PhilipsPrimeNeoRecessedLEDDownlight",
-    "price": 227.86,
-    "originalPrice": 273.43,
+    "price": "227.86",
+    "originalPrice": "273.43",
     "description": "Brighten your space with high-quality PhilipsPrimeNeoRecessedLEDDownlight.",
     "image": "/Images_SVH/PhilipsPrimeNeoRecessedLEDDownlight.webp",
     "category": "lighting",
-    "rating": 3.9,
+    "rating": "3.90",
     "reviews": 153,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 89,
     "name": "PhilipsStarBrightLEDTubelightcopy",
-    "price": 210.49,
-    "originalPrice": 252.59,
+    "price": "210.49",
+    "originalPrice": "252.59",
     "description": "Brighten your space with high-quality PhilipsStarBrightLEDTubelightcopy.",
     "image": "/Images_SVH/PhilipsStarBrightLEDTubelightcopy.webp",
     "category": "lighting",
-    "rating": 4.2,
+    "rating": "4.20",
     "reviews": 73,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 90,
     "name": "PhilipsStarFitLEDDownlight3",
-    "price": 193.15,
-    "originalPrice": 231.78,
+    "price": "193.15",
+    "originalPrice": "231.78",
     "description": "Brighten your space with high-quality PhilipsStarFitLEDDownlight3.",
     "image": "/Images_SVH/PhilipsStarFitLEDDownlight3.webp",
     "category": "lighting",
-    "rating": 3.6,
+    "rating": "3.60",
     "reviews": 414,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 91,
     "name": "PhilipsUltraGlowLEDDownlight 0bf4781a-be5f-422d-b259-622765a83679 (1)",
-    "price": 188.43,
-    "originalPrice": 226.12,
+    "price": "188.43",
+    "originalPrice": "226.12",
     "description": "Brighten your space with high-quality PhilipsUltraGlowLEDDownlight 0bf4781a-be5f-422d-b259-622765a83679 (1).",
     "image": "/Images_SVH/PhilipsUltraGlowLEDDownlight_0bf4781a-be5f-422d-b259-622765a83679 (1).webp",
     "category": "lighting",
-    "rating": 4,
+    "rating": "4.00",
     "reviews": 473,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 92,
     "name": "PhilipsUltraGlowLEDDownlight 0bf4781a-be5f-422d-b259-622765a83679",
-    "price": 188.94,
-    "originalPrice": 226.73,
+    "price": "188.94",
+    "originalPrice": "226.73",
     "description": "Brighten your space with high-quality PhilipsUltraGlowLEDDownlight 0bf4781a-be5f-422d-b259-622765a83679.",
     "image": "/Images_SVH/PhilipsUltraGlowLEDDownlight_0bf4781a-be5f-422d-b259-622765a83679.webp",
     "category": "lighting",
-    "rating": 4.4,
+    "rating": "4.40",
     "reviews": 88,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 93,
     "name": "Philips Full GloW LED Bulb 9W LED Bulb 600 lm 2700K B22 base Diffused Warm White 8d1eb493-1f7c-4ad8-8093-4be0b70c22a4",
-    "price": 213.08,
-    "originalPrice": 255.7,
+    "price": "213.08",
+    "originalPrice": "255.70",
     "description": "Brighten your space with high-quality Philips Full GloW LED Bulb 9W LED Bulb 600 lm 2700K B22 base Diffused Warm White 8d1eb493-1f7c-4ad8-8093-4be0b70c22a4.",
     "image": "/Images_SVH/Philips_Full_GloW_LED_Bulb_9W_LED_Bulb_600_lm_2700K_B22_base_Diffused_Warm_White_8d1eb493-1f7c-4ad8-8093-4be0b70c22a4.webp",
     "category": "lighting",
-    "rating": 4.9,
+    "rating": "4.90",
     "reviews": 71,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 94,
     "name": "Photo Ball-Valve Plastic-Orange-Handle",
-    "price": 110.37,
-    "originalPrice": 132.44,
+    "price": "110.37",
+    "originalPrice": "132.44",
     "description": "Durable and reliable Photo Ball-Valve Plastic-Orange-Handle for plumbing projects.",
     "image": "/Images_SVH/Photo_Ball-Valve_Plastic-Orange-Handle.jpg",
     "category": "pipes",
-    "rating": 3.9,
+    "rating": "3.90",
     "reviews": 40,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 95,
     "name": "Pipe Clip (Plastic)",
-    "price": 105.68,
-    "originalPrice": 126.82,
+    "price": "105.68",
+    "originalPrice": "126.82",
     "description": "Durable and reliable Pipe Clip (Plastic) for plumbing projects.",
     "image": "/Images_SVH/Pipe Clip (Plastic).png",
     "category": "pipes",
-    "rating": 4.1,
+    "rating": "4.10",
     "reviews": 154,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 96,
     "name": "Pipes",
-    "price": 109.37,
-    "originalPrice": 131.24,
+    "price": "109.37",
+    "originalPrice": "131.24",
     "description": "Durable and reliable Pipes for plumbing projects.",
     "image": "/Images_SVH/Pipes.png",
     "category": "pipes",
-    "rating": 4.4,
+    "rating": "4.40",
     "reviews": 372,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 97,
     "name": "PlainBallVolve",
-    "price": 108.34,
-    "originalPrice": 130.01,
+    "price": "108.34",
+    "originalPrice": "130.01",
     "description": "High-quality PlainBallVolve for your electrical and plumbing needs.",
     "image": "/Images_SVH/PlainBallVolve.png",
     "category": "electrical",
-    "rating": 4.8,
+    "rating": "4.80",
     "reviews": 100,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 98,
     "name": "Plastic Water Tank",
-    "price": 2918.07,
-    "originalPrice": 3501.68,
+    "price": "2918.07",
+    "originalPrice": "3501.68",
     "description": "High-quality Plastic Water Tank for your electrical and plumbing needs.",
     "image": "/Images_SVH/Plastic Water Tank.jpg",
     "category": "tanks",
-    "rating": 3.7,
+    "rating": "3.70",
     "reviews": 454,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 99,
     "name": "Power Socket",
-    "price": 127.58,
-    "originalPrice": 153.1,
+    "price": "127.58",
+    "originalPrice": "153.10",
     "description": "High-quality Power Socket for your electrical and plumbing needs.",
     "image": "/Images_SVH/Power Socket.jpg",
     "category": "switches",
-    "rating": 3.5,
+    "rating": "3.50",
     "reviews": 338,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 100,
     "name": "Primer",
-    "price": 83.46,
-    "originalPrice": 100.15,
+    "price": "83.46",
+    "originalPrice": "100.15",
     "description": "Durable and reliable Primer for plumbing projects.",
     "image": "/Images_SVH/Primer.png",
     "category": "pipes",
-    "rating": 4,
+    "rating": "4.00",
     "reviews": 168,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 101,
     "name": "Pvc-Reducer-Fitting Plumbing-Component",
-    "price": 98.02,
-    "originalPrice": 117.62,
+    "price": "98.02",
+    "originalPrice": "117.62",
     "description": "Durable and reliable Pvc-Reducer-Fitting Plumbing-Component for plumbing projects.",
     "image": "/Images_SVH/Pvc-Reducer-Fitting_Plumbing-Component.jpg",
     "category": "pipes",
-    "rating": 4.6,
+    "rating": "4.60",
     "reviews": 98,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 102,
     "name": "ReduceBush",
-    "price": 92.44,
-    "originalPrice": 110.93,
+    "price": "92.44",
+    "originalPrice": "110.93",
     "description": "Durable and reliable ReduceBush for plumbing projects.",
     "image": "/Images_SVH/ReduceBush.png",
     "category": "pipes",
-    "rating": 4.8,
+    "rating": "4.80",
     "reviews": 348,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 103,
     "name": "Reducer",
-    "price": 106.61,
-    "originalPrice": 127.93,
+    "price": "106.61",
+    "originalPrice": "127.93",
     "description": "Durable and reliable Reducer for plumbing projects.",
     "image": "/Images_SVH/Reducer.png",
     "category": "pipes",
-    "rating": 4.7,
+    "rating": "4.70",
     "reviews": 49,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 104,
     "name": "Reducing Bush",
-    "price": 98.91,
-    "originalPrice": 118.69,
+    "price": "98.91",
+    "originalPrice": "118.69",
     "description": "Durable and reliable Reducing Bush for plumbing projects.",
     "image": "/Images_SVH/Reducing Bush.png",
     "category": "pipes",
-    "rating": 4.9,
+    "rating": "4.90",
     "reviews": 301,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 105,
     "name": "Reducing Tee",
-    "price": 112.63,
-    "originalPrice": 135.16,
+    "price": "112.63",
+    "originalPrice": "135.16",
     "description": "Durable and reliable Reducing Tee for plumbing projects.",
     "image": "/Images_SVH/Reducing Tee.png",
     "category": "pipes",
-    "rating": 4.8,
+    "rating": "4.80",
     "reviews": 446,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 106,
     "name": "Rotary Dimmer Switch",
-    "price": 1546.13,
-    "originalPrice": 1855.36,
+    "price": "1546.13",
+    "originalPrice": "1855.36",
     "description": "Keep cool with our energy-efficient Rotary Dimmer Switch.",
     "image": "/Images_SVH/Rotary Dimmer Switch.jpg",
     "category": "fans",
-    "rating": 4,
+    "rating": "4.00",
     "reviews": 122,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 107,
     "name": "Rubber Lubricant",
-    "price": 116.31,
-    "originalPrice": 139.57,
+    "price": "116.31",
+    "originalPrice": "139.57",
     "description": "Durable and reliable Rubber Lubricant for plumbing projects.",
     "image": "/Images_SVH/Rubber Lubricant.png",
     "category": "pipes",
-    "rating": 4.8,
+    "rating": "4.80",
     "reviews": 221,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 108,
     "name": "Safety Glasses",
-    "price": 354.75,
-    "originalPrice": 425.7,
+    "price": "354.75",
+    "originalPrice": "425.70",
     "description": "Stay protected on the job with our Safety Glasses.",
     "image": "/Images_SVH/Safety Glasses.jpg",
     "category": "safety",
-    "rating": 4.2,
+    "rating": "4.20",
     "reviews": 314,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 109,
     "name": "Safety Helmet with Face Shield",
-    "price": 339.78,
-    "originalPrice": 407.74,
+    "price": "339.78",
+    "originalPrice": "407.74",
     "description": "Stay protected on the job with our Safety Helmet with Face Shield.",
     "image": "/Images_SVH/Safety Helmet with Face Shield.jpg",
     "category": "safety",
-    "rating": 5,
+    "rating": "5.00",
     "reviews": 140,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 110,
     "name": "Safety Helmet",
-    "price": 334.47,
-    "originalPrice": 401.36,
+    "price": "334.47",
+    "originalPrice": "401.36",
     "description": "Stay protected on the job with our Safety Helmet.",
     "image": "/Images_SVH/Safety Helmet.jpg",
     "category": "safety",
-    "rating": 4.9,
+    "rating": "4.90",
     "reviews": 456,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 111,
     "name": "Safety Kit (PPE Set)",
-    "price": 319,
-    "originalPrice": 382.8,
+    "price": "319.00",
+    "originalPrice": "382.80",
     "description": "Stay protected on the job with our Safety Kit (PPE Set).",
     "image": "/Images_SVH/Safety Kit (PPE Set).jpg",
     "category": "safety",
-    "rating": 4.8,
+    "rating": "4.80",
     "reviews": 49,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 112,
     "name": "Sanitary Ware",
-    "price": 567.59,
-    "originalPrice": 681.11,
+    "price": "567.59",
+    "originalPrice": "681.11",
     "description": "Premium Sanitary Ware for a modern bathroom experience.",
     "image": "/Images_SVH/Sanitary Ware.png",
     "category": "bathroom",
-    "rating": 4.3,
+    "rating": "4.30",
     "reviews": 124,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 113,
     "name": "Showers",
-    "price": 479.06,
-    "originalPrice": 574.87,
+    "price": "479.06",
+    "originalPrice": "574.87",
     "description": "Premium Showers for a modern bathroom experience.",
     "image": "/Images_SVH/Showers.png",
     "category": "bathroom",
-    "rating": 4.1,
+    "rating": "4.10",
     "reviews": 414,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 114,
     "name": "SilentProEnso Silkwhite  1stAngle",
-    "price": 97.62,
-    "originalPrice": 117.14,
+    "price": "97.62",
+    "originalPrice": "117.14",
     "description": "High-quality SilentProEnso Silkwhite  1stAngle for your electrical and plumbing needs.",
     "image": "/Images_SVH/SilentProEnso_Silkwhite__1stAngle.webp",
     "category": "electrical",
-    "rating": 4.4,
+    "rating": "4.40",
     "reviews": 191,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 115,
     "name": "SilentproBlossomsmart Denimblue 1 angle 1",
-    "price": 102.4,
-    "originalPrice": 122.88,
+    "price": "102.40",
+    "originalPrice": "122.88",
     "description": "High-quality SilentproBlossomsmart Denimblue 1 angle 1 for your electrical and plumbing needs.",
     "image": "/Images_SVH/SilentproBlossomsmart_Denimblue_1_angle_1.webp",
     "category": "electrical",
-    "rating": 3.8,
+    "rating": "3.80",
     "reviews": 190,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 116,
     "name": "Siltank Covers (Lids) (Black)",
-    "price": 2623.39,
-    "originalPrice": 3148.07,
+    "price": "2623.39",
+    "originalPrice": "3148.07",
     "description": "High-quality Siltank Covers (Lids) (Black) for your electrical and plumbing needs.",
     "image": "/Images_SVH/Siltank Covers (Lids) (Black).png",
     "category": "tanks",
-    "rating": 4.8,
+    "rating": "4.80",
     "reviews": 415,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 117,
     "name": "Siltank Covers (Lids) (Green)",
-    "price": 2809.28,
-    "originalPrice": 3371.14,
+    "price": "2809.28",
+    "originalPrice": "3371.14",
     "description": "High-quality Siltank Covers (Lids) (Green) for your electrical and plumbing needs.",
     "image": "/Images_SVH/Siltank Covers (Lids) (Green).png",
     "category": "tanks",
-    "rating": 4.2,
+    "rating": "4.20",
     "reviews": 74,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 118,
     "name": "Siltank Covers (Lids) (White)",
-    "price": 2788.44,
-    "originalPrice": 3346.13,
+    "price": "2788.44",
+    "originalPrice": "3346.13",
     "description": "High-quality Siltank Covers (Lids) (White) for your electrical and plumbing needs.",
     "image": "/Images_SVH/Siltank Covers (Lids) (White).png",
     "category": "tanks",
-    "rating": 4.9,
+    "rating": "4.90",
     "reviews": 56,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 119,
     "name": "Smart Water Heater",
-    "price": 94.57,
-    "originalPrice": 113.48,
+    "price": "94.57",
+    "originalPrice": "113.48",
     "description": "High-quality Smart Water Heater for your electrical and plumbing needs.",
     "image": "/Images_SVH/Smart Water Heater.webp",
     "category": "electrical",
-    "rating": 4.7,
+    "rating": "4.70",
     "reviews": 74,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 120,
     "name": "SnowWhite Ceiling Fan",
-    "price": 1211.38,
-    "originalPrice": 1453.66,
+    "price": "1211.38",
+    "originalPrice": "1453.66",
     "description": "Keep cool with our energy-efficient SnowWhite Ceiling Fan.",
     "image": "/Images_SVH/SnowWhite_Ceiling Fan.webp",
     "category": "fans",
-    "rating": 4.1,
+    "rating": "4.10",
     "reviews": 232,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 121,
     "name": "Striker-Surface",
-    "price": 87.61,
-    "originalPrice": 105.13,
+    "price": "87.61",
+    "originalPrice": "105.13",
     "description": "High-quality Striker-Surface for your electrical and plumbing needs.",
     "image": "/Images_SVH/Striker-Surface.webp",
     "category": "electrical",
-    "rating": 3.9,
+    "rating": "3.90",
     "reviews": 357,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 122,
     "name": "Submersible Pump",
-    "price": 3431.14,
-    "originalPrice": 4117.37,
+    "price": "3431.14",
+    "originalPrice": "4117.37",
     "description": "High-quality Submersible Pump for your electrical and plumbing needs.",
     "image": "/Images_SVH/Submersible Pump.png",
     "category": "pumps",
-    "rating": 3.6,
+    "rating": "3.60",
     "reviews": 253,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 123,
     "name": "TVolvePipe",
-    "price": 100.12,
-    "originalPrice": 120.14,
+    "price": "100.12",
+    "originalPrice": "120.14",
     "description": "Durable and reliable TVolvePipe for plumbing projects.",
     "image": "/Images_SVH/TVolvePipe.png",
     "category": "pipes",
-    "rating": 4.5,
+    "rating": "4.50",
     "reviews": 222,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 124,
     "name": "Table Fan",
-    "price": 1655.23,
-    "originalPrice": 1986.28,
+    "price": "1655.23",
+    "originalPrice": "1986.28",
     "description": "Keep cool with our energy-efficient Table Fan.",
     "image": "/Images_SVH/Table Fan.webp",
     "category": "fans",
-    "rating": 4.5,
+    "rating": "4.50",
     "reviews": 91,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 125,
     "name": "Tabs",
-    "price": 93.59,
-    "originalPrice": 112.31,
+    "price": "93.59",
+    "originalPrice": "112.31",
     "description": "High-quality Tabs for your electrical and plumbing needs.",
     "image": "/Images_SVH/Tabs.png",
     "category": "electrical",
-    "rating": 4,
+    "rating": "4.00",
     "reviews": 352,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 126,
     "name": "TailPiece",
-    "price": 88.66,
-    "originalPrice": 106.39,
+    "price": "88.66",
+    "originalPrice": "106.39",
     "description": "Durable and reliable TailPiece for plumbing projects.",
     "image": "/Images_SVH/TailPiece.png",
     "category": "pipes",
-    "rating": 4.1,
+    "rating": "4.10",
     "reviews": 490,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 127,
     "name": "TankConnector",
-    "price": 98.74,
-    "originalPrice": 118.49,
+    "price": "98.74",
+    "originalPrice": "118.49",
     "description": "Durable and reliable TankConnector for plumbing projects.",
     "image": "/Images_SVH/TankConnector.png",
     "category": "pipes",
-    "rating": 4.6,
+    "rating": "4.60",
     "reviews": 83,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 128,
     "name": "Three Layer Overhead Water Tanks (threaded Type Cover White Colour)",
-    "price": 2520.28,
-    "originalPrice": 3024.34,
+    "price": "2520.28",
+    "originalPrice": "3024.34",
     "description": "High-quality Three Layer Overhead Water Tanks (threaded Type Cover White Colour) for your electrical and plumbing needs.",
     "image": "/Images_SVH/Three Layer Overhead Water Tanks (threaded Type Cover White Colour).png",
     "category": "tanks",
-    "rating": 3.8,
+    "rating": "3.80",
     "reviews": 92,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 129,
     "name": "Three Layer Overhead Water Tanks - (Threaded Type cover - Green colour)",
-    "price": 2722.15,
-    "originalPrice": 3266.58,
+    "price": "2722.15",
+    "originalPrice": "3266.58",
     "description": "High-quality Three Layer Overhead Water Tanks - (Threaded Type cover - Green colour) for your electrical and plumbing needs.",
     "image": "/Images_SVH/Three Layer Overhead Water Tanks - (Threaded Type cover - Green colour).png",
     "category": "tanks",
-    "rating": 3.6,
+    "rating": "3.60",
     "reviews": 322,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 130,
     "name": "Two Layer Overhead Water Tank (Threaded Type cover - Black colour)",
-    "price": 2961.75,
-    "originalPrice": 3554.1,
+    "price": "2961.75",
+    "originalPrice": "3554.10",
     "description": "High-quality Two Layer Overhead Water Tank (Threaded Type cover - Black colour) for your electrical and plumbing needs.",
     "image": "/Images_SVH/Two Layer Overhead Water Tank (Threaded Type cover - Black colour).png",
     "category": "tanks",
-    "rating": 4.3,
+    "rating": "4.30",
     "reviews": 187,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 131,
     "name": "UPS Inverter",
-    "price": 4538.98,
-    "originalPrice": 5446.78,
+    "price": "4538.98",
+    "originalPrice": "5446.78",
     "description": "High-quality UPS Inverter for your electrical and plumbing needs.",
     "image": "/Images_SVH/UPS Inverter.webp",
     "category": "power",
-    "rating": 3.8,
+    "rating": "3.80",
     "reviews": 170,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 132,
     "name": "Union(threaded)",
-    "price": 117.59,
-    "originalPrice": 141.11,
+    "price": "117.59",
+    "originalPrice": "141.11",
     "description": "Durable and reliable Union(threaded) for plumbing projects.",
     "image": "/Images_SVH/Union(threaded).png",
     "category": "pipes",
-    "rating": 4.1,
+    "rating": "4.10",
     "reviews": 499,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 133,
     "name": "UnionPipe",
-    "price": 101.79,
-    "originalPrice": 122.15,
+    "price": "101.79",
+    "originalPrice": "122.15",
     "description": "Durable and reliable UnionPipe for plumbing projects.",
     "image": "/Images_SVH/UnionPipe.png",
     "category": "pipes",
-    "rating": 4.1,
+    "rating": "4.10",
     "reviews": 109,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 134,
     "name": "V-Guard Electric Water Heater",
-    "price": 86.31,
-    "originalPrice": 103.57,
+    "price": "86.31",
+    "originalPrice": "103.57",
     "description": "High-quality V-Guard Electric Water Heater for your electrical and plumbing needs.",
     "image": "/Images_SVH/V-Guard Electric Water Heater.webp",
     "category": "electrical",
-    "rating": 4.3,
+    "rating": "4.30",
     "reviews": 95,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 135,
     "name": "V-Guard Instant Geyser",
-    "price": 85.32,
-    "originalPrice": 102.38,
+    "price": "85.32",
+    "originalPrice": "102.38",
     "description": "High-quality V-Guard Instant Geyser for your electrical and plumbing needs.",
     "image": "/Images_SVH/V-Guard Instant Geyser.webp",
     "category": "electrical",
-    "rating": 3.8,
+    "rating": "3.80",
     "reviews": 183,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 136,
     "name": "V-Guard Instant Water Heater",
-    "price": 118.86,
-    "originalPrice": 142.63,
+    "price": "118.86",
+    "originalPrice": "142.63",
     "description": "High-quality V-Guard Instant Water Heater for your electrical and plumbing needs.",
     "image": "/Images_SVH/V-Guard Instant Water Heater.webp",
     "category": "electrical",
-    "rating": 3.8,
+    "rating": "3.80",
     "reviews": 186,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 137,
     "name": "V-Guard Storage Water Heater",
-    "price": 80.94,
-    "originalPrice": 97.13,
+    "price": "80.94",
+    "originalPrice": "97.13",
     "description": "High-quality V-Guard Storage Water Heater for your electrical and plumbing needs.",
     "image": "/Images_SVH/V-Guard Storage Water Heater.webp",
     "category": "electrical",
-    "rating": 4.2,
+    "rating": "4.20",
     "reviews": 135,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 138,
     "name": "V-Guard Voltage Stabilizer",
-    "price": 5881.84,
-    "originalPrice": 7058.21,
+    "price": "5881.84",
+    "originalPrice": "7058.21",
     "description": "High-quality V-Guard Voltage Stabilizer for your electrical and plumbing needs.",
     "image": "/Images_SVH/V-Guard Voltage Stabilizer.webp",
     "category": "power",
-    "rating": 3.8,
+    "rating": "3.80",
     "reviews": 25,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 139,
     "name": "V-Guard Water Heater",
-    "price": 85.57,
-    "originalPrice": 102.68,
+    "price": "85.57",
+    "originalPrice": "102.68",
     "description": "High-quality V-Guard Water Heater for your electrical and plumbing needs.",
     "image": "/Images_SVH/V-Guard Water Heater.webp",
     "category": "electrical",
-    "rating": 4.8,
+    "rating": "4.80",
     "reviews": 108,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 140,
     "name": "V-Guard Water-Heater Zeno",
-    "price": 106.47,
-    "originalPrice": 127.76,
+    "price": "106.47",
+    "originalPrice": "127.76",
     "description": "High-quality V-Guard Water-Heater Zeno for your electrical and plumbing needs.",
     "image": "/Images_SVH/V-Guard_Water-Heater_Zeno.webp",
     "category": "electrical",
-    "rating": 4.1,
+    "rating": "4.10",
     "reviews": 265,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 141,
     "name": "VOLTINO GRANDI DIDI PLUS",
-    "price": 107.5,
-    "originalPrice": 129,
+    "price": "107.50",
+    "originalPrice": "129.00",
     "description": "High-quality VOLTINO GRANDI DIDI PLUS for your electrical and plumbing needs.",
     "image": "/Images_SVH/VOLTINO_GRANDI_DIDI_PLUS.webp",
     "category": "electrical",
-    "rating": 4.5,
+    "rating": "4.50",
     "reviews": 166,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 142,
     "name": "VOLTINO MAX DIGI",
-    "price": 87.06,
-    "originalPrice": 104.47,
+    "price": "87.06",
+    "originalPrice": "104.47",
     "description": "High-quality VOLTINO MAX DIGI for your electrical and plumbing needs.",
     "image": "/Images_SVH/VOLTINO_MAX_DIGI.webp",
     "category": "electrical",
-    "rating": 4.4,
+    "rating": "4.40",
     "reviews": 467,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 143,
     "name": "WHITE-BGArtboard-1",
-    "price": 81.87,
-    "originalPrice": 98.24,
+    "price": "81.87",
+    "originalPrice": "98.24",
     "description": "High-quality WHITE-BGArtboard-1 for your electrical and plumbing needs.",
     "image": "/Images_SVH/WHITE-BGArtboard-1.webp",
     "category": "electrical",
-    "rating": 3.7,
+    "rating": "3.70",
     "reviews": 276,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 144,
     "name": "WHITE DIVINO-DG",
-    "price": 112.12,
-    "originalPrice": 134.54,
+    "price": "112.12",
+    "originalPrice": "134.54",
     "description": "High-quality WHITE DIVINO-DG for your electrical and plumbing needs.",
     "image": "/Images_SVH/WHITE_DIVINO-DG.webp",
     "category": "electrical",
-    "rating": 3.8,
+    "rating": "3.80",
     "reviews": 125,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 145,
     "name": "WHITE DIVINO",
-    "price": 115.32,
-    "originalPrice": 138.38,
+    "price": "115.32",
+    "originalPrice": "138.38",
     "description": "High-quality WHITE DIVINO for your electrical and plumbing needs.",
     "image": "/Images_SVH/WHITE_DIVINO.webp",
     "category": "electrical",
-    "rating": 3.6,
+    "rating": "3.60",
     "reviews": 100,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 146,
     "name": "Wall Lantern Light",
-    "price": 823.94,
-    "originalPrice": 988.73,
+    "price": "823.94",
+    "originalPrice": "988.73",
     "description": "Durable and weather-resistant Wall Lantern Light for outdoor use.",
     "image": "/Images_SVH/Wall Lantern Light.webp",
     "category": "outdoor",
-    "rating": 4.9,
+    "rating": "4.90",
     "reviews": 174,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 147,
     "name": "Wall Light Fixture",
-    "price": 220.24,
-    "originalPrice": 264.29,
+    "price": "220.24",
+    "originalPrice": "264.29",
     "description": "Brighten your space with high-quality Wall Light Fixture.",
     "image": "/Images_SVH/Wall Light Fixture.webp",
     "category": "lighting",
-    "rating": 3.9,
+    "rating": "3.90",
     "reviews": 473,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 148,
     "name": "Wall Light Set",
-    "price": 194.67,
-    "originalPrice": 233.6,
+    "price": "194.67",
+    "originalPrice": "233.60",
     "description": "Brighten your space with high-quality Wall Light Set.",
     "image": "/Images_SVH/Wall Light Set.webp",
     "category": "lighting",
-    "rating": 3.9,
+    "rating": "3.90",
     "reviews": 201,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 149,
     "name": "Work Safety Gloves",
-    "price": 275.32,
-    "originalPrice": 330.38,
+    "price": "275.32",
+    "originalPrice": "330.38",
     "description": "Stay protected on the job with our Work Safety Gloves.",
     "image": "/Images_SVH/Work Safety Gloves.jpg",
     "category": "safety",
-    "rating": 4.2,
+    "rating": "4.20",
     "reviews": 416,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 150,
     "name": "YStrainer",
-    "price": 112.83,
-    "originalPrice": 135.4,
+    "price": "112.83",
+    "originalPrice": "135.40",
     "description": "High-quality YStrainer for your electrical and plumbing needs.",
     "image": "/Images_SVH/YStrainer.png",
     "category": "electrical",
-    "rating": 4.3,
+    "rating": "4.30",
     "reviews": 141,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 151,
     "name": "bldc-fan",
-    "price": 1464.21,
-    "originalPrice": 1757.05,
+    "price": "1464.21",
+    "originalPrice": "1757.05",
     "description": "Keep cool with our energy-efficient bldc-fan.",
     "image": "/Images_SVH/bldc-fan.png",
     "category": "fans",
-    "rating": 4.9,
+    "rating": "4.90",
     "reviews": 418,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 152,
     "name": "ceiling-fan",
-    "price": 1239.1,
-    "originalPrice": 1486.92,
+    "price": "1239.10",
+    "originalPrice": "1486.92",
     "description": "Keep cool with our energy-efficient ceiling-fan.",
     "image": "/Images_SVH/ceiling-fan.png",
     "category": "fans",
-    "rating": 4.4,
+    "rating": "4.40",
     "reviews": 493,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 153,
     "name": "electrical-junction-box",
-    "price": 54.57,
-    "originalPrice": 65.48,
+    "price": "54.57",
+    "originalPrice": "65.48",
     "description": "High-quality electrical-junction-box for your electrical and plumbing needs.",
     "image": "/Images_SVH/electrical-junction-box.webp",
     "category": "wiring",
-    "rating": 4.6,
+    "rating": "4.60",
     "reviews": 334,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 154,
     "name": "exhaust-fan",
-    "price": 1274.07,
-    "originalPrice": 1528.88,
+    "price": "1274.07",
+    "originalPrice": "1528.88",
     "description": "Keep cool with our energy-efficient exhaust-fan.",
     "image": "/Images_SVH/exhaust-fan.png",
     "category": "fans",
-    "rating": 4.4,
+    "rating": "4.40",
     "reviews": 198,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 155,
     "name": "frls-pvc-conduit-pipe",
-    "price": 42.45,
-    "originalPrice": 50.94,
+    "price": "42.45",
+    "originalPrice": "50.94",
     "description": "High-quality frls-pvc-conduit-pipe for your electrical and plumbing needs.",
     "image": "/Images_SVH/frls-pvc-conduit-pipe.webp",
     "category": "wiring",
-    "rating": 4.2,
+    "rating": "4.20",
     "reviews": 284,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 156,
     "name": "inverter-1",
-    "price": 4585.44,
-    "originalPrice": 5502.53,
+    "price": "4585.44",
+    "originalPrice": "5502.53",
     "description": "High-quality inverter-1 for your electrical and plumbing needs.",
     "image": "/Images_SVH/inverter-1.webp",
     "category": "power",
-    "rating": 4.2,
+    "rating": "4.20",
     "reviews": 295,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 157,
     "name": "led-bulbs-pack",
-    "price": 195.6,
-    "originalPrice": 234.72,
+    "price": "195.60",
+    "originalPrice": "234.72",
     "description": "Brighten your space with high-quality led-bulbs-pack.",
     "image": "/Images_SVH/led-bulbs-pack.png",
     "category": "lighting",
-    "rating": 3.8,
+    "rating": "3.80",
     "reviews": 361,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 158,
     "name": "led-panel-light",
-    "price": 203.77,
-    "originalPrice": 244.52,
+    "price": "203.77",
+    "originalPrice": "244.52",
     "description": "Brighten your space with high-quality led-panel-light.",
     "image": "/Images_SVH/led-panel-light.png",
     "category": "lighting",
-    "rating": 3.6,
+    "rating": "3.60",
     "reviews": 418,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 159,
     "name": "living now thumbnail",
-    "price": 86.03,
-    "originalPrice": 103.24,
+    "price": "86.03",
+    "originalPrice": "103.24",
     "description": "High-quality living now thumbnail for your electrical and plumbing needs.",
     "image": "/Images_SVH/living_now_thumbnail.jpg",
     "category": "electrical",
-    "rating": 3.9,
+    "rating": "3.90",
     "reviews": 39,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 160,
     "name": "long-bend",
-    "price": 114.82,
-    "originalPrice": 137.78,
+    "price": "114.82",
+    "originalPrice": "137.78",
     "description": "Durable and reliable long-bend for plumbing projects.",
     "image": "/Images_SVH/long-bend.webp",
     "category": "pipes",
-    "rating": 3.9,
+    "rating": "3.90",
     "reviews": 197,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 161,
     "name": "microtek-super-power-ups",
-    "price": 4816.46,
-    "originalPrice": 5779.75,
+    "price": "4816.46",
+    "originalPrice": "5779.75",
     "description": "High-quality microtek-super-power-ups for your electrical and plumbing needs.",
     "image": "/Images_SVH/microtek-super-power-ups.webp",
     "category": "power",
-    "rating": 4.7,
+    "rating": "4.70",
     "reviews": 193,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 162,
     "name": "newCables2",
-    "price": 55,
-    "originalPrice": 66,
+    "price": "55.00",
+    "originalPrice": "66.00",
     "description": "High-quality newCables2 for your electrical and plumbing needs.",
     "image": "/Images_SVH/newCables2.png",
     "category": "wiring",
-    "rating": 3.9,
+    "rating": "3.90",
     "reviews": 170,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 163,
     "name": "philip 14w",
-    "price": 115.36,
-    "originalPrice": 138.43,
+    "price": "115.36",
+    "originalPrice": "138.43",
     "description": "High-quality philip 14w for your electrical and plumbing needs.",
     "image": "/Images_SVH/philip_14w.png",
     "category": "electrical",
-    "rating": 4.3,
+    "rating": "4.30",
     "reviews": 52,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 164,
     "name": "philip 22w",
-    "price": 118.02,
-    "originalPrice": 141.62,
+    "price": "118.02",
+    "originalPrice": "141.62",
     "description": "High-quality philip 22w for your electrical and plumbing needs.",
     "image": "/Images_SVH/philip_22w.png",
     "category": "electrical",
-    "rating": 4.8,
+    "rating": "4.80",
     "reviews": 87,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 165,
     "name": "pvc-bend",
-    "price": 84.34,
-    "originalPrice": 101.21,
+    "price": "84.34",
+    "originalPrice": "101.21",
     "description": "Durable and reliable pvc-bend for plumbing projects.",
     "image": "/Images_SVH/pvc-bend.webp",
     "category": "pipes",
-    "rating": 4.2,
+    "rating": "4.20",
     "reviews": 230,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 166,
     "name": "pvc-electrical-bend",
-    "price": 111.26,
-    "originalPrice": 133.51,
+    "price": "111.26",
+    "originalPrice": "133.51",
     "description": "Durable and reliable pvc-electrical-bend for plumbing projects.",
     "image": "/Images_SVH/pvc-electrical-bend.webp",
     "category": "pipes",
-    "rating": 4.7,
+    "rating": "4.70",
     "reviews": 140,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 167,
     "name": "pvc-electrical-fittings",
-    "price": 99.82,
-    "originalPrice": 119.78,
+    "price": "99.82",
+    "originalPrice": "119.78",
     "description": "High-quality pvc-electrical-fittings for your electrical and plumbing needs.",
     "image": "/Images_SVH/pvc-electrical-fittings.webp",
     "category": "electrical",
-    "rating": 3.7,
+    "rating": "3.70",
     "reviews": 359,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 168,
     "name": "pvc-pipe-bend",
-    "price": 88.1,
-    "originalPrice": 105.72,
+    "price": "88.10",
+    "originalPrice": "105.72",
     "description": "Durable and reliable pvc-pipe-bend for plumbing projects.",
     "image": "/Images_SVH/pvc-pipe-bend.webp",
     "category": "pipes",
-    "rating": 4.1,
+    "rating": "4.10",
     "reviews": 70,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 169,
     "name": "pvc-pipe-coupler",
-    "price": 93.86,
-    "originalPrice": 112.63,
+    "price": "93.86",
+    "originalPrice": "112.63",
     "description": "Durable and reliable pvc-pipe-coupler for plumbing projects.",
     "image": "/Images_SVH/pvc-pipe-coupler.webp",
     "category": "pipes",
-    "rating": 3.9,
+    "rating": "3.90",
     "reviews": 342,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 170,
     "name": "rigid-pvc-pipe",
-    "price": 82.62,
-    "originalPrice": 99.14,
+    "price": "82.62",
+    "originalPrice": "99.14",
     "description": "Durable and reliable rigid-pvc-pipe for plumbing projects.",
     "image": "/Images_SVH/rigid-pvc-pipe.webp",
     "category": "pipes",
-    "rating": 4.4,
+    "rating": "4.40",
     "reviews": 431,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 171,
     "name": "slimline25W",
-    "price": 104.22,
-    "originalPrice": 125.06,
+    "price": "104.22",
+    "originalPrice": "125.06",
     "description": "High-quality slimline25W for your electrical and plumbing needs.",
     "image": "/Images_SVH/slimline25W.png",
     "category": "electrical",
-    "rating": 3.6,
+    "rating": "3.60",
     "reviews": 181,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 172,
     "name": "smart-switch",
-    "price": 121.91,
-    "originalPrice": 146.29,
+    "price": "121.91",
+    "originalPrice": "146.29",
     "description": "High-quality smart-switch for your electrical and plumbing needs.",
     "image": "/Images_SVH/smart-switch.png",
     "category": "switches",
-    "rating": 4.8,
+    "rating": "4.80",
     "reviews": 147,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 173,
     "name": "smartfilamentbulb",
-    "price": 170.66,
-    "originalPrice": 204.79,
+    "price": "170.66",
+    "originalPrice": "204.79",
     "description": "Brighten your space with high-quality smartfilamentbulb.",
     "image": "/Images_SVH/smartfilamentbulb.webp",
     "category": "lighting",
-    "rating": 3.8,
+    "rating": "3.80",
     "reviews": 104,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 174,
     "name": "streetLightGM",
-    "price": 1193.38,
-    "originalPrice": 1432.06,
+    "price": "1193.38",
+    "originalPrice": "1432.06",
     "description": "Durable and weather-resistant streetLightGM for outdoor use.",
     "image": "/Images_SVH/streetLightGM.png",
     "category": "outdoor",
-    "rating": 4.3,
+    "rating": "4.30",
     "reviews": 104,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 175,
     "name": "suction-pipe",
-    "price": 104.32,
-    "originalPrice": 125.18,
+    "price": "104.32",
+    "originalPrice": "125.18",
     "description": "Durable and reliable suction-pipe for plumbing projects.",
     "image": "/Images_SVH/suction-pipe.webp",
     "category": "pipes",
-    "rating": 3.7,
+    "rating": "3.70",
     "reviews": 299,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 176,
     "name": "supremeMeter",
-    "price": 99.37,
-    "originalPrice": 119.24,
+    "price": "99.37",
+    "originalPrice": "119.24",
     "description": "High-quality supremeMeter for your electrical and plumbing needs.",
     "image": "/Images_SVH/supremeMeter.png",
     "category": "electrical",
-    "rating": 3.9,
+    "rating": "3.90",
     "reviews": 442,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 177,
     "name": "threadedReducingBush",
-    "price": 103.59,
-    "originalPrice": 124.31,
+    "price": "103.59",
+    "originalPrice": "124.31",
     "description": "Durable and reliable threadedReducingBush for plumbing projects.",
     "image": "/Images_SVH/threadedReducingBush.png",
     "category": "pipes",
-    "rating": 3.9,
+    "rating": "3.90",
     "reviews": 361,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 178,
     "name": "upvc-elbow",
-    "price": 80.4,
-    "originalPrice": 96.48,
+    "price": "80.40",
+    "originalPrice": "96.48",
     "description": "Durable and reliable upvc-elbow for plumbing projects.",
     "image": "/Images_SVH/upvc-elbow.webp",
     "category": "pipes",
-    "rating": 4.7,
+    "rating": "4.70",
     "reviews": 258,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 179,
     "name": "white-t-shape-pvc-elbow",
-    "price": 100.16,
-    "originalPrice": 120.19,
+    "price": "100.16",
+    "originalPrice": "120.19",
     "description": "Durable and reliable white-t-shape-pvc-elbow for plumbing projects.",
     "image": "/Images_SVH/white-t-shape-pvc-elbow.jpg",
     "category": "pipes",
-    "rating": 4.4,
+    "rating": "4.40",
     "reviews": 129,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   },
   {
     "id": 180,
     "name": "yolo 15w",
-    "price": 113.63,
-    "originalPrice": 136.36,
+    "price": "113.63",
+    "originalPrice": "136.36",
     "description": "High-quality yolo 15w for your electrical and plumbing needs.",
     "image": "/Images_SVH/yolo_15w.png",
     "category": "electrical",
-    "rating": 4.1,
+    "rating": "4.10",
     "reviews": 329,
     "stock": 50,
-    "specs": {
-      "material": "Premium Grade",
-      "warranty": "1 Year",
-      "origin": "India",
-      "certification": "ISI Certified"
-    }
+    "createdAt": "2026-03-17T20:29:36.296Z",
+    "updatedAt": "2026-03-17T20:29:36.296Z"
   }
 ]

@@ -38,38 +38,32 @@ app.get('/api/health', (_, res) => res.json({ status: 'ok' }));
 // ── Auto-seed Logic ───────────────────────────────────────────────
 async function autoSeed() {
     try {
-        console.log('🔍 Checking product count...');
-        const result = await db.query('SELECT COUNT(*) FROM "Products"');
-        const count = parseInt(result.rows[0].count);
-        console.log(`📊 Current product count: ${count}`);
+        const tables = ['Products', 'Users', 'CartItems', 'Admins'];
+        for (const table of tables) {
+            console.log(`🔍 Checking ${table} count...`);
+            const result = await db.query(`SELECT COUNT(*) FROM "${table}"`);
+            const count = parseInt(result.rows[0].count);
+            console.log(`📊 Current ${table} count: ${count}`);
 
-        if (count === 0) {
-            console.log('🌱 No products found in database. Starting auto-seed...');
-            const productsJsonPath = path.join(__dirname, 'products.json');
-
-            if (fs.existsSync(productsJsonPath)) {
-                console.log('📖 Reading products.json...');
-                const rawData = fs.readFileSync(productsJsonPath, 'utf8');
-                const products = JSON.parse(rawData);
-                console.log(`📦 Found ${products.length} products to seed.`);
-
-                // Simple bulk insert for PostgreSQL
-                for (const p of products) {
-                    await db.query(
-                        `INSERT INTO "Products" (name, price, "originalPrice", description, image, category, rating, reviews, stock, "createdAt", "updatedAt") 
-                         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW(), NOW())`,
-                        [p.name, p.price, p.originalPrice, p.description, p.image, p.category, p.rating, p.reviews, p.stock]
-                    );
+            if (count === 0) {
+                const jsonPath = path.join(__dirname, `${table.toLowerCase()}.json`);
+                if (fs.existsSync(jsonPath)) {
+                    console.log(`🌱 Seeding ${table} from ${table.toLowerCase()}.json...`);
+                    const data = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+                    
+                    for (const item of data) {
+                        const keys = Object.keys(item).map(k => `"${k}"`).join(', ');
+                        const values = Object.values(item);
+                        const placeholders = values.map((_, i) => `$${i + 1}`).join(', ');
+                        
+                        await db.query(`INSERT INTO "${table}" (${keys}) VALUES (${placeholders}) ON CONFLICT DO NOTHING`, values);
+                    }
+                    console.log(`✅ Successfully seeded ${data.length} items into ${table}.`);
                 }
-                console.log(`✅ Successfully seeded ${products.length} products.`);
-            } else {
-                console.error(`❌ products.json NOT FOUND at: ${productsJsonPath}`);
             }
-        } else {
-            console.log('✅ Products already exist, skipping seed.');
         }
     } catch (err) {
-        console.error('❌ Auto-seed CRITICAL ERROR:', err);
+        console.error('❌ Auto-seed ERROR:', err);
     }
 }
 
@@ -84,58 +78,38 @@ app.use('/api/orders', require('./routes/orders'));
 // ── Debug / Seed Route ───────────────────────────────────────────
 app.get('/api/debug/seed', async (req, res) => {
     try {
-        const resultBefore = await db.query('SELECT COUNT(*) FROM "Products"');
-        const countBefore = parseInt(resultBefore.rows[0].count);
-        const productsJsonPath = path.join(__dirname, 'products.json');
+        const results = {};
+        const tables = ['Products', 'Users', 'CartItems', 'Admins'];
         
-        let fileStatus = "unknown";
-        let seedResult = "skipped";
-
-        if (fs.existsSync(productsJsonPath)) {
-            fileStatus = "found";
-            if (countBefore === 0 || req.query.force === 'true') {
-                const rawData = fs.readFileSync(productsJsonPath, 'utf8');
-                const products = JSON.parse(rawData);
-                
-                // Truncate if forced
+        for (const table of tables) {
+            const jsonPath = path.join(__dirname, `${table.toLowerCase()}.json`);
+            if (fs.existsSync(jsonPath)) {
                 if (req.query.force === 'true') {
-                    await db.query('TRUNCATE TABLE "Products" CASCADE');
+                    await db.query(`TRUNCATE TABLE "${table}" CASCADE`);
                 }
-
-                for (const p of products) {
-                    await db.query(
-                        `INSERT INTO "Products" (name, price, "originalPrice", description, image, category, rating, reviews, stock, "createdAt", "updatedAt") 
-                         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW(), NOW())`,
-                        [p.name, p.price, p.originalPrice, p.description, p.image, p.category, p.rating, p.reviews, p.stock]
-                    );
+                
+                const countRes = await db.query(`SELECT COUNT(*) FROM "${table}"`);
+                if (parseInt(countRes.rows[0].count) === 0 || req.query.force === 'true') {
+                    const data = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+                    for (const item of data) {
+                        const keys = Object.keys(item).map(k => `"${k}"`).join(', ');
+                        const values = Object.values(item);
+                        const placeholders = values.map((_, i) => `$${i + 1}`).join(', ');
+                        await db.query(`INSERT INTO "${table}" (${keys}) VALUES (${placeholders}) ON CONFLICT DO NOTHING`, values);
+                    }
+                    results[table] = `Seeded ${data.length} items`;
+                } else {
+                    results[table] = "Skipped (already exists)";
                 }
-                seedResult = `seeded ${products.length} products`;
             } else {
-                seedResult = "skipped (products already exist)";
+                results[table] = "File not found";
             }
-        } else {
-            fileStatus = "not found";
         }
 
-        const resultAfter = await db.query('SELECT COUNT(*) FROM "Products"');
-        const countAfter = parseInt(resultAfter.rows[0].count);
-
-        res.json({
-            success: true,
-            database: "connected (pg)",
-            fileStatus,
-            seedResult,
-            countBefore,
-            countAfter,
-            path: productsJsonPath
-        });
+        res.json({ success: true, database: "connected", results });
     } catch (err) {
         console.error('Debug seed error:', err);
-        res.status(500).json({
-            success: false,
-            error: err.message,
-            stack: err.stack
-        });
+        res.status(500).json({ success: false, error: err.message });
     }
 });
 

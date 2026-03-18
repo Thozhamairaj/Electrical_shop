@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "email": "raj@gmail.com",
+    "passwordHash": "$2b$12$sw02E3rSFVaG/ZRT.xx2pucBRStLqCY/sNhxiBOVl/YRAJ3YL6yAC",
+    "name": "Shop Administrator",
+    "isActive": true,
+    "lastLogin": "2026-03-17T20:29:20.707Z",
+    "createdAt": "2026-03-17T20:29:08.484Z",
+    "updatedAt": "2026-03-17T20:29:20.707Z"
+  }
+]

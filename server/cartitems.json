@@ -1,0 +1,36 @@
+[
+  {
+    "pk": 12,
+    "userId": "user_39r717XIDYKbgcYVOTHXni8Ijea",
+    "userEmail": "thozhamairaj@gmail.com",
+    "userName": "Thozhamairaj C",
+    "productId": 3,
+    "name": "16A Switch",
+    "price": "145.23",
+    "originalPrice": "174.28",
+    "image": "/Images_SVH/16A Switch.jpg",
+    "category": "switches",
+    "rating": "4.00",
+    "reviews": 400,
+    "quantity": 1,
+    "createdAt": "2026-03-17T23:39:28.339Z",
+    "updatedAt": "2026-03-17T23:39:28.339Z"
+  },
+  {
+    "pk": 13,
+    "userId": "user_39r717XIDYKbgcYVOTHXni8Ijea",
+    "userEmail": "thozhamairaj@gmail.com",
+    "userName": "Thozhamairaj C",
+    "productId": 10,
+    "name": "BallVolve",
+    "price": "82.63",
+    "originalPrice": "99.16",
+    "image": "/Images_SVH/BallVolve.png",
+    "category": "electrical",
+    "rating": "3.60",
+    "reviews": 199,
+    "quantity": 1,
+    "createdAt": "2026-03-17T23:39:28.339Z",
+    "updatedAt": "2026-03-17T23:39:28.339Z"
+  }
+]
