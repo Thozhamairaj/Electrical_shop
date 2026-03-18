@@ -4,264 +4,377 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.75);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, sans-serif;
+  backdrop-filter: blur(4px);
 }
 
 .razorpay-modal {
-  width: 450px;
+  width: 600px;
   background: white;
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  animation: modalPop 0.3s ease-out;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes modalPop {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from { transform: translateY(20px) scale(0.95); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
 }
 
 .modal-header {
   background: #2b3144;
   color: white;
-  padding: 20px;
+  padding: 16px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 4px solid #339af0;
 }
 
 .shop-info {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
 }
 
 .shop-logo {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   background: #339af0;
-  border-radius: 4px;
+  border-radius: 6px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: bold;
+  font-weight: 800;
+  font-size: 18px;
+  box-shadow: 0 4px 10px rgba(51, 154, 240, 0.3);
 }
 
 .shop-info h3 {
   margin: 0;
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .shop-info p {
-  margin: 0;
-  font-size: 12px;
-  opacity: 0.7;
+  margin: 2px 0 0 0;
+  font-size: 11px;
+  opacity: 0.6;
 }
 
 .modal-header .amount {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 22px;
+  font-weight: 800;
+  color: white;
 }
 
 .modal-body {
   padding: 0;
-  min-height: 400px;
+  min-height: 420px;
+  background: #fbfcfd;
 }
 
-.payment-options {
-  background: #f8f9fa;
-  padding: 15px 20px;
+/* Layout for Sidebar + Content */
+.checkout-view {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  height: 100%;
 }
 
-.payment-options h4 {
-  margin: 0 0 10px 0;
-  font-size: 10px;
-  color: #868e96;
-  letter-spacing: 1px;
+.method-sidebar {
+  background: #f1f3f5;
+  border-right: 1px solid #e9ecef;
+  display: flex;
+  flex-direction: column;
 }
 
-.option {
+.method-tab {
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 12px;
-  border-radius: 4px;
+  gap: 12px;
+  padding: 18px 20px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
+  border-bottom: 1px solid #e9ecef;
 }
 
-.option:hover {
+.method-tab:hover {
   background: #e9ecef;
 }
 
-.option.active {
+.method-tab.active {
   background: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  border-left: 4px solid #339af0;
+  border-right: none;
+  margin-right: -1px;
+  box-shadow: -4px 0 0 #339af0 inset;
 }
 
-.option .icon {
-  font-size: 20px;
+.method-tab .icon {
+  font-size: 18px;
 }
 
-.option .text strong {
-  display: block;
-  font-size: 14px;
-  color: #212529;
+.tab-text {
+  display: flex;
+  flex-direction: column;
 }
 
-.option .text span {
-  font-size: 11px;
+.tab-text strong {
+  font-size: 13px;
+  color: #343a40;
+}
+
+.tab-text span {
+  font-size: 10px;
   color: #868e96;
 }
 
-.card-form {
-  padding: 20px;
-  background: white;
+.method-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+.method-form {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Card Form Styles */
 .card-form input {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 12px;
-  border: 1px solid #dee2e6;
+  padding: 14px;
+  margin-bottom: 16px;
+  border: 1.5px solid #dee2e6;
   border-radius: 4px;
   font-size: 14px;
-  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.card-form input:focus {
+  border-color: #339af0;
+  outline: none;
 }
 
 .card-form .row {
   display: flex;
-  gap: 12px;
+  gap: 16px;
 }
 
+.card-labels {
+  display: flex;
+  gap: 15px;
+  margin-top: -5px;
+}
+
+.card-labels span {
+  font-size: 11px;
+  font-weight: 700;
+  color: #adb5bd;
+}
+
+/* UPI Form Styles */
+.upi-apps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.upi-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.app-icon {
+  width: 48px;
+  height: 48px;
+  background: #f8f9fa;
+  border: 1.5px solid #e9ecef;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  color: #339af0;
+}
+
+.upi-app span {
+  font-size: 11px;
+  color: #495057;
+}
+
+.divider {
+  text-align: center;
+  position: relative;
+  margin: 20px 0;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background: #e9ecef;
+}
+
+.divider span {
+  background: #fbfcfd;
+  padding: 0 10px;
+  position: relative;
+  font-size: 11px;
+  color: #adb5bd;
+  font-weight: bold;
+}
+
+.vpa-input {
+  display: flex;
+  gap: 10px;
+}
+
+.vpa-input input {
+  flex: 1;
+  padding: 12px;
+  border: 1.5px solid #dee2e6;
+  border-radius: 4px;
+}
+
+.verify-btn {
+  padding: 0 15px;
+  background: #f1f3f5;
+  border: 1.5px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Netbanking Grid */
+.bank-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.bank-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px;
+  border: 1.5px solid #e9ecef;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.bank-logo-placeholder {
+  font-size: 10px;
+  font-weight: 800;
+  color: #adb5bd;
+}
+
+.bank-item span {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.bank-select {
+  width: 100%;
+  padding: 12px;
+  border: 1.5px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Pay Button */
 .pay-btn {
-  width: calc(100% - 40px);
-  margin: 0 20px 20px 20px;
-  padding: 15px;
+  width: 100%;
+  padding: 16px;
   background: #339af0;
   color: white;
   border: none;
   border-radius: 4px;
-  font-weight: bold;
-  font-size: 16px;
+  font-weight: 800;
+  font-size: 15px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(51, 154, 240, 0.4);
 }
 
 .pay-btn:hover {
   background: #228be6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(51, 154, 240, 0.5);
+}
+
+.pay-btn:active {
+  transform: translateY(0);
+}
+
+/* Success Modal Enhancement */
+.success-modal {
+  width: 400px;
+  background: white;
+  border-radius: 8px;
+  padding: 48px 32px;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+.success-details {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.success-details p {
+  font-family: 'Monaco', monospace;
+  font-size: 12px;
+  margin: 8px 0;
+}
+
+.redirect-note {
+  font-size: 11px;
+  color: #adb5bd;
+  margin-top: 20px;
 }
 
 .modal-footer {
+  background: #f1f3f5;
+  padding: 12px;
   text-align: center;
-  padding: 15px;
-  border-top: 1px solid #f1f3f5;
-  background: #f8f9fa;
+  border-top: 1px solid #e9ecef;
 }
 
 .modal-footer p {
-  margin: 0;
   font-size: 11px;
-  color: #adb5bd;
+  color: #495057;
+  letter-spacing: 0.05em;
 }
 
-.razorpay-logo {
-  font-weight: 900;
+.modal-footer strong {
   color: #339af0;
-  font-size: 14px;
-  margin-top: 5px;
-  letter-spacing: -1px;
-}
-
-.razorpay-loader {
-  text-align: center;
-  color: white;
-}
-
-.spinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid rgba(255, 255, 255, 0.3);
-  border-top: 4px solid white;
-  border-radius: 50%;
-  margin: 0 auto 20px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-.processing {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 400px;
-}
-
-.processing .spinner {
-  border-top-color: #339af0;
-  border-color: #e9ecef;
-}
-
-.processing p {
-  margin: 10px 0 0 0;
-  font-weight: bold;
-  color: #212529;
-}
-
-.processing .subtext {
-  font-size: 12px;
-  color: #868e96;
-  font-weight: normal;
-}
-
-.success-modal {
-  background: white;
-  padding: 40px;
-  border-radius: 12px;
-  text-align: center;
-  width: 350px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.success-icon {
-  width: 70px;
-  height: 70px;
-  background: #40c057;
-  color: white;
-  font-size: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  margin: 0 auto 20px;
-}
-
-.success-modal h2 {
-  margin: 0 0 10px 0;
-  color: #2b3144;
-}
-
-.success-modal p {
-  margin: 5px 0;
-  color: #868e96;
-}
-
-.success-modal button {
-  margin-top: 30px;
-  padding: 12px 25px;
-  background: #339af0;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
+  font-weight: 900;
 }

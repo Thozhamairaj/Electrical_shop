@@ -12,6 +12,8 @@ export default function DummyRazorpay() {
   const navigate = useNavigate();
   const { product, quantity, totalAmount, orderId, isExistingOrder, isCartCheckout, items } = location.state || {};
   const [step, setStep] = useState('loading'); // loading -> payment -> processing -> success
+  const [method, setMethod] = useState('card'); // card, upi, netbanking, wallet
+  const [processingSubtext, setProcessingSubtext] = useState('Processing Payment...');
 
   useEffect(() => {
     if (!product && !isExistingOrder && !isCartCheckout) {
@@ -22,16 +24,30 @@ export default function DummyRazorpay() {
     return () => clearTimeout(timer);
   }, [product, isExistingOrder, isCartCheckout, navigate]);
 
+  useEffect(() => {
+    if (step === 'success') {
+      const timer = setTimeout(() => {
+        navigate('/');
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [step, navigate]);
+
   const handlePay = async () => {
     setStep('processing');
+    setProcessingSubtext('Communicating with Bank...');
     const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
     
     try {
+      // Simulate real-ish delay
+      await new Promise(r => setTimeout(r, 1000));
+      setProcessingSubtext('Authorizing Transaction...');
+      await new Promise(r => setTimeout(r, 800));
+      setProcessingSubtext('Finalizing payment...');
+
       if (isExistingOrder && orderId) {
-        // Update existing order (e.g. from WhatsApp)
         await axios.post(`${apiUrl}/api/orders/${orderId}/pay`);
       } else if (isCartCheckout && items) {
-        // Create new paid order from Cart
         await axios.post(`${apiUrl}/api/orders`, {
           userId: user.id,
           userEmail: user.primaryEmailAddress?.emailAddress,
@@ -43,7 +59,6 @@ export default function DummyRazorpay() {
         });
         clearCart();
       } else if (product) {
-        // Create new paid order from "Buy Now"
         await axios.post(`${apiUrl}/api/orders`, {
           userId: user.id,
           userEmail: user.primaryEmailAddress?.emailAddress,
@@ -55,14 +70,81 @@ export default function DummyRazorpay() {
         });
       }
 
-      // Simple delay to simulate processing
-      setTimeout(() => {
-        setStep('success');
-      }, 2000);
+      setStep('success');
     } catch (err) {
       console.error('Payment error:', err);
       alert('Mock Payment Failed. Please try again.');
       setStep('payment');
+    }
+  };
+
+  const renderMethodForm = () => {
+    switch (method) {
+      case 'upi':
+        return (
+          <div className="method-form upi-form">
+            <div className="upi-apps">
+              {['GPay', 'PhonePe', 'Paytm', 'BHIM'].map(app => (
+                <div key={app} className="upi-app">
+                  <div className="app-icon">{app[0]}</div>
+                  <span>{app}</span>
+                </div>
+              ))}
+            </div>
+            <div className="divider"><span>OR</span></div>
+            <div className="vpa-input">
+              <input type="text" placeholder="Enter UPI ID (e.g. name@bank)" defaultValue="customer@okhdfc" />
+              <button className="verify-btn">Verify</button>
+            </div>
+          </div>
+        );
+      case 'netbanking':
+        return (
+          <div className="method-form netbanking-form">
+            <div className="bank-grid">
+              {['SBI', 'HDFC', 'ICICI', 'AXIS', 'KOTAK', 'PNB'].map(bank => (
+                <div key={bank} className="bank-item">
+                  <div className="bank-logo-placeholder">{bank}</div>
+                  <span>{bank}</span>
+                </div>
+              ))}
+            </div>
+            <select className="bank-select">
+              <option>Select another bank</option>
+              <option>Bank of Baroda</option>
+              <option>Canara Bank</option>
+              <option>Union Bank</option>
+            </select>
+          </div>
+        );
+      case 'wallet':
+        return (
+          <div className="method-form wallet-form">
+            {['Amazon Pay', 'MobiKwik', 'Freecharge', 'Airtel Money'].map(wallet => (
+              <div key={wallet} className="wallet-item">
+                <span className="bullet">○</span>
+                <span>{wallet}</span>
+              </div>
+            ))}
+          </div>
+        );
+      default:
+        return (
+          <div className="method-form card-form">
+            <input type="text" placeholder="Card Number" defaultValue="4312 8765 4321 0987" />
+            <div className="row">
+              <input type="text" placeholder="Expiry (MM/YY)" defaultValue="12/28" />
+              <input type="password" placeholder="CVV" defaultValue="•••" />
+            </div>
+            <input type="text" placeholder="Card Holder Name" defaultValue={user?.fullName || 'John Doe'} />
+            <div className="card-labels">
+              <span>Visa</span>
+              <span>MasterCard</span>
+              <span>Maestro</span>
+              <span>RuPay</span>
+            </div>
+          </div>
+        );
     }
   };
 
@@ -83,9 +165,13 @@ export default function DummyRazorpay() {
         <div className="success-modal">
           <div className="success-icon">✓</div>
           <h2>Payment Successful!</h2>
-          <p>Order ID: #ORD-{Math.floor(Math.random() * 1000000)}</p>
-          <p>Amount Paid: ₹{totalAmount?.toFixed(2)}</p>
-          <button onClick={() => navigate('/')}>Continue Shopping</button>
+          <div className="success-details">
+            <p>Order Reference: #ORD-{Math.floor(Math.random() * 1000000)}</p>
+            <p>Amount: ₹{totalAmount?.toFixed(2)}</p>
+            <p>Bank Ref: RPX_{Math.random().toString(36).substr(2, 9).toUpperCase()}</p>
+          </div>
+          <button onClick={() => navigate('/orders')}>View My Orders</button>
+          <p className="redirect-note">Redirecting to home in 5s...</p>
         </div>
       </div>
     );
@@ -96,10 +182,10 @@ export default function DummyRazorpay() {
       <div className="razorpay-modal">
         <div className="modal-header">
           <div className="shop-info">
-            <div className="shop-logo">ES</div>
+            <div className="shop-logo">SVH</div>
             <div>
-              <h3>Electrical Shop</h3>
-              <p>order_summary_{Date.now()}</p>
+              <h3>Sri Vinayaga Hardwares</h3>
+              <p>#{orderId ? `Order ${orderId}` : 'Cart Checkout'}</p>
             </div>
           </div>
           <div className="amount">₹{totalAmount?.toFixed(2)}</div>
@@ -109,62 +195,66 @@ export default function DummyRazorpay() {
           {step === 'processing' ? (
             <div className="processing">
               <div className="spinner"></div>
-              <p>Processing Payment...</p>
+              <p>{processingSubtext}</p>
               <p className="subtext">Do not refresh or close the window</p>
             </div>
           ) : (
-            <>
-              <div className="payment-options">
-                <h4>PAYMENT OPTIONS</h4>
-                <div className="option active">
+            <div className="checkout-view">
+              <div className="method-sidebar">
+                <div 
+                  className={`method-tab ${method === 'card' ? 'active' : ''}`}
+                  onClick={() => setMethod('card')}
+                >
                   <span className="icon">💳</span>
-                  <div className="text">
+                  <div className="tab-text">
                     <strong>Cards</strong>
-                    <span>Visa, MasterCard, RuPay, and Maestro</span>
+                    <span>Visa, Master, etc</span>
                   </div>
                 </div>
-                <div className="option">
+                <div 
+                  className={`method-tab ${method === 'upi' ? 'active' : ''}`}
+                  onClick={() => setMethod('upi')}
+                >
+                  <span className="icon">📱</span>
+                  <div className="tab-text">
+                    <strong>UPI</strong>
+                    <span>GPay, PhonePe</span>
+                  </div>
+                </div>
+                <div 
+                  className={`method-tab ${method === 'netbanking' ? 'active' : ''}`}
+                  onClick={() => setMethod('netbanking')}
+                >
                   <span className="icon">🏦</span>
-                  <div className="text">
+                  <div className="tab-text">
                     <strong>Netbanking</strong>
                     <span>All Indian Banks</span>
                   </div>
                 </div>
-                <div className="option">
-                  <span className="icon">📱</span>
-                  <div className="text">
-                    <strong>UPI</strong>
-                    <span>Google Pay, PhonePe, Paytm, etc.</span>
-                  </div>
-                </div>
-                <div className="option">
+                <div 
+                  className={`method-tab ${method === 'wallet' ? 'active' : ''}`}
+                  onClick={() => setMethod('wallet')}
+                >
                   <span className="icon">💰</span>
-                  <div className="text">
+                  <div className="tab-text">
                     <strong>Wallet</strong>
-                    <span>Mobikwik, Freecharge, etc.</span>
+                    <span>Paytm, Mobikwik</span>
                   </div>
                 </div>
               </div>
 
-              <div className="card-form">
-                <input type="text" placeholder="Card Number" defaultValue="4312 8765 4321 0987" />
-                <div className="row">
-                  <input type="text" placeholder="Expiry (MM/YY)" defaultValue="12/28" />
-                  <input type="password" placeholder="CVV" defaultValue="•••" />
-                </div>
-                <input type="text" placeholder="Card Holder Name" defaultValue="John Doe" />
+              <div className="method-content">
+                {renderMethodForm()}
+                <button className="pay-btn" onClick={handlePay}>
+                  PAY ₹{totalAmount?.toFixed(2)}
+                </button>
               </div>
-
-              <button className="pay-btn" onClick={handlePay}>
-                PAY ₹{totalAmount?.toFixed(2)}
-              </button>
-            </>
+            </div>
           )}
         </div>
 
         <div className="modal-footer">
-          <p>Trusted by over 50 lakh businesses</p>
-          <div className="razorpay-logo">RAZORPAY</div>
+          <p>🔒 100% Secure Payments | Powered by <strong>RAZORPAY</strong></p>
         </div>
       </div>
     </div>
