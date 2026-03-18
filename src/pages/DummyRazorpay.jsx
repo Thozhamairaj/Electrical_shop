@@ -190,12 +190,18 @@ export default function DummyRazorpay() {
     }
   };
 
+  const itemList = isCartCheckout ? items : (product ? [{ ...product, quantity }] : []);
+  const subtotal = itemList.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
+  const shipping = subtotal >= 500 ? 0 : 50;
+
   if (step === 'loading') {
     return (
       <div className="razorpay-overlay">
-        <div className="razorpay-loader">
-          <div className="spinner"></div>
-          <p>Initialising Secure Payment...</p>
+        <div className="state-center">
+          <div className="razorpay-loader">
+            <div className="spinner"></div>
+            <p>Initialising Secure Payment...</p>
+          </div>
         </div>
       </div>
     );
@@ -204,16 +210,19 @@ export default function DummyRazorpay() {
   if (step === 'success') {
     return (
       <div className="razorpay-overlay">
-        <div className="success-modal">
-          <div className="success-icon">✓</div>
-          <h2>Payment Successful!</h2>
-          <div className="success-details">
-            <p>Order Reference: #ORD-{Math.floor(Math.random() * 1000000)}</p>
-            <p>Amount: ₹{totalAmount?.toFixed(2)}</p>
-            <p>Bank Ref: RPX_{Math.random().toString(36).substr(2, 9).toUpperCase()}</p>
+        <div className="state-center">
+          <div className="success-modal">
+            <div className="success-icon">✓</div>
+            <h2>Payment Successful!</h2>
+            <div className="success-details">
+              <p>ORDER ID: #ORD-{Math.floor(Math.random() * 1000000)}</p>
+              <p>AMOUNT PAID: ₹{totalAmount?.toFixed(2)}</p>
+              <p>BANK REF: RPX_{Math.random().toString(36).substr(2, 9).toUpperCase()}</p>
+              <p>STATUS: CONFIRMED</p>
+            </div>
+            <button onClick={() => navigate('/orders')}>VIEW MY ORDERS</button>
+            <p className="redirect-note">Redirecting to orders in 7s...</p>
           </div>
-          <button onClick={() => navigate('/orders')}>View My Orders</button>
-          <p className="redirect-note">Redirecting to orders in 5s...</p>
         </div>
       </div>
     );
@@ -221,84 +230,116 @@ export default function DummyRazorpay() {
 
   return (
     <div className="razorpay-overlay">
-      <div className="razorpay-modal">
-        <div className="modal-header">
-          <div className="shop-info">
-            <div className="shop-logo">SVH</div>
-            <div>
-              <h3>Sri Vinayaga Hardwares</h3>
-              <p>#{orderId ? `Order ${orderId}` : 'Cart Checkout'}</p>
-            </div>
+      <header className="checkout-header">
+        <button onClick={() => navigate(-1)} className="back-link">
+          ‹ Back to shop
+        </button>
+        <div className="progress-steps">
+          <div className="step completed">
+            <span className="step-num">✓</span>
+            <span>Shopping cart</span>
           </div>
-          <div className="amount">₹{totalAmount?.toFixed(2)}</div>
+          <div className="step active">
+            <span className="step-num">2</span>
+            <span>Payment details</span>
+          </div>
+          <div className="step">
+            <span className="step-num">3</span>
+            <span>Payment complete</span>
+          </div>
         </div>
+      </header>
 
-        <div className="modal-body">
+      <main className="checkout-container">
+        <section className="payment-section">
           {step === 'processing' ? (
             <div className="processing">
               <div className="spinner"></div>
-              <p>{processingSubtext}</p>
-              <p className="subtext">Do not refresh or close the window</p>
+              <h3>{processingSubtext}</h3>
+              <p>Please do not refresh or close this page.</p>
             </div>
           ) : (
-            <div className="checkout-view">
-              <div className="method-sidebar">
+            <>
+              <h2>How would you like to pay?</h2>
+              <div className="method-grid">
                 <div 
-                  className={`method-tab ${method === 'card' ? 'active' : ''}`}
+                  className={`method-card ${method === 'card' ? 'active' : ''}`}
                   onClick={() => setMethod('card')}
                 >
                   <span className="icon">💳</span>
-                  <div className="tab-text">
-                    <strong>Cards</strong>
-                    <span>Visa, Master, etc</span>
-                  </div>
+                  <strong>Cards</strong>
                 </div>
                 <div 
-                  className={`method-tab ${method === 'upi' ? 'active' : ''}`}
+                  className={`method-card ${method === 'upi' ? 'active' : ''}`}
                   onClick={() => setMethod('upi')}
                 >
                   <span className="icon">📱</span>
-                  <div className="tab-text">
-                    <strong>UPI</strong>
-                    <span>GPay, PhonePe</span>
-                  </div>
+                  <strong>UPI</strong>
                 </div>
                 <div 
-                  className={`method-tab ${method === 'netbanking' ? 'active' : ''}`}
+                  className={`method-card ${method === 'netbanking' ? 'active' : ''}`}
                   onClick={() => setMethod('netbanking')}
                 >
                   <span className="icon">🏦</span>
-                  <div className="tab-text">
-                    <strong>Netbanking</strong>
-                    <span>All Indian Banks</span>
-                  </div>
+                  <strong>Netbanking</strong>
                 </div>
                 <div 
-                  className={`method-tab ${method === 'wallet' ? 'active' : ''}`}
+                  className={`method-card ${method === 'wallet' ? 'active' : ''}`}
                   onClick={() => setMethod('wallet')}
                 >
                   <span className="icon">💰</span>
-                  <div className="tab-text">
-                    <strong>Wallet</strong>
-                    <span>Paytm, Mobikwik</span>
-                  </div>
+                  <strong>Wallet</strong>
                 </div>
               </div>
 
-              <div className="method-content">
+              <div className="method-form">
                 {renderMethodForm()}
                 <button className="pay-btn" onClick={handlePay}>
-                  PAY ₹{totalAmount?.toFixed(2)}
+                  Continue to secure payment
                 </button>
               </div>
-            </div>
+            </>
           )}
-        </div>
+        </section>
 
-        <div className="modal-footer">
-          <p>🔒 100% Secure Payments | Powered by <strong>RAZORPAY</strong></p>
-        </div>
-      </div>
+        <section className="summary-section">
+          <h3>Order Summary</h3>
+          <p className="order-ref">Order reference: {orderId || 'NEW-ORDER'}</p>
+          
+          <div className="order-items">
+            {itemList.map((item, idx) => (
+              <div key={idx} className="summary-item">
+                <img src={encodeURI(item.image)} alt={item.name} />
+                <div className="item-info">
+                  <h4>{item.name}</h4>
+                  <p>x {item.quantity || quantity || 1}</p>
+                </div>
+                <div className="item-price">₹{(item.price * (item.quantity || quantity || 1)).toFixed(2)}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="price-breakdown">
+            <div className="row">
+              <span>Shipping</span>
+              <span>{shipping === 0 ? 'Free' : `₹${shipping.toFixed(2)}`}</span>
+            </div>
+            <div className="row">
+              <span>Taxes (Included)</span>
+              <span>₹{(totalAmount - (totalAmount / 1.18)).toFixed(2)}</span>
+            </div>
+          </div>
+
+          <div className="row total">
+            <span>Total</span>
+            <span>₹{totalAmount?.toFixed(2)}</span>
+          </div>
+        </section>
+      </main>
+
+      <footer className="modal-footer" style={{ background: 'transparent' }}>
+        <p>🔒 100% SECURE PAYMENTS | POWERED BY <strong>RAZORPAY</strong></p>
+      </footer>
     </div>
   );
 }
