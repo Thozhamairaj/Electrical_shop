@@ -121,90 +121,25 @@ export default function Cart() {
   };
 
   const handleRazorpayCheckout = async () => {
-    try {
-      if (!isSignedIn) {
-        alert('Please login to proceed with checkout.');
-        navigate('/auth');
-        return;
-      }
-
-      if (!cartItems || cartItems.length === 0) {
-        alert('Your cart is empty. Please add items before checkout.');
-        return;
-      }
-
-      const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
-      if (!res) {
-        alert('Payment gateway is unavailable. Please try again or use WhatsApp to order.');
-        return;
-      }
-
-      try {
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-        const { data: orderData } = await axios.post(`${apiUrl}/api/orders/create-razorpay-order`, {
-          userId: user.id,
-          userEmail: user.primaryEmailAddress?.emailAddress || 'noemail@example.com',
-          userName: user.fullName || user.username || 'Customer',
-          userPhone: '',
-          items: cartItems,
-          totalAmount: cartTotal,
-          shippingAddress: 'To be collected',
-          notes: 'Razorpay payment',
-        });
-
-        if (!orderData || !orderData.razorpayOrderId) {
-          throw new Error('Invalid order response from server');
-        }
-
-        const options = {
-          key: orderData.keyId || 'rzp_live_key',
-          amount: orderData.amount,
-          currency: orderData.currency || 'INR',
-          name: 'Electrical Shop',
-          description: 'Order Payment',
-          order_id: orderData.razorpayOrderId,
-          handler: async function (response) {
-            try {
-              const { data: verifyData } = await axios.post('http://localhost:5000/api/orders/verify-payment', {
-                razorpay_order_id: response.razorpay_order_id,
-                razorpay_payment_id: response.razorpay_payment_id,
-                razorpay_signature: response.razorpay_signature,
-              });
-
-              alert(verifyData.message || 'Payment successful!');
-              clearCart();
-              navigate('/orders');
-            } catch (err) {
-              console.error('Payment verification failed', err);
-              alert('Payment completed but verification failed. Please contact support.');
-            }
-          },
-          prefill: {
-            name: user.fullName || user.username || '',
-            email: user.primaryEmailAddress?.emailAddress || '',
-            contact: ''
-          },
-          theme: {
-            color: '#3399cc',
-          },
-        };
-
-        const paymentObject = new window.Razorpay(options);
-
-        paymentObject.on('payment.failed', function (response) {
-          console.error('Payment failed', response.error);
-          alert(`Payment Failed: ${response.error?.description || 'Unknown error'}`);
-        });
-
-        paymentObject.open();
-      } catch (error) {
-        console.error('Checkout error:', error);
-        alert(`Checkout error: ${error.message || 'Unable to process payment. Please try again.'}`);
-      }
-    } catch (error) {
-      console.error('Razorpay checkout error:', error);
-      alert('An unexpected error occurred. Please try again.');
+    if (!isSignedIn) {
+      alert('Please login to proceed with checkout.');
+      navigate('/auth');
+      return;
     }
+
+    if (!cartItems || cartItems.length === 0) {
+      alert('Your cart is empty.');
+      return;
+    }
+
+    // Redirect to dummy payment
+    navigate('/payment', {
+      state: {
+        isCartCheckout: true,
+        items: cartItems,
+        totalAmount: cartTotal >= 500 ? cartTotal : cartTotal + 50
+      }
+    });
   };
 
   if (cartItems.length === 0) {

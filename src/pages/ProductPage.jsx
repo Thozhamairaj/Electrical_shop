@@ -118,11 +118,6 @@ export default function ProductPage() {
     }
   };
 
-  const handleWhatsAppEnquiry = () => {
-    const message = formatProductEnquiryMessage(product);
-    const url = generateWhatsAppUrl(message);
-    window.open(url, '_blank');
-  };
 
   const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
   const relatedProducts = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
@@ -214,9 +209,6 @@ export default function ProductPage() {
               <span className="whatsapp-icon">💬</span> Order on WhatsApp
             </button>
 
-            <button className="whatsapp-enquiry-btn" onClick={handleWhatsAppEnquiry}>
-              Enquire on WhatsApp
-            </button>
 
             <button 
               className={`wishlist-btn ${isInWishlist(product.id) ? 'active' : ''}`}

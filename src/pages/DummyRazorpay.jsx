@@ -1,30 +1,58 @@
-import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useUser } from '@clerk/clerk-react';
+import { useCart } from '../context/CartContext';
 import './DummyRazorpay.css';
 
 export default function DummyRazorpay() {
+  const { user } = useUser();
+  const { clearCart } = useCart();
   const location = useLocation();
   const navigate = useNavigate();
-  const { product, quantity, totalAmount, orderId, isExistingOrder } = location.state || {};
+  const { product, quantity, totalAmount, orderId, isExistingOrder, isCartCheckout, items } = location.state || {};
   const [step, setStep] = useState('loading'); // loading -> payment -> processing -> success
 
   useEffect(() => {
-    if (!product && !isExistingOrder) {
+    if (!product && !isExistingOrder && !isCartCheckout) {
       navigate('/');
       return;
     }
     const timer = setTimeout(() => setStep('payment'), 1500);
     return () => clearTimeout(timer);
-  }, [product, isExistingOrder, navigate]);
+  }, [product, isExistingOrder, isCartCheckout, navigate]);
 
   const handlePay = async () => {
     setStep('processing');
     
     try {
       if (isExistingOrder && orderId) {
+        // Update existing order (e.g. from WhatsApp)
         await axios.post(`http://localhost:5000/api/orders/${orderId}/pay`);
+      } else if (isCartCheckout && items) {
+        // Create new paid order from Cart
+        await axios.post('http://localhost:5000/api/orders', {
+          userId: user.id,
+          userEmail: user.primaryEmailAddress?.emailAddress,
+          userName: user.fullName || user.username || 'Customer',
+          items: items,
+          totalAmount: totalAmount,
+          paymentStatus: 'paid',
+          status: 'confirmed'
+        });
+        clearCart();
+      } else if (product) {
+        // Create new paid order from "Buy Now"
+        await axios.post('http://localhost:5000/api/orders', {
+          userId: user.id,
+          userEmail: user.primaryEmailAddress?.emailAddress,
+          userName: user.fullName || user.username || 'Customer',
+          items: [{ ...product, quantity }],
+          totalAmount: totalAmount,
+          paymentStatus: 'paid',
+          status: 'confirmed'
+        });
       }
+
       // Simple delay to simulate processing
       setTimeout(() => {
         setStep('success');
