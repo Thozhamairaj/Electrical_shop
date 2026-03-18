@@ -1,27 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './DummyRazorpay.css';
 
 export default function DummyRazorpay() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { product, quantity, totalAmount } = location.state || {};
+  const { product, quantity, totalAmount, orderId, isExistingOrder } = location.state || {};
   const [step, setStep] = useState('loading'); // loading -> payment -> processing -> success
 
   useEffect(() => {
-    if (!product) {
+    if (!product && !isExistingOrder) {
       navigate('/');
       return;
     }
     const timer = setTimeout(() => setStep('payment'), 1500);
     return () => clearTimeout(timer);
-  }, [product, navigate]);
+  }, [product, isExistingOrder, navigate]);
 
-  const handlePay = () => {
+  const handlePay = async () => {
     setStep('processing');
-    setTimeout(() => {
-      setStep('success');
-    }, 2000);
+    
+    try {
+      if (isExistingOrder && orderId) {
+        await axios.post(`http://localhost:5000/api/orders/${orderId}/pay`);
+      }
+      // Simple delay to simulate processing
+      setTimeout(() => {
+        setStep('success');
+      }, 2000);
+    } catch (err) {
+      console.error('Payment error:', err);
+      alert('Mock Payment Failed. Please try again.');
+      setStep('payment');
+    }
   };
 
   if (step === 'loading') {

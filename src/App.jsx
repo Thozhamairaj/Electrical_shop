@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import { CartProvider } from './context/CartContext';
+import { WishlistProvider } from './context/WishlistContext';
 import { AdminProvider } from './context/AdminContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -21,6 +22,8 @@ import AdminOrders from './pages/admin/AdminOrders';
 import Chatbot from './components/Chatbot';
 import CheckoutLink from './pages/CheckoutLink';
 import DummyRazorpay from './pages/DummyRazorpay';
+import Wishlist from './pages/Wishlist';
+import Orders from './pages/Orders';
 import './App.css';
 
 function CustomerLayout({ children }) {
@@ -40,9 +43,10 @@ function App() {
   return (
     <AdminProvider>
       <CartProvider>
-        <UserSync />
-        <Router>
-          <Routes>
+        <WishlistProvider>
+          <UserSync />
+          <Router>
+            <Routes>
             {/* ── Admin routes (no customer header/footer) ─────────── */}
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route
@@ -141,6 +145,27 @@ function App() {
                 </CustomerLayout>
               }
             />
+            <Route
+              path="/wishlist"
+              element={
+                <CustomerLayout>
+                  <Wishlist />
+                </CustomerLayout>
+              }
+            />
+            <Route
+              path="/orders"
+              element={
+                <CustomerLayout>
+                  <SignedIn>
+                    <Orders />
+                  </SignedIn>
+                  <SignedOut>
+                    <Navigate to="/auth" replace />
+                  </SignedOut>
+                </CustomerLayout>
+              }
+            />
 
             {/* Public Payment Link */}
             <Route path="/payment-link/:orderId" element={<CheckoutLink />} />
@@ -164,8 +189,9 @@ function App() {
             />
           </Routes>
         </Router>
-      </CartProvider>
-    </AdminProvider>
+      </WishlistProvider>
+    </CartProvider>
+  </AdminProvider>
   );
 }
 

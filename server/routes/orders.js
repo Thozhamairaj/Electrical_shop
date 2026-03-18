@@ -178,4 +178,27 @@ router.put('/:id/status', adminAuth, async (req, res) => {
     }
 });
 
+// Mock Payment for Dummy Flow
+router.post('/:id/pay', async (req, res) => {
+    try {
+        const result = await db.query(
+            `UPDATE "Orders" 
+             SET "paymentStatus" = 'paid', status = 'confirmed', "updatedAt" = NOW()
+             WHERE id = $1 RETURNING *`,
+            [req.params.id]
+        );
+        if (result.rows.length === 0) return res.status(404).json({ error: 'Order not found' });
+        
+        // Also reduce stock if not already done (for WhatsApp orders becoming paid)
+        const order = result.rows[0];
+        if (order.items) {
+            await reduceStock(typeof order.items === 'string' ? JSON.parse(order.items) : order.items);
+        }
+
+        res.json({ message: 'Payment successful', order: result.rows[0] });
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to process payment' });
+    }
+});
+
 module.exports = router;

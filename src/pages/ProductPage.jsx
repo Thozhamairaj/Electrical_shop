@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth, useUser } from '@clerk/clerk-react';
 import { useCart } from '../context/CartContext';
+import { useWishlist } from '../context/WishlistContext';
 import { products } from '../data/products';
 import { generateWhatsAppUrl, formatProductOrderMessage, formatProductEnquiryMessage } from '../utils/whatsapp';
 import { userService } from '../services/userService';
@@ -15,6 +16,7 @@ export default function ProductPage() {
   const { isSignedIn } = useAuth();
   const { user } = useUser();
   const { addToCart } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
   const navigate = useNavigate();
   const product = products.find(p => p.id === parseInt(id));
   const [quantity, setQuantity] = useState(1);
@@ -216,7 +218,12 @@ export default function ProductPage() {
               Enquire on WhatsApp
             </button>
 
-            <button className="wishlist-btn">♡ Add to Wishlist</button>
+            <button 
+              className={`wishlist-btn ${isInWishlist(product.id) ? 'active' : ''}`}
+              onClick={() => toggleWishlist(product)}
+            >
+              {isInWishlist(product.id) ? '❤️ In Wishlist' : '♡ Add to Wishlist'}
+            </button>
           </div>
 
           <div className="trust-badges">
