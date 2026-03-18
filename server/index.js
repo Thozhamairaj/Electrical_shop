@@ -3,8 +3,10 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
+const db = require('./db');
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
 // ── Middleware ────────────────────────────────────────────────────
 const frontendUrl = process.env.FRONTEND_URL ? process.env.FRONTEND_URL.replace(/\/$/, '') : null;
@@ -33,46 +35,12 @@ app.use(express.json());
 
 app.get('/api/health', (_, res) => res.json({ status: 'ok' }));
 
-const { Sequelize } = require('sequelize');
-const PORT = process.env.PORT || 5000;
-
-const sequelize = process.env.DATABASE_URL
-    ? new Sequelize(process.env.DATABASE_URL, {
-        dialect: 'postgres',
-        dialectOptions: {
-            ssl: {
-                require: true,
-                rejectUnauthorized: false
-            }
-        },
-        logging: false,
-    })
-    : new Sequelize(
-        process.env.DB_NAME,
-        process.env.DB_USER,
-        process.env.DB_PASSWORD,
-        {
-            host: process.env.DB_HOST,
-            port: process.env.DB_PORT,
-            dialect: 'postgres',
-            logging: false,
-        }
-    );
-
-// Export sequelize for use in models
-module.exports = { sequelize };
-
-// Import models (order matters — independent models first)
-const Users = require('./models/User');
-const Products = require('./models/Product');
-const CartItems = require('./models/CartItem');
-const Admins = require('./models/Admin');
-const Orders = require('./models/Order');
-
+// ── Auto-seed Logic ───────────────────────────────────────────────
 async function autoSeed() {
     try {
         console.log('🔍 Checking product count...');
-        const count = await Products.count();
+        const result = await db.query('SELECT COUNT(*) FROM "Products"');
+        const count = parseInt(result.rows[0].count);
         console.log(`📊 Current product count: ${count}`);
 
         if (count === 0) {
@@ -85,7 +53,14 @@ async function autoSeed() {
                 const products = JSON.parse(rawData);
                 console.log(`📦 Found ${products.length} products to seed.`);
 
-                await Products.bulkCreate(products);
+                // Simple bulk insert for PostgreSQL
+                for (const p of products) {
+                    await db.query(
+                        `INSERT INTO "Products" (name, price, "originalPrice", description, image, category, rating, reviews, stock, "createdAt", "updatedAt") 
+                         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW(), NOW())`,
+                        [p.name, p.price, p.originalPrice, p.description, p.image, p.category, p.rating, p.reviews, p.stock]
+                    );
+                }
                 console.log(`✅ Successfully seeded ${products.length} products.`);
             } else {
                 console.error(`❌ products.json NOT FOUND at: ${productsJsonPath}`);
@@ -98,38 +73,42 @@ async function autoSeed() {
     }
 }
 
-// Register routes
-const cartRoutes = require('./routes/cart');
-const userRoutes = require('./routes/users');
-const productRoutes = require('./routes/products');
-const adminRoutes = require('./routes/admin');
-const adminProductRoutes = require('./routes/adminProducts');
-const orderRoutes = require('./routes/orders');
-
-app.use('/api/cart', cartRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/admin', adminRoutes);
-app.use('/api/admin-products', adminProductRoutes);
-app.use('/api/orders', orderRoutes);
+// ── Register Routes ───────────────────────────────────────────────
+app.use('/api/cart', require('./routes/cart'));
+app.use('/api/users', require('./routes/users'));
+app.use('/api/products', require('./routes/products'));
+app.use('/api/admin', require('./routes/admin'));
+app.use('/api/admin-products', require('./routes/adminProducts'));
+app.use('/api/orders', require('./routes/orders'));
 
 // ── Debug / Seed Route ───────────────────────────────────────────
 app.get('/api/debug/seed', async (req, res) => {
     try {
-        const countBefore = await Products.count();
+        const resultBefore = await db.query('SELECT COUNT(*) FROM "Products"');
+        const countBefore = parseInt(resultBefore.rows[0].count);
         const productsJsonPath = path.join(__dirname, 'products.json');
         
         let fileStatus = "unknown";
         let seedResult = "skipped";
-        let error = null;
 
         if (fs.existsSync(productsJsonPath)) {
             fileStatus = "found";
-            const rawData = fs.readFileSync(productsJsonPath, 'utf8');
-            const products = JSON.parse(rawData);
-            
             if (countBefore === 0 || req.query.force === 'true') {
-                await Products.bulkCreate(products, { ignoreDuplicates: true });
+                const rawData = fs.readFileSync(productsJsonPath, 'utf8');
+                const products = JSON.parse(rawData);
+                
+                // Truncate if forced
+                if (req.query.force === 'true') {
+                    await db.query('TRUNCATE TABLE "Products" CASCADE');
+                }
+
+                for (const p of products) {
+                    await db.query(
+                        `INSERT INTO "Products" (name, price, "originalPrice", description, image, category, rating, reviews, stock, "createdAt", "updatedAt") 
+                         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW(), NOW())`,
+                        [p.name, p.price, p.originalPrice, p.description, p.image, p.category, p.rating, p.reviews, p.stock]
+                    );
+                }
                 seedResult = `seeded ${products.length} products`;
             } else {
                 seedResult = "skipped (products already exist)";
@@ -138,11 +117,12 @@ app.get('/api/debug/seed', async (req, res) => {
             fileStatus = "not found";
         }
 
-        const countAfter = await Products.count();
+        const resultAfter = await db.query('SELECT COUNT(*) FROM "Products"');
+        const countAfter = parseInt(resultAfter.rows[0].count);
 
         res.json({
             success: true,
-            database: "connected",
+            database: "connected (pg)",
             fileStatus,
             seedResult,
             countBefore,
@@ -161,17 +141,14 @@ app.get('/api/debug/seed', async (req, res) => {
 
 async function startServer() {
     try {
-        await sequelize.authenticate();
-        console.log('✅  Connected to PostgreSQL');
-
-        // Sync models
-        await sequelize.sync({ alter: true });
-        console.log('✅  Database models synced');
+        // Test connection
+        await db.query('SELECT NOW()');
+        console.log('✅  Connected to PostgreSQL (pg.Pool)');
 
         // Auto-seed if empty
         await autoSeed();
 
-        app.listen(PORT, () => console.log(`🚀  Server running on http://localhost:${PORT}`));
+        app.listen(PORT, () => console.log(`🚀  Server running on port ${PORT}`));
     } catch (err) {
         console.error('❌  Unable to connect to PostgreSQL:', err.message);
         process.exit(1);

@@ -1,30 +1,30 @@
 const express = require('express');
-const Products = require('../models/Product');
+const db = require('../db');
 const { adminAuth } = require('../middleware/adminAuth');
-
 const router = express.Router();
 
 function toNum(p) {
-    const d = p.toJSON ? p.toJSON() : p;
     return {
-        ...d,
-        price: parseFloat(d.price),
-        originalPrice: d.originalPrice != null ? parseFloat(d.originalPrice) : null,
-        rating: d.rating != null ? parseFloat(d.rating) : null,
+        ...p,
+        price: parseFloat(p.price),
+        originalPrice: p.originalPrice != null ? parseFloat(p.originalPrice) : null,
+        rating: p.rating != null ? parseFloat(p.rating) : null,
+        reviews: p.reviews != null ? parseInt(p.reviews) : 0,
+        stock: p.stock != null ? parseInt(p.stock) : 0,
     };
 }
 
-// ── GET /api/admin-products — Admin: all products (full data) ───────
+// Get all products (full data for admin)
 router.get('/', adminAuth, async (req, res) => {
     try {
-        const products = await Products.findAll({ order: [['id', 'ASC']] });
-        res.json(products.map(toNum));
+        const result = await db.query('SELECT * FROM "Products" ORDER BY id ASC');
+        res.json(result.rows.map(toNum));
     } catch (err) {
         res.status(500).json({ error: 'Failed to fetch products' });
     }
 });
 
-// ── POST /api/admin-products — Admin: create product ────────────────
+// Create product
 router.post('/', adminAuth, async (req, res) => {
     try {
         const { name, price, originalPrice, description, image, category, rating, reviews, stock } = req.body;
@@ -32,42 +32,49 @@ router.post('/', adminAuth, async (req, res) => {
             return res.status(400).json({ error: 'name and price are required' });
         }
 
-        const product = await Products.create({
-            name, price, originalPrice, description, image, category,
-            rating: rating || null,
-            reviews: reviews || 0,
-            stock: stock || 0,
-        });
+        const result = await db.query(
+            `INSERT INTO "Products" (name, price, "originalPrice", description, image, category, rating, reviews, stock, "createdAt", "updatedAt") 
+             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW(), NOW())
+             RETURNING *`,
+            [name, price, originalPrice, description, image, category, rating, reviews, stock]
+        );
 
-        res.status(201).json(toNum(product));
+        res.status(201).json(toNum(result.rows[0]));
     } catch (err) {
         console.error('Create product error:', err);
         res.status(500).json({ error: 'Failed to create product' });
     }
 });
 
-// ── PUT /api/admin-products/:id — Admin: update product ─────────────
+// Update product
 router.put('/:id', adminAuth, async (req, res) => {
     try {
-        const product = await Products.findByPk(req.params.id);
-        if (!product) return res.status(404).json({ error: 'Product not found' });
-
         const { name, price, originalPrice, description, image, category, rating, reviews, stock } = req.body;
-        await product.update({ name, price, originalPrice, description, image, category, rating, reviews, stock });
+        const result = await db.query(
+            `UPDATE "Products" 
+             SET name = $1, price = $2, "originalPrice" = $3, description = $4, image = $5, category = $6, rating = $7, reviews = $8, stock = $9, "updatedAt" = NOW()
+             WHERE id = $10
+             RETURNING *`,
+            [name, price, originalPrice, description, image, category, rating, reviews, stock, req.params.id]
+        );
 
-        res.json(toNum(product));
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+
+        res.json(toNum(result.rows[0]));
     } catch (err) {
         res.status(500).json({ error: 'Failed to update product' });
     }
 });
 
-// ── DELETE /api/admin-products/:id — Admin: delete product ──────────
+// Delete product
 router.delete('/:id', adminAuth, async (req, res) => {
     try {
-        const product = await Products.findByPk(req.params.id);
-        if (!product) return res.status(404).json({ error: 'Product not found' });
-
-        await product.destroy();
+        const result = await db.query('DELETE FROM "Products" WHERE id = $1 RETURNING id', [req.params.id]);
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
         res.json({ message: 'Product deleted successfully' });
     } catch (err) {
         res.status(500).json({ error: 'Failed to delete product' });

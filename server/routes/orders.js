@@ -1,8 +1,7 @@
 const express = require('express');
 const crypto = require('crypto');
 const Razorpay = require('razorpay');
-const Orders = require('../models/Order');
-const Products = require('../models/Product');
+const db = require('../db');
 const { adminAuth } = require('../middleware/adminAuth');
 
 const router = express.Router();
@@ -10,11 +9,11 @@ const router = express.Router();
 // Helper to reduce stock
 async function reduceStock(items) {
     for (const item of items) {
-        const product = await Products.findByPk(item.id);
-        if (product) {
-            const newStock = Math.max(0, product.stock - (item.quantity || 1));
-            await product.update({ stock: newStock });
-        }
+        // items is a JSON array from the DB or request
+        await db.query(
+            'UPDATE "Products" SET stock = GREATEST(0, stock - $1) WHERE id = $2',
+            [item.quantity || 1, item.id]
+        );
     }
 }
 
@@ -23,8 +22,7 @@ const razorpayInstance = new Razorpay({
     key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
 
-// ── POST /api/orders ────────────────────────────────────────────────
-// Customer places an order (authenticated via Clerk userId)
+// Create Order (Direct or WhatsApp)
 router.post('/', async (req, res) => {
     try {
         const { userId, userEmail, userName, userPhone, items, totalAmount, shippingAddress, notes, isWhatsApp } = req.body;
@@ -32,17 +30,15 @@ router.post('/', async (req, res) => {
             return res.status(400).json({ error: 'userId, items, and totalAmount are required' });
         }
 
-        const order = await Orders.create({
-            userId, userEmail, userName, userPhone,
-            items,
-            totalAmount,
-            shippingAddress: shippingAddress || 'To be collected',
-            notes: notes || (isWhatsApp ? 'WhatsApp Order' : ''),
-            status: 'pending',
-            paymentStatus: 'pending'
-        });
+        const result = await db.query(
+            `INSERT INTO "Orders" ("userId", "userEmail", "userName", "userPhone", items, "totalAmount", "shippingAddress", notes, status, "paymentStatus", "createdAt", "updatedAt") 
+             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, NOW(), NOW())
+             RETURNING *`,
+            [userId, userEmail, userName, userPhone, JSON.stringify(items), totalAmount, shippingAddress || 'To be collected', notes || (isWhatsApp ? 'WhatsApp Order' : ''), 'pending', 'pending']
+        );
 
-        // Only reduce stock for direct web orders (not WhatsApp/pending payments)
+        const order = result.rows[0];
+
         if (!isWhatsApp) {
             await reduceStock(items);
         }
@@ -54,14 +50,13 @@ router.post('/', async (req, res) => {
     }
 });
 
-// ── GET /api/orders/public/:id ──────────────────────────────────────
-// Publicly fetch order summary (for payment link)
+// Public fetch (for payment link)
 router.get('/public/:id', async (req, res) => {
     try {
-        const order = await Orders.findByPk(req.params.id);
+        const result = await db.query('SELECT * FROM "Orders" WHERE id = $1', [req.params.id]);
+        const order = result.rows[0];
         if (!order) return res.status(404).json({ error: 'Order not found' });
         
-        // Return only necessary non-sensitive info
         res.json({
             id: order.id,
             totalAmount: order.totalAmount,
@@ -76,12 +71,12 @@ router.get('/public/:id', async (req, res) => {
     }
 });
 
-// ── POST /api/orders/initiate-link-payment ──────────────────────────
-// Initiate Razorpay payment for an existing order (from link)
+// Initiate Link Payment
 router.post('/initiate-link-payment', async (req, res) => {
     try {
         const { orderId } = req.body;
-        const order = await Orders.findByPk(orderId);
+        const result = await db.query('SELECT * FROM "Orders" WHERE id = $1', [orderId]);
+        const order = result.rows[0];
         
         if (!order) return res.status(404).json({ error: 'Order not found' });
         if (order.paymentStatus === 'paid') return res.status(400).json({ error: 'Order already paid' });
@@ -94,7 +89,7 @@ router.post('/initiate-link-payment', async (req, res) => {
         };
 
         const razorpayOrder = await razorpayInstance.orders.create(options);
-        await order.update({ razorpayOrderId: razorpayOrder.id });
+        await db.query('UPDATE "Orders" SET "razorpayOrderId" = $1 WHERE id = $2', [razorpayOrder.id, order.id]);
 
         res.json({
             razorpayOrderId: razorpayOrder.id,
@@ -108,61 +103,10 @@ router.post('/initiate-link-payment', async (req, res) => {
     }
 });
 
-// ── POST /api/orders/create-razorpay-order ──────────────────────────
-// Customer initiates a Razorpay checkout
-router.post('/create-razorpay-order', async (req, res) => {
-    try {
-        const { userId, userEmail, userName, userPhone, items, totalAmount, shippingAddress, notes } = req.body;
-        
-        if (!userId || !items || !totalAmount) {
-            return res.status(400).json({ error: 'userId, items, and totalAmount are required' });
-        }
-
-        // Create razorpay order instance
-        const amountInPaise = Math.round(Number(totalAmount) * 100);
-        const options = {
-            amount: amountInPaise,
-            currency: 'INR',
-            receipt: `receipt_order_${Date.now()}`
-        };
-
-        const razorpayOrder = await razorpayInstance.orders.create(options);
-
-        // Save order in our database as 'pending'
-        const order = await Orders.create({
-            userId, userEmail, userName, userPhone,
-            items,
-            totalAmount,
-            shippingAddress,
-            notes,
-            status: 'pending',
-            paymentStatus: 'pending',
-            razorpayOrderId: razorpayOrder.id
-        });
-
-        res.status(201).json({
-            message: 'Razorpay order created',
-            order,
-            razorpayOrderId: razorpayOrder.id,
-            amount: amountInPaise,
-            currency: 'INR',
-            keyId: process.env.RAZORPAY_KEY_ID // send key ID to frontend
-        });
-    } catch (err) {
-        console.error('Create Razorpay order error:', err);
-        res.status(500).json({ error: 'Failed to create Razorpay order' });
-    }
-});
-
-// ── POST /api/orders/verify-payment ─────────────────────────────────
-// Verify Razorpay payment signature
+// Verify Payment
 router.post('/verify-payment', async (req, res) => {
     try {
         const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
-
-        if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
-             return res.status(400).json({ error: 'Missing payment details' });
-        }
 
         const body = razorpay_order_id + "|" + razorpay_payment_id;
         const expectedSignature = crypto
@@ -170,35 +114,27 @@ router.post('/verify-payment', async (req, res) => {
             .update(body.toString())
             .digest('hex');
 
-        const isAuthentic = expectedSignature === razorpay_signature;
-
-        if (isAuthentic) {
-            // Find the order
-            const order = await Orders.findOne({ where: { razorpayOrderId: razorpay_order_id } });
+        if (expectedSignature === razorpay_signature) {
+            const result = await db.query('SELECT * FROM "Orders" WHERE "razorpayOrderId" = $1', [razorpay_order_id]);
+            const order = result.rows[0];
             
-            if (!order) {
-                return res.status(404).json({ error: 'Order not found for this payment' });
-            }
+            if (!order) return res.status(404).json({ error: 'Order not found' });
 
-            await order.update({
-                paymentStatus: 'paid',
-                status: 'confirmed',
-                razorpayPaymentId: razorpay_payment_id,
-                razorpaySignature: razorpay_signature
-            });
+            const updatedResult = await db.query(
+                `UPDATE "Orders" 
+                 SET "paymentStatus" = 'paid', status = 'confirmed', "razorpayPaymentId" = $1, "razorpaySignature" = $2, "updatedAt" = NOW()
+                 WHERE id = $3
+                 RETURNING *`,
+                [razorpay_payment_id, razorpay_signature, order.id]
+            );
 
-            // Reduce stock only when payment is verified
             if (order.items) {
-                await reduceStock(order.items);
+                await reduceStock(typeof order.items === 'string' ? JSON.parse(order.items) : order.items);
             }
 
-            return res.json({ message: 'Payment verified successfully', order });
+            return res.json({ message: 'Payment verified', order: updatedResult.rows[0] });
         } else {
-            // Can optionally update the order status to failed here
-            const order = await Orders.findOne({ where: { razorpayOrderId: razorpay_order_id } });
-            if (order) {
-                await order.update({ paymentStatus: 'failed' });
-            }
+            await db.query('UPDATE "Orders" SET "paymentStatus" = \'failed\' WHERE "razorpayOrderId" = $1', [razorpay_order_id]);
             return res.status(400).json({ error: 'Invalid signature' });
         }
     } catch (err) {
@@ -207,61 +143,38 @@ router.post('/verify-payment', async (req, res) => {
     }
 });
 
-// ── GET /api/orders/my/:userId ──────────────────────────────────────
-// Customer views their own orders
+// My Orders
 router.get('/my/:userId', async (req, res) => {
     try {
-        const orders = await Orders.findAll({
-            where: { userId: req.params.userId },
-            order: [['createdAt', 'DESC']],
-        });
-        res.json(orders);
+        const result = await db.query('SELECT * FROM "Orders" WHERE "userId" = $1 ORDER BY "createdAt" DESC', [req.params.userId]);
+        res.json(result.rows);
     } catch (err) {
         res.status(500).json({ error: 'Failed to fetch orders' });
     }
 });
 
-// ── Admin-only order routes ─────────────────────────────────────────
-
-// GET /api/orders — Admin: view all orders
+// Admin: View All
 router.get('/', adminAuth, async (req, res) => {
     try {
-        const orders = await Orders.findAll({
-            order: [['createdAt', 'DESC']],
-        });
-        res.json(orders);
+        const result = await db.query('SELECT * FROM "Orders" ORDER BY "createdAt" DESC');
+        res.json(result.rows);
     } catch (err) {
         res.status(500).json({ error: 'Failed to fetch orders' });
     }
 });
 
-// GET /api/orders/:id — Admin: view single order
-router.get('/:id', adminAuth, async (req, res) => {
-    try {
-        const order = await Orders.findByPk(req.params.id);
-        if (!order) return res.status(404).json({ error: 'Order not found' });
-        res.json(order);
-    } catch (err) {
-        res.status(500).json({ error: 'Failed to fetch order' });
-    }
-});
-
-// PUT /api/orders/:id/status — Admin: update order status
+// Admin: Update Status
 router.put('/:id/status', adminAuth, async (req, res) => {
     try {
         const { status } = req.body;
-        const validStatuses = ['pending', 'confirmed', 'processing', 'shipped', 'delivered', 'cancelled'];
-        if (!validStatuses.includes(status)) {
-            return res.status(400).json({ error: 'Invalid status' });
-        }
-
-        const order = await Orders.findByPk(req.params.id);
-        if (!order) return res.status(404).json({ error: 'Order not found' });
-
-        await order.update({ status });
-        res.json({ message: 'Order status updated', order });
+        const result = await db.query(
+            'UPDATE "Orders" SET status = $1, "updatedAt" = NOW() WHERE id = $2 RETURNING *',
+            [status, req.params.id]
+        );
+        if (result.rows.length === 0) return res.status(404).json({ error: 'Order not found' });
+        res.json({ message: 'Status updated', order: result.rows[0] });
     } catch (err) {
-        res.status(500).json({ error: 'Failed to update order status' });
+        res.status(500).json({ error: 'Failed to update status' });
     }
 });
 

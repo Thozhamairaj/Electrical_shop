@@ -1,13 +1,12 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const Admins = require('../models/Admin');
+const db = require('../db');
 const { adminAuth } = require('../middleware/adminAuth');
 
 const router = express.Router();
 
-// ── POST /api/admin/login ───────────────────────────────────────────
-// Admin login with username + password
+// ── Admin Login ───────────────────────────────────────────────────
 router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -15,7 +14,9 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ error: 'username and password are required' });
         }
 
-        const admin = await Admins.findOne({ where: { username, isActive: true } });
+        const result = await db.query('SELECT * FROM "Admins" WHERE username = $1 AND "isActive" = true', [username]);
+        const admin = result.rows[0];
+
         if (!admin) {
             return res.status(401).json({ error: 'Invalid credentials' });
         }
@@ -25,8 +26,8 @@ router.post('/login', async (req, res) => {
             return res.status(401).json({ error: 'Invalid credentials' });
         }
 
-        // Update last login time
-        await admin.update({ lastLogin: new Date() });
+        // Update last login
+        await db.query('UPDATE "Admins" SET "lastLogin" = NOW() WHERE id = $1', [admin.id]);
 
         const token = jwt.sign(
             { id: admin.id, username: admin.username, name: admin.name, role: 'admin' },
@@ -49,13 +50,14 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// ── GET /api/admin/me ───────────────────────────────────────────────
-// Verify token and return admin info
+// ── Admin Profile ──────────────────────────────────────────────────
 router.get('/me', adminAuth, async (req, res) => {
     try {
-        const admin = await Admins.findByPk(req.admin.id, {
-            attributes: ['id', 'username', 'name', 'email', 'lastLogin'],
-        });
+        const result = await db.query(
+            'SELECT id, username, name, email, "lastLogin" FROM "Admins" WHERE id = $1',
+            [req.admin.id]
+        );
+        const admin = result.rows[0];
         if (!admin) return res.status(404).json({ error: 'Admin not found' });
         res.json(admin);
     } catch (err) {
@@ -63,31 +65,24 @@ router.get('/me', adminAuth, async (req, res) => {
     }
 });
 
-// ── GET /api/admin/stats ────────────────────────────────────────────
-// Dashboard stats: product count, order count, etc.
+// ── Admin Stats ────────────────────────────────────────────────────
 router.get('/stats', adminAuth, async (req, res) => {
     try {
-        const Products = require('../models/Product');
-        const Orders = require('../models/Order');
-        const Users = require('../models/User');
-
-        const [productCount, orderCount, customerCount] = await Promise.all([
-            Products.count(),
-            Orders.count(),
-            Users.count(),
+        const [products, orders, customers, recentOrders, lowStock] = await Promise.all([
+            db.query('SELECT COUNT(*) FROM "Products"'),
+            db.query('SELECT COUNT(*) FROM "Orders"'),
+            db.query('SELECT COUNT(*) FROM "Users"'),
+            db.query('SELECT * FROM "Orders" ORDER BY "createdAt" DESC LIMIT 5'),
+            db.query('SELECT id, name, stock, category FROM "Products" WHERE stock <= 5')
         ]);
 
-        const recentOrders = await Orders.findAll({
-            order: [['createdAt', 'DESC']],
-            limit: 5,
+        res.json({
+            productCount: parseInt(products.rows[0].count),
+            orderCount: parseInt(orders.rows[0].count),
+            customerCount: parseInt(customers.rows[0].count),
+            recentOrders: recentOrders.rows,
+            lowStockProducts: lowStock.rows
         });
-
-        const lowStockProducts = await Products.findAll({
-            where: { stock: { [require('sequelize').Op.lte]: 5 } },
-            attributes: ['id', 'name', 'stock', 'category'],
-        });
-
-        res.json({ productCount, orderCount, customerCount, recentOrders, lowStockProducts });
     } catch (err) {
         console.error('Stats error:', err);
         res.status(500).json({ error: 'Internal server error' });

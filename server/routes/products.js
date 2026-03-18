@@ -1,15 +1,16 @@
 const express = require('express');
-const Products = require('../models/Product');
+const db = require('../db');
 const router = express.Router();
 
-// MySQL returns DECIMAL as strings — convert to numbers
+// PostgreSQL returns DECIMAL as strings — convert to numbers
 function toNum(p) {
-    const d = p.toJSON ? p.toJSON() : p;
     return {
-        ...d,
-        price: parseFloat(d.price),
-        originalPrice: d.originalPrice != null ? parseFloat(d.originalPrice) : null,
-        rating: d.rating != null ? parseFloat(d.rating) : null,
+        ...p,
+        price: parseFloat(p.price),
+        originalPrice: p.originalPrice != null ? parseFloat(p.originalPrice) : null,
+        rating: p.rating != null ? parseFloat(p.rating) : null,
+        reviews: p.reviews != null ? parseInt(p.reviews) : 0,
+        stock: p.stock != null ? parseInt(p.stock) : 0,
     };
 }
 
@@ -17,23 +18,23 @@ function toNum(p) {
 router.get('/', async (req, res) => {
     try {
         const { category, search } = req.query;
-        const where = {};
-        
+        let query = 'SELECT * FROM "Products" WHERE 1=1';
+        const params = [];
+
         if (category && category !== 'all') {
-            where.category = category;
+            params.push(category);
+            query += ` AND category = $${params.length}`;
         }
 
-        const products = await Products.findAll({ where });
-        
-        // Filter by search term if provided (could also use Sequelize Op.like)
-        let filteredProducts = products;
         if (search) {
-            filteredProducts = products.filter(p => 
-                p.name.toLowerCase().includes(search.toLowerCase())
-            );
+            params.push(`%${search.toLowerCase()}%`);
+            query += ` AND LOWER(name) LIKE $${params.length}`;
         }
 
-        res.json(filteredProducts.map(toNum));
+        query += ' ORDER BY id ASC';
+
+        const result = await db.query(query, params);
+        res.json(result.rows.map(toNum));
     } catch (err) {
         console.error('GET products error:', err);
         res.status(500).json({ error: 'Failed to fetch products' });
@@ -43,11 +44,11 @@ router.get('/', async (req, res) => {
 // Get single product
 router.get('/:id', async (req, res) => {
     try {
-        const product = await Products.findByPk(req.params.id);
-        if (!product) {
+        const result = await db.query('SELECT * FROM "Products" WHERE id = $1', [req.params.id]);
+        if (result.rows.length === 0) {
             return res.status(404).json({ error: 'Product not found' });
         }
-        res.json(toNum(product));
+        res.json(toNum(result.rows[0]));
     } catch (err) {
         console.error('GET product error:', err);
         res.status(500).json({ error: 'Failed to fetch product' });

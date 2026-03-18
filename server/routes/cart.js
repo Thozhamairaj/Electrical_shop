@@ -1,74 +1,49 @@
 const express = require('express');
-const CartItems = require('../models/CartItem');
-const { sequelize } = require('../index');
-
+const db = require('../db');
 const router = express.Router();
 
-// ── GET /api/cart/:userId ──────────────────────────────────────────
-// Returns the user's cart items (empty array if none found)
+// Returns the user's cart items
 router.get('/:userId', async (req, res) => {
     try {
-        const items = await CartItems.findAll({ 
-            where: { userId: req.params.userId }
-        });
-        res.json({ items });
+        const result = await db.query('SELECT * FROM "CartItems" WHERE "userId" = $1', [req.params.userId]);
+        res.json({ items: result.rows });
     } catch (err) {
         console.error('GET cart error:', err);
         res.status(500).json({ error: 'Failed to fetch cart' });
     }
 });
 
-// ── PUT /api/cart/:userId ──────────────────────────────────────────
-// Upserts (replaces) the full cart for this user
+// Syncs entire cart from local to server
 router.put('/:userId', async (req, res) => {
-    const transaction = await sequelize.transaction();
     try {
-        const { items, userEmail, userName } = req.body;
-        if (!Array.isArray(items)) {
-            return res.status(400).json({ error: 'items must be an array' });
-        }
-
+        const { items } = req.body;
         const userId = req.params.userId;
 
-        // Delete existing items for this user
-        await CartItems.destroy({
-            where: { userId },
-            transaction
-        });
+        // Start a batch by deleting existing
+        await db.query('DELETE FROM "CartItems" WHERE "userId" = $1', [userId]);
 
-        // Bulk create new items with userId
-        const cartItems = items.map(item => {
-            const { pk, createdAt, updatedAt, id, ...itemData } = item;
-            return {
-                ...itemData,
-                productId: itemData.productId || id,  // frontend sends id, model needs productId
-                userId,
-                userEmail: userEmail || null,
-                userName: userName || null,
-            };
-        });
+        if (items && items.length > 0) {
+            for (const item of items) {
+                await db.query(
+                    `INSERT INTO "CartItems" ("userId", "productId", name, price, quantity, image, "createdAt", "updatedAt") 
+                     VALUES ($1, $2, $3, $4, $5, $6, NOW(), NOW())`,
+                    [userId, item.id, item.name, item.price, item.quantity, item.image]
+                );
+            }
+        }
 
-        await CartItems.bulkCreate(cartItems, { transaction });
-
-        await transaction.commit();
-
-        const updatedItems = await CartItems.findAll({
-            where: { userId }
-        });
-
-        res.json({ items: updatedItems });
+        const result = await db.query('SELECT * FROM "CartItems" WHERE "userId" = $1', [userId]);
+        res.json({ items: result.rows });
     } catch (err) {
-        await transaction.rollback();
         console.error('PUT cart error:', err);
-        res.status(500).json({ error: 'Failed to save cart' });
+        res.status(500).json({ error: 'Failed to sync cart' });
     }
 });
 
-// ── DELETE /api/cart/:userId ───────────────────────────────────────
 // Clears all items in the user's cart
 router.delete('/:userId', async (req, res) => {
     try {
-        await CartItems.destroy({ where: { userId: req.params.userId } });
+        await db.query('DELETE FROM "CartItems" WHERE "userId" = $1', [req.params.userId]);
         res.json({ message: 'Cart cleared' });
     } catch (err) {
         console.error('DELETE cart error:', err);
