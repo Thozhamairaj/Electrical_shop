@@ -18,7 +18,8 @@ export default function Orders() {
 
   const fetchOrders = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/api/orders/my/${user.id}`);
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const { data } = await axios.get(`${apiUrl}/api/orders/my/${user.id}`);
       setOrders(data);
     } catch (err) {
       console.error('Error fetching orders:', err);
@@ -27,12 +28,24 @@ export default function Orders() {
     }
   };
 
+  const parseItems = (items) => {
+    if (!items) return [];
+    if (typeof items === 'string') {
+      try {
+        return JSON.parse(items);
+      } catch (e) {
+        return [];
+      }
+    }
+    return Array.isArray(items) ? items : [];
+  };
+
   const handlePayNow = (order) => {
     // Navigate to dummy payment with order details
     navigate('/payment', { 
       state: { 
         orderId: order.id,
-        totalAmount: parseFloat(order.totalAmount),
+        totalAmount: parseFloat(order.totalAmount || 0),
         isExistingOrder: true
       } 
     });
@@ -56,22 +69,22 @@ export default function Orders() {
               <div key={order.id} className="order-card">
                 <div className="order-header">
                   <div className="order-meta">
-                    <span className="order-id">Order ID: #ORD-{order.id.toString().padStart(6, '0')}</span>
-                    <span className="order-date">{new Date(order.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                    <span className="order-id">Order ID: #ORD-{(order.id || 0).toString().padStart(6, '0')}</span>
+                    <span className="order-date">{order.createdAt ? new Date(order.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : 'N/A'}</span>
                   </div>
-                  <div className={`order-status ${order.status}`}>
-                    {order.status.toUpperCase()}
+                  <div className={`order-status ${(order.status || 'pending').toLowerCase()}`}>
+                    {(order.status || 'PENDING').toUpperCase()}
                   </div>
                 </div>
 
                 <div className="order-body">
                   <div className="order-items">
-                    {JSON.parse(order.items).map((item, idx) => (
+                    {parseItems(order.items).map((item, idx) => (
                       <div key={idx} className="order-item">
-                        <img src={encodeURI(item.image)} alt={item.name} />
+                        <img src={item.image ? encodeURI(item.image) : '/placeholder.png'} alt={item.name || 'Product'} />
                         <div className="item-info">
-                          <h4>{item.name}</h4>
-                          <p>Qty: {item.quantity} × ₹{parseFloat(item.price).toFixed(2)}</p>
+                          <h4>{item.name || 'Unnamed Product'}</h4>
+                          <p>Qty: {item.quantity || 1} × ₹{parseFloat(item.price || 0).toFixed(2)}</p>
                         </div>
                       </div>
                     ))}
@@ -80,11 +93,11 @@ export default function Orders() {
                   <div className="order-summary">
                     <div className="summary-row">
                       <span>Total Amount:</span>
-                      <span className="total-price">₹{parseFloat(order.totalAmount).toFixed(2)}</span>
+                      <span className="total-price">₹{parseFloat(order.totalAmount || 0).toFixed(2)}</span>
                     </div>
                     <div className="summary-row">
                       <span>Payment:</span>
-                      <span className={`payment-status ${order.paymentStatus}`}>
+                      <span className={`payment-status ${(order.paymentStatus || 'pending').toLowerCase()}`}>
                         {order.paymentStatus === 'paid' ? '✓ Paid' : '⌛ Pending'}
                       </span>
                     </div>
