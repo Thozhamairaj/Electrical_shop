@@ -27,7 +27,7 @@ export default function DummyRazorpay() {
   useEffect(() => {
     if (step === 'success') {
       const timer = setTimeout(() => {
-        navigate('/');
+        navigate('/orders');
       }, 5000);
       return () => clearTimeout(timer);
     }
@@ -172,7 +172,7 @@ export default function DummyRazorpay() {
             <p>Bank Ref: RPX_{Math.random().toString(36).substr(2, 9).toUpperCase()}</p>
           </div>
           <button onClick={() => navigate('/orders')}>View My Orders</button>
-          <p className="redirect-note">Redirecting to home in 5s...</p>
+          <p className="redirect-note">Redirecting to orders in 5s...</p>
         </div>
       </div>
     );

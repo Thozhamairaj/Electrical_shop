@@ -16,6 +16,7 @@ export default function Orders() {
     }
   }, [user]);
 
+
   const fetchOrders = async () => {
     try {
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
@@ -98,11 +99,11 @@ export default function Orders() {
                     <div className="summary-row">
                       <span>Payment:</span>
                       <span className={`payment-status ${(order.paymentStatus || 'pending').toLowerCase()}`}>
-                        {order.paymentStatus === 'paid' ? '✓ Paid' : '⌛ Pending'}
+                        {(order.paymentStatus || 'pending').toLowerCase() === 'paid' ? '✓ Paid' : '⌛ Pending'}
                       </span>
                     </div>
 
-                    {order.paymentStatus === 'pending' && (
+                    {(order.paymentStatus || 'pending').toLowerCase() === 'pending' && (
                       <button className="pay-now-btn" onClick={() => handlePayNow(order)}>
                         Complete Payment
                       </button>

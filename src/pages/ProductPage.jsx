@@ -82,8 +82,9 @@ export default function ProductPage() {
 
   const completeWhatsAppOrder = async (phone) => {
     try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       // 1. Create order record
-      const { data } = await axios.post('http://localhost:5000/api/orders', {
+      const { data } = await axios.post(`${apiUrl}/api/orders`, {
         userId: user.id,
         userEmail: user.primaryEmailAddress?.emailAddress,
         userName: user.fullName || user.username || 'Customer',
