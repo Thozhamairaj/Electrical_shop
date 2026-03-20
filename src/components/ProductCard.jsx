@@ -24,13 +24,16 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <Link to={`/product/${product.id}`} className="product-card">
+    <Link to={`/product/${product.id}`} className={`product-card ${product.stock <= 0 ? 'out-of-stock' : ''}`}>
       <div className="product-image">
         <img src={encodeURI(product.image)} alt={product.name} />
-        {product.originalPrice > product.price && (
+        {product.originalPrice > product.price && product.stock > 0 && (
           <div className="discount-badge">
             {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
           </div>
+        )}
+        {product.stock <= 0 && (
+          <div className="out-of-stock-overlay">Out of Stock</div>
         )}
       </div>
 
@@ -48,8 +51,12 @@ export default function ProductCard({ product }) {
           )}
         </div>
 
-        <button className={`add-to-cart-btn${added ? ' added' : ''}`} onClick={handleAddToCart}>
-          {added ? '✓ Added!' : 'Add to Cart'}
+        <button 
+          className={`add-to-cart-btn${added ? ' added' : ''}`} 
+          onClick={handleAddToCart}
+          disabled={product.stock <= 0}
+        >
+          {product.stock <= 0 ? 'Out of Stock' : (added ? '✓ Added!' : 'Add to Cart')}
         </button>
       </div>
     </Link>

@@ -9,6 +9,7 @@ export default function Orders() {
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [expandedOrderId, setExpandedOrderId] = useState(null);
 
   useEffect(() => {
     if (user?.id) {
@@ -110,12 +111,49 @@ export default function Orders() {
                     )}
                     
                     {order.paymentStatus === 'paid' && (
-                      <div className="paid-badge">
-                        <span className="dummy-label">Secured by Dummy Razorpay</span>
+                      <div className="order-actions">
+                        <button 
+                          className="track-order-btn"
+                          onClick={() => setExpandedOrderId(expandedOrderId === order.id ? null : order.id)}
+                        >
+                          {expandedOrderId === order.id ? 'Hide Tracking' : 'Track Order'}
+                        </button>
+                        <div className="paid-badge">
+                          <span className="dummy-label">Secured by Razorpay</span>
+                        </div>
                       </div>
                     )}
                   </div>
                 </div>
+
+                {expandedOrderId === order.id && (
+                  <div className="order-tracking">
+                    <div className="tracking-timeline">
+                      {[
+                        { label: 'Ordered', status: 'pending' },
+                        { label: 'Confirmed', status: 'confirmed' },
+                        { label: 'Processing', status: 'processing' },
+                        { label: 'Shipped', status: 'shipped' },
+                        { label: 'Delivered', status: 'delivered' }
+                      ].map((step, idx, arr) => {
+                        const orderStatus = (order.status || 'pending').toLowerCase();
+                        const statusIndex = arr.findIndex(s => s.status === orderStatus);
+                        const isCompleted = idx <= statusIndex;
+                        const isCurrent = idx === statusIndex;
+
+                        return (
+                          <div key={step.label} className={`tracking-step ${isCompleted ? 'completed' : ''} ${isCurrent ? 'current' : ''}`}>
+                            <div className="step-marker">
+                              {isCompleted ? '✓' : idx + 1}
+                            </div>
+                            <div className="step-label">{step.label}</div>
+                            {idx < arr.length - 1 && <div className="step-line"></div>}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>

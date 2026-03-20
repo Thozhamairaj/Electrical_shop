@@ -60,8 +60,8 @@ export default function AdminLayout({ children }) {
                     <div className="admin-brand">
                         <span className="admin-brand-icon">⚡</span>
                         <div>
-                            <span className="admin-brand-name">EH Bazar</span>
-                            <span className="admin-brand-sub">Admin Panel</span>
+                            <span className="admin-brand-name">Sri Vinayaga</span>
+                            <span className="admin-brand-sub">Electricals & Hardwares</span>
                         </div>
                     </div>
                 </div>

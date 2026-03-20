@@ -64,16 +64,22 @@ export default function Header() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCat, setSelectedCat] = useState('all');
 
-  // Sync selectedCat with URL search params
+  // Sync searchTerm and selectedCat with URL search params
   useEffect(() => {
     const cat = searchParams.get('category') || 'all';
+    const search = searchParams.get('search') || '';
     setSelectedCat(cat);
+    setSearchTerm(search);
   }, [searchParams]);
 
   const handleSearch = () => {
     const params = new URLSearchParams();
     if (selectedCat && selectedCat !== 'all') params.set('category', selectedCat);
-    if (searchTerm.trim()) params.set('search', searchTerm.trim());
+    if (searchTerm.trim()) {
+      params.set('search', searchTerm.trim());
+    } else {
+      params.delete('search');
+    }
     navigate(`/products?${params.toString()}`);
   };
 
@@ -87,8 +93,11 @@ export default function Header() {
 
       <div className="header-main">
         <Link to="/" className="logo">
-          <span className="logo-mark">Sri Vinayaga</span>
-          <span className="logo-mark alt" style={{marginLeft: '0.4rem'}}>Hardwares</span>
+          <div className="logo-icon">SV</div>
+          <div className="logo-content">
+            <span className="logo-main">Sri Vinayaga</span>
+            <span className="logo-sub">Electricals & Hardwares</span>
+          </div>
         </Link>
 
         <div className="search-stack">

@@ -38,7 +38,7 @@ export default function AdminLogin() {
                         <span className="al-logo-icon">⚡</span>
                     </div>
                     <h1 className="al-title">Admin Portal</h1>
-                    <p className="al-subtitle">EH Bazar — Authorized Access Only</p>
+                    <p className="al-subtitle">Sri Vinayaga Electricals & Hardwares — Authorized Access Only</p>
                 </div>
 
                 {error && (

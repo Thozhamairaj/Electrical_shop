@@ -7,8 +7,8 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-section">
-          <h3>About Sri Vinayaga Hardwares</h3>
-          <p>Your one-stop shop for premium electronic devices and accessories. Quality, reliability, and innovation.</p>
+          <h3>Sri Vinayaga Electricals & Hardwares</h3>
+          <p>Your one-stop shop for premium electrical fittings, lighting, and hardware essentials. Quality, reliability, and innovation.</p>
         </div>
         
         <div className="footer-section">
@@ -43,7 +43,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; {currentYear} Sri Vinayaga Hardwares. All rights reserved. | Privacy Policy | Terms of Service</p>
+        <p>&copy; {currentYear} Sri Vinayaga Electricals & Hardwares. All rights reserved. | Privacy Policy | Terms of Service</p>
       </div>
     </footer>
   );

@@ -190,38 +190,48 @@ export default function DummyRazorpay() {
     }
   };
 
-  const itemList = isCartCheckout ? items : (product ? [{ ...product, quantity }] : []);
-  const subtotal = itemList.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
-  const shipping = subtotal >= 500 ? 0 : 50;
-
-  if (step === 'loading') {
-    return (
-      <div className="razorpay-overlay">
-        <div className="state-center">
-          <div className="razorpay-loader">
-            <div className="spinner"></div>
-            <p>Initialising Secure Payment...</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   if (step === 'success') {
     return (
-      <div className="razorpay-overlay">
-        <div className="state-center">
-          <div className="success-modal">
-            <div className="success-icon">✓</div>
-            <h2>Payment Successful!</h2>
-            <div className="success-details">
-              <p>ORDER ID: #ORD-{Math.floor(Math.random() * 1000000)}</p>
-              <p>AMOUNT PAID: ₹{totalAmount?.toFixed(2)}</p>
-              <p>BANK REF: RPX_{Math.random().toString(36).substr(2, 9).toUpperCase()}</p>
-              <p>STATUS: CONFIRMED</p>
+      <div className="razorpay-overlay success-bg">
+        <div className="success-glass-container">
+          <div className="premium-success-card">
+            <div className="success-header">
+              <div className="success-icon-wrap">
+                <div className="shining-circle"></div>
+                <div className="success-check">✓</div>
+              </div>
+              <h2 className="success-title">Payment Successful!</h2>
+              <p className="success-subtitle">Thank you for your purchase</p>
             </div>
-            <button onClick={() => navigate('/orders')}>VIEW MY ORDERS</button>
-            <p className="redirect-note">Redirecting to orders in 7s...</p>
+            
+            <div className="receipt-details">
+              <div className="receipt-row">
+                <span className="receipt-label">Order ID</span>
+                <span className="receipt-value font-mono">#ORD-{Math.floor(Math.random() * 1000000)}</span>
+              </div>
+              <div className="receipt-row">
+                <span className="receipt-label">Amount Paid</span>
+                <span className="receipt-value amount">₹{totalAmount?.toFixed(2)}</span>
+              </div>
+              <div className="receipt-row">
+                <span className="receipt-label">Bank Reference</span>
+                <span className="receipt-value font-mono">{Math.random().toString(36).substr(2, 9).toUpperCase()}</span>
+              </div>
+              <div className="receipt-row">
+                <span className="receipt-label">Status</span>
+                <span className="receipt-value status-pill">Confirmed</span>
+              </div>
+            </div>
+
+            <div className="success-footer">
+              <button className="view-orders-btn" onClick={() => navigate('/orders')}>
+                View My Orders
+              </button>
+              <p className="auto-redirect">
+                Redirecting in <span className="countdown">7s</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -230,116 +240,60 @@ export default function DummyRazorpay() {
 
   return (
     <div className="razorpay-overlay">
-      <header className="checkout-header">
-        <button onClick={() => navigate(-1)} className="back-link">
-          ‹ Back to shop
-        </button>
-        <div className="progress-steps">
-          <div className="step completed">
-            <span className="step-num">✓</span>
-            <span>Shopping cart</span>
-          </div>
-          <div className="step active">
-            <span className="step-num">2</span>
-            <span>Payment details</span>
-          </div>
-          <div className="step">
-            <span className="step-num">3</span>
-            <span>Payment complete</span>
+      {step === 'processing' ? (
+        <div className="state-center">
+          <div className="processing">
+            <div className="spinner"></div>
+            <h3>{processingSubtext}</h3>
+            <p>Please do not refresh or close this page.</p>
           </div>
         </div>
-      </header>
+      ) : (
+        <div className="payment-modal">
+          <header className="payment-header">
+            <h3>Payment Details</h3>
+            <div className="accent-line"></div>
+          </header>
 
-      <main className="checkout-container">
-        <section className="payment-section">
-          {step === 'processing' ? (
-            <div className="processing">
-              <div className="spinner"></div>
-              <h3>{processingSubtext}</h3>
-              <p>Please do not refresh or close this page.</p>
-            </div>
-          ) : (
-            <>
-              <h2>How would you like to pay?</h2>
-              <div className="method-grid">
-                <div 
-                  className={`method-card ${method === 'card' ? 'active' : ''}`}
-                  onClick={() => setMethod('card')}
-                >
-                  <span className="icon">💳</span>
-                  <strong>Cards</strong>
-                </div>
-                <div 
-                  className={`method-card ${method === 'upi' ? 'active' : ''}`}
-                  onClick={() => setMethod('upi')}
-                >
-                  <span className="icon">📱</span>
-                  <strong>UPI</strong>
-                </div>
-                <div 
-                  className={`method-card ${method === 'netbanking' ? 'active' : ''}`}
-                  onClick={() => setMethod('netbanking')}
-                >
-                  <span className="icon">🏦</span>
-                  <strong>Netbanking</strong>
-                </div>
-                <div 
-                  className={`method-card ${method === 'wallet' ? 'active' : ''}`}
-                  onClick={() => setMethod('wallet')}
-                >
-                  <span className="icon">💰</span>
-                  <strong>Wallet</strong>
-                </div>
+          <main className="payment-body">
+            <div className="form-group row-group">
+              <label>Amount <span>*</span></label>
+              <div className="input-wrapper amount-wrapper">
+                <span className="currency">₹</span>
+                <input type="text" readOnly value={totalAmount?.toFixed(2)} />
               </div>
-
-              <div className="method-form">
-                {renderMethodForm()}
-                <button className="pay-btn" onClick={handlePay}>
-                  Continue to secure payment
-                </button>
-              </div>
-            </>
-          )}
-        </section>
-
-        <section className="summary-section">
-          <h3>Order Summary</h3>
-          <p className="order-ref">Order reference: {orderId || 'NEW-ORDER'}</p>
-          
-          <div className="order-items">
-            {itemList.map((item, idx) => (
-              <div key={idx} className="summary-item">
-                <img src={encodeURI(item.image)} alt={item.name} />
-                <div className="item-info">
-                  <h4>{item.name}</h4>
-                  <p>x {item.quantity || quantity || 1}</p>
-                </div>
-                <div className="item-price">₹{(item.price * (item.quantity || quantity || 1)).toFixed(2)}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="price-breakdown">
-            <div className="row">
-              <span>Shipping</span>
-              <span>{shipping === 0 ? 'Free' : `₹${shipping.toFixed(2)}`}</span>
             </div>
-            <div className="row">
-              <span>Taxes (Included)</span>
-              <span>₹{(totalAmount - (totalAmount / 1.18)).toFixed(2)}</span>
+
+            <div className="form-group row-group">
+              <label>Email <span>*</span></label>
+              <div className="input-wrapper">
+                <input type="email" placeholder="" defaultValue={user?.primaryEmailAddress?.emailAddress} />
+              </div>
             </div>
-          </div>
 
-          <div className="row total">
-            <span>Total</span>
-            <span>₹{totalAmount?.toFixed(2)}</span>
-          </div>
-        </section>
-      </main>
+            <div className="form-group row-group">
+              <label>Phone <span>*</span></label>
+              <div className="phone-wrapper">
+                <div className="country-code">IN +91</div>
+                <input type="tel" placeholder="" defaultValue={user?.primaryPhoneNumber?.phoneNumber?.replace('+91', '')} />
+              </div>
+            </div>
+          </main>
 
-      <footer className="modal-footer" style={{ background: 'transparent' }}>
-        <p>🔒 100% SECURE PAYMENTS | POWERED BY <strong>RAZORPAY</strong></p>
-      </footer>
+          <footer className="payment-footer">
+            <div className="logos-section">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/UPI-Logo-vector.svg" alt="UPI" className="logo-img" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="logo-img" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="logo-img" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/RuPay.svg" alt="RuPay" className="logo-img" />
+              <div className="pci-badge">PCI-DSS COMPLIANT</div>
+            </div>
+            <button className="pay-now-btn" onClick={handlePay}>
+              Pay ₹ {totalAmount?.toFixed(2)}
+            </button>
+          </footer>
+        </div>
+      )}
     </div>
   );
 }

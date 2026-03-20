@@ -27,8 +27,9 @@ router.get('/', async (req, res) => {
         }
 
         if (search) {
-            params.push(`%${search.toLowerCase()}%`);
-            query += ` AND LOWER(name) LIKE $${params.length}`;
+            const searchPattern = `%${search.toLowerCase()}%`;
+            params.push(searchPattern);
+            query += ` AND (LOWER(name) LIKE $${params.length} OR LOWER(description) LIKE $${params.length} OR LOWER(category) LIKE $${params.length})`;
         }
 
         query += ' ORDER BY id ASC';

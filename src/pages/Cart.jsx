@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUser } from '@clerk/clerk-react';
 import { useCart } from '../context/CartContext';
@@ -28,6 +28,40 @@ export default function Cart() {
   const { isLoaded, isSignedIn, user } = useUser();
   const navigate = useNavigate();
   const [isPhoneModalOpen, setIsPhoneModalOpen] = useState(false);
+  const [selectedIds, setSelectedIds] = useState(new Set());
+
+  // Initialize selected items with all cart items
+  useEffect(() => {
+    if (cartItems.length > 0 && selectedIds.size === 0) {
+      setSelectedIds(new Set(cartItems.map(item => item.id)));
+    }
+  }, [cartItems]);
+
+  const toggleSelectItem = (id) => {
+    const newSelected = new Set(selectedIds);
+    if (newSelected.has(id)) {
+      newSelected.delete(id);
+    } else {
+      newSelected.add(id);
+    }
+    setSelectedIds(newSelected);
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedIds.size === cartItems.length) {
+      setSelectedIds(new Set());
+    } else {
+      setSelectedIds(new Set(cartItems.map(item => item.id)));
+    }
+  };
+
+  const selectedCartItems = useMemo(() => {
+    return cartItems.filter(item => selectedIds.has(item.id));
+  }, [cartItems, selectedIds]);
+
+  const selectedTotal = useMemo(() => {
+    return selectedCartItems.reduce((acc, item) => acc + Number(item.price) * item.quantity, 0);
+  }, [selectedCartItems]);
 
   const handleWhatsAppOrder = async () => {
     try {
@@ -37,8 +71,8 @@ export default function Cart() {
         return;
       }
 
-      if (cartItems.length === 0) {
-        alert('Your cart is empty. Please add items before ordering.');
+      if (selectedCartItems.length === 0) {
+        alert('Please select at least one item to order.');
         return;
       }
 
@@ -61,35 +95,33 @@ export default function Cart() {
 
   const completeWhatsAppOrder = async (phone) => {
     try {
-      // 1. Create a "WhatsApp" order in the database for tracking & payment link
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       const { data } = await axios.post(`${apiUrl}/api/orders`, {
         userId: user.id,
         userEmail: user.primaryEmailAddress?.emailAddress,
         userName: user.fullName || user.username || 'Customer',
         userPhone: phone,
-        items: cartItems,
-        totalAmount: cartTotal,
+        items: selectedCartItems,
+        totalAmount: selectedTotal,
         isWhatsApp: true
       });
 
       const orderId = data.order?.id;
-
-      // 2. Format message with orderId for payment link
-      const message = formatCartOrderMessage(cartItems, cartTotal, phone, orderId);
+      const message = formatCartOrderMessage(selectedCartItems, selectedTotal, phone, orderId);
       const url = generateWhatsAppUrl(message);
       if (!url) {
         alert('Unable to open WhatsApp. Please try again.');
         return;
       }
       window.open(url, '_blank');
-
-      // 3. Clear cart as order is "placed" (pending payment)
-      clearCart();
+      
+      // Optionally clear ONLY selected items, or clear all? 
+      // Usually, checkout clears part of the cart. 
+      // But clearing all is simpler for this flow.
+      clearCart(); 
     } catch (err) {
       console.error('Error creating WhatsApp order record:', err);
-      // Fallback: order without link if API fails
-      const message = formatCartOrderMessage(cartItems, cartTotal, phone);
+      const message = formatCartOrderMessage(selectedCartItems, selectedTotal, phone);
       const url = generateWhatsAppUrl(message);
       if (!url) {
         alert('Unable to open WhatsApp. Please try again.');
@@ -127,17 +159,16 @@ export default function Cart() {
       return;
     }
 
-    if (!cartItems || cartItems.length === 0) {
-      alert('Your cart is empty.');
+    if (selectedCartItems.length === 0) {
+      alert('Please select at least one item to checkout.');
       return;
     }
 
-    // Redirect to dummy payment
     navigate('/payment', {
       state: {
         isCartCheckout: true,
-        items: cartItems,
-        totalAmount: cartTotal >= 500 ? cartTotal : cartTotal + 50
+        items: selectedCartItems,
+        totalAmount: selectedTotal >= 500 ? selectedTotal : selectedTotal + 50
       }
     });
   };
@@ -190,6 +221,8 @@ export default function Cart() {
     );
   }
 
+  const isAllSelected = selectedIds.size === cartItems.length;
+
   return (
     <div className="cart-page">
       <div className="cart-header">
@@ -198,52 +231,88 @@ export default function Cart() {
       </div>
 
       <div className="cart-container">
-        <div className="cart-items-list">
-          {cartItems.map(item => (
-            <div key={item.id} className="cart-item">
-              <img src={encodeURI(item.image)} alt={item.name} className="cart-item-image" />
-              <div className="cart-item-details">
-                <h3 className="cart-item-name">{item.name}</h3>
-                <p className="cart-item-price">₹{Number(item.price).toFixed(2)}</p>
-              </div>
-              <div className="cart-item-controls">
+        <div className="cart-items-wrapper">
+          <div className="select-all-bar">
+            <label className="checkbox-container">
+              <input 
+                type="checkbox" 
+                checked={isAllSelected} 
+                onChange={toggleSelectAll} 
+              />
+              <span className="checkmark"></span>
+              <span className="select-all-text">Select All ({cartItems.length} items)</span>
+            </label>
+            {selectedIds.size > 0 && (
+              <span className="selected-count-badge">
+                {selectedIds.size} selected
+              </span>
+            )}
+          </div>
+
+          <div className="cart-items-list">
+            {cartItems.map(item => (
+              <div key={item.id} className="cart-item">
+                <label className="checkbox-container item-checkbox">
+                  <input 
+                    type="checkbox" 
+                    checked={selectedIds.has(item.id)} 
+                    onChange={() => toggleSelectItem(item.id)} 
+                  />
+                  <span className="checkmark"></span>
+                </label>
+                
+                <img src={encodeURI(item.image)} alt={item.name} className="cart-item-image" />
+                <div className="cart-item-details">
+                  <h3 className="cart-item-name">{item.name}</h3>
+                  <p className="cart-item-price">₹{Math.round(item.price)}</p>
+                </div>
+                <div className="cart-item-controls">
+                  <button
+                    className="qty-btn"
+                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                  >−</button>
+                  <span className="cart-item-qty">{item.quantity}</span>
+                  <button
+                    className="qty-btn"
+                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                  >+</button>
+                </div>
+                <p className="cart-item-subtotal">₹{Math.round(Number(item.price) * item.quantity)}</p>
                 <button
-                  className="qty-btn"
-                  onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                >−</button>
-                <span className="cart-item-qty">{item.quantity}</span>
-                <button
-                  className="qty-btn"
-                  onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                >+</button>
+                  className="remove-item-btn"
+                  onClick={() => removeFromCart(item.id)}
+                  title="Remove from cart"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                  <span>Remove</span>
+                </button>
               </div>
-              <p className="cart-item-subtotal">₹{(Number(item.price) * item.quantity).toFixed(2)}</p>
-              <button
-                className="remove-btn"
-                onClick={() => removeFromCart(item.id)}
-                aria-label="Remove item"
-              >✕</button>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         <div className="cart-summary">
           <h2>Order Summary</h2>
           <div className="summary-row">
+            <span>Selected Items</span>
+            <span>{selectedIds.size}</span>
+          </div>
+          <div className="summary-row">
             <span>Subtotal</span>
-            <span>₹{cartTotal.toFixed(2)}</span>
+            <span>₹{Math.round(selectedTotal)}</span>
           </div>
           <div className="summary-row">
             <span>Shipping</span>
-            <span>{cartTotal >= 500 ? 'FREE' : '₹50.00'}</span>
+            <span>{selectedTotal > 0 ? (selectedTotal >= 500 ? 'FREE' : '₹50') : '₹0'}</span>
           </div>
           <div className="summary-row total">
             <span>Total</span>
-            <span>₹{(cartTotal >= 500 ? cartTotal : cartTotal + 50).toFixed(2)}</span>
+            <span>₹{Math.round(selectedTotal > 0 ? (selectedTotal >= 500 ? selectedTotal : selectedTotal + 50) : 0)}</span>
           </div>
           <button
             type="button"
             className="checkout-btn"
+            disabled={selectedIds.size === 0}
             onClick={handleRazorpayCheckout}
           >
             Proceed to Checkout
@@ -252,6 +321,7 @@ export default function Cart() {
           <button
             type="button"
             className="whatsapp-cart-btn"
+            disabled={selectedIds.size === 0}
             onClick={handleWhatsAppOrder}
           >
             <span className="whatsapp-icon">💬</span> Order on WhatsApp
@@ -262,7 +332,7 @@ export default function Cart() {
             className="clear-cart-btn"
             onClick={clearCart}
           >
-            Clear Cart
+            Clear Full Cart
           </button>
           <Link to="/products" className="continue-shopping-btn secondary">
             ← Continue Shopping
