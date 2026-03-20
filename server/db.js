@@ -2,7 +2,9 @@ const { Pool } = require('pg');
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
-const isProduction = process.env.NODE_ENV === 'production' || process.env.DATABASE_URL?.includes('render.com');
+const isProduction = process.env.NODE_ENV === 'production' || 
+                   process.env.DATABASE_URL?.includes('render.com') || 
+                   process.env.DATABASE_URL?.includes('supabase.co');
 
 // Use DATABASE_URL if available (Render), otherwise fallback to individual params (Local)
 const poolConfig = process.env.DATABASE_URL 

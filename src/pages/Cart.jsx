@@ -164,13 +164,76 @@ export default function Cart() {
       return;
     }
 
-    navigate('/payment', {
-      state: {
-        isCartCheckout: true,
-        items: selectedCartItems,
-        totalAmount: selectedTotal >= 500 ? selectedTotal : selectedTotal + 50
+    try {
+      const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
+      if (!res) {
+        alert('Razorpay SDK failed to load. Are you online?');
+        return;
       }
-    });
+
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      
+      // 1. Create order in our database first
+      const orderResponse = await axios.post(`${apiUrl}/api/orders`, {
+        userId: user.id,
+        userEmail: user.primaryEmailAddress?.emailAddress,
+        userName: user.fullName || user.username || 'Customer',
+        items: selectedCartItems,
+        totalAmount: selectedTotal >= 500 ? selectedTotal : selectedTotal + 50,
+        status: 'pending',
+        paymentStatus: 'pending'
+      });
+
+      const order = orderResponse.data.order;
+
+      // 2. Create Razorpay order
+      const paymentResponse = await axios.post(`${apiUrl}/api/orders/create-payment`, {
+        amount: order.totalAmount,
+        orderId: order.id
+      });
+
+      const razorpayOrder = paymentResponse.data;
+
+      const options = {
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_your_key_here',
+        amount: razorpayOrder.amount,
+        currency: razorpayOrder.currency,
+        name: 'Sri Vinayaga Hardwares',
+        description: 'Order Payment',
+        order_id: razorpayOrder.id,
+        handler: async (response) => {
+          try {
+            const verifyRes = await axios.post(`${apiUrl}/api/orders/verify-payment`, {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+            });
+
+            if (verifyRes.data.message === 'Payment verified') {
+              alert('Payment Successful!');
+              clearCart();
+              navigate('/orders');
+            }
+          } catch (err) {
+            console.error('Verification error:', err);
+            alert('Payment verification failed. Please contact support.');
+          }
+        },
+        prefill: {
+          name: user.fullName,
+          email: user.primaryEmailAddress?.emailAddress,
+        },
+        theme: {
+          color: '#2563eb',
+        },
+      };
+
+      const paymentObject = new window.Razorpay(options);
+      paymentObject.open();
+    } catch (err) {
+      console.error('Checkout error:', err);
+      alert('Failed to initiate checkout. Please try again.');
+    }
   };
 
   if (cartItems.length === 0) {

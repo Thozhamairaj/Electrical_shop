@@ -4,6 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Orders.css';
 
+const loadScript = (src) => {
+  return new Promise((resolve) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.body.appendChild(script);
+  });
+};
+
 export default function Orders() {
   const { user } = useUser();
   const navigate = useNavigate();
@@ -42,15 +52,60 @@ export default function Orders() {
     return Array.isArray(items) ? items : [];
   };
 
-  const handlePayNow = (order) => {
-    // Navigate to dummy payment with order details
-    navigate('/payment', { 
-      state: { 
-        orderId: order.id,
-        totalAmount: parseFloat(order.totalAmount || 0),
-        isExistingOrder: true
-      } 
-    });
+  const handlePayNow = async (order) => {
+    try {
+      const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
+      if (!res) {
+        alert('Razorpay SDK failed to load.');
+        return;
+      }
+
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      
+      // 1. Get Razorpay Order ID (either existing or create new)
+      let razorpayOrderId = order.razorpayOrderId;
+      
+      if (!razorpayOrderId) {
+        const { data } = await axios.post(`${apiUrl}/api/orders/initiate-link-payment`, {
+          orderId: order.id
+        });
+        razorpayOrderId = data.razorpayOrderId;
+      }
+
+      const options = {
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_your_key_here',
+        amount: Math.round(Number(order.totalAmount) * 100),
+        currency: 'INR',
+        name: 'Sri Vinayaga Hardwares',
+        description: `Order Payment #${order.id}`,
+        order_id: razorpayOrderId,
+        handler: async (response) => {
+          try {
+            await axios.post(`${apiUrl}/api/orders/verify-payment`, {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+            });
+            alert('Payment Successful!');
+            fetchOrders(); // Refresh orders list
+          } catch (err) {
+            console.error('Verification error:', err);
+            alert('Payment verification failed.');
+          }
+        },
+        prefill: {
+          name: user.fullName,
+          email: user.primaryEmailAddress?.emailAddress,
+        },
+        theme: { color: '#2563eb' },
+      };
+
+      const paymentObject = new window.Razorpay(options);
+      paymentObject.open();
+    } catch (err) {
+      console.error('Payment error:', err);
+      alert('Failed to initiate payment.');
+    }
   };
 
   if (loading) return <div className="orders-loading"><div className="spinner"></div><p>Fetching your orders...</p></div>;

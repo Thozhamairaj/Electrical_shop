@@ -61,6 +61,26 @@ router.post('/', async (req, res) => {
     }
 });
 
+// Create Razorpay Order for Checkout
+router.post('/create-payment', async (req, res) => {
+    try {
+        const { amount, orderId } = req.body;
+        if (!amount) return res.status(400).json({ error: 'Amount is required' });
+
+        const options = {
+            amount: Math.round(Number(amount) * 100), // convert to paise
+            currency: 'INR',
+            receipt: orderId ? `receipt_${orderId}` : `receipt_${Date.now()}`
+        };
+
+        const razorpayOrder = await razorpayInstance.orders.create(options);
+        res.json(razorpayOrder);
+    } catch (err) {
+        console.error('Create Razorpay order error:', err);
+        res.status(500).json({ error: 'Failed to create payment order' });
+    }
+});
+
 // Public fetch (for payment link)
 router.get('/public/:id', async (req, res) => {
     try {

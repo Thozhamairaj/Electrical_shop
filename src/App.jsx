@@ -21,7 +21,6 @@ import AdminProducts from './pages/admin/AdminProducts';
 import AdminOrders from './pages/admin/AdminOrders';
 import Chatbot from './components/Chatbot';
 import CheckoutLink from './pages/CheckoutLink';
-import DummyRazorpay from './pages/DummyRazorpay';
 import Wishlist from './pages/Wishlist';
 import Orders from './pages/Orders';
 import './App.css';
@@ -169,9 +168,6 @@ function App() {
 
             {/* Public Payment Link */}
             <Route path="/payment-link/:orderId" element={<CheckoutLink />} />
-
-            {/* Dummy Payment Flow */}
-            <Route path="/payment" element={<DummyRazorpay />} />
 
             {/* Auth page */}
             <Route
