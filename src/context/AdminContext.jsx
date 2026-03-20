@@ -55,6 +55,12 @@ export function AdminProvider({ children }) {
     }, []);
 
     const authFetch = useCallback(async (url, options = {}) => {
+        if (!token) {
+            console.warn(`authFetch: Attempted to fetch ${url} without admin token`);
+        }
+        
+        // Ensure relative URLs are prefixed with API base if needed, 
+        // but here we assume the proxy handles it or the caller provides the full path.
         const res = await fetch(url, {
             ...options,
             headers: {

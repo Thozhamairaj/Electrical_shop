@@ -19,7 +19,7 @@ export default function AdminDashboard() {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        authFetch('/api/admin/stats')
+        authFetch('/api/admin/dashboard')
             .then(r => r.ok ? r.json() : Promise.reject('Failed to load'))
             .then(setStats)
             .catch(() => setError('Failed to load dashboard data.'))
@@ -77,6 +77,16 @@ export default function AdminDashboard() {
                         <div>
                             <p className="ad-stat-label">Customers</p>
                             <p className="ad-stat-value">{stats.customerCount.toLocaleString()}</p>
+                        </div>
+                    </div>
+
+                    <div className="ad-stat-card">
+                        <div className="ad-stat-icon" style={{ background: 'rgba(16,185,129,0.15)', color: '#10b981' }}>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                        </div>
+                        <div>
+                            <p className="ad-stat-label">Total Revenue</p>
+                            <p className="ad-stat-value">₹{stats.totalRevenue.toLocaleString()}</p>
                         </div>
                     </div>
 

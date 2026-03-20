@@ -65,8 +65,35 @@ router.get('/me', adminAuth, async (req, res) => {
     }
 });
 
-// ── Admin Stats ────────────────────────────────────────────────────
+// ── Admin Dashboard Statistics ────────────────────────────────────
+router.get('/dashboard', adminAuth, async (req, res) => {
+    try {
+        const [products, orders, customers, revenue, recentOrders, lowStock] = await Promise.all([
+            db.query('SELECT COUNT(*) FROM "Products"'),
+            db.query('SELECT COUNT(*) FROM "Orders"'),
+            db.query('SELECT COUNT(*) FROM "Users"'),
+            db.query('SELECT SUM("totalAmount") FROM "Orders" WHERE "paymentStatus" = \'paid\''),
+            db.query('SELECT * FROM "Orders" ORDER BY "createdAt" DESC LIMIT 5'),
+            db.query('SELECT id, name, stock, category FROM "Products" WHERE stock <= 5')
+        ]);
+
+        res.json({
+            productCount: parseInt(products.rows[0].count) || 0,
+            orderCount: parseInt(orders.rows[0].count) || 0,
+            customerCount: parseInt(customers.rows[0].count) || 0,
+            totalRevenue: parseFloat(revenue.rows[0].sum) || 0,
+            recentOrders: recentOrders.rows,
+            lowStockProducts: lowStock.rows
+        });
+    } catch (err) {
+        console.error('Dashboard error:', err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+// Alias stats to dashboard or keep for backward compatibility
 router.get('/stats', adminAuth, async (req, res) => {
+    // Reuse dashboard logic but return same structure
     try {
         const [products, orders, customers, recentOrders, lowStock] = await Promise.all([
             db.query('SELECT COUNT(*) FROM "Products"'),

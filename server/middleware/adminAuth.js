@@ -5,8 +5,8 @@ const jwt = require('jsonwebtoken');
  * Expects: Authorization: Bearer <token>
  */
 function adminAuth(req, res, next) {
-    const authHeader = req.headers['authorization'];
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        console.warn('adminAuth: No Bearer token provided in Authorization header');
         return res.status(401).json({ error: 'Unauthorized: No token provided' });
     }
 
@@ -19,6 +19,7 @@ function adminAuth(req, res, next) {
         req.admin = decoded;
         next();
     } catch (err) {
+        console.error('adminAuth: Token verification failed:', err.message);
         return res.status(401).json({ error: 'Unauthorized: Invalid or expired token' });
     }
 }
