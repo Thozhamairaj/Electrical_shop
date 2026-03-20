@@ -81,7 +81,6 @@ router.post('/create-payment', async (req, res) => {
             key_id: process.env.RAZORPAY_KEY_ID
         });
     } catch (err) {
-    } catch (err) {
         console.error('Create Razorpay order error:', err);
         res.status(500).json({ error: 'Failed to create payment order' });
     }
@@ -209,7 +208,6 @@ router.post('/verify-payment', async (req, res) => {
         await reduceStock(items);
 
         res.json({ message: 'Payment verified and order processed', order });
-    } catch (err) {
     } catch (err) {
         console.error('Verify payment error:', err);
         res.status(500).json({ error: 'Failed to verify payment and save order' });
