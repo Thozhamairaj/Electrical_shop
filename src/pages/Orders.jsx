@@ -61,9 +61,16 @@ export default function Orders() {
         <h1>My Orders</h1>
         {orders.length === 0 ? (
           <div className="no-orders">
+            <div className="no-orders-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
             <h2>No orders yet</h2>
-            <p>Ready to start shopping? Your orders will appear here.</p>
-            <button onClick={() => navigate('/products')}>Browse Products</button>
+            <p>Your shopping journey starts here. Explore our collection of premium electrical supplies.</p>
+            <button className="browse-btn" onClick={() => navigate('/products')}>
+              Browse Products
+            </button>
           </div>
         ) : (
           <div className="orders-list">
