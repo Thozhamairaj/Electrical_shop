@@ -14,13 +14,18 @@ const allowedOrigins = [
     'http://localhost:3000',
     'https://electrical-shop-three.vercel.app',
     'https://electrical-shop-mayp.onrender.com'
-].filter(Boolean);
+];
 
 app.use(cors({
     origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin.replace(/\/$/, ''))) {
+        // Allow requests with no origin (like mobile apps or curl)
+        if (!origin) return callback(null, true);
+        
+        const cleanOrigin = origin.replace(/\/$/, '');
+        if (allowedOrigins.includes(cleanOrigin) || cleanOrigin.endsWith('.vercel.app')) {
             callback(null, true);
         } else {
+            console.warn(`CORS blocked for origin: ${origin}`);
             callback(new Error('Not allowed by CORS'));
         }
     },
