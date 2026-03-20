@@ -64,17 +64,22 @@ router.post('/', async (req, res) => {
 // Create Razorpay Order for Checkout
 router.post('/create-payment', async (req, res) => {
     try {
-        const { amount, orderId } = req.body;
+        const { amount, items } = req.body; 
         if (!amount) return res.status(400).json({ error: 'Amount is required' });
 
         const options = {
-            amount: Math.round(Number(amount) * 100), // convert to paise
+            amount: Math.round(Number(amount) * 100), 
             currency: 'INR',
-            receipt: orderId ? `receipt_${orderId}` : `receipt_${Date.now()}`
+            receipt: `rcpt_${Date.now()}`
         };
 
         const razorpayOrder = await razorpayInstance.orders.create(options);
-        res.json(razorpayOrder);
+        
+        // Return both order details and the Key ID for frontend
+        res.json({
+            ...razorpayOrder,
+            key_id: process.env.RAZORPAY_KEY_ID
+        });
     } catch (err) {
         console.error('Create Razorpay order error:', err);
         res.status(500).json({ error: 'Failed to create payment order' });
@@ -134,43 +139,56 @@ router.post('/initiate-link-payment', async (req, res) => {
     }
 });
 
-// Verify Payment
+// Verify Payment and Save Order
 router.post('/verify-payment', async (req, res) => {
     try {
-        const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+        const { 
+            razorpay_order_id, 
+            razorpay_payment_id, 
+            razorpay_signature,
+            orderData // items, userId, etc. passed from frontend
+        } = req.body;
 
+        // 1. Verify signature
         const body = razorpay_order_id + "|" + razorpay_payment_id;
         const expectedSignature = crypto
             .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
             .update(body.toString())
             .digest('hex');
 
-        if (expectedSignature === razorpay_signature) {
-            const result = await db.query('SELECT * FROM "Orders" WHERE "razorpayOrderId" = $1', [razorpay_order_id]);
-            const order = result.rows[0];
-            
-            if (!order) return res.status(404).json({ error: 'Order not found' });
-
-            const updatedResult = await db.query(
-                `UPDATE "Orders" 
-                 SET "paymentStatus" = 'paid', status = 'confirmed', "razorpayPaymentId" = $1, "razorpaySignature" = $2, "updatedAt" = NOW()
-                 WHERE id = $3
-                 RETURNING *`,
-                [razorpay_payment_id, razorpay_signature, order.id]
-            );
-
-            if (order.items) {
-                await reduceStock(typeof order.items === 'string' ? JSON.parse(order.items) : order.items);
-            }
-
-            return res.json({ message: 'Payment verified', order: updatedResult.rows[0] });
-        } else {
-            await db.query('UPDATE "Orders" SET "paymentStatus" = \'failed\' WHERE "razorpayOrderId" = $1', [razorpay_order_id]);
+        if (expectedSignature !== razorpay_signature) {
             return res.status(400).json({ error: 'Invalid signature' });
         }
+
+        // 2. Save Order to Database
+        const { userId, userEmail, userName, userPhone, items, totalAmount, shippingAddress } = orderData;
+
+        const result = await db.query(
+            `INSERT INTO "Orders" (
+                "userId", "userEmail", "userName", "userPhone", items, 
+                "totalAmount", "shippingAddress", "paymentStatus", status, 
+                "razorpayOrderId", "razorpayPaymentId", "razorpaySignature", 
+                "createdAt", "updatedAt"
+            ) 
+            VALUES ($1, $2, $3, $4, $5, $6, $7, 'paid', 'confirmed', $8, $9, $10, NOW(), NOW())
+            RETURNING *`,
+            [
+                userId, userEmail, userName, userPhone, 
+                JSON.stringify(items), totalAmount, 
+                shippingAddress || 'To be collected',
+                razorpay_order_id, razorpay_payment_id, razorpay_signature
+            ]
+        );
+
+        const order = result.rows[0];
+
+        // 3. Increment stock reduction
+        await reduceStock(items);
+
+        res.json({ message: 'Payment verified and order saved', order });
     } catch (err) {
         console.error('Verify payment error:', err);
-        res.status(500).json({ error: 'Failed to verify payment' });
+        res.status(500).json({ error: 'Failed to verify payment and save order' });
     }
 });
 
