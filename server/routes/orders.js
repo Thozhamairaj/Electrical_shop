@@ -81,9 +81,12 @@ router.post('/create-payment', async (req, res) => {
             key_id: process.env.RAZORPAY_KEY_ID
         });
     } catch (err) {
-        console.error('Create Razorpay order error:', err);
-        res.status(500).json({ error: 'Failed to create payment order' });
     }
+});
+
+// GET handler for create-payment (returns 405 Method Not Allowed)
+router.get('/create-payment', (req, res) => {
+    res.status(405).json({ error: 'Method Not Allowed. Please use POST.' });
 });
 
 // Public fetch (for payment link)
@@ -204,9 +207,12 @@ router.post('/verify-payment', async (req, res) => {
 
         res.json({ message: 'Payment verified and order processed', order });
     } catch (err) {
-        console.error('Verify payment error:', err);
-        res.status(500).json({ error: 'Failed to verify payment and save order' });
     }
+});
+
+// GET handler for verify-payment (returns 405 Method Not Allowed)
+router.get('/verify-payment', (req, res) => {
+    res.status(405).json({ error: 'Method Not Allowed. Please use POST.' });
 });
 
 // My Orders
