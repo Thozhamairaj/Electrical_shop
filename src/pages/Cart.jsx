@@ -172,30 +172,18 @@ export default function Cart() {
       }
 
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-      
-      // 1. Create order in our database first
-      const orderResponse = await axios.post(`${apiUrl}/api/orders`, {
-        userId: user.id,
-        userEmail: user.primaryEmailAddress?.emailAddress,
-        userName: user.fullName || user.username || 'Customer',
-        items: selectedCartItems,
-        totalAmount: selectedTotal >= 500 ? selectedTotal : selectedTotal + 50,
-        status: 'pending',
-        paymentStatus: 'pending'
-      });
+      const totalAmount = selectedTotal >= 500 ? selectedTotal : selectedTotal + 50;
 
-      const order = orderResponse.data.order;
-
-      // 2. Create Razorpay order
+      // 1. Create Razorpay order (no local DB entry yet)
       const paymentResponse = await axios.post(`${apiUrl}/api/orders/create-payment`, {
-        amount: order.totalAmount,
-        orderId: order.id
+        amount: totalAmount,
+        items: selectedCartItems
       });
 
       const razorpayOrder = paymentResponse.data;
 
       const options = {
-        key: import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_your_key_here',
+        key: razorpayOrder.key_id, // Key ID returned from backend
         amount: razorpayOrder.amount,
         currency: razorpayOrder.currency,
         name: 'Sri Vinayaga Hardwares',
@@ -207,10 +195,18 @@ export default function Cart() {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
+              orderData: {
+                userId: user.id,
+                userEmail: user.primaryEmailAddress?.emailAddress,
+                userName: user.fullName || user.username || 'Customer',
+                items: selectedCartItems,
+                totalAmount: totalAmount,
+                shippingAddress: 'To be collected' // User can customize this if needed
+              }
             });
 
-            if (verifyRes.data.message === 'Payment verified') {
-              alert('Payment Successful!');
+            if (verifyRes.data.message.includes('verified')) {
+              alert('Payment Successful and Order Placed!');
               clearCart();
               navigate('/orders');
             }
