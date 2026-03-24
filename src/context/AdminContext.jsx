@@ -6,7 +6,7 @@ const API = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/admi
 
 export function AdminProvider({ children }) {
     const [admin, setAdmin] = useState(null);
-    const [token, setToken] = useState(() => localStorage.getItem('admin_token'));
+    const [token, setToken] = useState(() => localStorage.getItem('adminToken'));
     const [loading, setLoading] = useState(true);
 
     // Verify token on mount
@@ -23,12 +23,12 @@ export function AdminProvider({ children }) {
                 if (data) setAdmin(data);
                 else {
                     // Token invalid — clear it
-                    localStorage.removeItem('admin_token');
+                    localStorage.removeItem('adminToken');
                     setToken(null);
                 }
             })
             .catch(() => {
-                localStorage.removeItem('admin_token');
+                localStorage.removeItem('adminToken');
                 setToken(null);
             })
             .finally(() => setLoading(false));
@@ -42,14 +42,14 @@ export function AdminProvider({ children }) {
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || 'Login failed');
-        localStorage.setItem('admin_token', data.token);
+        localStorage.setItem('adminToken', data.token);
         setToken(data.token);
         setAdmin(data.admin);
         return data.admin;
     }, []);
 
     const logout = useCallback(() => {
-        localStorage.removeItem('admin_token');
+        localStorage.removeItem('adminToken');
         setToken(null);
         setAdmin(null);
     }, []);
