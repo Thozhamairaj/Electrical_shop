@@ -52,7 +52,6 @@ app.use('/api/cart', require('./routes/cart'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/products', require('./routes/products'));
 app.use('/api/admin', require('./routes/admin'));
-app.use('/api/admin-products', require('./routes/adminProducts'));
 app.use('/api/orders', require('./routes/orders'));
 
 // ── Start Server ──────────────────────────────────────────────────
