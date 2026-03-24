@@ -41,10 +41,18 @@ export function AdminProvider({ children }) {
             body: JSON.stringify({ username, password }),
         });
         const data = await res.json();
+        console.log('Login response:', data);
+        
         if (!res.ok) throw new Error(data.error || 'Login failed');
-        localStorage.setItem('adminToken', data.token);
-        setToken(data.token);
-        setAdmin(data.admin);
+        
+        const tokenToSave = data.token || (data.data && data.data.token);
+        if (tokenToSave) {
+            localStorage.setItem('adminToken', tokenToSave);
+            setToken(tokenToSave);
+            setAdmin(data.admin || (data.data && data.data.admin));
+        } else {
+            console.error('No token found in login response');
+        }
         return data.admin;
     }, []);
 
