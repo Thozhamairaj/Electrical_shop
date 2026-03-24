@@ -81,16 +81,6 @@ export default function AdminDashboard() {
                     </div>
 
                     <div className="ad-stat-card">
-                        <div className="ad-stat-icon" style={{ background: 'rgba(16,185,129,0.15)', color: '#10b981' }}>
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-                        </div>
-                        <div>
-                            <p className="ad-stat-label">Total Revenue</p>
-                            <p className="ad-stat-value">₹{stats.totalRevenue.toLocaleString()}</p>
-                        </div>
-                    </div>
-
-                    <div className="ad-stat-card">
                         <div className="ad-stat-icon" style={{ background: 'rgba(239,68,68,0.15)', color: '#ef4444' }}>
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                         </div>

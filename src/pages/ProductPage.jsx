@@ -45,19 +45,83 @@ export default function ProductPage() {
     setTimeout(() => setAddedToCart(false), 2000);
   };
 
-  const handleBuyNow = () => {
+  const loadScript = (src) => new Promise((resolve) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.body.appendChild(script);
+  });
+
+  const handleBuyNow = async () => {
     if (!isSignedIn) {
       alert('Please login to proceed with purchase.');
       navigate('/auth');
       return;
     }
-    navigate('/payment', { 
-      state: { 
-        product, 
-        quantity, 
-        totalAmount: product.price * quantity 
-      } 
-    });
+
+    try {
+      const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
+      if (!res) {
+        alert('Razorpay SDK failed to load. Are you online?');
+        return;
+      }
+
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const totalAmount = product.price * quantity;
+      const amountWithShipping = totalAmount >= 500 ? totalAmount : totalAmount + 50;
+
+      const paymentResponse = await axios.post(`${apiUrl}/api/orders/create-payment`, {
+        amount: amountWithShipping,
+        items: [{ ...product, quantity }],
+      });
+
+      const razorpayOrder = paymentResponse.data;
+
+      const options = {
+        key: razorpayOrder.key_id,
+        amount: razorpayOrder.amount,
+        currency: razorpayOrder.currency,
+        name: 'Sri Vinayaga Hardwares',
+        description: `${product.name} × ${quantity}`,
+        order_id: razorpayOrder.id,
+        handler: async (response) => {
+          try {
+            const verifyRes = await axios.post(`${apiUrl}/api/orders/verify-payment`, {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+              orderData: {
+                userId: user.id,
+                userEmail: user.primaryEmailAddress?.emailAddress,
+                userName: user.fullName || user.username || 'Customer',
+                items: [{ ...product, quantity }],
+                totalAmount: amountWithShipping,
+                shippingAddress: 'To be collected',
+              },
+            });
+            if (verifyRes.data.message.includes('verified')) {
+              alert('Payment Successful and Order Placed!');
+              navigate('/orders');
+            }
+          } catch (err) {
+            console.error('Verification error:', err);
+            alert('Payment verification failed. Please contact support.');
+          }
+        },
+        prefill: {
+          name: user?.fullName,
+          email: user?.primaryEmailAddress?.emailAddress,
+        },
+        theme: { color: '#2563eb' },
+      };
+
+      const paymentObject = new window.Razorpay(options);
+      paymentObject.open();
+    } catch (err) {
+      console.error('Buy Now checkout error:', err);
+      alert('Failed to initiate checkout. Please try again.');
+    }
   };
 
   const handleWhatsAppOrder = async () => {
