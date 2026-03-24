@@ -19,7 +19,7 @@ export default function AdminDashboard() {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        authFetch('/api/admin/dashboard')
+        authFetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/admin/dashboard`)
             .then(r => r.ok ? r.json() : Promise.reject('Failed to load'))
             .then(setStats)
             .catch(() => setError('Failed to load dashboard data.'))

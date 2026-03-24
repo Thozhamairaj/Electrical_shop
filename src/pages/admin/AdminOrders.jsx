@@ -31,7 +31,7 @@ export default function AdminOrders() {
 
     const loadOrders = useCallback(() => {
         setLoading(true);
-        authFetch('/api/orders')
+        authFetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/orders`)
             .then(r => r.ok ? r.json() : Promise.reject('Failed'))
             .then(setOrders)
             .catch(() => setError('Failed to load orders.'))
@@ -43,7 +43,7 @@ export default function AdminOrders() {
     const handleStatusChange = async (orderId, newStatus) => {
         setUpdatingId(orderId);
         try {
-            const res = await authFetch(`/api/orders/${orderId}/status`, {
+            const res = await authFetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/orders/${orderId}/status`, {
                 method: 'PUT',
                 body: JSON.stringify({ status: newStatus }),
             });
