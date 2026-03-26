@@ -46,7 +46,7 @@
 /* Chat Window */
 .chat-window {
   width: 360px;
-  max-height: 600px;
+  max-height: 580px;
   background: #f0f4f8;
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
@@ -126,9 +126,71 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 1.5rem;
+  padding: 1rem 1.5rem 0.5rem;
   overflow-y: auto;
-  min-height: 400px;
+  min-height: 280px;
+}
+
+/* Input Area */
+.chat-input-area {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  border-top: 1px solid #e1e8f0;
+}
+
+.chat-input {
+  flex: 1;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 25px;
+  padding: 0.55rem 1rem;
+  font-size: 0.9rem;
+  outline: none;
+  background: #f7fafc;
+  transition: border-color 0.2s;
+  color: #1a202c;
+}
+
+.chat-input:focus {
+  border-color: #e53e3e;
+  background: #fff;
+}
+
+.chat-input::placeholder {
+  color: #a0aec0;
+}
+
+.send-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: #e2e8f0;
+  color: #a0aec0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: not-allowed;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.send-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.send-btn.active {
+  background: #e53e3e;
+  color: #fff;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.send-btn.active:hover {
+  background: #c53030;
 }
 
 .messages-list {
@@ -234,9 +296,7 @@
 @media (max-width: 480px) {
   .chat-window {
     width: calc(100vw - 2rem);
-    height: calc(100vh - 4rem);
-    bottom: 1rem;
-    right: 1rem;
+    max-height: calc(100vh - 5rem);
   }
   .chatbot-container {
     bottom: 1rem;
