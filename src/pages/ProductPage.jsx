@@ -7,6 +7,7 @@ import { products } from '../data/products';
 import { generateWhatsAppUrl, formatProductOrderMessage, formatProductEnquiryMessage } from '../utils/whatsapp';
 import { userService } from '../services/userService';
 import PhoneNumberModal from '../components/PhoneNumberModal';
+import ReviewSection from '../components/reviews/ReviewSection';
 import axios from 'axios';
 
 import './ProductPage.css';
@@ -22,6 +23,7 @@ export default function ProductPage() {
   const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
   const [isPhoneModalOpen, setIsPhoneModalOpen] = useState(false);
+  const [isPaymentConfirmOpen, setIsPaymentConfirmOpen] = useState(false);
 
   if (!product) {
     return (
@@ -53,13 +55,7 @@ export default function ProductPage() {
     document.body.appendChild(script);
   });
 
-  const handleBuyNow = async () => {
-    if (!isSignedIn) {
-      alert('Please login to proceed with purchase.');
-      navigate('/auth');
-      return;
-    }
-
+  const initiateRazorpayPayment = async () => {
     try {
       const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
       if (!res) {
@@ -122,6 +118,16 @@ export default function ProductPage() {
       console.error('Buy Now checkout error:', err);
       alert('Failed to initiate checkout. Please try again.');
     }
+  };
+
+  const handleBuyNow = () => {
+    if (!isSignedIn) {
+      alert('Please login to proceed with purchase.');
+      navigate('/auth');
+      return;
+    }
+
+    setIsPaymentConfirmOpen(true);
   };
 
   const handleWhatsAppOrder = async () => {
@@ -314,6 +320,33 @@ export default function ProductPage() {
             ))}
           </div>
         </section>
+      )}
+
+      <ReviewSection productId={product.id} productName={product.name} />
+
+      {isPaymentConfirmOpen && (
+        <div className="payment-confirm-overlay" onClick={() => setIsPaymentConfirmOpen(false)}>
+          <div className="payment-confirm-modal" onClick={(event) => event.stopPropagation()}>
+            <h3>Proceed to payment?</h3>
+            <p>
+              This will open Razorpay checkout for <strong>{product.name}</strong> and continue the payment flow.
+            </p>
+            <div className="payment-confirm-actions">
+              <button className="payment-confirm-no" onClick={() => setIsPaymentConfirmOpen(false)}>
+                No
+              </button>
+              <button
+                className="payment-confirm-yes"
+                onClick={async () => {
+                  setIsPaymentConfirmOpen(false);
+                  await initiateRazorpayPayment();
+                }}
+              >
+                Yes
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       <PhoneNumberModal

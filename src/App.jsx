@@ -19,6 +19,7 @@ import AdminLogin from './pages/admin/AdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminProducts from './pages/admin/AdminProducts';
 import AdminOrders from './pages/admin/AdminOrders';
+import AdminReviews from './pages/admin/AdminReviews';
 import Chatbot from './components/Chatbot';
 import CheckoutLink from './pages/CheckoutLink';
 import Wishlist from './pages/Wishlist';
@@ -69,6 +70,14 @@ function App() {
               element={
                 <ProtectedAdminRoute>
                   <AdminOrders />
+                </ProtectedAdminRoute>
+              }
+            />
+            <Route
+              path="/admin/reviews"
+              element={
+                <ProtectedAdminRoute>
+                  <AdminReviews />
                 </ProtectedAdminRoute>
               }
             />

@@ -30,7 +30,7 @@ app.use(cors({
         }
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-user-id', 'x-clerk-user-id'],
     credentials: true,
 }));
 
@@ -53,6 +53,7 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/products', require('./routes/products'));
 app.use('/api/admin', require('./routes/admin'));
 app.use('/api/orders', require('./routes/orders'));
+app.use('/api/reviews', require('./routes/reviews'));
 
 // ── Start Server ──────────────────────────────────────────────────
 async function startServer() {
