@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useUser } from '@clerk/clerk-react';
 import { userService } from '../services/userService';
 import './Profile.css';
@@ -148,6 +149,9 @@ const Profile = () => {
                     )}
 
                     <div className="profile-actions">
+                        <Link to="/my-reviews" className="save-btn-premium profile-reviews-link">
+                            View My Reviews
+                        </Link>
                         <button type="submit" disabled={saving} className="save-btn-premium">
                             {saving ? (
                                 <span className="btn-loader"></span>

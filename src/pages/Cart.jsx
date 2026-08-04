@@ -9,20 +9,6 @@ import axios from 'axios';
 
 import './Cart.css';
 
-const loadScript = (src) => {
-  return new Promise((resolve) => {
-    const script = document.createElement('script');
-    script.src = src;
-    script.onload = () => {
-      resolve(true);
-    };
-    script.onerror = () => {
-      resolve(false);
-    };
-    document.body.appendChild(script);
-  });
-};
-
 export default function Cart() {
   const { cartItems, cartTotal, removeFromCart, updateQuantity, clearCart } = useCart();
   const { isLoaded, isSignedIn, user } = useUser();
@@ -152,7 +138,7 @@ export default function Cart() {
     }
   };
 
-  const handleRazorpayCheckout = async () => {
+  const handleDummyCheckout = async () => {
     if (!isSignedIn) {
       alert('Please login to proceed with checkout.');
       navigate('/auth');
@@ -165,70 +151,27 @@ export default function Cart() {
     }
 
     try {
-      const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
-      if (!res) {
-        alert('Razorpay SDK failed to load. Are you online?');
-        return;
-      }
-
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-      const totalAmount = selectedTotal >= 500 ? selectedTotal : selectedTotal + 50;
+      const totalAmount = selectedTotal;
 
-      // 1. Create Razorpay order (no local DB entry yet)
-      const paymentResponse = await axios.post(`${apiUrl}/api/orders/create-payment`, {
-        amount: totalAmount,
-        items: selectedCartItems
+      const { data } = await axios.post(`${apiUrl}/api/orders`, {
+        userId: user.id,
+        userEmail: user.primaryEmailAddress?.emailAddress,
+        userName: user.fullName || user.username || 'Customer',
+        items: selectedCartItems,
+        totalAmount,
+        shippingAddress: 'To be collected',
+        status: 'pending',
+        paymentStatus: 'pending',
+        isWhatsApp: true,
+        notes: 'Demo checkout'
       });
 
-      const razorpayOrder = paymentResponse.data;
-
-      const options = {
-        key: razorpayOrder.key_id, // Key ID returned from backend
-        amount: razorpayOrder.amount,
-        currency: razorpayOrder.currency,
-        name: 'Sri Vinayaga Hardwares',
-        description: 'Order Payment',
-        order_id: razorpayOrder.id,
-        handler: async (response) => {
-          try {
-            const verifyRes = await axios.post(`${apiUrl}/api/orders/verify-payment`, {
-              razorpay_order_id: response.razorpay_order_id,
-              razorpay_payment_id: response.razorpay_payment_id,
-              razorpay_signature: response.razorpay_signature,
-              orderData: {
-                userId: user.id,
-                userEmail: user.primaryEmailAddress?.emailAddress,
-                userName: user.fullName || user.username || 'Customer',
-                items: selectedCartItems,
-                totalAmount: totalAmount,
-                shippingAddress: 'To be collected' // User can customize this if needed
-              }
-            });
-
-            if (verifyRes.data.message.includes('verified')) {
-              alert('Payment Successful and Order Placed!');
-              clearCart();
-              navigate('/orders');
-            }
-          } catch (err) {
-            console.error('Verification error:', err);
-            alert('Payment verification failed. Please contact support.');
-          }
-        },
-        prefill: {
-          name: user.fullName,
-          email: user.primaryEmailAddress?.emailAddress,
-        },
-        theme: {
-          color: '#2563eb',
-        },
-      };
-
-      const paymentObject = new window.Razorpay(options);
-      paymentObject.open();
+      clearCart();
+      navigate(`/payment-link/${data.order.id}`);
     } catch (err) {
       console.error('Checkout error:', err);
-      alert('Failed to initiate checkout. Please try again.');
+      alert('Failed to start checkout. Please try again.');
     }
   };
 
@@ -360,19 +303,15 @@ export default function Cart() {
             <span>Subtotal</span>
             <span>₹{Math.round(selectedTotal)}</span>
           </div>
-          <div className="summary-row">
-            <span>Shipping</span>
-            <span>{selectedTotal > 0 ? (selectedTotal >= 500 ? 'FREE' : '₹50') : '₹0'}</span>
-          </div>
           <div className="summary-row total">
             <span>Total</span>
-            <span>₹{Math.round(selectedTotal > 0 ? (selectedTotal >= 500 ? selectedTotal : selectedTotal + 50) : 0)}</span>
+            <span>₹{Math.round(selectedTotal)}</span>
           </div>
           <button
             type="button"
             className="checkout-btn"
             disabled={selectedIds.size === 0}
-            onClick={handleRazorpayCheckout}
+            onClick={handleDummyCheckout}
           >
             Proceed to Checkout
           </button>

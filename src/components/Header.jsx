@@ -50,6 +50,7 @@ function UserMenu() {
         <span className="user-name">{firstName}</span>
         <div className="user-dropdown-links">
           <Link to="/profile" className="profile-link">My Profile</Link>
+            <Link to="/my-reviews" className="profile-link">My Reviews</Link>
           <button className="signout-btn" onClick={handleSignOut}>Sign out</button>
         </div>
       </div>
@@ -142,6 +143,14 @@ export default function Header() {
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
             </div>
             <span className="action-text">Wishlist</span>
+          </Link>
+
+          {/* Reviews */}
+          <Link to="/my-reviews" className="action-icon-link" title="My Reviews">
+            <div className="action-icon-wrapper">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><path d="M8 8h8"></path><path d="M8 12h5"></path></svg>
+            </div>
+            <span className="action-text">Reviews</span>
           </Link>
 
           {/* Orders & Tracking */}

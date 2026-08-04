@@ -1,9 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth, useUser } from '@clerk/clerk-react';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
-import { products } from '../data/products';
 import { generateWhatsAppUrl, formatProductOrderMessage, formatProductEnquiryMessage } from '../utils/whatsapp';
 import { userService } from '../services/userService';
 import PhoneNumberModal from '../components/PhoneNumberModal';
@@ -19,18 +18,56 @@ export default function ProductPage() {
   const { addToCart } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
   const navigate = useNavigate();
-  const product = products.find(p => p.id === parseInt(id));
+  const [product, setProduct] = useState(null);
+  const [relatedProducts, setRelatedProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
   const [isPhoneModalOpen, setIsPhoneModalOpen] = useState(false);
   const [isPaymentConfirmOpen, setIsPaymentConfirmOpen] = useState(false);
 
-  if (!product) {
+  useEffect(() => {
+    const fetchProduct = async () => {
+      setLoading(true);
+      try {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const [{ data: currentProduct }, { data: allProducts }] = await Promise.all([
+          axios.get(`${apiUrl}/api/products/${id}`),
+          axios.get(`${apiUrl}/api/products`),
+        ]);
+        setProduct(currentProduct);
+        setRelatedProducts(
+          allProducts.filter(p => p.category === currentProduct.category && p.id !== currentProduct.id).slice(0, 4)
+        );
+        setLoadError(null);
+      } catch (error) {
+        console.error('Error fetching product:', error);
+        setLoadError('Product not found or could not be loaded.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="product-page">
+        <div className="not-found">
+          <h1>Loading Product...</h1>
+        </div>
+      </div>
+    );
+  }
+
+  if (loadError || !product) {
     return (
       <div className="product-page">
         <div className="not-found">
           <h1>Product Not Found</h1>
-          <p>Sorry, the product you're looking for doesn't exist.</p>
+          <p>{loadError || "Sorry, the product you're looking for doesn't exist."}</p>
         </div>
       </div>
     );
@@ -47,76 +84,28 @@ export default function ProductPage() {
     setTimeout(() => setAddedToCart(false), 2000);
   };
 
-  const loadScript = (src) => new Promise((resolve) => {
-    const script = document.createElement('script');
-    script.src = src;
-    script.onload = () => resolve(true);
-    script.onerror = () => resolve(false);
-    document.body.appendChild(script);
-  });
-
-  const initiateRazorpayPayment = async () => {
+  const handleDummyCheckout = async () => {
     try {
-      const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
-      if (!res) {
-        alert('Razorpay SDK failed to load. Are you online?');
-        return;
-      }
-
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       const totalAmount = product.price * quantity;
-      const amountWithShipping = totalAmount >= 500 ? totalAmount : totalAmount + 50;
 
-      const paymentResponse = await axios.post(`${apiUrl}/api/orders/create-payment`, {
-        amount: amountWithShipping,
+      const { data } = await axios.post(`${apiUrl}/api/orders`, {
+        userId: user.id,
+        userEmail: user.primaryEmailAddress?.emailAddress,
+        userName: user.fullName || user.username || 'Customer',
         items: [{ ...product, quantity }],
+        totalAmount,
+        shippingAddress: 'To be collected',
+        status: 'pending',
+        paymentStatus: 'pending',
+        isWhatsApp: true,
+        notes: 'Demo checkout',
       });
 
-      const razorpayOrder = paymentResponse.data;
-
-      const options = {
-        key: razorpayOrder.key_id,
-        amount: razorpayOrder.amount,
-        currency: razorpayOrder.currency,
-        name: 'Sri Vinayaga Hardwares',
-        description: `${product.name} × ${quantity}`,
-        order_id: razorpayOrder.id,
-        handler: async (response) => {
-          try {
-            const verifyRes = await axios.post(`${apiUrl}/api/orders/verify-payment`, {
-              razorpay_order_id: response.razorpay_order_id,
-              razorpay_payment_id: response.razorpay_payment_id,
-              razorpay_signature: response.razorpay_signature,
-              orderData: {
-                userId: user.id,
-                userEmail: user.primaryEmailAddress?.emailAddress,
-                userName: user.fullName || user.username || 'Customer',
-                items: [{ ...product, quantity }],
-                totalAmount: amountWithShipping,
-                shippingAddress: 'To be collected',
-              },
-            });
-            if (verifyRes.data.message.includes('verified')) {
-              alert('Payment Successful and Order Placed!');
-              navigate('/orders');
-            }
-          } catch (err) {
-            console.error('Verification error:', err);
-            alert('Payment verification failed. Please contact support.');
-          }
-        },
-        prefill: {
-          name: user?.fullName,
-          email: user?.primaryEmailAddress?.emailAddress,
-        },
-        theme: { color: '#2563eb' },
-      };
-
-      const paymentObject = new window.Razorpay(options);
-      paymentObject.open();
+      navigate(`/payment-link/${data.order.id}`);
     } catch (err) {
       console.error('Buy Now checkout error:', err);
-      alert('Failed to initiate checkout. Please try again.');
+      alert('Failed to start checkout. Please try again.');
     }
   };
 
@@ -190,8 +179,9 @@ export default function ProductPage() {
   };
 
 
-  const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
-  const relatedProducts = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+  const discount = product.originalPrice > product.price
+    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+    : 0;
 
   return (
     <div className="product-page">
@@ -216,11 +206,11 @@ export default function ProductPage() {
           </div>
 
           <div className="price-section">
-            <span className="price">₹{product.price.toFixed(2)}</span>
+            <span className="price">₹{product.price.toLocaleString()}</span>
             {product.originalPrice > product.price && (
               <>
-                <span className="original-price">₹{product.originalPrice.toFixed(2)}</span>
-                <span className="savings">Save ₹{(product.originalPrice - product.price).toFixed(2)}</span>
+                <span className="original-price">₹{product.originalPrice.toLocaleString()}</span>
+                <span className="savings">Save ₹{(product.originalPrice - product.price).toLocaleString()}</span>
               </>
             )}
           </div>
@@ -314,7 +304,7 @@ export default function ProductPage() {
               <div key={related.id} className="related-card">
                 <img src={encodeURI(related.image)} alt={related.name} />
                 <h4>{related.name}</h4>
-                <p className="price">${related.price.toFixed(2)}</p>
+                <p className="price">₹{related.price.toLocaleString()}</p>
                 <a href={`/product/${related.id}`} className="view-link">View Details →</a>
               </div>
             ))}
@@ -329,7 +319,7 @@ export default function ProductPage() {
           <div className="payment-confirm-modal" onClick={(event) => event.stopPropagation()}>
             <h3>Proceed to payment?</h3>
             <p>
-              This will open Razorpay checkout for <strong>{product.name}</strong> and continue the payment flow.
+              This will open the demo payment page for <strong>{product.name}</strong> and continue the checkout flow.
             </p>
             <div className="payment-confirm-actions">
               <button className="payment-confirm-no" onClick={() => setIsPaymentConfirmOpen(false)}>
@@ -339,10 +329,10 @@ export default function ProductPage() {
                 className="payment-confirm-yes"
                 onClick={async () => {
                   setIsPaymentConfirmOpen(false);
-                  await initiateRazorpayPayment();
+                  await handleDummyCheckout();
                 }}
               >
-                Yes
+                Continue
               </button>
             </div>
           </div>

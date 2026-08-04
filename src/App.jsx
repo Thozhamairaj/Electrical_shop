@@ -13,6 +13,7 @@ import Contact from './pages/Contact';
 import Cart from './pages/Cart';
 import Auth from './pages/Auth';
 import Profile from './pages/Profile';
+import MyReviews from './pages/MyReviews';
 import UserSync from './components/UserSync';
 import ProtectedAdminRoute from './components/admin/ProtectedAdminRoute';
 import AdminLogin from './pages/admin/AdminLogin';
@@ -146,6 +147,19 @@ function App() {
                 <CustomerLayout>
                   <SignedIn>
                     <Profile />
+                  </SignedIn>
+                  <SignedOut>
+                    <Navigate to="/auth" replace />
+                  </SignedOut>
+                </CustomerLayout>
+              }
+            />
+            <Route
+              path="/my-reviews"
+              element={
+                <CustomerLayout>
+                  <SignedIn>
+                    <MyReviews />
                   </SignedIn>
                   <SignedOut>
                     <Navigate to="/auth" replace />

@@ -117,8 +117,8 @@ function getBotResponse(text) {
   }
 
   // Payment
-  if (q.includes('payment') || q.includes('pay') || q.includes('razorpay') || q.includes('upi') || q.includes('card') || q.includes('cod')) {
-    return "We accept online payments via Razorpay (UPI, cards, net banking). You can also place orders via WhatsApp! 💳";
+  if (q.includes('payment') || q.includes('pay') || q.includes('upi') || q.includes('card') || q.includes('cod')) {
+    return "We offer a demo checkout with UPI, cards, net banking, and wallet-style payment options. You can also place orders via WhatsApp! 💳";
   }
 
   // Thanks / bye

@@ -52,12 +52,16 @@ export default function ReviewCard({
             <p className="review-text">{review.reviewText}</p>
 
             <div className="review-footer">
-                <button className="review-action helpful" onClick={() => onHelpful?.(review)} disabled={busyAction}>
-                    Helpful ({review.helpfulVotes || 0})
-                </button>
-                <button className="review-action ghost" onClick={() => onReport?.(review)}>
-                    Report
-                </button>
+                {onHelpful && (
+                    <button className="review-action helpful" onClick={() => onHelpful(review)} disabled={busyAction}>
+                        Helpful ({review.helpfulVotes || 0})
+                    </button>
+                )}
+                {onReport && (
+                    <button className="review-action ghost" onClick={() => onReport(review)}>
+                        Report
+                    </button>
+                )}
 
                 {onEdit && (
                     <button className="review-action ghost" onClick={() => onEdit(review)} disabled={busyAction}>
