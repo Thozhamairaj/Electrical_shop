@@ -27,6 +27,8 @@ export default function ReviewCard({
 }) {
     if (!review) return null;
 
+    const [showReason, setShowReason] = require('react').useState(false);
+
     return (
         <article className="review-card">
             <div className="review-card-head">
@@ -35,6 +37,16 @@ export default function ReviewCard({
                         <h3 className="review-author">{review.reviewerName || 'Customer'}</h3>
                         {review.verifiedPurchase && <span className="review-badge verified">Verified Purchase</span>}
                         <span className="review-badge trust">{review.trustLevel || 'AI Pending'}</span>
+                        {review.trustReason && (
+                            <button
+                                type="button"
+                                className="trust-reason-toggle"
+                                onClick={() => setShowReason((s) => !s)}
+                                aria-expanded={showReason}
+                            >
+                                {showReason ? 'Hide why' : 'Why?'}
+                            </button>
+                        )}
                         {review.status && review.status !== 'Approved' && (
                             <span className={`review-badge status ${review.status.toLowerCase()}`}>{review.status}</span>
                         )}
@@ -50,6 +62,10 @@ export default function ReviewCard({
 
             <h4 className="review-title">{review.reviewTitle}</h4>
             <p className="review-text">{review.reviewText}</p>
+
+            {showReason && review.trustReason && (
+                <div className="review-trust-reason">{review.trustReason}</div>
+            )}
 
             <div className="review-footer">
                 {onHelpful && (
