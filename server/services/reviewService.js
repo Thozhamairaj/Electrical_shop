@@ -1,4 +1,5 @@
 const db = require('../db');
+const { runTrustInference } = require('./trustPipeline');
 
 function toNumber(value, fallback = 0) {
     const parsed = Number(value);
@@ -239,15 +240,37 @@ async function createReview({ clerkId, productId, rating, reviewTitle, reviewTex
 
         const verifiedPurchase = await isVerifiedPurchase(client, clerkId, productId);
 
+        let trustLevel = 'Medium Trust';
+        let trustReason = 'AI analysis fallback applied because trust pipeline did not return a result.';
+        let reviewStatus = 'Approved';
+
+        try {
+            const trustResult = await runTrustInference({
+                productId,
+                rating,
+                reviewTitle,
+                reviewText,
+            });
+
+            trustLevel = trustResult?.prediction?.trust_level || null;
+            trustReason = trustResult?.prediction?.trust_reason || null;
+            reviewStatus = 'Approved';
+        } catch (error) {
+            // Fallback still persists non-null trust fields as requested.
+            trustLevel = 'Medium Trust';
+            trustReason = 'AI analysis fallback applied because trust pipeline failed during review submission.';
+            reviewStatus = 'Approved';
+        }
+
         const insertResult = await client.query(
             `INSERT INTO "Reviews" (
                 "userId", "productId", rating, "reviewTitle", "reviewText",
                 "verifiedPurchase", "helpfulVotes", "trustLevel", "trustReason", status,
                 "createdAt", "updatedAt"
             )
-            VALUES ($1, $2, $3, $4, $5, $6, 0, NULL, 'Waiting for AI Analysis', 'Pending', NOW(), NOW())
+            VALUES ($1, $2, $3, $4, $5, $6, 0, $7, $8, $9, NOW(), NOW())
             RETURNING id`,
-            [clerkId, productId, rating, reviewTitle, reviewText, verifiedPurchase]
+            [clerkId, productId, rating, reviewTitle, reviewText, verifiedPurchase, trustLevel, trustReason, reviewStatus]
         );
 
         return getReviewById(client, insertResult.rows[0].id);
@@ -271,18 +294,39 @@ async function updateReview({ reviewId, clerkId, rating, reviewTitle, reviewText
 
         const verifiedPurchase = await isVerifiedPurchase(client, existing.userId, existing.productId);
 
+        let trustLevel = 'Medium Trust';
+        let trustReason = 'AI analysis fallback applied because trust pipeline did not return a result.';
+        let reviewStatus = 'Approved';
+
+        try {
+            const trustResult = await runTrustInference({
+                productId: existing.productId,
+                rating,
+                reviewTitle,
+                reviewText,
+            });
+
+            trustLevel = trustResult?.prediction?.trust_level || null;
+            trustReason = trustResult?.prediction?.trust_reason || null;
+            reviewStatus = 'Approved';
+        } catch (error) {
+            trustLevel = 'Medium Trust';
+            trustReason = 'AI analysis fallback applied because trust pipeline failed during review update.';
+            reviewStatus = 'Approved';
+        }
+
         await client.query(
             `UPDATE "Reviews"
              SET rating = $1,
                  "reviewTitle" = $2,
                  "reviewText" = $3,
                  "verifiedPurchase" = $4,
-                 "trustLevel" = NULL,
-                 "trustReason" = 'Waiting for AI Analysis',
-                 status = 'Pending',
+                 "trustLevel" = $5,
+                 "trustReason" = $6,
+                 status = $7,
                  "updatedAt" = NOW()
-             WHERE id = $5`,
-            [rating, reviewTitle, reviewText, verifiedPurchase, reviewId]
+             WHERE id = $8`,
+            [rating, reviewTitle, reviewText, verifiedPurchase, trustLevel, trustReason, reviewStatus, reviewId]
         );
 
         return getReviewById(client, reviewId);

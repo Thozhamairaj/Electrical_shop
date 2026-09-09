@@ -1,0 +1,3079 @@
+[
+  {
+    "id": 1,
+    "name": "1 Way Switch",
+    "price": 65,
+    "originalPrice": 65,
+    "description": "1 Way Switch is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in modular switching circuits and point control. At 65 versus 65, it is positioned as a practical component with 4.5 average feedback from 84 reviews.",
+    "category": "switches",
+    "rating": 4.5,
+    "reviews": 84,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 2,
+    "name": "16A Curtain Switch",
+    "price": 350,
+    "originalPrice": 350,
+    "description": "16A Curtain Switch is specified for higher-current switching where contact reliability, thermal margin, and board-level fit are more important than a basic light-duty switch. With premium grade, 1 year, india, and isi certified, it is suited to repeated actuation on circuits that routinely carry heavier appliance loads. Rated at 350 against an original 350, it combines practical cost positioning with 3.5 customer feedback from 429 reviews.",
+    "category": "switches",
+    "rating": 3.5,
+    "reviews": 429,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 3,
+    "name": "16A Switch",
+    "price": 120,
+    "originalPrice": 120,
+    "description": "16A Switch is specified for higher-current switching where contact reliability, thermal margin, and board-level fit are more important than a basic light-duty switch. With premium grade, 1 year, india, and isi certified, it is suited to repeated actuation on circuits that routinely carry heavier appliance loads. Rated at 120 against an original 120, it combines practical cost positioning with 4.0 customer feedback from 400 reviews.",
+    "category": "switches",
+    "rating": 4,
+    "reviews": 400,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 4,
+    "name": "16A Heavy Duty Switch (Type II)",
+    "price": 120,
+    "originalPrice": 120,
+    "description": "16A Heavy Duty Switch (Type II) is specified for higher-current switching where contact reliability, thermal margin, and board-level fit are more important than a basic light-duty switch. With premium grade, 1 year, india, and isi certified, it is suited to repeated actuation on circuits that routinely carry heavier appliance loads. Rated at 120 against an original 120, it combines practical cost positioning with 4.3 customer feedback from 259 reviews.",
+    "category": "switches",
+    "rating": 4.3,
+    "reviews": 259,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 5,
+    "name": "2 Step Fan Regulator",
+    "price": 180,
+    "originalPrice": 180,
+    "description": "2 Step Fan Regulator is built to modulate fan speed or output smoothly instead of forcing full-step switching, which helps reduce noise, improve comfort control, and avoid unnecessary energy waste. The unit uses premium grade construction with 1 year, is sourced from india, and carries isi certified confirmation for installation confidence. It sits at 180 with a prior list price of 180, backed by a 4.9 rating across 487 reviews.",
+    "category": "fans",
+    "rating": 4.9,
+    "reviews": 487,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 6,
+    "name": "2 Way Switch",
+    "price": 85,
+    "originalPrice": 85,
+    "description": "2 Way Switch is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in modular switching circuits and point control. At 85 versus 85, it is positioned as a practical component with 4.5 average feedback from 261 reviews.",
+    "category": "switches",
+    "rating": 4.5,
+    "reviews": 261,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 7,
+    "name": "Aqua Gold UPVC Pipes",
+    "price": 480,
+    "originalPrice": 480,
+    "description": "Aqua Gold UPVC Pipes is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 480 against 480, it is supported by 4.1 user feedback from 227 reviews.",
+    "category": "pipes",
+    "rating": 4.1,
+    "reviews": 227,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Aquatic Series - Taps",
+    "price": 2200,
+    "originalPrice": 2200,
+    "description": "Aquatic Series - Taps is designed for wet-area fixture performance, where water handling, finish quality, and repeated operational cycles matter in wet-area installations. The product is made from premium grade, carries 1 year, is from india, and is isi certified for practical bathroom use. It is listed at 2200 with an original 2200 and a 3.9 rating from 190 reviews.",
+    "category": "bathroom",
+    "rating": 3.9,
+    "reviews": 190,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 9,
+    "name": "Arteor Modular Switch Plate",
+    "price": 3500,
+    "originalPrice": 3500,
+    "description": "Arteor Modular Switch Plate is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in modular switching circuits and point control. At 3500 versus 3500, it is positioned as a practical component with 5.0 average feedback from 37 reviews.",
+    "category": "switches",
+    "rating": 5,
+    "reviews": 37,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 10,
+    "name": "Ball Valve",
+    "price": 180,
+    "originalPrice": 180,
+    "description": "Ball Valve is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 180 against 180, it is supported by 3.6 user feedback from 199 reviews.",
+    "category": "pipes",
+    "rating": 3.6,
+    "reviews": 199,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 11,
+    "name": "Blank Switch Plate",
+    "price": 55,
+    "originalPrice": 55,
+    "description": "Blank Switch Plate is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in modular switching circuits and point control. At 55 versus 55, it is positioned as a practical component with 4.8 average feedback from 293 reviews.",
+    "category": "switches",
+    "rating": 4.8,
+    "reviews": 293,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 12,
+    "name": "Blind Flange",
+    "price": 180,
+    "originalPrice": 180,
+    "description": "Blind Flange is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 180 against 180, it is supported by 4.3 user feedback from 186 reviews.",
+    "category": "pipes",
+    "rating": 4.3,
+    "reviews": 186,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 13,
+    "name": "Borewell Submersible Pump",
+    "price": 8500,
+    "originalPrice": 8500,
+    "description": "Borewell Submersible Pump is engineered for water lifting and transfer duty, where sustained flow, head handling, and duty-cycle stability matter more than cosmetic features. Its premium grade build, 1 year, india origin, and isi certified status make it appropriate for households and utility installations that rely on consistent water movement. Priced at 8500 from an original 8500, it maintains a 3.7 rating across 246 reviews.",
+    "category": "pumps",
+    "rating": 3.7,
+    "reviews": 246,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 14,
+    "name": "Brass Elbow Fitting",
+    "price": 95,
+    "originalPrice": 95,
+    "description": "Brass Elbow Fitting is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 95 against 95, it is supported by 3.7 user feedback from 450 reviews.",
+    "category": "pipes",
+    "rating": 3.7,
+    "reviews": 450,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 15,
+    "name": "Brass Female Thread Adapter",
+    "price": 95,
+    "originalPrice": 95,
+    "description": "Brass Female Thread Adapter is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 95 against 95, it is supported by 5.0 user feedback from 495 reviews.",
+    "category": "pipes",
+    "rating": 5,
+    "reviews": 495,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 16,
+    "name": "Brass Male Thread Adapter",
+    "price": 85,
+    "originalPrice": 85,
+    "description": "Brass Male Thread Adapter is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 85 against 85, it is supported by 3.8 user feedback from 166 reviews.",
+    "category": "pipes",
+    "rating": 3.8,
+    "reviews": 166,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 17,
+    "name": "Brass Tee Fitting",
+    "price": 120,
+    "originalPrice": 120,
+    "description": "Brass Tee Fitting is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 120 against 120, it is supported by 3.8 user feedback from 150 reviews.",
+    "category": "pipes",
+    "rating": 3.8,
+    "reviews": 150,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 18,
+    "name": "Bypass Pipe Bend",
+    "price": 55,
+    "originalPrice": 55,
+    "description": "Bypass Pipe Bend is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 55 against 55, it is supported by 4.2 user feedback from 176 reviews.",
+    "category": "pipes",
+    "rating": 4.2,
+    "reviews": 176,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 19,
+    "name": "Classic Series Modular Switch (AquaKraft)",
+    "price": 1200,
+    "originalPrice": 1200,
+    "description": "Classic Series Modular Switch (AquaKraft) is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in modular switching circuits and point control. At 1200 versus 1200, it is positioned as a practical component with 3.8 average feedback from 37 reviews.",
+    "category": "switches",
+    "rating": 3.8,
+    "reviews": 37,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 20,
+    "name": "Ceiling Fan with Built-in Light",
+    "price": 3200,
+    "originalPrice": 3200,
+    "description": "Ceiling Fan with Built-in Light is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 3200 versus 3200, it is rated 4.7 by 406 reviews.",
+    "category": "lighting",
+    "rating": 4.7,
+    "reviews": 406,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 21,
+    "name": "Ceiling Fan",
+    "price": 2200,
+    "originalPrice": 2200,
+    "description": "Ceiling Fan is a air circulation and comfort management item built with premium grade, covered by 1 year, sourced from india, and isi certified for dependable daily use. It is listed at 2200 against 2200 and carries a 4.7 rating from 421 reviews.",
+    "category": "fans",
+    "rating": 4.7,
+    "reviews": 421,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 22,
+    "name": "Centrifugal Water Pump",
+    "price": 4500,
+    "originalPrice": 4500,
+    "description": "Centrifugal Water Pump is engineered for water lifting and transfer duty, where sustained flow, head handling, and duty-cycle stability matter more than cosmetic features. Its premium grade build, 1 year, india origin, and isi certified status make it appropriate for households and utility installations that rely on consistent water movement. Priced at 4500 from an original 4500, it maintains a 4.8 rating across 489 reviews.",
+    "category": "pumps",
+    "rating": 4.8,
+    "reviews": 489,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 23,
+    "name": "Circuit Test Plug (New)",
+    "price": 280,
+    "originalPrice": 280,
+    "description": "Circuit Test Plug (New) is specified for worksite protection and electrical hazard control, helping reduce exposure to impact, sparks, or handling hazards during installation and maintenance work. The unit combines premium grade, 1 year, india, and isi certified so it can be used as a proper protective item rather than a generic accessory. Priced at 280 against 280, it has a 4.1 rating from 17 reviews.",
+    "category": "safety",
+    "rating": 4.1,
+    "reviews": 17,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 24,
+    "name": "Coupler",
+    "price": 35,
+    "originalPrice": 35,
+    "description": "Coupler is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 35 against 35, it is supported by 3.6 user feedback from 215 reviews.",
+    "category": "pipes",
+    "rating": 3.6,
+    "reviews": 215,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 25,
+    "name": "Cross Tee",
+    "price": 65,
+    "originalPrice": 65,
+    "description": "Cross Tee is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 65 against 65, it is supported by 3.7 user feedback from 227 reviews.",
+    "category": "pipes",
+    "rating": 3.7,
+    "reviews": 227,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 26,
+    "name": "Curtain Switch",
+    "price": 320,
+    "originalPrice": 320,
+    "description": "Curtain Switch is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in modular switching circuits and point control. At 320 versus 320, it is positioned as a practical component with 3.9 average feedback from 178 reviews.",
+    "category": "switches",
+    "rating": 3.9,
+    "reviews": 178,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 27,
+    "name": "Diverters & Flush Valves",
+    "price": 1500,
+    "originalPrice": 1500,
+    "description": "Diverters & Flush Valves is a plumbing component shaped for wet-area fixture performance, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 1500 against 1500, it is supported by 3.7 user feedback from 378 reviews.",
+    "category": "bathroom",
+    "rating": 3.7,
+    "reviews": 378,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 28,
+    "name": "Domestic Water Pump",
+    "price": 3800,
+    "originalPrice": 3800,
+    "description": "Domestic Water Pump is engineered for water lifting and transfer duty, where sustained flow, head handling, and duty-cycle stability matter more than cosmetic features. Its premium grade build, 1 year, india origin, and isi certified status make it appropriate for households and utility installations that rely on consistent water movement. Priced at 3800 from an original 3800, it maintains a 4.8 rating across 409 reviews.",
+    "category": "pumps",
+    "rating": 4.8,
+    "reviews": 409,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 29,
+    "name": "Doorbell Switch",
+    "price": 150,
+    "originalPrice": 150,
+    "description": "Doorbell Switch is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in modular switching circuits and point control. At 150 versus 150, it is positioned as a practical component with 4.1 average feedback from 173 reviews.",
+    "category": "switches",
+    "rating": 4.1,
+    "reviews": 173,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 30,
+    "name": "Doorbell Push Switch (Type II)",
+    "price": 150,
+    "originalPrice": 150,
+    "description": "Doorbell Push Switch (Type II) is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in modular switching circuits and point control. At 150 versus 150, it is positioned as a practical component with 3.8 average feedback from 435 reviews.",
+    "category": "switches",
+    "rating": 3.8,
+    "reviews": 435,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 31,
+    "name": "Double Switch Plate",
+    "price": 95,
+    "originalPrice": 95,
+    "description": "Double Switch Plate is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in modular switching circuits and point control. At 95 versus 95, it is positioned as a practical component with 4.1 average feedback from 126 reviews.",
+    "category": "switches",
+    "rating": 4.1,
+    "reviews": 126,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 32,
+    "name": "Elbow 45°",
+    "price": 35,
+    "originalPrice": 35,
+    "description": "Elbow 45° is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 35 against 35, it is supported by 3.5 user feedback from 170 reviews.",
+    "category": "pipes",
+    "rating": 3.5,
+    "reviews": 170,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 33,
+    "name": "Elbow 90°",
+    "price": 35,
+    "originalPrice": 35,
+    "description": "Elbow 90° is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 35 against 35, it is supported by 4.6 user feedback from 356 reviews.",
+    "category": "pipes",
+    "rating": 4.6,
+    "reviews": 356,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 34,
+    "name": "Electrical Safety Gloves",
+    "price": 450,
+    "originalPrice": 450,
+    "description": "Electrical Safety Gloves is specified for worksite protection and electrical hazard control, helping reduce exposure to impact, sparks, or handling hazards during installation and maintenance work. The unit combines premium grade, 1 year, india, and isi certified so it can be used as a proper protective item rather than a generic accessory. Priced at 450 against 450, it has a 4.4 rating from 298 reviews.",
+    "category": "safety",
+    "rating": 4.4,
+    "reviews": 298,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 35,
+    "name": "End Cap",
+    "price": 30,
+    "originalPrice": 30,
+    "description": "End Cap is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 30 against 30, it is supported by 3.6 user feedback from 204 reviews.",
+    "category": "pipes",
+    "rating": 3.6,
+    "reviews": 204,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 36,
+    "name": "Equal Tee",
+    "price": 45,
+    "originalPrice": 45,
+    "description": "Equal Tee is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 45 against 45, it is supported by 3.7 user feedback from 204 reviews.",
+    "category": "pipes",
+    "rating": 3.7,
+    "reviews": 204,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 37,
+    "name": "Fan Regulator (70W)",
+    "price": 220,
+    "originalPrice": 220,
+    "description": "Fan Regulator (70W) is built to modulate fan speed or output smoothly instead of forcing full-step switching, which helps reduce noise, improve comfort control, and avoid unnecessary energy waste. The unit uses premium grade construction with 1 year, is sourced from india, and carries isi certified confirmation for installation confidence. It sits at 220 with a prior list price of 220, backed by a 3.9 rating across 113 reviews.",
+    "category": "fans",
+    "rating": 3.9,
+    "reviews": 113,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 38,
+    "name": "Fan Speed Dimmer",
+    "price": 350,
+    "originalPrice": 350,
+    "description": "Fan Speed Dimmer is built to modulate fan speed or output smoothly instead of forcing full-step switching, which helps reduce noise, improve comfort control, and avoid unnecessary energy waste. The unit uses premium grade construction with 1 year, is sourced from india, and carries isi certified confirmation for installation confidence. It sits at 350 with a prior list price of 350, backed by a 4.4 rating across 130 reviews.",
+    "category": "fans",
+    "rating": 4.4,
+    "reviews": 130,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 39,
+    "name": "Fan Speed Regulator",
+    "price": 280,
+    "originalPrice": 280,
+    "description": "Fan Speed Regulator is built to modulate fan speed or output smoothly instead of forcing full-step switching, which helps reduce noise, improve comfort control, and avoid unnecessary energy waste. The unit uses premium grade construction with 1 year, is sourced from india, and carries isi certified confirmation for installation confidence. It sits at 280 with a prior list price of 280, backed by a 4.0 rating across 70 reviews.",
+    "category": "fans",
+    "rating": 4,
+    "reviews": 70,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 40,
+    "name": "Faucet - Aquakraft - Health Faucets",
+    "price": 950,
+    "originalPrice": 950,
+    "description": "Faucet - Aquakraft - Health Faucets is designed for wet-area fixture performance, where water handling, finish quality, and repeated operational cycles matter in wet-area installations. The product is made from premium grade, carries 1 year, is from india, and is isi certified for practical bathroom use. It is listed at 950 with an original 950 and a 4.8 rating from 369 reviews.",
+    "category": "bathroom",
+    "rating": 4.8,
+    "reviews": 369,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 41,
+    "name": "Faucet - Aquatic",
+    "price": 1800,
+    "originalPrice": 1800,
+    "description": "Faucet - Aquatic is designed for wet-area fixture performance, where water handling, finish quality, and repeated operational cycles matter in wet-area installations. The product is made from premium grade, carries 1 year, is from india, and is isi certified for practical bathroom use. It is listed at 1800 with an original 1800 and a 3.5 rating from 75 reviews.",
+    "category": "bathroom",
+    "rating": 3.5,
+    "reviews": 75,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 42,
+    "name": "Female Threaded Elbow (Plastic)",
+    "price": 40,
+    "originalPrice": 40,
+    "description": "Female Threaded Elbow (Plastic) is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 40 against 40, it is supported by 4.5 user feedback from 61 reviews.",
+    "category": "pipes",
+    "rating": 4.5,
+    "reviews": 61,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 43,
+    "name": "Flame Retardant (FR) Grade (90Mtr) Silver",
+    "price": 1800,
+    "originalPrice": 1800,
+    "description": "Flame Retardant (FR) Grade (90Mtr) Silver is a cable routing and circuit integrity item built with premium grade, covered by 1 year, sourced from india, and isi certified for dependable daily use. It is listed at 1800 against 1800 and carries a 4.7 rating from 100 reviews.",
+    "category": "wiring",
+    "rating": 4.7,
+    "reviews": 100,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 44,
+    "name": "Flange Adapter",
+    "price": 150,
+    "originalPrice": 150,
+    "description": "Flange Adapter is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 150 against 150, it is supported by 4.3 user feedback from 162 reviews.",
+    "category": "pipes",
+    "rating": 4.3,
+    "reviews": 162,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 45,
+    "name": "Flush Tank",
+    "price": 1800,
+    "originalPrice": 1800,
+    "description": "Flush Tank is built for wet-area fixture performance, with emphasis on storage stability, access practicality, and long-term utility in domestic water systems. It uses premium grade construction, includes 1 year, is sourced from india, and is isi certified for service confidence. At 1800 from 1800, it is backed by 4.2 feedback from 146 reviews.",
+    "category": "bathroom",
+    "rating": 4.2,
+    "reviews": 146,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 46,
+    "name": "Hand Shower",
+    "price": 1200,
+    "originalPrice": 1200,
+    "description": "Hand Shower is designed for wet-area fixture performance, where water handling, finish quality, and repeated operational cycles matter in wet-area installations. The product is made from premium grade, carries 1 year, is from india, and is isi certified for practical bathroom use. It is listed at 1200 with an original 1200 and a 3.8 rating from 185 reviews.",
+    "category": "bathroom",
+    "rating": 3.8,
+    "reviews": 185,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 47,
+    "name": "Imagno 410 Switch Module",
+    "price": 2800,
+    "originalPrice": 2800,
+    "description": "Imagno 410 Switch Module is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in modular switching circuits and point control. At 2800 versus 2800, it is positioned as a practical component with 4.3 average feedback from 303 reviews.",
+    "category": "switches",
+    "rating": 4.3,
+    "reviews": 303,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 48,
+    "name": "Indicator Switch",
+    "price": 95,
+    "originalPrice": 95,
+    "description": "Indicator Switch is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in modular switching circuits and point control. At 95 versus 95, it is positioned as a practical component with 4.5 average feedback from 454 reviews.",
+    "category": "switches",
+    "rating": 4.5,
+    "reviews": 454,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 49,
+    "name": "Industrial Water Pump",
+    "price": 12000,
+    "originalPrice": 12000,
+    "description": "Industrial Water Pump is engineered for water lifting and transfer duty, where sustained flow, head handling, and duty-cycle stability matter more than cosmetic features. Its premium grade build, 1 year, india origin, and isi certified status make it appropriate for households and utility installations that rely on consistent water movement. Priced at 12000 from an original 12000, it maintains a 4.1 rating across 238 reviews.",
+    "category": "pumps",
+    "rating": 4.1,
+    "reviews": 238,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 50,
+    "name": "Instant Water Heater",
+    "price": 4500,
+    "originalPrice": 4500,
+    "description": "Instant Water Heater is designed for backup power and load continuity, where continuity, voltage support, or thermal service must remain stable under repeated daily use. Its premium grade construction, 1 year, india sourcing, and isi certified status make it a more technical fit for backup-oriented installations. With a selling price of 4500 from 4500, it carries 4.0 feedback from 51 reviews.",
+    "category": "power",
+    "rating": 4,
+    "reviews": 51,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 51,
+    "name": "Inverter Battery with UPS",
+    "price": 12000,
+    "originalPrice": 12000,
+    "description": "Inverter Battery with UPS is designed for backup power and load continuity, where continuity, voltage support, or thermal service must remain stable under repeated daily use. Its premium grade construction, 1 year, india sourcing, and isi certified status make it a more technical fit for backup-oriented installations. With a selling price of 12000 from 12000, it carries 3.6 feedback from 187 reviews.",
+    "category": "power",
+    "rating": 3.6,
+    "reviews": 187,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 52,
+    "name": "LED Strip Light",
+    "price": 650,
+    "originalPrice": 650,
+    "description": "LED Strip Light is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 650 versus 650, it is rated 4.1 by 129 reviews.",
+    "category": "lighting",
+    "rating": 4.1,
+    "reviews": 129,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 53,
+    "name": "Light Pinewood Designer Ceiling Fan",
+    "price": 4500,
+    "originalPrice": 4500,
+    "description": "Light Pinewood Designer Ceiling Fan is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 4500 versus 4500, it is rated 4.5 by 153 reviews.",
+    "category": "lighting",
+    "rating": 4.5,
+    "reviews": 153,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 54,
+    "name": "Luminous Inverter Battery",
+    "price": 9500,
+    "originalPrice": 9500,
+    "description": "Luminous Inverter Battery is designed for backup power and load continuity, where continuity, voltage support, or thermal service must remain stable under repeated daily use. Its premium grade construction, 1 year, india sourcing, and isi certified status make it a more technical fit for backup-oriented installations. With a selling price of 9500 from 9500, it carries 4.2 feedback from 118 reviews.",
+    "category": "power",
+    "rating": 4.2,
+    "reviews": 118,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 55,
+    "name": "Marvel Series Modular Switch (Milk White)",
+    "price": 2800,
+    "originalPrice": 2800,
+    "description": "Marvel Series Modular Switch (Milk White) is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in modular switching circuits and point control. At 2800 versus 2800, it is positioned as a practical component with 4.4 average feedback from 373 reviews.",
+    "category": "switches",
+    "rating": 4.4,
+    "reviews": 373,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 56,
+    "name": "Murphy Series Modular Switch",
+    "price": 2500,
+    "originalPrice": 2500,
+    "description": "Murphy Series Modular Switch is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in modular switching circuits and point control. At 2500 versus 2500, it is positioned as a practical component with 4.6 average feedback from 481 reviews.",
+    "category": "switches",
+    "rating": 4.6,
+    "reviews": 481,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 57,
+    "name": "Male Threaded Adapter M.T.A. (Plastic)",
+    "price": 35,
+    "originalPrice": 35,
+    "description": "Male Threaded Adapter M.T.A. (Plastic) is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 35 against 35, it is supported by 4.0 user feedback from 236 reviews.",
+    "category": "pipes",
+    "rating": 4,
+    "reviews": 236,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 58,
+    "name": "Medium Bodied (uPVC) Tube",
+    "price": 420,
+    "originalPrice": 420,
+    "description": "Medium Bodied (uPVC) Tube is tuned for fluid routing and plumbing distribution, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 420 versus 420, it is rated 4.0 by 220 reviews.",
+    "category": "pipes",
+    "rating": 4,
+    "reviews": 220,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 59,
+    "name": "Microtek Battery",
+    "price": 8500,
+    "originalPrice": 8500,
+    "description": "Microtek Battery is designed for backup power and load continuity, where continuity, voltage support, or thermal service must remain stable under repeated daily use. Its premium grade construction, 1 year, india sourcing, and isi certified status make it a more technical fit for backup-oriented installations. With a selling price of 8500 from 8500, it carries 3.7 feedback from 130 reviews.",
+    "category": "power",
+    "rating": 3.7,
+    "reviews": 130,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 60,
+    "name": "Microtek Inverter",
+    "price": 7500,
+    "originalPrice": 7500,
+    "description": "Microtek Inverter is designed for backup power and load continuity, where continuity, voltage support, or thermal service must remain stable under repeated daily use. Its premium grade construction, 1 year, india sourcing, and isi certified status make it a more technical fit for backup-oriented installations. With a selling price of 7500 from 7500, it carries 4.7 feedback from 358 reviews.",
+    "category": "power",
+    "rating": 4.7,
+    "reviews": 358,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 61,
+    "name": "Premium Bathroom Taps Collection",
+    "price": 850,
+    "originalPrice": 850,
+    "description": "Premium Bathroom Taps Collection is designed for wet-area fixture performance, where water handling, finish quality, and repeated operational cycles matter in wet-area installations. The product is made from premium grade, carries 1 year, is from india, and is isi certified for practical bathroom use. It is listed at 850 with an original 850 and a 4.5 rating from 459 reviews.",
+    "category": "bathroom",
+    "rating": 4.5,
+    "reviews": 459,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 62,
+    "name": "Outdoor Spot Lights",
+    "price": 1200,
+    "originalPrice": 1200,
+    "description": "Outdoor Spot Lights is tuned for weather-exposed lighting duty, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 1200 versus 1200, it is rated 4.6 by 315 reviews.",
+    "category": "outdoor",
+    "rating": 4.6,
+    "reviews": 315,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 63,
+    "name": "PVC Ball Valve",
+    "price": 120,
+    "originalPrice": 120,
+    "description": "PVC Ball Valve is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 120 against 120, it is supported by 4.3 user feedback from 479 reviews.",
+    "category": "pipes",
+    "rating": 4.3,
+    "reviews": 479,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 64,
+    "name": "PVC Pipe End Cap",
+    "price": 25,
+    "originalPrice": 25,
+    "description": "PVC Pipe End Cap is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 25 against 25, it is supported by 3.6 user feedback from 235 reviews.",
+    "category": "pipes",
+    "rating": 3.6,
+    "reviews": 235,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 65,
+    "name": "PVC Reducer Pipe Fitting",
+    "price": 45,
+    "originalPrice": 45,
+    "description": "PVC Reducer Pipe Fitting is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 45 against 45, it is supported by 4.3 user feedback from 260 reviews.",
+    "category": "pipes",
+    "rating": 4.3,
+    "reviews": 260,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 66,
+    "name": "PVC T Joint",
+    "price": 40,
+    "originalPrice": 40,
+    "description": "PVC T Joint is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 40 against 40, it is supported by 4.0 user feedback from 434 reviews.",
+    "category": "pipes",
+    "rating": 4,
+    "reviews": 434,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 67,
+    "name": "PVC T Pipe Connector",
+    "price": 40,
+    "originalPrice": 40,
+    "description": "PVC T Pipe Connector is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 40 against 40, it is supported by 4.9 user feedback from 367 reviews.",
+    "category": "pipes",
+    "rating": 4.9,
+    "reviews": 367,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 68,
+    "name": "PVC Union Pipe Fitting",
+    "price": 85,
+    "originalPrice": 85,
+    "description": "PVC Union Pipe Fitting is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 85 against 85, it is supported by 4.9 user feedback from 307 reviews.",
+    "category": "pipes",
+    "rating": 4.9,
+    "reviews": 307,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 69,
+    "name": "PVC Y Joint",
+    "price": 55,
+    "originalPrice": 55,
+    "description": "PVC Y Joint is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 55 against 55, it is supported by 3.9 user feedback from 308 reviews.",
+    "category": "pipes",
+    "rating": 3.9,
+    "reviews": 308,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 70,
+    "name": "Philips LED Downlight",
+    "price": 650,
+    "originalPrice": 650,
+    "description": "Philips LED Downlight is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 650 versus 650, it is rated 3.5 by 310 reviews.",
+    "category": "lighting",
+    "rating": 3.5,
+    "reviews": 310,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 71,
+    "name": "Philips LED Panel Light",
+    "price": 850,
+    "originalPrice": 850,
+    "description": "Philips LED Panel Light is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 850 versus 850, it is rated 3.8 by 70 reviews.",
+    "category": "lighting",
+    "rating": 3.8,
+    "reviews": 70,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 72,
+    "name": "Philips LED Surface Light",
+    "price": 750,
+    "originalPrice": 750,
+    "description": "Philips LED Surface Light is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 750 versus 750, it is rated 4.4 by 110 reviews.",
+    "category": "lighting",
+    "rating": 4.4,
+    "reviews": 110,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 73,
+    "name": "Philips LED T-Bulb Light",
+    "price": 180,
+    "originalPrice": 180,
+    "description": "Philips LED T-Bulb Light is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 180 versus 180, it is rated 3.5 by 38 reviews.",
+    "category": "lighting",
+    "rating": 3.5,
+    "reviews": 38,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 74,
+    "name": "Philips LED Tube Light Box",
+    "price": 650,
+    "originalPrice": 650,
+    "description": "Philips LED Tube Light Box is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 650 versus 650, it is rated 4.9 by 143 reviews.",
+    "category": "lighting",
+    "rating": 4.9,
+    "reviews": 143,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 75,
+    "name": "Philips LED Tube Light",
+    "price": 380,
+    "originalPrice": 380,
+    "description": "Philips LED Tube Light is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 380 versus 380, it is rated 4.7 by 290 reviews.",
+    "category": "lighting",
+    "rating": 4.7,
+    "reviews": 290,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 76,
+    "name": "Philips Round LED Ceiling Light",
+    "price": 1800,
+    "originalPrice": 1800,
+    "description": "Philips Round LED Ceiling Light is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 1800 versus 1800, it is rated 4.9 by 483 reviews.",
+    "category": "lighting",
+    "rating": 4.9,
+    "reviews": 483,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 77,
+    "name": "Philips Smart LED Bulb",
+    "price": 1200,
+    "originalPrice": 1200,
+    "description": "Philips Smart LED Bulb is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 1200 versus 1200, it is rated 3.9 by 68 reviews.",
+    "category": "lighting",
+    "rating": 3.9,
+    "reviews": 68,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 78,
+    "name": "Philips Ace Saver LED Bulb",
+    "price": 120,
+    "originalPrice": 120,
+    "description": "Philips Ace Saver LED Bulb is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 120 versus 120, it is rated 4.7 by 238 reviews.",
+    "category": "lighting",
+    "rating": 4.7,
+    "reviews": 238,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 79,
+    "name": "Philips Astra Spot LED Downlight Gen 2",
+    "price": 1800,
+    "originalPrice": 1800,
+    "description": "Philips Astra Spot LED Downlight Gen 2 is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 1800 versus 1800, it is rated 3.9 by 253 reviews.",
+    "category": "lighting",
+    "rating": 3.9,
+    "reviews": 253,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 80,
+    "name": "Philips Aura Styledge LED Downlight",
+    "price": 1200,
+    "originalPrice": 1200,
+    "description": "Philips Aura Styledge LED Downlight is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 1200 versus 1200, it is rated 5.0 by 456 reviews.",
+    "category": "lighting",
+    "rating": 5,
+    "reviews": 456,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 81,
+    "name": "Philips Filament LED Bulb E27 A60",
+    "price": 240,
+    "originalPrice": 240,
+    "description": "Philips Filament LED Bulb E27 A60 is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 240 versus 240, it is rated 3.7 by 80 reviews.",
+    "category": "lighting",
+    "rating": 3.7,
+    "reviews": 80,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 82,
+    "name": "Philips Filament LED Candle Bulb E27",
+    "price": 280,
+    "originalPrice": 280,
+    "description": "Philips Filament LED Candle Bulb E27 is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 280 versus 280, it is rated 4.4 by 81 reviews.",
+    "category": "lighting",
+    "rating": 4.4,
+    "reviews": 81,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 83,
+    "name": "Philips Full Glow LED Metal Surface Light",
+    "price": 950,
+    "originalPrice": 950,
+    "description": "Philips Full Glow LED Metal Surface Light is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 950 versus 950, it is rated 4.6 by 300 reviews.",
+    "category": "lighting",
+    "rating": 4.6,
+    "reviews": 300,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 84,
+    "name": "Philips Full Glow LED Surface Light 6W",
+    "price": 650,
+    "originalPrice": 650,
+    "description": "Philips Full Glow LED Surface Light 6W is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 650 versus 650, it is rated 5.0 by 52 reviews.",
+    "category": "lighting",
+    "rating": 5,
+    "reviews": 52,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 85,
+    "name": "Philips Full Glow Striker LED Surface Light",
+    "price": 850,
+    "originalPrice": 850,
+    "description": "Philips Full Glow Striker LED Surface Light is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 850 versus 850, it is rated 4.9 by 491 reviews.",
+    "category": "lighting",
+    "rating": 4.9,
+    "reviews": 491,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 86,
+    "name": "Philips G9 LED Bulb 5W",
+    "price": 350,
+    "originalPrice": 350,
+    "description": "Philips G9 LED Bulb 5W is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 350 versus 350, it is rated 4.5 by 46 reviews.",
+    "category": "lighting",
+    "rating": 4.5,
+    "reviews": 46,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 87,
+    "name": "Philips Motion Sensing LED Bulb",
+    "price": 220,
+    "originalPrice": 220,
+    "description": "Philips Motion Sensing LED Bulb is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 220 versus 220, it is rated 4.2 by 349 reviews.",
+    "category": "lighting",
+    "rating": 4.2,
+    "reviews": 349,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 88,
+    "name": "Philips Prime Neo Recessed LED Downlight",
+    "price": 950,
+    "originalPrice": 950,
+    "description": "Philips Prime Neo Recessed LED Downlight is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 950 versus 950, it is rated 3.9 by 153 reviews.",
+    "category": "lighting",
+    "rating": 3.9,
+    "reviews": 153,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 89,
+    "name": "Philips Star Bright LED Tube Light",
+    "price": 420,
+    "originalPrice": 420,
+    "description": "Philips Star Bright LED Tube Light is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 420 versus 420, it is rated 4.2 by 73 reviews.",
+    "category": "lighting",
+    "rating": 4.2,
+    "reviews": 73,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 90,
+    "name": "Philips Star Fit LED Downlight",
+    "price": 750,
+    "originalPrice": 750,
+    "description": "Philips Star Fit LED Downlight is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 750 versus 750, it is rated 3.6 by 414 reviews.",
+    "category": "lighting",
+    "rating": 3.6,
+    "reviews": 414,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 91,
+    "name": "Philips Ultra Glow LED Downlight (Variant A)",
+    "price": 850,
+    "originalPrice": 850,
+    "description": "Philips Ultra Glow LED Downlight (Variant A) is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 850 versus 850, it is rated 4.0 by 473 reviews.",
+    "category": "lighting",
+    "rating": 4,
+    "reviews": 473,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 92,
+    "name": "Philips Ultra Glow LED Downlight (Variant B)",
+    "price": 850,
+    "originalPrice": 850,
+    "description": "Philips Ultra Glow LED Downlight (Variant B) is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 850 versus 850, it is rated 4.4 by 88 reviews.",
+    "category": "lighting",
+    "rating": 4.4,
+    "reviews": 88,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 93,
+    "name": "Philips Full Glow LED Bulb 9W B22 Warm White",
+    "price": 210,
+    "originalPrice": 210,
+    "description": "Philips Full Glow LED Bulb 9W B22 Warm White is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 210 versus 210, it is rated 4.9 by 71 reviews.",
+    "category": "lighting",
+    "rating": 4.9,
+    "reviews": 71,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 94,
+    "name": "PVC Ball Valve Orange Handle",
+    "price": 150,
+    "originalPrice": 150,
+    "description": "PVC Ball Valve Orange Handle is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 150 against 150, it is supported by 3.9 user feedback from 40 reviews.",
+    "category": "pipes",
+    "rating": 3.9,
+    "reviews": 40,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 95,
+    "name": "Pipe Clip (Plastic)",
+    "price": 15,
+    "originalPrice": 15,
+    "description": "Pipe Clip (Plastic) is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 15 against 15, it is supported by 4.1 user feedback from 154 reviews.",
+    "category": "pipes",
+    "rating": 4.1,
+    "reviews": 154,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 96,
+    "name": "Pipes",
+    "price": 350,
+    "originalPrice": 350,
+    "description": "Pipes is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 350 against 350, it is supported by 4.4 user feedback from 372 reviews.",
+    "category": "pipes",
+    "rating": 4.4,
+    "reviews": 372,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 97,
+    "name": "Plain Ball Valve",
+    "price": 150,
+    "originalPrice": 150,
+    "description": "Plain Ball Valve is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 150 against 150, it is supported by 4.8 user feedback from 100 reviews.",
+    "category": "pipes",
+    "rating": 4.8,
+    "reviews": 100,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 98,
+    "name": "Plastic Water Tank",
+    "price": 3500,
+    "originalPrice": 3500,
+    "description": "Plastic Water Tank is built for water storage and reservoir service, with emphasis on storage stability, access practicality, and long-term utility in domestic water systems. It uses premium grade construction, includes 1 year, is sourced from india, and is isi certified for service confidence. At 3500 from 3500, it is backed by 3.7 feedback from 454 reviews.",
+    "category": "tanks",
+    "rating": 3.7,
+    "reviews": 454,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 99,
+    "name": "Power Socket",
+    "price": 180,
+    "originalPrice": 180,
+    "description": "Power Socket is a backup power and load continuity item built with premium grade, covered by 1 year, sourced from india, and isi certified for dependable daily use. It is listed at 180 against 180 and carries a 3.5 rating from 338 reviews.",
+    "category": "power",
+    "rating": 3.5,
+    "reviews": 338,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 100,
+    "name": "Primer",
+    "price": 250,
+    "originalPrice": 250,
+    "description": "Primer is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 250 against 250, it is supported by 4.0 user feedback from 168 reviews.",
+    "category": "pipes",
+    "rating": 4,
+    "reviews": 168,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 103,
+    "name": "Reducer",
+    "price": 45,
+    "originalPrice": 45,
+    "description": "Reducer is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 45 against 45, it is supported by 4.7 user feedback from 49 reviews.",
+    "category": "pipes",
+    "rating": 4.7,
+    "reviews": 49,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 104,
+    "name": "Reducing Bush",
+    "price": 35,
+    "originalPrice": 35,
+    "description": "Reducing Bush is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 35 against 35, it is supported by 4.9 user feedback from 301 reviews.",
+    "category": "pipes",
+    "rating": 4.9,
+    "reviews": 301,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 105,
+    "name": "Reducing Tee",
+    "price": 55,
+    "originalPrice": 55,
+    "description": "Reducing Tee is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 55 against 55, it is supported by 4.8 user feedback from 446 reviews.",
+    "category": "pipes",
+    "rating": 4.8,
+    "reviews": 446,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 106,
+    "name": "Rotary Dimmer Switch",
+    "price": 380,
+    "originalPrice": 380,
+    "description": "Rotary Dimmer Switch is built to modulate fan speed or output smoothly instead of forcing full-step switching, which helps reduce noise, improve comfort control, and avoid unnecessary energy waste. The unit uses premium grade construction with 1 year, is sourced from india, and carries isi certified confirmation for installation confidence. It sits at 380 with a prior list price of 380, backed by a 4.0 rating across 122 reviews.",
+    "category": "switches",
+    "rating": 4,
+    "reviews": 122,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 107,
+    "name": "Rubber Lubricant",
+    "price": 180,
+    "originalPrice": 180,
+    "description": "Rubber Lubricant is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 180 against 180, it is supported by 4.8 user feedback from 221 reviews.",
+    "category": "pipes",
+    "rating": 4.8,
+    "reviews": 221,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 108,
+    "name": "Safety Glasses",
+    "price": 250,
+    "originalPrice": 250,
+    "description": "Safety Glasses is specified for worksite protection and electrical hazard control, helping reduce exposure to impact, sparks, or handling hazards during installation and maintenance work. The unit combines premium grade, 1 year, india, and isi certified so it can be used as a proper protective item rather than a generic accessory. Priced at 250 against 250, it has a 4.2 rating from 314 reviews.",
+    "category": "safety",
+    "rating": 4.2,
+    "reviews": 314,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 109,
+    "name": "Safety Helmet with Face Shield",
+    "price": 850,
+    "originalPrice": 850,
+    "description": "Safety Helmet with Face Shield is specified for worksite protection and electrical hazard control, helping reduce exposure to impact, sparks, or handling hazards during installation and maintenance work. The unit combines premium grade, 1 year, india, and isi certified so it can be used as a proper protective item rather than a generic accessory. Priced at 850 against 850, it has a 5.0 rating from 140 reviews.",
+    "category": "safety",
+    "rating": 5,
+    "reviews": 140,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 110,
+    "name": "Safety Helmet",
+    "price": 550,
+    "originalPrice": 550,
+    "description": "Safety Helmet is specified for worksite protection and electrical hazard control, helping reduce exposure to impact, sparks, or handling hazards during installation and maintenance work. The unit combines premium grade, 1 year, india, and isi certified so it can be used as a proper protective item rather than a generic accessory. Priced at 550 against 550, it has a 4.9 rating from 456 reviews.",
+    "category": "safety",
+    "rating": 4.9,
+    "reviews": 456,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 111,
+    "name": "Safety Kit (PPE Set)",
+    "price": 1800,
+    "originalPrice": 1800,
+    "description": "Safety Kit (PPE Set) is specified for worksite protection and electrical hazard control, helping reduce exposure to impact, sparks, or handling hazards during installation and maintenance work. The unit combines premium grade, 1 year, india, and isi certified so it can be used as a proper protective item rather than a generic accessory. Priced at 1800 against 1800, it has a 4.8 rating from 49 reviews.",
+    "category": "safety",
+    "rating": 4.8,
+    "reviews": 49,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 112,
+    "name": "Sanitary Ware",
+    "price": 2500,
+    "originalPrice": 2500,
+    "description": "Sanitary Ware is designed for wet-area fixture performance, where water handling, finish quality, and repeated operational cycles matter in wet-area installations. The product is made from premium grade, carries 1 year, is from india, and is isi certified for practical bathroom use. It is listed at 2500 with an original 2500 and a 4.3 rating from 124 reviews.",
+    "category": "bathroom",
+    "rating": 4.3,
+    "reviews": 124,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 113,
+    "name": "Showers",
+    "price": 3500,
+    "originalPrice": 3500,
+    "description": "Showers is designed for wet-area fixture performance, where water handling, finish quality, and repeated operational cycles matter in wet-area installations. The product is made from premium grade, carries 1 year, is from india, and is isi certified for practical bathroom use. It is listed at 3500 with an original 3500 and a 4.1 rating from 414 reviews.",
+    "category": "bathroom",
+    "rating": 4.1,
+    "reviews": 414,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 114,
+    "name": "Silent Pro Enso Modular Switch (Silk White)",
+    "price": 100,
+    "originalPrice": 100,
+    "description": "Silent Pro Enso Modular Switch (Silk White) is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in air circulation and comfort management. At 100 versus 100, it is positioned as a practical component with 4.4 average feedback from 191 reviews.",
+    "category": "fans",
+    "rating": 4.4,
+    "reviews": 191,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 115,
+    "name": "Silent Pro Blossom Smart Switch (Denim Blue)",
+    "price": 9500,
+    "originalPrice": 9500,
+    "description": "Silent Pro Blossom Smart Switch (Denim Blue) is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in air circulation and comfort management. At 9500 versus 9500, it is positioned as a practical component with 3.8 average feedback from 190 reviews.",
+    "category": "fans",
+    "rating": 3.8,
+    "reviews": 190,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 116,
+    "name": "Water Tank Lid Cover (Black)",
+    "price": 450,
+    "originalPrice": 450,
+    "description": "Water Tank Lid Cover (Black) is built for water storage and reservoir service, with emphasis on storage stability, access practicality, and long-term utility in domestic water systems. It uses premium grade construction, includes 1 year, is sourced from india, and is isi certified for service confidence. At 450 from 450, it is backed by 4.8 feedback from 415 reviews.",
+    "category": "tanks",
+    "rating": 4.8,
+    "reviews": 415,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 117,
+    "name": "Water Tank Lid Cover (Green)",
+    "price": 450,
+    "originalPrice": 450,
+    "description": "Water Tank Lid Cover (Green) is built for water storage and reservoir service, with emphasis on storage stability, access practicality, and long-term utility in domestic water systems. It uses premium grade construction, includes 1 year, is sourced from india, and is isi certified for service confidence. At 450 from 450, it is backed by 4.2 feedback from 74 reviews.",
+    "category": "tanks",
+    "rating": 4.2,
+    "reviews": 74,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 118,
+    "name": "Water Tank Lid Cover (White)",
+    "price": 450,
+    "originalPrice": 450,
+    "description": "Water Tank Lid Cover (White) is built for water storage and reservoir service, with emphasis on storage stability, access practicality, and long-term utility in domestic water systems. It uses premium grade construction, includes 1 year, is sourced from india, and is isi certified for service confidence. At 450 from 450, it is backed by 4.9 feedback from 56 reviews.",
+    "category": "tanks",
+    "rating": 4.9,
+    "reviews": 56,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 119,
+    "name": "Smart Water Heater",
+    "price": 8500,
+    "originalPrice": 8500,
+    "description": "Smart Water Heater is designed for backup power and load continuity, where continuity, voltage support, or thermal service must remain stable under repeated daily use. Its premium grade construction, 1 year, india sourcing, and isi certified status make it a more technical fit for backup-oriented installations. With a selling price of 8500 from 8500, it carries 4.7 feedback from 74 reviews.",
+    "category": "power",
+    "rating": 4.7,
+    "reviews": 74,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 120,
+    "name": "Snow White Ceiling Fan",
+    "price": 2800,
+    "originalPrice": 2800,
+    "description": "Snow White Ceiling Fan is a air circulation and comfort management item built with premium grade, covered by 1 year, sourced from india, and isi certified for dependable daily use. It is listed at 2800 against 2800 and carries a 4.1 rating from 232 reviews.",
+    "category": "fans",
+    "rating": 4.1,
+    "reviews": 232,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 121,
+    "name": "Striker Surface Mount Switch",
+    "price": 950,
+    "originalPrice": 950,
+    "description": "Striker Surface Mount Switch is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in illumination output and visual comfort. At 950 versus 950, it is positioned as a practical component with 3.9 average feedback from 357 reviews.",
+    "category": "lighting",
+    "rating": 3.9,
+    "reviews": 357,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 122,
+    "name": "Submersible Pump",
+    "price": 6500,
+    "originalPrice": 6500,
+    "description": "Submersible Pump is engineered for water lifting and transfer duty, where sustained flow, head handling, and duty-cycle stability matter more than cosmetic features. Its premium grade build, 1 year, india origin, and isi certified status make it appropriate for households and utility installations that rely on consistent water movement. Priced at 6500 from an original 6500, it maintains a 3.6 rating across 253 reviews.",
+    "category": "pumps",
+    "rating": 3.6,
+    "reviews": 253,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 123,
+    "name": "T-Valve Pipe Fitting",
+    "price": 85,
+    "originalPrice": 85,
+    "description": "T-Valve Pipe Fitting is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 85 against 85, it is supported by 4.5 user feedback from 222 reviews.",
+    "category": "pipes",
+    "rating": 4.5,
+    "reviews": 222,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 124,
+    "name": "Table Fan",
+    "price": 1800,
+    "originalPrice": 1800,
+    "description": "Table Fan is a air circulation and comfort management item built with premium grade, covered by 1 year, sourced from india, and isi certified for dependable daily use. It is listed at 1800 against 1800 and carries a 4.5 rating from 91 reviews.",
+    "category": "fans",
+    "rating": 4.5,
+    "reviews": 91,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 125,
+    "name": "Switch Tab Module",
+    "price": 350,
+    "originalPrice": 350,
+    "description": "Switch Tab Module is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in wet-area fixture performance. At 350 versus 350, it is positioned as a practical component with 4.0 average feedback from 352 reviews.",
+    "category": "bathroom",
+    "rating": 4,
+    "reviews": 352,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 126,
+    "name": "Tail Piece",
+    "price": 55,
+    "originalPrice": 55,
+    "description": "Tail Piece is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 55 against 55, it is supported by 4.1 user feedback from 490 reviews.",
+    "category": "pipes",
+    "rating": 4.1,
+    "reviews": 490,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 127,
+    "name": "Tank Connector",
+    "price": 65,
+    "originalPrice": 65,
+    "description": "Tank Connector is a plumbing component shaped for water storage and reservoir service, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 65 against 65, it is supported by 4.6 user feedback from 83 reviews.",
+    "category": "tanks",
+    "rating": 4.6,
+    "reviews": 83,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 128,
+    "name": "Three Layer Overhead Water Tanks (threaded Type Cover White Colour)",
+    "price": 2520,
+    "originalPrice": 2520,
+    "description": "Three Layer Overhead Water Tanks (threaded Type Cover White Colour) is built for water storage and reservoir service, with emphasis on storage stability, access practicality, and long-term utility in domestic water systems. It uses premium grade construction, includes 1 year, is sourced from india, and is isi certified for service confidence. At 2520 from 2520, it is backed by 3.8 feedback from 92 reviews.",
+    "category": "tanks",
+    "rating": 3.8,
+    "reviews": 92,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 129,
+    "name": "Three Layer Overhead Water Tanks - (Threaded Type cover - Green colour)",
+    "price": 2720,
+    "originalPrice": 2720,
+    "description": "Three Layer Overhead Water Tanks - (Threaded Type cover - Green colour) is built for water storage and reservoir service, with emphasis on storage stability, access practicality, and long-term utility in domestic water systems. It uses premium grade construction, includes 1 year, is sourced from india, and is isi certified for service confidence. At 2720 from 2720, it is backed by 3.6 feedback from 322 reviews.",
+    "category": "tanks",
+    "rating": 3.6,
+    "reviews": 322,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 130,
+    "name": "Two Layer Overhead Water Tank (Threaded Type cover - Black colour)",
+    "price": 2960,
+    "originalPrice": 2960,
+    "description": "Two Layer Overhead Water Tank (Threaded Type cover - Black colour) is built for water storage and reservoir service, with emphasis on storage stability, access practicality, and long-term utility in domestic water systems. It uses premium grade construction, includes 1 year, is sourced from india, and is isi certified for service confidence. At 2960 from 2960, it is backed by 4.3 feedback from 187 reviews.",
+    "category": "tanks",
+    "rating": 4.3,
+    "reviews": 187,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 131,
+    "name": "UPS Inverter",
+    "price": 6500,
+    "originalPrice": 6500,
+    "description": "UPS Inverter is designed for backup power and load continuity, where continuity, voltage support, or thermal service must remain stable under repeated daily use. Its premium grade construction, 1 year, india sourcing, and isi certified status make it a more technical fit for backup-oriented installations. With a selling price of 6500 from 6500, it carries 3.8 feedback from 170 reviews.",
+    "category": "power",
+    "rating": 3.8,
+    "reviews": 170,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 133,
+    "name": "Union Pipe Fitting",
+    "price": 85,
+    "originalPrice": 85,
+    "description": "Union Pipe Fitting is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 85 against 85, it is supported by 4.1 user feedback from 109 reviews.",
+    "category": "pipes",
+    "rating": 4.1,
+    "reviews": 109,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 134,
+    "name": "V-Guard Electric Water Heater",
+    "price": 5500,
+    "originalPrice": 5500,
+    "description": "V-Guard Electric Water Heater is designed for backup power and load continuity, where continuity, voltage support, or thermal service must remain stable under repeated daily use. Its premium grade construction, 1 year, india sourcing, and isi certified status make it a more technical fit for backup-oriented installations. With a selling price of 5500 from 5500, it carries 4.3 feedback from 95 reviews.",
+    "category": "power",
+    "rating": 4.3,
+    "reviews": 95,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 135,
+    "name": "V-Guard Instant Geyser",
+    "price": 4800,
+    "originalPrice": 4800,
+    "description": "V-Guard Instant Geyser is designed for backup power and load continuity, where continuity, voltage support, or thermal service must remain stable under repeated daily use. Its premium grade construction, 1 year, india sourcing, and isi certified status make it a more technical fit for backup-oriented installations. With a selling price of 4800 from 4800, it carries 3.8 feedback from 183 reviews.",
+    "category": "power",
+    "rating": 3.8,
+    "reviews": 183,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 136,
+    "name": "V-Guard Instant Water Heater",
+    "price": 4500,
+    "originalPrice": 4500,
+    "description": "V-Guard Instant Water Heater is designed for backup power and load continuity, where continuity, voltage support, or thermal service must remain stable under repeated daily use. Its premium grade construction, 1 year, india sourcing, and isi certified status make it a more technical fit for backup-oriented installations. With a selling price of 4500 from 4500, it carries 3.8 feedback from 186 reviews.",
+    "category": "power",
+    "rating": 3.8,
+    "reviews": 186,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 137,
+    "name": "V-Guard Storage Water Heater",
+    "price": 7500,
+    "originalPrice": 7500,
+    "description": "V-Guard Storage Water Heater is designed for water storage and reservoir service, where continuity, voltage support, or thermal service must remain stable under repeated daily use. Its premium grade construction, 1 year, india sourcing, and isi certified status make it a more technical fit for backup-oriented installations. With a selling price of 7500 from 7500, it carries 4.2 feedback from 135 reviews.",
+    "category": "tanks",
+    "rating": 4.2,
+    "reviews": 135,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 138,
+    "name": "V-Guard Voltage Stabilizer",
+    "price": 3500,
+    "originalPrice": 3500,
+    "description": "V-Guard Voltage Stabilizer is designed for backup power and load continuity, where continuity, voltage support, or thermal service must remain stable under repeated daily use. Its premium grade construction, 1 year, india sourcing, and isi certified status make it a more technical fit for backup-oriented installations. With a selling price of 3500 from 3500, it carries 3.8 feedback from 25 reviews.",
+    "category": "power",
+    "rating": 3.8,
+    "reviews": 25,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 139,
+    "name": "V-Guard Water Heater",
+    "price": 5500,
+    "originalPrice": 5500,
+    "description": "V-Guard Water Heater is designed for backup power and load continuity, where continuity, voltage support, or thermal service must remain stable under repeated daily use. Its premium grade construction, 1 year, india sourcing, and isi certified status make it a more technical fit for backup-oriented installations. With a selling price of 5500 from 5500, it carries 4.8 feedback from 108 reviews.",
+    "category": "power",
+    "rating": 4.8,
+    "reviews": 108,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 140,
+    "name": "V-Guard Water-Heater Zeno",
+    "price": 6500,
+    "originalPrice": 6500,
+    "description": "V-Guard Water-Heater Zeno is designed for backup power and load continuity, where continuity, voltage support, or thermal service must remain stable under repeated daily use. Its premium grade construction, 1 year, india sourcing, and isi certified status make it a more technical fit for backup-oriented installations. With a selling price of 6500 from 6500, it carries 4.1 feedback from 265 reviews.",
+    "category": "power",
+    "rating": 4.1,
+    "reviews": 265,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 141,
+    "name": "Voltino Grandi Didi Plus Switch",
+    "price": 5500,
+    "originalPrice": 5500,
+    "description": "Voltino Grandi Didi Plus Switch is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in backup power and load continuity. At 5500 versus 5500, it is positioned as a practical component with 4.5 average feedback from 166 reviews.",
+    "category": "power",
+    "rating": 4.5,
+    "reviews": 166,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 142,
+    "name": "Voltino Max Digital Switch",
+    "price": 4500,
+    "originalPrice": 4500,
+    "description": "Voltino Max Digital Switch is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in backup power and load continuity. At 4500 versus 4500, it is positioned as a practical component with 4.4 average feedback from 467 reviews.",
+    "category": "power",
+    "rating": 4.4,
+    "reviews": 467,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 143,
+    "name": "White Modular Switch Plate",
+    "price": 850,
+    "originalPrice": 850,
+    "description": "White Modular Switch Plate is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in modular switching circuits and point control. At 850 versus 850, it is positioned as a practical component with 3.7 average feedback from 276 reviews.",
+    "category": "switches",
+    "rating": 3.7,
+    "reviews": 276,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 144,
+    "name": "White Divino DG Switch Module",
+    "price": 1800,
+    "originalPrice": 1800,
+    "description": "White Divino DG Switch Module is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in modular switching circuits and point control. At 1800 versus 1800, it is positioned as a practical component with 3.8 average feedback from 125 reviews.",
+    "category": "switches",
+    "rating": 3.8,
+    "reviews": 125,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 145,
+    "name": "White Divino Switch Module",
+    "price": 1500,
+    "originalPrice": 1500,
+    "description": "White Divino Switch Module is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in modular switching circuits and point control. At 1500 versus 1500, it is positioned as a practical component with 3.6 average feedback from 100 reviews.",
+    "category": "switches",
+    "rating": 3.6,
+    "reviews": 100,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 146,
+    "name": "Wall Lantern Light",
+    "price": 1500,
+    "originalPrice": 1500,
+    "description": "Wall Lantern Light is tuned for weather-exposed lighting duty, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 1500 versus 1500, it is rated 4.9 by 174 reviews.",
+    "category": "outdoor",
+    "rating": 4.9,
+    "reviews": 174,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 147,
+    "name": "Wall Light Fixture",
+    "price": 1200,
+    "originalPrice": 1200,
+    "description": "Wall Light Fixture is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 1200 versus 1200, it is rated 3.9 by 473 reviews.",
+    "category": "lighting",
+    "rating": 3.9,
+    "reviews": 473,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 148,
+    "name": "Wall Light Set",
+    "price": 1800,
+    "originalPrice": 1800,
+    "description": "Wall Light Set is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 1800 versus 1800, it is rated 3.9 by 201 reviews.",
+    "category": "lighting",
+    "rating": 3.9,
+    "reviews": 201,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 149,
+    "name": "Work Safety Gloves",
+    "price": 350,
+    "originalPrice": 350,
+    "description": "Work Safety Gloves is specified for worksite protection and electrical hazard control, helping reduce exposure to impact, sparks, or handling hazards during installation and maintenance work. The unit combines premium grade, 1 year, india, and isi certified so it can be used as a proper protective item rather than a generic accessory. Priced at 350 against 350, it has a 4.2 rating from 416 reviews.",
+    "category": "safety",
+    "rating": 4.2,
+    "reviews": 416,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 150,
+    "name": "Y-Strainer Filter",
+    "price": 350,
+    "originalPrice": 350,
+    "description": "Y-Strainer Filter is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 350 against 350, it is supported by 4.3 user feedback from 141 reviews.",
+    "category": "pipes",
+    "rating": 4.3,
+    "reviews": 141,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 151,
+    "name": "BLDC Energy-Saver Fan",
+    "price": 4500,
+    "originalPrice": 4500,
+    "description": "BLDC Energy-Saver Fan is a air circulation and comfort management item built with premium grade, covered by 1 year, sourced from india, and isi certified for dependable daily use. It is listed at 4500 against 4500 and carries a 4.9 rating from 418 reviews.",
+    "category": "fans",
+    "rating": 4.9,
+    "reviews": 418,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 152,
+    "name": "Modern Ceiling Fan (Standard)",
+    "price": 2200,
+    "originalPrice": 2200,
+    "description": "Modern Ceiling Fan (Standard) is a air circulation and comfort management item built with premium grade, covered by 1 year, sourced from india, and isi certified for dependable daily use. It is listed at 2200 against 2200 and carries a 4.4 rating from 493 reviews.",
+    "category": "fans",
+    "rating": 4.4,
+    "reviews": 493,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 153,
+    "name": "Electrical Junction Box",
+    "price": 120,
+    "originalPrice": 120,
+    "description": "Electrical Junction Box supports cable routing and circuit integrity by keeping conductors protected, organized, and easier to service in everyday electrical work. It is built with premium grade, backed by 1 year, sourced from india, and marked isi certified to match installation expectations. Priced at 120 versus 120, it holds a 4.6 rating from 334 reviews.",
+    "category": "wiring",
+    "rating": 4.6,
+    "reviews": 334,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 154,
+    "name": "Exhaust Fan",
+    "price": 1200,
+    "originalPrice": 1200,
+    "description": "Exhaust Fan is a air circulation and comfort management item built with premium grade, covered by 1 year, sourced from india, and isi certified for dependable daily use. It is listed at 1200 against 1200 and carries a 4.4 rating from 198 reviews.",
+    "category": "fans",
+    "rating": 4.4,
+    "reviews": 198,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 155,
+    "name": "FRLS PVC Conduit Pipe",
+    "price": 320,
+    "originalPrice": 320,
+    "description": "FRLS PVC Conduit Pipe is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 320 against 320, it is supported by 4.2 user feedback from 284 reviews.",
+    "category": "pipes",
+    "rating": 4.2,
+    "reviews": 284,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 156,
+    "name": "Home Solar Inverter",
+    "price": 7500,
+    "originalPrice": 7500,
+    "description": "Home Solar Inverter is designed for backup power and load continuity, where continuity, voltage support, or thermal service must remain stable under repeated daily use. Its premium grade construction, 1 year, india sourcing, and isi certified status make it a more technical fit for backup-oriented installations. With a selling price of 7500 from 7500, it carries 4.2 feedback from 295 reviews.",
+    "category": "power",
+    "rating": 4.2,
+    "reviews": 295,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 157,
+    "name": "LED Bulbs Pack",
+    "price": 450,
+    "originalPrice": 450,
+    "description": "LED Bulbs Pack is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 450 versus 450, it is rated 3.8 by 361 reviews.",
+    "category": "lighting",
+    "rating": 3.8,
+    "reviews": 361,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 158,
+    "name": "LED Panel Light",
+    "price": 550,
+    "originalPrice": 550,
+    "description": "LED Panel Light is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 550 versus 550, it is rated 3.6 by 418 reviews.",
+    "category": "lighting",
+    "rating": 3.6,
+    "reviews": 418,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 159,
+    "name": "Living Now Modular Switch",
+    "price": 2200,
+    "originalPrice": 2200,
+    "description": "Living Now Modular Switch is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in modular switching circuits and point control. At 2200 versus 2200, it is positioned as a practical component with 3.9 average feedback from 39 reviews.",
+    "category": "switches",
+    "rating": 3.9,
+    "reviews": 39,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 160,
+    "name": "Long Bend Pipe Fitting",
+    "price": 45,
+    "originalPrice": 45,
+    "description": "Long Bend Pipe Fitting is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 45 against 45, it is supported by 3.9 user feedback from 197 reviews.",
+    "category": "pipes",
+    "rating": 3.9,
+    "reviews": 197,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 161,
+    "name": "Microtek Super Power UPS",
+    "price": 8500,
+    "originalPrice": 8500,
+    "description": "Microtek Super Power UPS is designed for backup power and load continuity, where continuity, voltage support, or thermal service must remain stable under repeated daily use. Its premium grade construction, 1 year, india sourcing, and isi certified status make it a more technical fit for backup-oriented installations. With a selling price of 8500 from 8500, it carries 4.7 feedback from 193 reviews.",
+    "category": "power",
+    "rating": 4.7,
+    "reviews": 193,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 162,
+    "name": "Electrical Wiring Cables",
+    "price": 850,
+    "originalPrice": 850,
+    "description": "Electrical Wiring Cables supports cable routing and circuit integrity by keeping conductors protected, organized, and easier to service in everyday electrical work. It is built with premium grade, backed by 1 year, sourced from india, and marked isi certified to match installation expectations. Priced at 850 versus 850, it holds a 3.9 rating from 170 reviews.",
+    "category": "wiring",
+    "rating": 3.9,
+    "reviews": 170,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 163,
+    "name": "Philips CFL 14W Energy Saver",
+    "price": 280,
+    "originalPrice": 280,
+    "description": "Philips CFL 14W Energy Saver is a illumination output and visual comfort item built with premium grade, covered by 1 year, sourced from india, and isi certified for dependable daily use. It is listed at 280 against 280 and carries a 4.3 rating from 52 reviews.",
+    "category": "lighting",
+    "rating": 4.3,
+    "reviews": 52,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 164,
+    "name": "Philips CFL 22W Energy Saver",
+    "price": 380,
+    "originalPrice": 380,
+    "description": "Philips CFL 22W Energy Saver is a illumination output and visual comfort item built with premium grade, covered by 1 year, sourced from india, and isi certified for dependable daily use. It is listed at 380 against 380 and carries a 4.8 rating from 87 reviews.",
+    "category": "lighting",
+    "rating": 4.8,
+    "reviews": 87,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 165,
+    "name": "PVC Bend Fitting",
+    "price": 35,
+    "originalPrice": 35,
+    "description": "PVC Bend Fitting is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 35 against 35, it is supported by 4.2 user feedback from 230 reviews.",
+    "category": "pipes",
+    "rating": 4.2,
+    "reviews": 230,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 166,
+    "name": "PVC Electrical Conduit Bend",
+    "price": 40,
+    "originalPrice": 40,
+    "description": "PVC Electrical Conduit Bend is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 40 against 40, it is supported by 4.7 user feedback from 140 reviews.",
+    "category": "pipes",
+    "rating": 4.7,
+    "reviews": 140,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 167,
+    "name": "PVC Electrical Fittings Set",
+    "price": 120,
+    "originalPrice": 120,
+    "description": "PVC Electrical Fittings Set is a fluid routing and plumbing distribution item built with premium grade, covered by 1 year, sourced from india, and isi certified for dependable daily use. It is listed at 120 against 120 and carries a 3.7 rating from 359 reviews.",
+    "category": "pipes",
+    "rating": 3.7,
+    "reviews": 359,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 168,
+    "name": "PVC Pipe Bend Connector",
+    "price": 35,
+    "originalPrice": 35,
+    "description": "PVC Pipe Bend Connector is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 35 against 35, it is supported by 4.1 user feedback from 70 reviews.",
+    "category": "pipes",
+    "rating": 4.1,
+    "reviews": 70,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 169,
+    "name": "PVC Pipe Coupler",
+    "price": 35,
+    "originalPrice": 35,
+    "description": "PVC Pipe Coupler is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 35 against 35, it is supported by 3.9 user feedback from 342 reviews.",
+    "category": "pipes",
+    "rating": 3.9,
+    "reviews": 342,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 170,
+    "name": "Rigid PVC Pipe",
+    "price": 380,
+    "originalPrice": 380,
+    "description": "Rigid PVC Pipe is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 380 against 380, it is supported by 4.4 user feedback from 431 reviews.",
+    "category": "pipes",
+    "rating": 4.4,
+    "reviews": 431,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 171,
+    "name": "Slimline 25W LED Fixture",
+    "price": 450,
+    "originalPrice": 450,
+    "description": "Slimline 25W LED Fixture is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 450 versus 450, it is rated 3.6 by 181 reviews.",
+    "category": "lighting",
+    "rating": 3.6,
+    "reviews": 181,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 172,
+    "name": "Smart Touch Switch",
+    "price": 1800,
+    "originalPrice": 1800,
+    "description": "Smart Touch Switch is intended for structured control of lighting or appliance circuits in modular boards where compact layout, firm actuation, and clean service access matter. The product combines premium grade, 1 year, india, and isi certified so it can be used as a dependable everyday switching point in modular switching circuits and point control. At 1800 versus 1800, it is positioned as a practical component with 4.8 average feedback from 147 reviews.",
+    "category": "switches",
+    "rating": 4.8,
+    "reviews": 147,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 173,
+    "name": "Smart Filament LED Bulb",
+    "price": 950,
+    "originalPrice": 950,
+    "description": "Smart Filament LED Bulb is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 950 versus 950, it is rated 3.8 by 104 reviews.",
+    "category": "lighting",
+    "rating": 3.8,
+    "reviews": 104,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 174,
+    "name": "Street Light GM Series",
+    "price": 3500,
+    "originalPrice": 3500,
+    "description": "Street Light GM Series is tuned for weather-exposed lighting duty, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 3500 versus 3500, it is rated 4.3 by 104 reviews.",
+    "category": "outdoor",
+    "rating": 4.3,
+    "reviews": 104,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 175,
+    "name": "Suction Pipe",
+    "price": 450,
+    "originalPrice": 450,
+    "description": "Suction Pipe is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 450 against 450, it is supported by 3.7 user feedback from 299 reviews.",
+    "category": "pipes",
+    "rating": 3.7,
+    "reviews": 299,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 176,
+    "name": "Supreme Pipe Water Meter",
+    "price": 1200,
+    "originalPrice": 1200,
+    "description": "Supreme Pipe Water Meter is a plumbing component shaped for backup power and load continuity, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 1200 against 1200, it is supported by 3.9 user feedback from 442 reviews.",
+    "category": "power",
+    "rating": 3.9,
+    "reviews": 442,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 177,
+    "name": "Threaded Reducing Bush",
+    "price": 45,
+    "originalPrice": 45,
+    "description": "Threaded Reducing Bush is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 45 against 45, it is supported by 3.9 user feedback from 361 reviews.",
+    "category": "pipes",
+    "rating": 3.9,
+    "reviews": 361,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 178,
+    "name": "UPVC Elbow Fitting",
+    "price": 55,
+    "originalPrice": 55,
+    "description": "UPVC Elbow Fitting is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 55 against 55, it is supported by 4.7 user feedback from 258 reviews.",
+    "category": "pipes",
+    "rating": 4.7,
+    "reviews": 258,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 179,
+    "name": "White T-Shape PVC Elbow",
+    "price": 45,
+    "originalPrice": 45,
+    "description": "White T-Shape PVC Elbow is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 45 against 45, it is supported by 4.4 user feedback from 129 reviews.",
+    "category": "pipes",
+    "rating": 4.4,
+    "reviews": 129,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 180,
+    "name": "Yolo 15W LED Bulb",
+    "price": 320,
+    "originalPrice": 320,
+    "description": "Yolo 15W LED Bulb is tuned for illumination output and visual comfort, with a lighting profile that prioritizes usable output, installation flexibility, and operating efficiency rather than generic catalogue appeal. It is built from premium grade, carries 1 year, is sourced from india, and is isi certified to support dependable deployment. At 320 versus 320, it is rated 4.1 by 329 reviews.",
+    "category": "lighting",
+    "rating": 4.1,
+    "reviews": 329,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 181,
+    "name": "Electrical Accessories Kit",
+    "price": 450,
+    "originalPrice": 550,
+    "description": "Electrical Accessories Kit supports general electrical accessory integration by keeping conductors protected, organized, and easier to service in everyday electrical work. It is built with mixed, backed by 1 year, sourced from india, and marked isi certified to match installation expectations. Priced at 450 versus 550, it holds a 4.5 rating from 120 reviews.",
+    "category": "electrical",
+    "rating": 4.5,
+    "reviews": 120,
+    "stock": 50,
+    "specs": {
+      "material": "Mixed",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 182,
+    "name": "Standard Threaded Union",
+    "price": 120,
+    "originalPrice": 140,
+    "description": "Standard Threaded Union is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 120 against 140, it is supported by 4.2 user feedback from 85 reviews.",
+    "category": "pipes",
+    "rating": 4.2,
+    "reviews": 85,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 183,
+    "name": "PVC Reducer Fitting Component",
+    "price": 100,
+    "originalPrice": 120,
+    "description": "PVC Reducer Fitting Component is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 100 against 120, it is supported by 4.6 user feedback from 210 reviews.",
+    "category": "pipes",
+    "rating": 4.6,
+    "reviews": 210,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  },
+  {
+    "id": 184,
+    "name": "Plumbing Reduce Bush",
+    "price": 90,
+    "originalPrice": 110,
+    "description": "Plumbing Reduce Bush is a plumbing component shaped for fluid routing and plumbing distribution, supporting alignment, branching, reduction, shutoff, or termination depending on the specific line requirement. The part uses premium grade construction with 1 year, is produced in india, and is isi certified for installation assurance. Listed at 90 against 110, it is supported by 4.1 user feedback from 145 reviews.",
+    "category": "pipes",
+    "rating": 4.1,
+    "reviews": 145,
+    "stock": 50,
+    "specs": {
+      "material": "Premium Grade",
+      "warranty": "1 Year",
+      "origin": "India",
+      "certification": "ISI Certified"
+    }
+  }
+]

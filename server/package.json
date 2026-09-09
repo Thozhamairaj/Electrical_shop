@@ -5,7 +5,9 @@
     "scripts": {
         "start": "node index.js",
         "dev": "nodemon index.js",
-        "build": "echo 'No build step needed'"
+        "build": "echo 'No build step needed'",
+        "rag:index": "python3 rag/index_products.py",
+        "rag:reindex": "python3 rag/index_products.py --force"
     },
     "dependencies": {
         "axios": "^1.13.6",
