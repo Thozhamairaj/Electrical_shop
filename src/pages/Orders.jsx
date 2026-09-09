@@ -87,6 +87,14 @@ export default function Orders() {
                         <div className="item-info">
                           <h4>{item.name || 'Unnamed Product'}</h4>
                           <p>Qty: {item.quantity || 1} × ₹{parseFloat(item.price || 0).toFixed(2)}</p>
+                          <div className="item-actions">
+                            <button
+                              className="write-review-btn"
+                              onClick={() => navigate(`/product/${item.id}?writeReview=1`)}
+                            >
+                              Write review
+                            </button>
+                          </div>
                         </div>
                       </div>
                     ))}
