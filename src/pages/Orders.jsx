@@ -2,26 +2,28 @@ import React, { useState, useEffect } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { reviewService } from '../services/reviewService';
 import './Orders.css';
 
 export default function Orders() {
   const { user } = useUser();
+  const [userReviews, setUserReviews] = useState([]);
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [expandedOrderId, setExpandedOrderId] = useState(null);
-  const [reviewedProductIds, setReviewedProductIds] = useState(new Set());
 
   useEffect(() => {
     if (user?.id) {
       fetchOrders();
-      // fetch user's reviews once to hide "Write review" for already reviewed products
+    }
+    if (user?.id) {
+      // fetch user's reviews once to hide write buttons for items already reviewed
       (async () => {
         try {
-          const data = await reviewService.getUserReviews(user.id);
-          const ids = new Set((data || []).map((r) => Number(r.productId)));
-          setReviewedProductIds(ids);
+          const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+          const res = await fetch(`${apiUrl}/api/reviews/user`, { headers: { 'x-user-id': user.id } });
+          const data = await res.json();
+          setUserReviews((data && Array.isArray(data) ? data : []).map(r => r.productId));
         } catch (e) {
           // ignore
         }
@@ -99,19 +101,16 @@ export default function Orders() {
                         <div className="item-info">
                           <h4>{item.name || 'Unnamed Product'}</h4>
                           <p>Qty: {item.quantity || 1} × ₹{parseFloat(item.price || 0).toFixed(2)}</p>
-                          <div className="item-actions">
-                            {!reviewedProductIds.has(Number(item.id)) && (
+                          {!userReviews.includes(item.id) && (
+                            <div className="item-actions">
                               <button
                                 className="write-review-btn"
                                 onClick={() => navigate(`/product/${item.id}?writeReview=1`)}
                               >
                                 Write review
                               </button>
-                            )}
-                            {reviewedProductIds.has(Number(item.id)) && (
-                              <span className="already-reviewed">You reviewed this</span>
-                            )}
-                          </div>
+                            </div>
+                          )}
                         </div>
                       </div>
                     ))}
