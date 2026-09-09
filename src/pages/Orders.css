@@ -123,6 +123,15 @@
 
 .write-review-btn:hover { opacity: 0.95; transform: translateY(-1px); }
 
+.already-reviewed {
+  display: inline-block;
+  color: #64748b;
+  font-size: 0.85rem;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: #f1f5f9;
+}
+
 .order-summary {
   background: #f8fafc;
   padding: 20px;

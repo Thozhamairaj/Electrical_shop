@@ -64,7 +64,16 @@ export default function ReviewCard({
             <p className="review-text">{review.reviewText}</p>
 
             {showReason && review.trustReason && (
-                <div className="review-trust-reason">{review.trustReason}</div>
+                <div className="review-trust-modal" role="dialog" aria-modal="true">
+                    <div className="review-trust-backdrop" onClick={() => setShowReason(false)} />
+                    <div className="review-trust-content">
+                        <h3>Why this trust level?</h3>
+                        <p>{review.trustReason}</p>
+                        <div className="modal-actions">
+                            <button className="modal-close" onClick={() => setShowReason(false)}>Close</button>
+                        </div>
+                    </div>
+                </div>
             )}
 
             <div className="review-footer">

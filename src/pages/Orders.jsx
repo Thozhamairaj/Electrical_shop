@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { reviewService } from '../services/reviewService';
 import './Orders.css';
 
 export default function Orders() {
@@ -10,10 +11,21 @@ export default function Orders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [expandedOrderId, setExpandedOrderId] = useState(null);
+  const [reviewedProductIds, setReviewedProductIds] = useState(new Set());
 
   useEffect(() => {
     if (user?.id) {
       fetchOrders();
+      // fetch user's reviews once to hide "Write review" for already reviewed products
+      (async () => {
+        try {
+          const data = await reviewService.getUserReviews(user.id);
+          const ids = new Set((data || []).map((r) => Number(r.productId)));
+          setReviewedProductIds(ids);
+        } catch (e) {
+          // ignore
+        }
+      })();
     }
   }, [user]);
 
@@ -88,12 +100,17 @@ export default function Orders() {
                           <h4>{item.name || 'Unnamed Product'}</h4>
                           <p>Qty: {item.quantity || 1} × ₹{parseFloat(item.price || 0).toFixed(2)}</p>
                           <div className="item-actions">
-                            <button
-                              className="write-review-btn"
-                              onClick={() => navigate(`/product/${item.id}?writeReview=1`)}
-                            >
-                              Write review
-                            </button>
+                            {!reviewedProductIds.has(Number(item.id)) && (
+                              <button
+                                className="write-review-btn"
+                                onClick={() => navigate(`/product/${item.id}?writeReview=1`)}
+                              >
+                                Write review
+                              </button>
+                            )}
+                            {reviewedProductIds.has(Number(item.id)) && (
+                              <span className="already-reviewed">You reviewed this</span>
+                            )}
                           </div>
                         </div>
                       </div>
