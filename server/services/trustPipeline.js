@@ -71,64 +71,83 @@ async function retrieveProduct(productId, reviewText = '') {
     return parseJsonOutput(raw);
 }
 
-async function predictTrust({ rating, reviewTitle, reviewText, productPayload }) {
+async function predictTrust({ rating, reviewTitle, reviewText, productPayload, verifiedPurchase = false, helpfulVotes = 0, userReviewsCount = 1, userVerifiedCount = 0, userAvgRating = null, userAvgHelpfulVote = null, userPurchasedCount = 0 }) {
     const script = path.join(AI_DIR, 'predict_trust.py');
     const payload = JSON.stringify({
         rating,
         reviewTitle,
         reviewText,
         productPayload,
+        verifiedPurchase,
+        helpfulVotes,
+        userReviewsCount,
+        userVerifiedCount,
+        userAvgRating,
+        userAvgHelpfulVote,
+        userPurchasedCount,
     });
 
     const raw = await runPython(script, [payload]);
     return parseJsonOutput(raw);
 }
 
-async function runTrustInference({ productId, rating, reviewTitle, reviewText }) {
+async function runTrustInference({ productId, rating, reviewTitle, reviewText, verifiedPurchase = false, helpfulVotes = 0, userReviewsCount = 1, userVerifiedCount = 0, userAvgRating = null, userAvgHelpfulVote = null, userPurchasedCount = 0, productData = null }) {
     let indexResult = null;
     let productPayload = null;
 
-    try {
-        indexResult = await ensureProductIndex();
-        productPayload = await retrieveProduct(productId, reviewText);
-
-        if (productPayload && productPayload.error) {
-            const error = new Error(productPayload.error);
-            error.statusCode = 404;
-            throw error;
-        }
-    } catch (err) {
-        // RAG unavailable (missing chromadb/sentence-transformers) or index error.
-        // Fall back to a lightweight local product lookup from server/products.json
+    if (productData) {
+        productPayload = {
+            product: {
+                id: productData.id,
+                name: productData.name,
+                category: productData.category,
+                description: productData.description || '',
+                specs: productData.specs || {},
+                rating: productData.rating == null ? null : Number(productData.rating),
+                reviews: productData.reviews || 0,
+            },
+        };
+    } else {
         try {
-            const productsPath = path.join(SERVER_ROOT, 'products.json');
-            const raw = fs.readFileSync(productsPath, 'utf8');
-            const products = JSON.parse(raw);
-            const prod = products.find((p) => Number(p.id) === Number(productId));
-            if (!prod) {
-                const error = new Error('Product not found');
+            indexResult = await ensureProductIndex();
+            productPayload = await retrieveProduct(productId, reviewText);
+
+            if (productPayload && productPayload.error) {
+                const error = new Error(productPayload.error);
                 error.statusCode = 404;
                 throw error;
             }
+        } catch (err) {
+            try {
+                const productsPath = path.join(SERVER_ROOT, 'products.json');
+                const raw = fs.readFileSync(productsPath, 'utf8');
+                const products = JSON.parse(raw);
+                const prod = products.find((p) => Number(p.id) === Number(productId));
+                if (!prod) {
+                    const error = new Error('Product not found');
+                    error.statusCode = 404;
+                    throw error;
+                }
 
-            productPayload = {
-                product: {
-                    id: prod.id,
-                    name: prod.name,
-                    category: prod.category,
-                    description: prod.description || '',
-                    specs: prod.specs || {},
-                    rating: prod.rating || null,
-                    reviews: prod.reviews || 0,
-                },
-                fallback: true,
-            };
-        } catch (readErr) {
-            const error = new Error(
-                `RAG unavailable and fallback product lookup failed: ${readErr.message}`
-            );
-            error.statusCode = 500;
-            throw error;
+                productPayload = {
+                    product: {
+                        id: prod.id,
+                        name: prod.name,
+                        category: prod.category,
+                        description: prod.description || '',
+                        specs: prod.specs || {},
+                        rating: prod.rating || null,
+                        reviews: prod.reviews || 0,
+                    },
+                    fallback: true,
+                };
+            } catch (readErr) {
+                const error = new Error(
+                    `RAG unavailable and fallback product lookup failed: ${readErr.message}`
+                );
+                error.statusCode = 500;
+                throw error;
+            }
         }
     }
 
@@ -137,6 +156,13 @@ async function runTrustInference({ productId, rating, reviewTitle, reviewText })
         reviewTitle,
         reviewText,
         productPayload: productPayload.product,
+        verifiedPurchase,
+        helpfulVotes,
+        userReviewsCount,
+        userVerifiedCount,
+        userAvgRating,
+        userAvgHelpfulVote,
+        userPurchasedCount,
     });
 
     return {

@@ -7,10 +7,22 @@ import ReviewCard from './ReviewCard';
 import './ReviewSection.css';
 
 const SORT_OPTIONS = [
-    { value: 'newest', label: 'Newest' },
-    { value: 'oldest', label: 'Oldest' },
+    { value: 'most_trusted', label: 'Most Trusted' },
+    { value: 'least_trusted', label: 'Least Trusted' },
     { value: 'highest', label: 'Highest Rating' },
     { value: 'lowest', label: 'Lowest Rating' },
+    { value: 'most_helpful', label: 'Most Helpful' },
+    { value: 'newest', label: 'Newest' },
+    { value: 'oldest', label: 'Oldest' },
+];
+
+const RATING_OPTIONS = [
+    { value: 'all', label: 'All Ratings' },
+    { value: '5', label: '5 Stars' },
+    { value: '4', label: '4 Stars' },
+    { value: '3', label: '3 Stars' },
+    { value: '2', label: '2 Stars' },
+    { value: '1', label: '1 Star' },
 ];
 
 const EMPTY_FORM = {
@@ -18,6 +30,31 @@ const EMPTY_FORM = {
     reviewTitle: '',
     reviewText: '',
 };
+
+function getTrustGroup(trustLevel) {
+    if (!trustLevel) return 'other';
+    const lower = trustLevel.toLowerCase();
+    if (lower.includes('high')) return 'high';
+    if (lower.includes('medium')) return 'medium';
+    if (lower.includes('low')) return 'low';
+    return 'other';
+}
+
+function getTrustNumericScore(review) {
+    if (typeof review.trustScore === 'number') return review.trustScore;
+    if (review.trustReason) {
+        const match = review.trustReason.match(/Trust Score:\s*(\d+)%/i);
+        if (match) return parseInt(match[1], 10) / 100;
+    }
+    const group = getTrustGroup(review.trustLevel);
+    const lower = (review.trustLevel || '').toLowerCase();
+    if (lower.includes('very high')) return 0.95;
+    if (group === 'high') return 0.8;
+    if (group === 'medium') return 0.5;
+    if (lower.includes('very low')) return 0.05;
+    if (group === 'low') return 0.2;
+    return 0.5;
+}
 
 function StarInput({ value, onChange }) {
     return (
@@ -56,23 +93,26 @@ export default function ReviewSection({ productId, productName }) {
     const navigate = useNavigate();
     const userId = user?.id || null;
     const {
-        reviews,
+        allReviews,
         summary,
-        pagination,
         currentUserReview,
         loading,
         error,
-        sort,
-        page,
-        setPage,
-        setSort,
         refresh,
-    } = useProductReviews(productId, userId, 6);
+    } = useProductReviews(productId, userId);
 
     const [form, setForm] = useState(EMPTY_FORM);
     const [submitting, setSubmitting] = useState(false);
     const [actionError, setActionError] = useState('');
     const [toast, setToast] = useState(null);
+
+    // Frontend Filter & Search States
+    const [trustFilter, setTrustFilter] = useState('all');
+    const [ratingFilter, setRatingFilter] = useState('all');
+    const [sortOption, setSortOption] = useState('most_trusted');
+    const [searchQuery, setSearchQuery] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const pageSize = 6;
 
     const isEditing = Boolean(currentUserReview);
 
@@ -94,12 +134,102 @@ export default function ReviewSection({ productId, productName }) {
         return () => clearTimeout(timer);
     }, [toast]);
 
+    // Reset pagination on filter or search changes
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [trustFilter, ratingFilter, sortOption, searchQuery]);
+
     const reviewCountLabel = useMemo(() => {
         const count = summary.reviewCount || 0;
         return `${count} ${count === 1 ? 'review' : 'reviews'}`;
     }, [summary.reviewCount]);
 
     const averageRating = summary.averageRating != null ? Number(summary.averageRating) : 0;
+
+    // Dynamic trust counts calculated from actual review dataset
+    const trustCounts = useMemo(() => {
+        let all = 0;
+        let high = 0;
+        let medium = 0;
+        let low = 0;
+
+        for (const r of allReviews) {
+            all++;
+            const group = getTrustGroup(r.trustLevel);
+            if (group === 'high') high++;
+            else if (group === 'medium') medium++;
+            else if (group === 'low') low++;
+        }
+
+        return { all, high, medium, low };
+    }, [allReviews]);
+
+    // Client-side filtering & searching
+    const filteredReviews = useMemo(() => {
+        return allReviews.filter((review) => {
+            if (trustFilter !== 'all') {
+                const group = getTrustGroup(review.trustLevel);
+                if (trustFilter !== group) return false;
+            }
+
+            if (ratingFilter !== 'all') {
+                if (Number(review.rating) !== Number(ratingFilter)) return false;
+            }
+
+            if (searchQuery.trim() !== '') {
+                const query = searchQuery.trim().toLowerCase();
+                const titleMatch = (review.reviewTitle || '').toLowerCase().includes(query);
+                const textMatch = (review.reviewText || '').toLowerCase().includes(query);
+                const authorMatch = (review.reviewerName || '').toLowerCase().includes(query);
+                if (!titleMatch && !textMatch && !authorMatch) return false;
+            }
+
+            return true;
+        });
+    }, [allReviews, trustFilter, ratingFilter, searchQuery]);
+
+    // Client-side sorting
+    const sortedReviews = useMemo(() => {
+        return [...filteredReviews].sort((a, b) => {
+            if (sortOption === 'most_trusted') {
+                return getTrustNumericScore(b) - getTrustNumericScore(a) || new Date(b.createdAt) - new Date(a.createdAt);
+            }
+            if (sortOption === 'least_trusted') {
+                return getTrustNumericScore(a) - getTrustNumericScore(b) || new Date(b.createdAt) - new Date(a.createdAt);
+            }
+            if (sortOption === 'highest') {
+                return (Number(b.rating) || 0) - (Number(a.rating) || 0) || new Date(b.createdAt) - new Date(a.createdAt);
+            }
+            if (sortOption === 'lowest') {
+                return (Number(a.rating) || 0) - (Number(b.rating) || 0) || new Date(b.createdAt) - new Date(a.createdAt);
+            }
+            if (sortOption === 'most_helpful') {
+                return (Number(b.helpfulVotes) || 0) - (Number(a.helpfulVotes) || 0) || new Date(b.createdAt) - new Date(a.createdAt);
+            }
+            if (sortOption === 'oldest') {
+                return new Date(a.createdAt) - new Date(b.createdAt);
+            }
+            // 'newest' default
+            return new Date(b.createdAt) - new Date(a.createdAt);
+        });
+    }, [filteredReviews, sortOption]);
+
+    // Pagination calculations
+    const totalPages = Math.max(1, Math.ceil(sortedReviews.length / pageSize));
+    const paginatedReviews = useMemo(() => {
+        const start = (currentPage - 1) * pageSize;
+        return sortedReviews.slice(start, start + pageSize);
+    }, [sortedReviews, currentPage, pageSize]);
+
+    const isFilterActive = trustFilter !== 'all' || ratingFilter !== 'all' || searchQuery.trim() !== '';
+
+    const resetFilters = () => {
+        setTrustFilter('all');
+        setRatingFilter('all');
+        setSearchQuery('');
+        setSortOption('most_trusted');
+        setCurrentPage(1);
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -201,19 +331,6 @@ export default function ReviewSection({ productId, productName }) {
                     <p className="review-kicker">Customer feedback</p>
                     <h2>Reviews for {productName}</h2>
                 </div>
-
-                <div className="review-sorter">
-                    {SORT_OPTIONS.map((option) => (
-                        <button
-                            key={option.value}
-                            type="button"
-                            className={`sort-chip ${sort === option.value ? 'active' : ''}`}
-                            onClick={() => setSort(option.value)}
-                        >
-                            {option.label}
-                        </button>
-                    ))}
-                </div>
             </div>
 
             {toast && <div className={`review-toast ${toast.type}`}>{toast.message}</div>}
@@ -257,7 +374,7 @@ export default function ReviewSection({ productId, productName }) {
                     <p>
                         {isEditing
                             ? 'Updating your review will send it back into moderation and reset the trust placeholder.'
-                            : 'Reviews are only visible after approval. Trust analysis will be added later through your AI pipeline.'}
+                            : 'Reviews are only visible after approval. Trust analysis will be added through your AI pipeline.'}
                     </p>
                 </div>
 
@@ -310,7 +427,7 @@ export default function ReviewSection({ productId, productName }) {
 
                     {currentUserReview && (
                         <p className={`review-status-note ${currentUserReview.status?.toLowerCase() || ''}`}>
-                            Your review is currently {currentUserReview.status?.toLowerCase() || 'pending'} and the trust field is waiting for AI analysis.
+                            Your review is currently {currentUserReview.status?.toLowerCase() || 'pending'} and trust verification is complete.
                         </p>
                     )}
                 </form>
@@ -318,22 +435,157 @@ export default function ReviewSection({ productId, productName }) {
 
             <div className="review-list-shell">
                 <div className="review-list-header">
-                    <h3>Latest customer reviews</h3>
-                    <p>{pagination.totalCount || 0} total approved reviews</p>
+                    <div>
+                        <h3>Customer Reviews</h3>
+                        <p>Showing {sortedReviews.length} of {allReviews.length} approved reviews</p>
+                    </div>
+                </div>
+
+                {/* Compact Filter and Sorter Section */}
+                <div className="review-filter-toolbar">
+                    {/* Quick Trust Filter Pills */}
+                    <div className="trust-filter-pills" role="radiogroup" aria-label="Filter by trust level">
+                        <button
+                            type="button"
+                            className={`trust-chip ${trustFilter === 'all' ? 'active' : ''}`}
+                            onClick={() => setTrustFilter('all')}
+                        >
+                            All Reviews <span className="chip-count">({trustCounts.all})</span>
+                        </button>
+                        <button
+                            type="button"
+                            className={`trust-chip high ${trustFilter === 'high' ? 'active' : ''}`}
+                            onClick={() => setTrustFilter('high')}
+                        >
+                            High Trust <span className="chip-count">({trustCounts.high})</span>
+                        </button>
+                        <button
+                            type="button"
+                            className={`trust-chip medium ${trustFilter === 'medium' ? 'active' : ''}`}
+                            onClick={() => setTrustFilter('medium')}
+                        >
+                            Medium Trust <span className="chip-count">({trustCounts.medium})</span>
+                        </button>
+                        <button
+                            type="button"
+                            className={`trust-chip low ${trustFilter === 'low' ? 'active' : ''}`}
+                            onClick={() => setTrustFilter('low')}
+                        >
+                            Low Trust <span className="chip-count">({trustCounts.low})</span>
+                        </button>
+                    </div>
+
+                    {/* Filter Dropdowns & Search Input */}
+                    <div className="review-controls-row">
+                        <div className="control-group">
+                            <label htmlFor="rating-filter-select" className="control-label">Rating</label>
+                            <select
+                                id="rating-filter-select"
+                                className="review-select"
+                                value={ratingFilter}
+                                onChange={(e) => setRatingFilter(e.target.value)}
+                            >
+                                {RATING_OPTIONS.map((opt) => (
+                                    <option key={opt.value} value={opt.value}>
+                                        {opt.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div className="control-group">
+                            <label htmlFor="sort-select" className="control-label">Sort By</label>
+                            <select
+                                id="sort-select"
+                                className="review-select"
+                                value={sortOption}
+                                onChange={(e) => setSortOption(e.target.value)}
+                            >
+                                {SORT_OPTIONS.map((opt) => (
+                                    <option key={opt.value} value={opt.value}>
+                                        {opt.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div className="control-group search-group">
+                            <label htmlFor="review-search-input" className="control-label">Search</label>
+                            <div className="search-input-wrapper">
+                                <span className="search-icon">🔍</span>
+                                <input
+                                    id="review-search-input"
+                                    type="text"
+                                    className="review-search-input"
+                                    placeholder="Search reviews..."
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                />
+                                {searchQuery && (
+                                    <button
+                                        type="button"
+                                        className="search-clear-btn"
+                                        onClick={() => setSearchQuery('')}
+                                        aria-label="Clear search query"
+                                    >
+                                        ✕
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Active Filters Row */}
+                    {isFilterActive && (
+                        <div className="active-filters-row">
+                            <span className="active-filters-label">Active filters:</span>
+                            {trustFilter !== 'all' && (
+                                <span className="active-filter-badge">
+                                    Trust: {trustFilter === 'high' ? 'High Trust' : trustFilter === 'medium' ? 'Medium Trust' : 'Low Trust'}
+                                    <button type="button" onClick={() => setTrustFilter('all')}>✕</button>
+                                </span>
+                            )}
+                            {ratingFilter !== 'all' && (
+                                <span className="active-filter-badge">
+                                    Rating: {ratingFilter} Stars
+                                    <button type="button" onClick={() => setRatingFilter('all')}>✕</button>
+                                </span>
+                            )}
+                            {searchQuery.trim() !== '' && (
+                                <span className="active-filter-badge">
+                                    Search: "{searchQuery}"
+                                    <button type="button" onClick={() => setSearchQuery('')}>✕</button>
+                                </span>
+                            )}
+                            <button type="button" className="clear-all-btn" onClick={resetFilters}>
+                                Clear all
+                            </button>
+                        </div>
+                    )}
                 </div>
 
                 {loading ? (
                     <div className="review-state">Loading reviews…</div>
                 ) : error ? (
                     <div className="review-state error">{error}</div>
-                ) : reviews.length === 0 ? (
+                ) : sortedReviews.length === 0 ? (
                     <div className="review-state empty">
-                        <strong>No reviews yet</strong>
-                        <span>Be the first to share feedback on this product.</span>
+                        <span className="empty-state-icon">🔍</span>
+                        <strong>No matching reviews found</strong>
+                        <span>
+                            {isFilterActive
+                                ? 'No reviews match your selected filters or search query.'
+                                : 'Be the first to share feedback on this product.'}
+                        </span>
+                        {isFilterActive && (
+                            <button type="button" className="review-reset-btn" onClick={resetFilters}>
+                                Reset Filters
+                            </button>
+                        )}
                     </div>
                 ) : (
                     <div className="review-list">
-                        {reviews.map((review) => (
+                        {paginatedReviews.map((review) => (
                             <ReviewCard
                                 key={review.id}
                                 review={review}
@@ -345,15 +597,23 @@ export default function ReviewSection({ productId, productName }) {
                     </div>
                 )}
 
-                {pagination.totalPages > 1 && (
+                {totalPages > 1 && (
                     <div className="review-pagination">
-                        <button type="button" onClick={() => setPage(Math.max(1, page - 1))} disabled={page === 1}>
+                        <button
+                            type="button"
+                            onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                            disabled={currentPage === 1}
+                        >
                             Previous
                         </button>
                         <span>
-                            Page {page} of {pagination.totalPages}
+                            Page {currentPage} of {totalPages}
                         </span>
-                        <button type="button" onClick={() => setPage(Math.min(pagination.totalPages, page + 1))} disabled={page >= pagination.totalPages}>
+                        <button
+                            type="button"
+                            onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                            disabled={currentPage >= totalPages}
+                        >
                             Next
                         </button>
                     </div>

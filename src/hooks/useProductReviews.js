@@ -7,73 +7,82 @@ const DEFAULT_SUMMARY = {
     distribution: { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 },
 };
 
-const DEFAULT_PAGINATION = {
-    page: 1,
-    limit: 6,
-    totalCount: 0,
-    totalPages: 1,
-    sort: 'newest',
-};
-
-export function useProductReviews(productId, userId, initialLimit = 6) {
-    const [reviews, setReviews] = useState([]);
+export function useProductReviews(productId, userId) {
+    const [allReviews, setAllReviews] = useState([]);
     const [summary, setSummary] = useState(DEFAULT_SUMMARY);
-    const [pagination, setPagination] = useState({ ...DEFAULT_PAGINATION, limit: initialLimit });
     const [currentUserReview, setCurrentUserReview] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-    const [sort, setSort] = useState('newest');
-    const [page, setPage] = useState(1);
 
-    const loadReviews = useCallback(async (nextPage = 1, nextSort = 'newest') => {
+    const loadReviews = useCallback(async () => {
         if (!productId) return;
 
         setLoading(true);
         setError('');
 
         try {
-            const data = await reviewService.getProductReviews(productId, {
-                page: nextPage,
-                limit: initialLimit,
-                sort: nextSort,
+            const firstPageData = await reviewService.getProductReviews(productId, {
+                page: 1,
+                limit: 20,
+                sort: 'newest',
                 userId,
             });
 
-            setReviews(data.reviews || []);
-            setSummary(data.summary || DEFAULT_SUMMARY);
-            setPagination(data.pagination || { ...DEFAULT_PAGINATION, limit: initialLimit });
-            setCurrentUserReview(data.currentUserReview || null);
+            let combinedReviews = firstPageData.reviews || [];
+            const totalPages = firstPageData.pagination?.totalPages || 1;
+
+            if (totalPages > 1) {
+                const remainingPromises = [];
+                for (let p = 2; p <= totalPages; p++) {
+                    remainingPromises.push(
+                        reviewService.getProductReviews(productId, {
+                            page: p,
+                            limit: 20,
+                            sort: 'newest',
+                            userId,
+                        })
+                    );
+                }
+                const remainingResults = await Promise.all(remainingPromises);
+                remainingResults.forEach((res) => {
+                    if (res.reviews) {
+                        combinedReviews = combinedReviews.concat(res.reviews);
+                    }
+                });
+            }
+
+            // Deduplicate reviews by ID just in case
+            const deduped = [];
+            const seen = new Set();
+            for (const r of combinedReviews) {
+                if (r && r.id && !seen.has(r.id)) {
+                    seen.add(r.id);
+                    deduped.push(r);
+                }
+            }
+
+            setAllReviews(deduped);
+            setSummary(firstPageData.summary || DEFAULT_SUMMARY);
+            setCurrentUserReview(firstPageData.currentUserReview || null);
         } catch (requestError) {
             setError(requestError.message || 'Failed to load reviews');
         } finally {
             setLoading(false);
         }
-    }, [productId, userId, initialLimit]);
+    }, [productId, userId]);
 
     useEffect(() => {
-        loadReviews(page, sort);
-    }, [loadReviews, page, sort]);
-
-    const refresh = useCallback(() => loadReviews(page, sort), [loadReviews, page, sort]);
-
-    const updateSort = useCallback((nextSort) => {
-        setSort(nextSort);
-        setPage(1);
-    }, []);
+        loadReviews();
+    }, [loadReviews]);
 
     return {
-        reviews,
+        allReviews,
         summary,
-        pagination,
         currentUserReview,
         loading,
         error,
-        sort,
-        page,
-        setPage,
-        setSort: updateSort,
-        refresh,
-        setReviews,
+        refresh: loadReviews,
+        setAllReviews,
         setCurrentUserReview,
     };
 }

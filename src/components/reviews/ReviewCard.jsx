@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import TrustReasonModal from '../TrustReasonModal';
+
 function renderStars(rating) {
     const value = Math.round(Number(rating) || 0);
     return '★★★★★'.split('').map((star, index) => (
@@ -14,6 +17,16 @@ function formatReviewDate(dateValue) {
     });
 }
 
+function getTrustBadgeClass(level) {
+    if (!level) return 'pending';
+    const lower = level.toLowerCase();
+    if (lower.includes('very high')) return 'very-high';
+    if (lower.includes('very low')) return 'very-low';
+    if (lower.includes('high')) return 'high';
+    if (lower.includes('low')) return 'low';
+    return 'medium';
+}
+
 export default function ReviewCard({
     review,
     onHelpful,
@@ -25,10 +38,11 @@ export default function ReviewCard({
     showAdminActions = false,
     busyAction = false,
 }) {
+    const [modalOpen, setModalOpen] = useState(false);
+
     if (!review) return null;
 
-        const [showReason, setShowReason] = useState(false);
-        const [modalOpen, setModalOpen] = useState(false);
+    const badgeClass = getTrustBadgeClass(review.trustLevel);
 
     return (
         <article className="review-card">
@@ -37,16 +51,16 @@ export default function ReviewCard({
                     <div className="review-author-row">
                         <h3 className="review-author">{review.reviewerName || 'Customer'}</h3>
                         {review.verifiedPurchase && <span className="review-badge verified">Verified Purchase</span>}
-                        <span className="review-badge trust">{review.trustLevel || 'AI Pending'}</span>
-                            {review.trustReason && (
-                                <button
-                                    type="button"
-                                    className="trust-reason-toggle"
-                                    onClick={() => setModalOpen(true)}
-                                >
-                                    Why?
-                                </button>
-                            )}
+                        <span className={`review-badge trust ${badgeClass}`}>{review.trustLevel || 'AI Pending'}</span>
+                        {review.trustReason && (
+                            <button
+                                type="button"
+                                className="trust-reason-toggle"
+                                onClick={() => setModalOpen(true)}
+                            >
+                                Why?
+                            </button>
+                        )}
                         {review.status && review.status !== 'Approved' && (
                             <span className={`review-badge status ${review.status.toLowerCase()}`}>{review.status}</span>
                         )}
@@ -63,7 +77,7 @@ export default function ReviewCard({
             <h4 className="review-title">{review.reviewTitle}</h4>
             <p className="review-text">{review.reviewText}</p>
 
-                <TrustReasonModal open={modalOpen} onClose={() => setModalOpen(false)} reason={review.trustReason} />
+            <TrustReasonModal open={modalOpen} onClose={() => setModalOpen(false)} reason={review.trustReason} review={review} />
 
             <div className="review-footer">
                 {onHelpful && (

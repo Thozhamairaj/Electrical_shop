@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 async function run() {
   const apiUrl = process.env.API_URL || 'http://localhost:5000';
   try {

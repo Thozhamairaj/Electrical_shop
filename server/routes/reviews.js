@@ -12,6 +12,7 @@ const {
     getAdminReviewStatsHandler,
     updateReviewStatusHandler,
     adminDeleteReviewHandler,
+    saveTrustFeedbackHandler,
 } = require('../controllers/reviewController');
 
 const router = express.Router();
@@ -21,6 +22,7 @@ router.post('/', userAuth, createReviewHandler);
 router.put('/:id', userAuth, updateReviewHandler);
 router.delete('/:id', userAuth, deleteReviewHandler);
 router.post('/helpful/:id', userAuth, helpfulReviewHandler);
+router.post('/trust-feedback', userAuth, saveTrustFeedbackHandler);
 router.get('/user', userAuth, getUserReviewsHandler);
 
 router.get('/admin', adminAuth, getAdminReviewsHandler);
