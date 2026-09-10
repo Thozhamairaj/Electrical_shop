@@ -1,4 +1,5 @@
 const db = require('../db');
+const { runTrustInference } = require('./trustPipeline');
 
 function toNumber(value, fallback = 0) {
     const parsed = Number(value);
@@ -139,6 +140,90 @@ async function getApprovedSummary(client, productId) {
     };
 }
 
+async function getUserReviewStats(client, userId) {
+    if (!userId) return { userReviewsCount: 1, userVerifiedCount: 0, userAvgRating: 5.0, userAvgHelpfulVote: 0.0, userPurchasedCount: 0 };
+    try {
+        const res = await client.query(
+            `SELECT
+                COUNT(*)::integer AS total,
+                COUNT(*) FILTER (WHERE "verifiedPurchase" = TRUE)::integer AS verified,
+                AVG(rating)::numeric AS avg_rating,
+                AVG("helpfulVotes")::numeric AS avg_helpful
+             FROM "Reviews"
+             WHERE "userId" = $1`,
+            [userId]
+        );
+        const ordersRes = await client.query(
+            `SELECT COUNT(DISTINCT (item ->> 'id')::integer)::integer AS purchased_count
+             FROM "Orders" o
+             JOIN LATERAL jsonb_array_elements(o.items::jsonb) item ON TRUE
+             WHERE o."userId" = $1
+               AND o."paymentStatus" = 'paid'`,
+            [userId]
+        );
+        const row = res.rows[0] || {};
+        const purchasedRow = ordersRes.rows[0] || {};
+        return {
+            userReviewsCount: (row.total || 0) + 1,
+            userVerifiedCount: row.verified || 0,
+            userAvgRating: row.avg_rating == null ? 5.0 : Number(row.avg_rating),
+            userAvgHelpfulVote: row.avg_helpful == null ? 0.0 : Number(row.avg_helpful),
+            userPurchasedCount: Number(purchasedRow.purchased_count || 0),
+        };
+    } catch {
+        return { userReviewsCount: 1, userVerifiedCount: 0, userAvgRating: 5.0, userAvgHelpfulVote: 0.0, userPurchasedCount: 0 };
+    }
+}
+
+async function enrichReviewWithDynamicTrust(client, row, productData = null, viewerUserId = null) {
+    if (!row) return null;
+    const normalized = normalizeReview(row);
+
+    try {
+        let product = productData;
+        if (!product && row.productId) {
+            product = await getProductById(client, row.productId);
+        }
+
+        const userStats = await getUserReviewStats(client, row.userId);
+
+        const trustResult = await runTrustInference({
+            productId: row.productId,
+            rating: normalized.rating,
+            reviewTitle: normalized.reviewTitle || '',
+            reviewText: normalized.reviewText || '',
+            verifiedPurchase: normalized.verifiedPurchase,
+            helpfulVotes: normalized.helpfulVotes,
+            userReviewsCount: userStats.userReviewsCount,
+            userVerifiedCount: userStats.userVerifiedCount,
+            userAvgRating: userStats.userAvgRating,
+            userAvgHelpfulVote: userStats.userAvgHelpfulVote,
+            userPurchasedCount: userStats.userPurchasedCount,
+            productData: product || null,
+        });
+
+        if (trustResult?.prediction) {
+            normalized.trustLevel = trustResult.prediction.trust_level || normalized.trustLevel;
+            normalized.trustReason = trustResult.prediction.trust_reason || normalized.trustReason;
+            normalized.trustScore = trustResult.prediction.trust_score ?? null;
+        }
+
+        if (viewerUserId) {
+            const feedbackRes = await client.query(
+                `SELECT feedback, reason, "createdAt" FROM "ReviewTrustFeedback" WHERE "reviewId" = $1 AND "userId" = $2 LIMIT 1`,
+                [normalized.id, viewerUserId]
+            );
+            if (feedbackRes.rows.length > 0) {
+                normalized.userTrustFeedback = feedbackRes.rows[0];
+            }
+        }
+    } catch (err) {
+        console.error('Error enriching review with dynamic trust:', err);
+    }
+
+    return normalized;
+}
+
 async function listProductReviews({ productId, sort = 'newest', page = 1, limit = 10, viewerUserId = null }) {
     const safeSort = allowedSort(sort);
     const safePage = allowedPageValue(page, 1);
@@ -175,6 +260,11 @@ async function listProductReviews({ productId, sort = 'newest', page = 1, limit 
 
         const reviewsResult = await client.query(listQuery, listParams);
 
+        const enrichedReviews = await Promise.all(
+            reviewsResult.rows.map((row) => enrichReviewWithDynamicTrust(client, row, product, viewerUserId))
+        );
+
+
         let currentUserReview = null;
         if (viewerUserId) {
             const currentResult = await client.query(
@@ -185,7 +275,9 @@ async function listProductReviews({ productId, sort = 'newest', page = 1, limit 
                  LIMIT 1`,
                 [productId, viewerUserId]
             );
-            currentUserReview = normalizeReview(currentResult.rows[0]);
+            if (currentResult.rows[0]) {
+                currentUserReview = await enrichReviewWithDynamicTrust(client, currentResult.rows[0], product);
+            }
         }
 
         return {
@@ -204,7 +296,7 @@ async function listProductReviews({ productId, sort = 'newest', page = 1, limit 
                 totalPages: Math.max(1, Math.ceil(totalCount / safeLimit)),
                 sort: safeSort,
             },
-            reviews: reviewsResult.rows.map((row) => normalizeReview(row)),
+            reviews: enrichedReviews,
             currentUserReview,
         };
     });
@@ -238,6 +330,34 @@ async function createReview({ clerkId, productId, rating, reviewTitle, reviewTex
         }
 
         const verifiedPurchase = await isVerifiedPurchase(client, clerkId, productId);
+        const userStats = await getUserReviewStats(client, clerkId);
+
+        let trustLevel = 'Medium Trust';
+        let trustReason = '';
+        let reviewStatus = 'Approved';
+
+        try {
+            const trustResult = await runTrustInference({
+                productId,
+                rating,
+                reviewTitle,
+                reviewText,
+                verifiedPurchase,
+                helpfulVotes: 0,
+                userReviewsCount: userStats.userReviewsCount,
+                userVerifiedCount: userStats.userVerifiedCount + (verifiedPurchase ? 1 : 0),
+                userAvgRating: userStats.userAvgRating,
+                userAvgHelpfulVote: userStats.userAvgHelpfulVote,
+                userPurchasedCount: userStats.userPurchasedCount,
+                productData: product,
+            });
+
+            trustLevel = trustResult?.prediction?.trust_level || 'Medium Trust';
+            trustReason = trustResult?.prediction?.trust_reason || '';
+            reviewStatus = 'Approved';
+        } catch (error) {
+            console.error('Trust inference error during review creation:', error);
+        }
 
         const insertResult = await client.query(
             `INSERT INTO "Reviews" (
@@ -245,12 +365,13 @@ async function createReview({ clerkId, productId, rating, reviewTitle, reviewTex
                 "verifiedPurchase", "helpfulVotes", "trustLevel", "trustReason", status,
                 "createdAt", "updatedAt"
             )
-            VALUES ($1, $2, $3, $4, $5, $6, 0, NULL, 'Waiting for AI Analysis', 'Pending', NOW(), NOW())
+            VALUES ($1, $2, $3, $4, $5, $6, 0, $7, $8, $9, NOW(), NOW())
             RETURNING id`,
-            [clerkId, productId, rating, reviewTitle, reviewText, verifiedPurchase]
+            [clerkId, productId, rating, reviewTitle, reviewText, verifiedPurchase, trustLevel, trustReason, reviewStatus]
         );
 
-        return getReviewById(client, insertResult.rows[0].id);
+        const newReviewRow = await getReviewById(client, insertResult.rows[0].id);
+        return enrichReviewWithDynamicTrust(client, newReviewRow, product);
     });
 }
 
@@ -269,7 +390,36 @@ async function updateReview({ reviewId, clerkId, rating, reviewTitle, reviewText
             throw error;
         }
 
+        const product = await getProductById(client, existing.productId);
         const verifiedPurchase = await isVerifiedPurchase(client, existing.userId, existing.productId);
+        const userStats = await getUserReviewStats(client, existing.userId);
+
+        let trustLevel = 'Medium Trust';
+        let trustReason = '';
+        let reviewStatus = 'Approved';
+
+        try {
+            const trustResult = await runTrustInference({
+                productId: existing.productId,
+                rating,
+                reviewTitle,
+                reviewText,
+                verifiedPurchase,
+                helpfulVotes: existing.helpfulVotes || 0,
+                userReviewsCount: userStats.userReviewsCount,
+                userVerifiedCount: userStats.userVerifiedCount,
+                userAvgRating: userStats.userAvgRating,
+                userAvgHelpfulVote: userStats.userAvgHelpfulVote,
+                userPurchasedCount: userStats.userPurchasedCount,
+                productData: product,
+            });
+
+            trustLevel = trustResult?.prediction?.trust_level || 'Medium Trust';
+            trustReason = trustResult?.prediction?.trust_reason || '';
+            reviewStatus = 'Approved';
+        } catch (error) {
+            console.error('Trust inference error during review update:', error);
+        }
 
         await client.query(
             `UPDATE "Reviews"
@@ -277,15 +427,16 @@ async function updateReview({ reviewId, clerkId, rating, reviewTitle, reviewText
                  "reviewTitle" = $2,
                  "reviewText" = $3,
                  "verifiedPurchase" = $4,
-                 "trustLevel" = NULL,
-                 "trustReason" = 'Waiting for AI Analysis',
-                 status = 'Pending',
+                 "trustLevel" = $5,
+                 "trustReason" = $6,
+                 status = $7,
                  "updatedAt" = NOW()
-             WHERE id = $5`,
-            [rating, reviewTitle, reviewText, verifiedPurchase, reviewId]
+             WHERE id = $8`,
+            [rating, reviewTitle, reviewText, verifiedPurchase, trustLevel, trustReason, reviewStatus, reviewId]
         );
 
-        return getReviewById(client, reviewId);
+        const updatedRow = await getReviewById(client, reviewId);
+        return enrichReviewWithDynamicTrust(client, updatedRow, product);
     });
 }
 
@@ -362,7 +513,7 @@ async function getUserReviews(clerkId) {
             [clerkId]
         );
 
-        return result.rows.map((row) => normalizeReview(row));
+        return Promise.all(result.rows.map((row) => enrichReviewWithDynamicTrust(client, row)));
     });
 }
 
@@ -407,6 +558,10 @@ async function listAdminReviews({ status = 'all', page = 1, limit = 20, search =
             listParams
         );
 
+        const enrichedReviews = await Promise.all(
+            listResult.rows.map((row) => enrichReviewWithDynamicTrust(client, row))
+        );
+
         const statsResult = await client.query(
             `SELECT
                 COUNT(*)::integer AS total_reviews,
@@ -422,7 +577,7 @@ async function listAdminReviews({ status = 'all', page = 1, limit = 20, search =
         const statsRow = statsResult.rows[0] || {};
 
         return {
-            reviews: listResult.rows.map((row) => normalizeReview(row)),
+            reviews: enrichedReviews,
             pagination: {
                 page: safePage,
                 limit: safeLimit,
@@ -462,6 +617,36 @@ async function updateReviewStatus({ reviewId, status }) {
     });
 }
 
+async function saveTrustFeedback({ reviewId, userId, predictedTrustLevel, predictedTrustScore, feedback, reason }) {
+    return withTransaction(async (client) => {
+        const reviewResult = await client.query('SELECT id FROM "Reviews" WHERE id = $1 LIMIT 1', [reviewId]);
+        if (reviewResult.rows.length === 0) {
+            const error = new Error('Review not found');
+            error.statusCode = 404;
+            throw error;
+        }
+
+        const insertResult = await client.query(
+            `INSERT INTO "ReviewTrustFeedback" (
+                "reviewId", "userId", "predictedTrustLevel", "predictedTrustScore",
+                feedback, reason, "createdAt"
+            )
+            VALUES ($1, $2, $3, $4, $5, $6, NOW())
+            ON CONFLICT ("reviewId", "userId")
+            DO UPDATE SET
+                "predictedTrustLevel" = EXCLUDED."predictedTrustLevel",
+                "predictedTrustScore" = EXCLUDED."predictedTrustScore",
+                feedback = EXCLUDED.feedback,
+                reason = EXCLUDED.reason,
+                "createdAt" = NOW()
+            RETURNING *`,
+            [reviewId, userId, predictedTrustLevel, predictedTrustScore != null ? Number(predictedTrustScore) : null, feedback, reason || null]
+        );
+
+        return insertResult.rows[0];
+    });
+}
+
 module.exports = {
     normalizeReview,
     listProductReviews,
@@ -473,4 +658,5 @@ module.exports = {
     listAdminReviews,
     updateReviewStatus,
     isVerifiedPurchase,
+    saveTrustFeedback,
 };

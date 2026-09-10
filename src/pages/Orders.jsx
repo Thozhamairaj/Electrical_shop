@@ -6,6 +6,7 @@ import './Orders.css';
 
 export default function Orders() {
   const { user } = useUser();
+  const [userReviews, setUserReviews] = useState([]);
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,6 +15,19 @@ export default function Orders() {
   useEffect(() => {
     if (user?.id) {
       fetchOrders();
+    }
+    if (user?.id) {
+      // fetch user's reviews once to hide write buttons for items already reviewed
+      (async () => {
+        try {
+          const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+          const res = await fetch(`${apiUrl}/api/reviews/user`, { headers: { 'x-user-id': user.id } });
+          const data = await res.json();
+          setUserReviews((data && Array.isArray(data) ? data : []).map(r => r.productId));
+        } catch (e) {
+          // ignore
+        }
+      })();
     }
   }, [user]);
 
@@ -87,6 +101,16 @@ export default function Orders() {
                         <div className="item-info">
                           <h4>{item.name || 'Unnamed Product'}</h4>
                           <p>Qty: {item.quantity || 1} × ₹{parseFloat(item.price || 0).toFixed(2)}</p>
+                          {!userReviews.includes(item.id) && (
+                            <div className="item-actions">
+                              <button
+                                className="write-review-btn"
+                                onClick={() => navigate(`/product/${item.id}?writeReview=1`)}
+                              >
+                                Write review
+                              </button>
+                            </div>
+                          )}
                         </div>
                       </div>
                     ))}

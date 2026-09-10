@@ -35,6 +35,8 @@ export const reviewService = {
 
     markHelpful: (reviewId, userId) => requestJson(`/helpful/${reviewId}`, { method: 'POST', userId }),
 
+    submitTrustFeedback: (payload, userId) => requestJson('/trust-feedback', { method: 'POST', body: payload, userId }),
+
     getUserReviews: (userId) => requestJson('/user', { userId }),
 
     getAdminReviews: async (authFetch, params = {}) => {

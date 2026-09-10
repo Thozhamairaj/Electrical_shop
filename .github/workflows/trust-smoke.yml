@@ -1,0 +1,24 @@
+name: Trust Pipeline Smoke Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, feat/trust-pipeline-fallback ]
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: |
+          npm ci --prefix server || true
+      - name: Run smoke test
+        env:
+          API_URL: ${{ secrets.SMOKE_API_URL || 'http://localhost:5000' }}
+        run: |
+          node scripts/smoke_trust.js

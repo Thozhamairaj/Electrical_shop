@@ -107,6 +107,22 @@
   color: #64748b;
 }
 
+.item-actions {
+  margin-top: 8px;
+}
+
+.write-review-btn {
+  padding: 6px 10px;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.write-review-btn:hover { opacity: 0.95; transform: translateY(-1px); }
+
 .order-summary {
   background: #f8fafc;
   padding: 20px;

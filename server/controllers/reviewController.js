@@ -7,6 +7,7 @@ const {
     getUserReviews,
     listAdminReviews,
     updateReviewStatus,
+    saveTrustFeedback,
 } = require('../services/reviewService');
 const { validateReviewInput, validateStatus } = require('../utils/reviewValidation');
 
@@ -173,6 +174,34 @@ async function adminDeleteReviewHandler(req, res) {
     }
 }
 
+async function saveTrustFeedbackHandler(req, res) {
+    try {
+        const { reviewId, predictedTrustLevel, predictedTrustScore, feedback, reason } = req.body;
+        const userId = req.user?.clerkId || req.headers['x-user-id'];
+
+        if (!userId) {
+            return res.status(401).json({ error: 'User authentication required' });
+        }
+
+        if (!reviewId || !feedback || !['helpful', 'not_helpful'].includes(feedback)) {
+            return res.status(400).json({ error: 'Invalid trust feedback submission' });
+        }
+
+        const record = await saveTrustFeedback({
+            reviewId: Number(reviewId),
+            userId,
+            predictedTrustLevel,
+            predictedTrustScore: predictedTrustScore != null ? Number(predictedTrustScore) : null,
+            feedback,
+            reason,
+        });
+
+        res.json({ message: 'Trust feedback recorded successfully', feedback: record });
+    } catch (error) {
+        sendError(res, error);
+    }
+}
+
 module.exports = {
     getReviewsForProduct,
     createReviewHandler,
@@ -184,4 +213,5 @@ module.exports = {
     getAdminReviewStatsHandler,
     updateReviewStatusHandler,
     adminDeleteReviewHandler,
+    saveTrustFeedbackHandler,
 };

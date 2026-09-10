@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth, useUser } from '@clerk/clerk-react';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
@@ -26,6 +26,7 @@ export default function ProductPage() {
   const [addedToCart, setAddedToCart] = useState(false);
   const [isPhoneModalOpen, setIsPhoneModalOpen] = useState(false);
   const [isPaymentConfirmOpen, setIsPaymentConfirmOpen] = useState(false);
+  const { search } = useLocation();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -51,6 +52,19 @@ export default function ProductPage() {
 
     fetchProduct();
   }, [id]);
+
+  // If navigated with ?writeReview=1, scroll to review section after load
+  useEffect(() => {
+    if (!search) return;
+    const params = new URLSearchParams(search);
+    if (params.get('writeReview')) {
+      // Wait a tick for the review section to render
+      setTimeout(() => {
+        const el = document.querySelector('.review-section');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 250);
+    }
+  }, [search, product]);
 
   if (loading) {
     return (
