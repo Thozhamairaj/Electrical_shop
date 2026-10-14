@@ -62,7 +62,15 @@ export default function TrustReasonModal({ open, onClose, reason, review = null,
         if (/^((?:Very\s+)?(?:High|Medium|Low)\s*(?:Trust)?)\s*,?/i.test(line) && !titleLine && !trustBadgeText.includes('Trust Score')) {
             trustBadgeText = line.replace(',', '').trim();
         } else if (line.toLowerCase().startsWith('trust score:')) {
-            scoreText = line.trim();
+            const rawScoreText = line.trim();
+            const pctMatch = rawScoreText.match(/(\d+)%/);
+            if (pctMatch) {
+                const pct = parseInt(pctMatch[1], 10);
+                const category = pct >= 65 ? 'High' : pct >= 35 ? 'Medium' : 'Low';
+                scoreText = `Trust Score: ${category}`;
+            } else {
+                scoreText = rawScoreText;
+            }
         } else if (line.startsWith('✓') || line.startsWith('✗') || line.startsWith('⚠️') || line.startsWith('⚠') || line.startsWith('•')) {
             bulletLines.push(line);
         } else if (line.startsWith('Overall:')) {
@@ -134,7 +142,6 @@ export default function TrustReasonModal({ open, onClose, reason, review = null,
                         <div className="tr-header-row">
                             <div className="tr-badge-score-line">
                                 <span className={`tr-badge ${badgeClass}`}>{trustBadgeText}</span>
-                                {scoreText && <span className="tr-score-pill">{scoreText}</span>}
                             </div>
                             {titleLine && <h4 className="tr-title-line">{titleLine}</h4>}
                         </div>

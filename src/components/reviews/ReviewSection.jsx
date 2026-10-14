@@ -45,6 +45,9 @@ function getTrustNumericScore(review) {
     if (review.trustReason) {
         const match = review.trustReason.match(/Trust Score:\s*(\d+)%/i);
         if (match) return parseInt(match[1], 10) / 100;
+        if (/Trust Score:\s*High/i.test(review.trustReason)) return 0.8;
+        if (/Trust Score:\s*Medium/i.test(review.trustReason)) return 0.5;
+        if (/Trust Score:\s*Low/i.test(review.trustReason)) return 0.2;
     }
     const group = getTrustGroup(review.trustLevel);
     const lower = (review.trustLevel || '').toLowerCase();

@@ -266,9 +266,15 @@ def _build_trust_explanation(
     else:
         bullets.append("• Helpful Feedback — This review has not received helpful votes yet.")
 
-    score_pct = int(round(score * 100))
+    if "Very High" in trust_level or "High" in trust_level:
+        trust_category = "High"
+    elif "Medium" in trust_level:
+        trust_category = "Medium"
+    else:
+        trust_category = "Low"
+
     header = f"{trust_level} ,"
-    score_line = f"Trust Score: {score_pct}%"
+    score_line = f"Trust Score: {trust_category}"
 
     if "Very High" in trust_level:
         title = "Why this review is considered exceptionally trustworthy:"
@@ -288,7 +294,6 @@ def _build_trust_explanation(
 
     lines = [
         header,
-        score_line,
         title,
         "",
         *bullets,
